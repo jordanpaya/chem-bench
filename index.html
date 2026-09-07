@@ -173,12 +173,13 @@ th{font-size:.72rem;text-transform:uppercase;letter-spacing:.1em;color:var(--mut
 
 /* practice */
 .practice{width:100%}
-.catrow{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-bottom:16px}
-.catlabel{font-size:.76rem;text-transform:uppercase;letter-spacing:.1em;color:var(--muted);margin-right:2px}
-.catchip{border:1px solid var(--line);background:var(--surface);color:var(--muted);border-radius:999px;padding:7px 14px;font-size:.86rem;cursor:pointer;font-family:var(--body);transition:background .12s,border-color .12s,color .12s}
+.catbox{margin:0 0 16px}
+.catbox summary{font-size:.92rem}
+.catbox .sum{color:var(--muted);font-weight:400}
+.catchips{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.catchip{border:1px solid var(--line);background:var(--surface);color:var(--muted);border-radius:999px;padding:6px 13px;font-size:.84rem;cursor:pointer;font-family:var(--body);transition:background .12s,border-color .12s,color .12s}
 .catchip:hover{border-color:var(--line-strong);color:var(--ink)}
 .catchip.active{background:var(--ink);color:var(--bg);border-color:var(--ink);font-weight:600}
-.catcount{font-size:.8rem;color:var(--muted);margin-left:auto;font-variant-numeric:tabular-nums}
 .round{display:flex;justify-content:space-between;align-items:center;font-size:.8rem;color:var(--muted);margin-bottom:10px;font-variant-numeric:tabular-nums;flex-wrap:wrap;gap:8px}
 .round b{color:var(--ink);font-weight:600}
 .round .keys{display:flex;gap:6px;align-items:center}
@@ -894,6 +895,7 @@ const byId=id=>TOPICS.find(t=>t.id===id);
 const view=document.getElementById('view');
 const PT_BTN='<button class="btn sm pt-btn" onclick="openTable()"><i><b></b><b></b><b></b><b></b><b></b><b></b></i>Periodic table</button>';
 let session=null;
+let ionFilterOpen=false;
 
 function render(){
   const h=location.hash||'#home';
@@ -957,7 +959,8 @@ function renderPractice(t){
   }
   if(!s.q){s.q=GEN[t.id]();s.answered=false;}
   const q=s.q;
-  const catRow=t.id==='ions'?(()=>{const sel=getIonFilter();const n=IONS.filter(i=>sel.includes(ionCategory(i))).length;return `<div class="catrow"><span class="catlabel">Practicing</span>${ION_CATS.map(([k,label])=>`<button type="button" class="catchip${sel.includes(k)?' active':''}" onclick="toggleIonCat('${k}')">${label}</button>`).join('')}<span class="catcount">${n} ion${n===1?'':'s'} in this pool</span></div>`;})():'';
+  const catRow=t.id==='ions'?(()=>{const sel=getIonFilter();const n=IONS.filter(i=>sel.includes(ionCategory(i))).length;const label=sel.length===5?'All categories':ION_CATS.filter(([k])=>sel.includes(k)).map(([,l])=>l).join(', ');
+    return `<details class="ref catbox"${ionFilterOpen?' open':''} ontoggle="ionFilterOpen=this.open"><summary>Which ions to practice <span class="sum">· ${label} · ${n} ion${n===1?'':'s'}</span></summary><div class="body"><div class="catchips">${ION_CATS.map(([k,lab])=>`<button type="button" class="catchip${sel.includes(k)?' active':''}" onclick="toggleIonCat('${k}')">${lab}</button>`).join('')}</div></div></details>`;})():'';
   panel.innerHTML=`<div class="practice">
     ${catRow}
     <div class="round"><span>Question <b>${s.i+1}</b> of ${ROUND} · Score <b>${s.score}</b></span><span class="keys"><kbd>Enter</kbd> to check · <kbd>Enter</kbd> again to continue</span></div>
