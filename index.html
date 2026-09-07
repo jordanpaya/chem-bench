@@ -52,13 +52,16 @@ code{font-family:var(--mono);font-size:.92em;background:var(--surface-2);padding
 .muted{color:var(--muted)}
 .hidden{display:none !important}
 
-/* top bar */
-.top{position:sticky;top:0;z-index:20;background:color-mix(in srgb,var(--bg) 82%,transparent);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
-.top .in{max-width:1040px;margin:0 auto;padding:12px 24px;display:flex;align-items:center;gap:14px}
-.top .crumb{font-size:.76rem;text-transform:uppercase;letter-spacing:.12em;color:var(--muted)}
-.top .spacer{flex:1}
-.wordmark{font-family:var(--display);font-weight:800;font-size:1.05rem;letter-spacing:-.01em;text-decoration:none;color:var(--ink);display:flex;align-items:center;gap:8px}
-.wordmark i{display:inline-grid;place-items:center;width:26px;height:26px;border-radius:7px;background:var(--accent);color:var(--accent-ink);font-style:normal;font-size:.7rem;font-family:var(--mono);font-weight:600}
+/* fixed corner tags */
+.tag{position:fixed;bottom:18px;z-index:30;display:inline-flex;align-items:center;gap:6px;padding:9px 16px;border-radius:999px;background:var(--surface);border:1px solid var(--line);box-shadow:var(--shadow);font-size:.86rem;color:var(--ink);text-decoration:none;white-space:nowrap}
+.tag.made{left:18px;color:var(--muted)}
+.tag.docket{right:18px}
+.tag.docket b{font-weight:700}
+.tag.docket:hover{border-color:var(--accent);background:var(--accent-soft)}
+.toprow{display:flex;justify-content:space-between;align-items:center;gap:12px}
+.pt-btn{display:inline-flex;align-items:center;gap:8px}
+.pt-btn i{display:inline-grid;grid-template-columns:repeat(3,3px);gap:1px;font-style:normal}
+.pt-btn i b{width:3px;height:3px;background:currentColor;border-radius:1px;display:block}
 
 /* buttons */
 .btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:10px 18px;border-radius:999px;border:1px solid var(--line-strong);background:var(--surface);color:var(--ink);cursor:pointer;font-weight:500;line-height:1.2;transition:background .15s,border-color .15s,transform .05s;text-decoration:none;white-space:nowrap}
@@ -73,7 +76,7 @@ code{font-family:var(--mono);font-size:.92em;background:var(--surface-2);padding
 .seg button.active{background:var(--ink);color:var(--bg);font-weight:600}
 .seg.small button{padding:6px 14px;font-size:.88rem}
 
-main{padding:22px 24px 70px}
+main{padding:30px 24px 110px}
 .wrap{max-width:1060px;margin:0 auto}
 .narrow{max-width:760px;margin:0 auto}
 
@@ -267,7 +270,7 @@ kbd{font-family:var(--mono);border:1px solid var(--line-strong);border-bottom-wi
 .pt-detail .empty{padding:0 16px;display:flex;align-items:center;color:var(--muted);font-size:.9rem}
 .pt-note{font-size:.74rem;color:var(--muted);margin:8px 0 0}
 
-.foot{max-width:1000px;margin:60px auto 0;padding:0 24px;font-size:.82rem;color:var(--muted);display:flex;gap:16px;flex-wrap:wrap;align-items:center}
+.foot{max-width:1000px;margin:60px auto 0;padding:0 24px;justify-content:center;font-size:.82rem;color:var(--muted);display:flex;gap:16px;flex-wrap:wrap;align-items:center}
 .linkbtn{background:none;border:0;padding:0;color:var(--muted);text-decoration:underline;cursor:pointer;font-size:.82rem}
 .linkbtn:hover{color:var(--bad)}
 
@@ -277,8 +280,10 @@ kbd{font-family:var(--mono);border:1px solid var(--line-strong);border-bottom-wi
 @media (max-width:640px){
   body{font-size:15px}
   main{padding:22px 16px 70px}
-  .top .in{padding:10px 14px}
-  .top .crumb{display:none}
+  .tag{font-size:.78rem;padding:7px 12px;bottom:12px}
+  .tag.made{left:12px}
+  .tag.docket{right:12px}
+  main{padding-bottom:90px}
   .cards,.two,.decide{grid-template-columns:1fr}
   .decide .q{grid-column:auto}
   .qcard{padding:20px 16px 22px}
@@ -293,18 +298,14 @@ kbd{font-family:var(--mono);border:1px solid var(--line-strong);border-bottom-wi
 }
 </style>
 
-<header class="top"><div class="in">
-  <a class="wordmark" href="#home"><i>Ch</i>Chem Bench</a>
-  <span class="crumb" id="crumb"></span>
-  <span class="spacer"></span>
-  <button class="btn sm" id="pt-open" onclick="openTable()">Periodic table</button>
-</div></header>
 <main><div class="wrap" id="view"></div></main>
 <footer class="foot">
   <span>Chemistry · Unit 1 · Nomenclature and the Mole</span>
   <span>Progress is saved in this browser.</span>
   <button class="linkbtn" onclick="resetProgress()">Reset all progress</button>
 </footer>
+<span class="tag made">Made by Jordan Paya</span>
+<a class="tag docket" href="https://docket.jordanpaya.com" target="_blank" rel="noopener">Track your homework with <b>Docket</b> ↗</a>
 <div id="pt-overlay" class="overlay hidden" onclick="if(event.target===this)closeTable()"></div>
 <script>
 /* ===================== DATA ===================== */
@@ -856,7 +857,8 @@ const TOPICS=[
  {id:'mole',title:'The Mole & Avogadro\'s Number',blurb:'Moles, particles, grams, and percent composition.',lead:'Convert between moles, particles, and grams, and find percent composition.'}
 ];
 const byId=id=>TOPICS.find(t=>t.id===id);
-const view=document.getElementById('view'),crumb=document.getElementById('crumb');
+const view=document.getElementById('view');
+const PT_BTN='<button class="btn sm pt-btn" onclick="openTable()"><i><b></b><b></b><b></b><b></b><b></b><b></b></i>Periodic table</button>';
 let session=null;
 
 function render(){
@@ -869,7 +871,6 @@ function render(){
 window.addEventListener('hashchange',render);
 
 function renderHome(){
-  crumb.textContent='';
   let att=0,cor=0,done=0;TOPICS.forEach(t=>{const p=tp(t.id);att+=p.attempted;cor+=p.correct;if(p.correct>=goal(t.id))done++;});
   const acc=att?Math.round(100*cor/att):0;
   view.innerHTML=`
@@ -877,21 +878,20 @@ function renderHome(){
     <div class="eyebrow">Chemistry · Unit 1</div>
     <h1>Nomenclature &amp; the Mole.</h1>
     <p class="lead">Six topics. Learn the rules, then drill until they stick. Every question checks itself and explains the answer.</p>
-    <div class="stats"><span class="chip"><b>${done}/${TOPICS.length}</b> topics mastered</span><span class="chip"><b>${att}</b> questions answered</span><span class="chip"><b>${acc}%</b> accuracy</span></div>
+    <div class="stats"><span class="chip"><b>${done}/${TOPICS.length}</b> topics mastered</span><span class="chip"><b>${att}</b> questions answered</span><span class="chip"><b>${acc}%</b> accuracy</span>${PT_BTN}</div>
   </div>
   <div class="cards">${TOPICS.map((t,i)=>{const p=tp(t.id);const pc=pct(t.id);const done=p.correct>=goal(t.id);
     return `<a class="card${done?' done':''}" href="#t/${t.id}/${p.learned?'practice':'learn'}"><div class="num">0${i+1}</div><h3>${t.title}</h3><div class="cfoot"><p>${t.blurb}</p><span class="go" title="${done?'Mastered':p.correct+' correct so far'}">${done?'✓':'→'}</span></div></a>`}).join('')}</div>`;
 }
 
 function renderTopic(t,tab){
-  crumb.textContent=t.title;
   const p=tp(t.id);if(tab==='learn'&&!p.learned){p.learned=true;save();}
   const pc=pct(t.id);const done=p.correct>=goal(t.id);const isP=tab==='practice';
   const seg=`<div class="seg"><button class="${tab==='learn'?'active':''}" onclick="location.hash='#t/${t.id}/learn'">Learn</button><button class="${tab==='practice'?'active':''}" onclick="location.hash='#t/${t.id}/practice'">Practice</button></div>`;
   const mastery=`<div class="mastery"><div class="bar"><i class="${done?'ok':''}" style="width:${pc}%"></i></div><span>${done?'Mastered':Math.min(p.correct,goal(t.id))+' of '+goal(t.id)+' correct answers to master'}${p.attempted?' · '+Math.round(100*p.correct/p.attempted)+'% accuracy':''}</span></div>`;
   view.innerHTML=`
   <div class="narrow">
-    <a class="btn sm" href="#home">← All topics</a>
+    <div class="toprow"><a class="btn sm" href="#home">← All topics</a>${PT_BTN}</div>
     <div class="thead">
       <div class="eyebrow" style="margin-top:12px">Topic ${TOPICS.indexOf(t)+1} of ${TOPICS.length}</div>
       <h1>${t.title}</h1>
