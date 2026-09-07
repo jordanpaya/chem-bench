@@ -1,0 +1,1014 @@
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta charset="utf-8">
+<title>Chem Bench</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,600;12..96,700;12..96,800&family=IBM+Plex+Sans:ital,wght@0,400;0,500;0,600;1,400&family=IBM+Plex+Mono:wght@400;500;600&display=swap">
+<style>
+:root{
+  --bg:#F4F6F9; --grid:rgba(30,110,140,.055); --surface:#FFFFFF; --surface-2:#EAEEF3; --ink:#18212B; --muted:#5F6B78; --line:#D8DEE6; --line-strong:#AEB8C4;
+  --accent:#1E6E8C; --accent-ink:#FFFFFF; --accent-soft:#E1EEF3; --copper:#C2732F; --copper-soft:#F8E8DA;
+  --ok:#25784B; --ok-soft:#E1F2E7; --bad:#B23A2B; --bad-soft:#FAE5E1; --warn:#8A6410; --warn-soft:#FBF0D3;
+  --c-alkali:#F6D5CF; --c-alkaline:#FBE5C4; --c-transition:#D8E5F6; --c-post:#D6EFE2; --c-metalloid:#EEE3C4; --c-nonmetal:#CFEDE7; --c-halogen:#E2DDF7; --c-noble:#F1D9EA; --c-lanth:#E1ECD0; --c-actin:#E9E2D3; --c-line:rgba(24,33,43,.10);
+  --shadow:0 1px 2px rgba(24,33,43,.05),0 10px 30px -14px rgba(24,33,43,.18);
+  --r:14px; --rs:9px;
+  --display:"Bricolage Grotesque","Avenir Next","Segoe UI",system-ui,sans-serif;
+  --body:"IBM Plex Sans","Helvetica Neue",Arial,system-ui,sans-serif;
+  --mono:"IBM Plex Mono","SFMono-Regular",Menlo,Consolas,monospace;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#111820; --grid:rgba(255,255,255,.035); --surface:#19222C; --surface-2:#242F3B; --ink:#E8EDF3; --muted:#9AA7B5; --line:#2B3642; --line-strong:#45525F;
+    --accent:#6DBBD6; --accent-ink:#0C1A21; --accent-soft:#1B3441; --copper:#E39C5E; --copper-soft:#3A2A1B;
+    --ok:#62C48E; --ok-soft:#1A3627; --bad:#F2907E; --bad-soft:#40221C; --warn:#E6BB50; --warn-soft:#3B3116;
+    --c-alkali:#4E2C2A; --c-alkaline:#4B3B22; --c-transition:#24374E; --c-post:#1F3D32; --c-metalloid:#403A22; --c-nonmetal:#1E3D3B; --c-halogen:#332E4C; --c-noble:#43273C; --c-lanth:#2D3B23; --c-actin:#3B362A; --c-line:rgba(255,255,255,.10);
+    --shadow:0 1px 2px rgba(0,0,0,.35),0 10px 30px -14px rgba(0,0,0,.6);
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#111820; --grid:rgba(255,255,255,.035); --surface:#19222C; --surface-2:#242F3B; --ink:#E8EDF3; --muted:#9AA7B5; --line:#2B3642; --line-strong:#45525F;
+  --accent:#6DBBD6; --accent-ink:#0C1A21; --accent-soft:#1B3441; --copper:#E39C5E; --copper-soft:#3A2A1B;
+  --ok:#62C48E; --ok-soft:#1A3627; --bad:#F2907E; --bad-soft:#40221C; --warn:#E6BB50; --warn-soft:#3B3116;
+  --c-alkali:#4E2C2A; --c-alkaline:#4B3B22; --c-transition:#24374E; --c-post:#1F3D32; --c-metalloid:#403A22; --c-nonmetal:#1E3D3B; --c-halogen:#332E4C; --c-noble:#43273C; --c-lanth:#2D3B23; --c-actin:#3B362A; --c-line:rgba(255,255,255,.10);
+  --shadow:0 1px 2px rgba(0,0,0,.35),0 10px 30px -14px rgba(0,0,0,.6);
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%;scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--body);font-size:16.5px;line-height:1.55;
+  background-image:linear-gradient(var(--grid) 1px,transparent 1px),linear-gradient(90deg,var(--grid) 1px,transparent 1px);background-size:28px 28px}
+button,input{font:inherit;color:inherit}
+a{color:var(--accent)}
+h1,h2,h3,h4{font-family:var(--display);margin:0;line-height:1.1;text-wrap:balance;letter-spacing:-.015em}
+h1{font-size:3rem;font-weight:800}
+h2{font-size:1.5rem;font-weight:700}
+h3{font-size:1.2rem;font-weight:650}
+p{margin:0 0 .9em}
+.f{font-family:var(--mono);font-weight:500;white-space:nowrap}
+sub,sup{line-height:0;font-size:.7em}
+sup{vertical-align:.5em}
+sub{vertical-align:-.28em}
+.iso sup{margin-right:1px}
+code{font-family:var(--mono);font-size:.92em;background:var(--surface-2);padding:.05em .35em;border-radius:4px}
+:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.eyebrow{font-size:.74rem;text-transform:uppercase;letter-spacing:.14em;color:var(--accent);font-weight:600}
+.muted{color:var(--muted)}
+.hidden{display:none !important}
+
+/* top bar */
+.top{position:sticky;top:0;z-index:20;background:color-mix(in srgb,var(--bg) 82%,transparent);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+.top .in{max-width:1040px;margin:0 auto;padding:12px 24px;display:flex;align-items:center;gap:14px}
+.top .crumb{font-size:.76rem;text-transform:uppercase;letter-spacing:.12em;color:var(--muted)}
+.top .spacer{flex:1}
+.wordmark{font-family:var(--display);font-weight:800;font-size:1.05rem;letter-spacing:-.01em;text-decoration:none;color:var(--ink);display:flex;align-items:center;gap:8px}
+.wordmark i{display:inline-grid;place-items:center;width:26px;height:26px;border-radius:7px;background:var(--accent);color:var(--accent-ink);font-style:normal;font-size:.7rem;font-family:var(--mono);font-weight:600}
+
+/* buttons */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:10px 18px;border-radius:999px;border:1px solid var(--line-strong);background:var(--surface);color:var(--ink);cursor:pointer;font-weight:500;line-height:1.2;transition:background .15s,border-color .15s,transform .05s;text-decoration:none;white-space:nowrap}
+.btn:hover{background:var(--surface-2)}
+.btn:active{transform:translateY(1px)}
+.btn.primary{background:var(--accent);border-color:var(--accent);color:var(--accent-ink);font-weight:600}
+.btn.primary:hover{filter:brightness(1.07)}
+.btn.sm{padding:7px 13px;font-size:.88rem}
+.btn:disabled{opacity:.45;cursor:default}
+.seg{display:inline-flex;background:var(--surface);border:1px solid var(--line);border-radius:999px;padding:4px;gap:2px}
+.seg button{border:0;background:none;padding:9px 22px;border-radius:999px;cursor:pointer;font-weight:500;color:var(--muted);font-size:1rem}
+.seg button.active{background:var(--ink);color:var(--bg);font-weight:600}
+.seg.small button{padding:6px 14px;font-size:.88rem}
+
+main{padding:22px 24px 70px}
+.wrap{max-width:1060px;margin:0 auto}
+.narrow{max-width:760px;margin:0 auto}
+
+/* home */
+.hero{margin:6px 0 28px;max-width:760px}
+.hero h1{margin:8px 0 14px}
+.hero .lead{font-size:1.1rem;color:var(--muted);max-width:50ch;margin-bottom:18px}
+.stats{display:flex;gap:10px;flex-wrap:wrap}
+.chip{display:inline-flex;align-items:baseline;gap:7px;padding:5px 12px;border-radius:999px;background:var(--surface);border:1px solid var(--line);font-size:.9rem;color:var(--muted);font-variant-numeric:tabular-nums}
+.chip b{color:var(--ink);font-family:var(--display);font-size:1.05rem;font-weight:700}
+.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.card{position:relative;background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:20px 22px 20px;display:flex;flex-direction:column;gap:4px;box-shadow:var(--shadow);text-decoration:none;color:var(--ink);transition:transform .15s,box-shadow .15s;min-height:196px;overflow:hidden}
+.card::after{content:"";position:absolute;right:-40px;bottom:-40px;width:180px;height:180px;border-radius:50%;background:radial-gradient(closest-side,var(--accent-soft),transparent);opacity:.55;pointer-events:none;z-index:0}
+.card>*{position:relative;z-index:1}
+.card.done::after{background:radial-gradient(closest-side,var(--ok-soft),transparent)}
+.card:hover{transform:translateY(-2px);box-shadow:0 2px 4px rgba(24,33,43,.06),0 16px 36px -14px rgba(24,33,43,.28)}
+.card .num{font-family:var(--mono);font-size:.78rem;color:var(--muted)}
+.card h3{font-size:1.45rem;font-weight:700;margin:14px 0 0}
+.card p{color:var(--muted);font-size:.92rem;margin:0;flex:1;line-height:1.5}
+.card .cfoot{display:flex;align-items:flex-end;gap:14px;margin-top:auto;padding-top:14px;position:relative}
+.card .bar{flex:1}
+.card .go{width:34px;height:34px;border-radius:50%;background:var(--ink);color:var(--bg);display:grid;place-items:center;font-size:1rem;flex:none}
+.card.done .go{background:var(--ok)}
+.bar{height:6px;border-radius:999px;background:var(--line);overflow:hidden}
+.bar>i{display:block;height:100%;background:var(--copper);width:0;transition:width .4s ease;border-radius:999px}
+.bar>i.ok{background:var(--ok)}
+
+/* topic */
+.thead{padding:4px 0 14px;margin-bottom:18px;border-bottom:1px solid var(--line)}
+.thead h1{margin:6px 0 8px}
+.thead .lead{color:var(--muted);font-size:1.08rem;max-width:56ch;margin-bottom:12px}
+.thead .row{display:flex;align-items:center;gap:18px;flex-wrap:wrap}
+.mastery{display:flex;align-items:center;gap:10px;font-size:.88rem;color:var(--muted);font-variant-numeric:tabular-nums}
+.mastery .bar{width:150px}
+
+/* learn */
+.learn{display:flex;flex-direction:column;gap:34px}
+.learn>section h2{margin-bottom:14px}
+.learn>section h3{margin:22px 0 8px}
+.learn p,.learn li{max-width:66ch}
+.learn ul,.learn ol{padding-left:1.25em;margin:0 0 .9em}
+.learn li{margin-bottom:.4em}
+.callout{border-left:3px solid var(--copper);background:var(--copper-soft);padding:12px 16px;border-radius:0 var(--rs) var(--rs) 0;margin:14px 0}
+.callout.warn{border-color:var(--bad);background:var(--bad-soft)}
+.callout.tip{border-color:var(--accent);background:var(--accent-soft)}
+.callout p:last-child{margin-bottom:0}
+.example{background:var(--surface);border:1px solid var(--line);border-radius:var(--rs);padding:16px 18px;margin:14px 0;box-shadow:var(--shadow)}
+.example .eyebrow{margin-bottom:8px;color:var(--copper)}
+.example ol{margin:0}
+.example li{margin-bottom:.35em}
+.example .result{margin-top:8px;font-weight:600}
+.facts{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px;margin:6px 0 10px}
+.fact{background:var(--surface);border:1px solid var(--line);border-radius:var(--rs);padding:14px 16px}
+.fact .k{font-size:.72rem;text-transform:uppercase;letter-spacing:.12em;color:var(--muted);font-weight:600;margin-bottom:4px}
+.fact .v{font-family:var(--mono);font-size:1.3rem;font-weight:600;color:var(--accent)}
+.fact .d{font-size:.85rem;color:var(--muted);margin-top:2px}
+table{border-collapse:collapse;width:100%;font-size:.95rem;background:var(--surface)}
+th,td{text-align:left;padding:9px 12px;border-bottom:1px solid var(--line);vertical-align:top}
+th{font-size:.72rem;text-transform:uppercase;letter-spacing:.1em;color:var(--muted);font-weight:600;background:var(--surface-2)}
+.tscroll{overflow-x:auto;border:1px solid var(--line);border-radius:var(--rs)}
+.tscroll table{margin:0}
+.el-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(112px,1fr));gap:8px}
+.el{border:1px solid var(--line);border-radius:var(--rs);padding:8px 10px;background:var(--surface)}
+.el .z{font-family:var(--mono);font-size:.7rem;color:var(--muted)}
+.el .sym{font-family:var(--display);font-size:1.5rem;font-weight:700;line-height:1.1}
+.el .nm{font-size:.8rem;color:var(--muted)}
+.el.mv{border-color:var(--copper);background:var(--copper-soft)}
+.el.mv .sym::after{content:"*";color:var(--copper);margin-left:2px}
+.ion-groups{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:14px;margin-bottom:6px}
+.ion-group{border:1px solid var(--line);border-radius:var(--rs);padding:12px 16px;background:var(--surface)}
+.ion-group h4{font-size:.74rem;text-transform:uppercase;letter-spacing:.1em;color:var(--muted);margin:0 0 8px;font-family:var(--body);font-weight:600}
+.ion-group .ion{display:flex;justify-content:space-between;gap:10px;padding:5px 0;border-bottom:1px dashed var(--line);font-size:.95rem}
+.ion-group .ion:last-child{border-bottom:0}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.rule{border:1px solid var(--line);border-radius:var(--rs);padding:16px 18px;background:var(--surface)}
+.rule h3{margin-top:0 !important}
+.decide{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:14px 0 6px}
+.decide .q{grid-column:1/-1;font-family:var(--display);font-weight:700;font-size:1.15rem;padding:14px 18px;border-radius:var(--rs);background:var(--accent-soft);text-align:center}
+.decide .opt{padding:14px 16px;border-radius:var(--rs);border:1px solid var(--line);background:var(--surface)}
+.decide .opt b{display:block;font-family:var(--display);font-size:1.05rem;margin-bottom:4px}
+.prefix-row{display:flex;flex-wrap:wrap;gap:6px;margin:8px 0 12px}
+.prefix-row span{background:var(--surface);border:1px solid var(--line);padding:4px 10px;border-radius:999px;font-size:.9rem}
+.prefix-row span b{font-family:var(--mono);color:var(--accent);margin-right:5px}
+
+/* practice */
+.practice{width:100%}
+.round{display:flex;justify-content:space-between;align-items:center;font-size:.8rem;color:var(--muted);margin-bottom:10px;font-variant-numeric:tabular-nums;flex-wrap:wrap;gap:8px}
+.round b{color:var(--ink);font-weight:600}
+.round .keys{display:flex;gap:6px;align-items:center}
+.qcard{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:22px 30px 26px;box-shadow:var(--shadow);text-align:left}
+.qtop{display:flex;justify-content:space-between;align-items:center;margin-bottom:22px}
+.qtop .qnum{font-family:var(--mono);font-size:.78rem;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+.ask{font-family:var(--display);font-size:1.5rem;font-weight:600;line-height:1.3;text-align:center;letter-spacing:-.01em;text-wrap:balance}
+.prompt{text-align:center;margin:22px 0 26px}
+.prompt .big{font-family:var(--display);font-size:3rem;font-weight:700;color:var(--accent);display:block;line-height:1.1;letter-spacing:-.02em}
+.prompt .big.f{font-family:var(--mono);font-weight:600;letter-spacing:0}
+.prompt .big .sub-line{display:block;color:var(--muted);font-family:var(--body);font-weight:400;font-size:1rem;letter-spacing:0;margin-top:8px}
+.prompt > .sub-line{display:block;color:var(--muted);font-size:1.02rem;margin:10px auto 0;max-width:52ch;line-height:1.5}
+.inputs{display:grid;grid-template-columns:1fr;gap:14px;margin-bottom:16px}
+.inputs.multi{grid-template-columns:repeat(auto-fit,minmax(170px,1fr))}
+.field{display:flex;flex-direction:column;gap:6px;text-align:left;min-width:0}
+.field label{font-size:.95rem;color:var(--ink);font-weight:600}
+.field input{padding:14px 16px;border:2px solid var(--line-strong);border-radius:10px;background:var(--bg);font-family:var(--mono);font-size:1.2rem;width:100%}
+.field input:focus{border-color:var(--accent);outline:0;box-shadow:0 0 0 3px var(--accent-soft)}
+.field input:disabled{opacity:.9}
+.field.ok input{border-color:var(--ok);background:var(--ok-soft)}
+.field.bad input{border-color:var(--bad);background:var(--bad-soft)}
+.field .hint{font-size:.78rem;color:var(--muted)}
+.tools{margin-top:6px}
+.tools .tools-hint{font-size:.9rem;color:var(--muted);margin-bottom:8px}
+.tiles{display:flex;flex-wrap:wrap;gap:6px}
+.tiles button{min-width:56px;height:54px;padding:0 10px;border:1.5px solid var(--line);background:var(--surface-2);color:var(--ink);border-radius:10px;cursor:pointer;font-family:var(--mono);font-size:1.15rem;line-height:1;display:inline-flex;align-items:center;justify-content:center;transition:background .12s,border-color .12s,transform .05s}
+.tiles button sub{font-size:.7em;vertical-align:-.35em}
+.tiles button sup{font-size:.7em;vertical-align:.45em}
+.tiles button.chg{font-size:.85rem;font-weight:600}
+.tiles button:hover{background:var(--accent-soft);border-color:var(--accent)}
+.tiles button:active{transform:translateY(1px)}
+.qactions{display:flex;flex-direction:column;gap:10px;align-items:stretch}
+.btn.wide{width:100%;padding:15px 18px;font-size:1.05rem;border-radius:10px;gap:12px}
+.btn.wide kbd{border-color:rgba(255,255,255,.35);background:rgba(255,255,255,.14);color:inherit;font-size:.8rem;padding:2px 7px}
+.btn.wide .arr{margin-left:4px}
+.skip{align-self:center;background:none;border:0;color:var(--muted);text-decoration:underline;cursor:pointer;font-size:.86rem;padding:2px 6px}
+.skip:hover{color:var(--ink)}
+kbd{font-family:var(--mono);border:1px solid var(--line-strong);border-bottom-width:2px;border-radius:4px;padding:0 5px;font-size:.74rem}
+.feedback{margin:4px 0 16px;border-radius:12px;padding:14px 18px;border:1px solid;text-align:left;animation:pop .18s ease-out}
+.feedback.ok{background:var(--ok-soft);border-color:var(--ok)}
+.feedback.bad{background:var(--bad-soft);border-color:var(--bad)}
+.feedback .verdict{font-family:var(--display);font-weight:700;font-size:1.1rem;margin-bottom:4px}
+.feedback.ok .verdict{color:var(--ok)}
+.feedback.bad .verdict{color:var(--bad)}
+.feedback .why{font-size:.95rem}
+.feedback .why p{margin:0 0 .5em}
+.feedback .why p:last-child{margin-bottom:0}
+.feedback .why ol{margin:.2em 0 .5em;padding-left:1.3em}
+.feedback .why li{margin-bottom:.3em}
+.feedback .diag{margin-top:10px;padding:10px 12px;border-radius:8px;background:var(--warn-soft);color:var(--ink);font-size:.92rem;border-left:3px solid var(--warn)}
+.feedback .diag b{color:var(--warn)}
+.ans{font-family:var(--mono);font-weight:600}
+.ref{margin-top:14px;border:1px solid var(--line);border-radius:14px;background:var(--surface);box-shadow:var(--shadow)}
+.ref summary{cursor:pointer;padding:14px 20px;font-weight:600;list-style:none;display:flex;align-items:center;gap:10px}
+.ref summary::-webkit-details-marker{display:none}
+.ref summary::before{content:"▸";color:var(--muted);font-size:.9rem;transition:transform .15s}
+.ref[open] summary::before{transform:rotate(90deg)}
+.ref .body{padding:0 20px 18px;font-size:.9rem}
+.ref .cols{columns:3;column-gap:22px}
+.ref .cols div{break-inside:avoid;display:flex;justify-content:space-between;gap:10px;padding:3px 0;border-bottom:1px dashed var(--line)}
+.ref h4{font-size:.72rem;text-transform:uppercase;letter-spacing:.1em;color:var(--muted);margin:12px 0 6px;font-family:var(--body)}
+.ref h4:first-child{margin-top:0}
+.ref .facts{margin:0}
+.summary{text-align:center;padding:30px 30px}
+.summary .score{font-family:var(--display);font-size:3.4rem;font-weight:800;line-height:1;margin:10px 0 6px}
+.summary p{color:var(--muted)}
+@keyframes pop{from{opacity:0;transform:translateY(4px)}to{opacity:1;transform:none}}
+@media (prefers-reduced-motion:reduce){*{animation:none !important;transition:none !important}}
+
+/* periodic table overlay */
+.overlay{position:fixed;inset:0;z-index:50;background:rgba(10,16,22,.6);display:flex;align-items:center;justify-content:center;padding:16px;overflow:hidden}
+.pt-panel{background:var(--bg);border:1px solid var(--line);border-radius:var(--r);box-shadow:0 30px 80px -20px rgba(0,0,0,.5);width:min(1280px,calc(100vw - 32px),calc((100vh - 220px) * 1.6));max-height:calc(100vh - 32px);padding:18px 22px 16px;overflow:hidden}
+.pt-head{display:flex;align-items:center;gap:14px;margin-bottom:10px;flex-wrap:nowrap}
+.pt-head .sub{flex:1;min-width:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.pt-head h2{white-space:nowrap}
+.pt-head h2{font-size:1.4rem}
+.pt-head .spacer{flex:1}
+.pt-search{width:190px;padding:6px 12px 6px 30px;border:1px solid var(--line);border-radius:999px;background:var(--surface) url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='14' height='14' viewBox='0 0 24 24' fill='none' stroke='%238A96A3' stroke-width='2.2' stroke-linecap='round'><circle cx='11' cy='11' r='7'/><path d='M20 20l-3.5-3.5'/></svg>") no-repeat 10px center;font-size:.84rem;color:var(--ink);font-family:var(--body);align-self:center}
+.pt-search::placeholder{color:var(--muted)}
+.pt-search:focus{outline:0;border-color:var(--accent)}
+.pt.searching .cell.miss{opacity:.18}
+.pt.searching .cell.hit{outline:2px solid var(--accent);outline-offset:-1px;z-index:1}
+.pt-scroll{overflow:hidden;container-type:inline-size}
+.pt{display:grid;grid-template-columns:repeat(18,minmax(0,1fr));grid-auto-rows:auto;gap:3px}
+.pt .spacer{grid-row:8;grid-column:1/-1;height:1cqw}
+.pt .cell{border:1px solid var(--c-line);border-radius:5px;padding:.3cqw .4cqw;line-height:1.1;cursor:pointer;background:var(--surface-2);position:relative;text-align:center;font-family:var(--body);color:var(--ink);display:flex;flex-direction:column;justify-content:space-between;aspect-ratio:1/1.04;min-width:0;transition:transform .08s}
+.pt .cell .z{font-family:var(--mono);font-size:.8cqw;text-align:left;opacity:.75}
+.pt .cell .s{font-family:var(--display);font-weight:700;font-size:1.9cqw;line-height:1;margin:.1cqw 0}
+.pt .cell .n{display:none;font-size:.68cqw;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;opacity:.85}
+.pt .cell .m{font-family:var(--mono);font-size:.72cqw;opacity:.75;white-space:nowrap}
+@container (min-width:960px){.pt .cell{aspect-ratio:1/1.22}.pt .cell .n{display:block}}
+.pt .cell.alkali{background:var(--c-alkali)} .pt .cell.alkaline{background:var(--c-alkaline)} .pt .cell.transition{background:var(--c-transition)} .pt .cell.post{background:var(--c-post)} .pt .cell.metalloid{background:var(--c-metalloid)} .pt .cell.nonmetal{background:var(--c-nonmetal)} .pt .cell.halogen{background:var(--c-halogen)} .pt .cell.noble{background:var(--c-noble)} .pt .cell.lanth{background:var(--c-lanth)} .pt .cell.actin{background:var(--c-actin)}
+.pt .cell.mv .s::after{content:"*";color:var(--copper);margin-left:1px}
+.pt .cell:hover{transform:scale(1.06);z-index:2;box-shadow:0 6px 16px -6px rgba(0,0,0,.35)}
+.pt .cell.sel{outline:2px solid var(--accent);outline-offset:-1px;z-index:1}
+.pt .gap{border:1px dashed var(--line-strong);border-radius:5px;color:var(--muted);font-family:var(--mono);font-size:.85cqw;display:grid;place-items:center}
+.pt-legend{display:flex;gap:6px 14px;flex-wrap:wrap;font-size:.76rem;color:var(--muted);margin:12px 0 0;align-items:center}
+.pt-legend span{display:inline-flex;align-items:center;gap:5px}
+.pt-legend i{display:inline-block;width:12px;height:12px;border-radius:3px;border:1px solid var(--c-line)}
+.pt-detail{margin-top:10px;border:1px solid var(--line);border-radius:var(--rs);background:var(--surface);display:flex;align-items:stretch;min-height:58px;overflow:hidden}
+.pt-detail .bigsym{display:flex;flex-direction:column;align-items:center;justify-content:center;padding:6px 18px;font-family:var(--display);font-size:1.7rem;font-weight:800;line-height:1;min-width:84px;border-right:1px solid var(--c-line)}
+.pt-detail .bigsym small{font-family:var(--mono);font-size:.7rem;font-weight:500;opacity:.7;margin-top:3px}
+.pt-detail .kvs{display:flex;gap:22px;align-items:center;flex-wrap:wrap;padding:8px 16px;flex:1}
+.pt-detail .kv{font-size:.85rem;color:var(--muted)} .pt-detail .kv b{color:var(--ink);font-family:var(--mono);font-weight:600}
+.pt-detail .empty{padding:0 16px;display:flex;align-items:center;color:var(--muted);font-size:.9rem}
+.pt-note{font-size:.74rem;color:var(--muted);margin:8px 0 0}
+
+.foot{max-width:1000px;margin:60px auto 0;padding:0 24px;font-size:.82rem;color:var(--muted);display:flex;gap:16px;flex-wrap:wrap;align-items:center}
+.linkbtn{background:none;border:0;padding:0;color:var(--muted);text-decoration:underline;cursor:pointer;font-size:.82rem}
+.linkbtn:hover{color:var(--bad)}
+
+@media (max-width:860px){
+  .cards{grid-template-columns:1fr 1fr}
+}
+@media (max-width:640px){
+  body{font-size:15px}
+  main{padding:22px 16px 70px}
+  .top .in{padding:10px 14px}
+  .top .crumb{display:none}
+  .cards,.two,.decide{grid-template-columns:1fr}
+  .decide .q{grid-column:auto}
+  .qcard{padding:20px 16px 22px}
+  .ask{font-size:1.2rem}
+  .prompt .big{font-size:2.2rem}
+  .ref .cols{columns:1}
+  h1{font-size:2.1rem}
+  .prompt .big{font-size:1.9rem}
+  .card{min-height:0}
+  .hero .lead{font-size:1.05rem}
+  .thead .lead{font-size:1.02rem}
+}
+</style>
+
+<header class="top"><div class="in">
+  <a class="wordmark" href="#home"><i>Ch</i>Chem Bench</a>
+  <span class="crumb" id="crumb"></span>
+  <span class="spacer"></span>
+  <button class="btn sm" id="pt-open" onclick="openTable()">Periodic table</button>
+</div></header>
+<main><div class="wrap" id="view"></div></main>
+<footer class="foot">
+  <span>Chemistry · Unit 1 · Nomenclature and the Mole</span>
+  <span>Progress is saved in this browser.</span>
+  <button class="linkbtn" onclick="resetProgress()">Reset all progress</button>
+</footer>
+<div id="pt-overlay" class="overlay hidden" onclick="if(event.target===this)closeTable()"></div>
+<script>
+/* ===================== DATA ===================== */
+// Full periodic table: [Z, symbol, name, mass, category]  m=metal, d=metalloid, n=nonmetal, g=noble gas
+const PT_RAW=[[1,'H','Hydrogen',1.008,'n'],[2,'He','Helium',4.003,'g'],[3,'Li','Lithium',6.94,'m'],[4,'Be','Beryllium',9.012,'m'],[5,'B','Boron',10.81,'d'],[6,'C','Carbon',12.01,'n'],[7,'N','Nitrogen',14.01,'n'],[8,'O','Oxygen',16.00,'n'],[9,'F','Fluorine',19.00,'n'],[10,'Ne','Neon',20.18,'g'],
+[11,'Na','Sodium',22.99,'m'],[12,'Mg','Magnesium',24.31,'m'],[13,'Al','Aluminum',26.98,'m'],[14,'Si','Silicon',28.09,'d'],[15,'P','Phosphorus',30.97,'n'],[16,'S','Sulfur',32.07,'n'],[17,'Cl','Chlorine',35.45,'n'],[18,'Ar','Argon',39.95,'g'],
+[19,'K','Potassium',39.10,'m'],[20,'Ca','Calcium',40.08,'m'],[21,'Sc','Scandium',44.96,'m'],[22,'Ti','Titanium',47.87,'m'],[23,'V','Vanadium',50.94,'m'],[24,'Cr','Chromium',52.00,'m'],[25,'Mn','Manganese',54.94,'m'],[26,'Fe','Iron',55.85,'m'],[27,'Co','Cobalt',58.93,'m'],[28,'Ni','Nickel',58.69,'m'],[29,'Cu','Copper',63.55,'m'],[30,'Zn','Zinc',65.38,'m'],[31,'Ga','Gallium',69.72,'m'],[32,'Ge','Germanium',72.63,'d'],[33,'As','Arsenic',74.92,'d'],[34,'Se','Selenium',78.97,'n'],[35,'Br','Bromine',79.90,'n'],[36,'Kr','Krypton',83.80,'g'],
+[37,'Rb','Rubidium',85.47,'m'],[38,'Sr','Strontium',87.62,'m'],[39,'Y','Yttrium',88.91,'m'],[40,'Zr','Zirconium',91.22,'m'],[41,'Nb','Niobium',92.91,'m'],[42,'Mo','Molybdenum',95.95,'m'],[43,'Tc','Technetium',98,'m'],[44,'Ru','Ruthenium',101.07,'m'],[45,'Rh','Rhodium',102.91,'m'],[46,'Pd','Palladium',106.42,'m'],[47,'Ag','Silver',107.87,'m'],[48,'Cd','Cadmium',112.41,'m'],[49,'In','Indium',114.82,'m'],[50,'Sn','Tin',118.71,'m'],[51,'Sb','Antimony',121.76,'d'],[52,'Te','Tellurium',127.60,'d'],[53,'I','Iodine',126.90,'n'],[54,'Xe','Xenon',131.29,'g'],
+[55,'Cs','Cesium',132.91,'m'],[56,'Ba','Barium',137.33,'m'],[57,'La','Lanthanum',138.91,'m'],[58,'Ce','Cerium',140.12,'m'],[59,'Pr','Praseodymium',140.91,'m'],[60,'Nd','Neodymium',144.24,'m'],[61,'Pm','Promethium',145,'m'],[62,'Sm','Samarium',150.36,'m'],[63,'Eu','Europium',151.96,'m'],[64,'Gd','Gadolinium',157.25,'m'],[65,'Tb','Terbium',158.93,'m'],[66,'Dy','Dysprosium',162.50,'m'],[67,'Ho','Holmium',164.93,'m'],[68,'Er','Erbium',167.26,'m'],[69,'Tm','Thulium',168.93,'m'],[70,'Yb','Ytterbium',173.05,'m'],[71,'Lu','Lutetium',174.97,'m'],
+[72,'Hf','Hafnium',178.49,'m'],[73,'Ta','Tantalum',180.95,'m'],[74,'W','Tungsten',183.84,'m'],[75,'Re','Rhenium',186.21,'m'],[76,'Os','Osmium',190.23,'m'],[77,'Ir','Iridium',192.22,'m'],[78,'Pt','Platinum',195.08,'m'],[79,'Au','Gold',196.97,'m'],[80,'Hg','Mercury',200.59,'m'],[81,'Tl','Thallium',204.38,'m'],[82,'Pb','Lead',207.2,'m'],[83,'Bi','Bismuth',208.98,'m'],[84,'Po','Polonium',209,'d'],[85,'At','Astatine',210,'n'],[86,'Rn','Radon',222,'g'],
+[87,'Fr','Francium',223,'m'],[88,'Ra','Radium',226,'m'],[89,'Ac','Actinium',227,'m'],[90,'Th','Thorium',232.04,'m'],[91,'Pa','Protactinium',231.04,'m'],[92,'U','Uranium',238.03,'m'],[93,'Np','Neptunium',237,'m'],[94,'Pu','Plutonium',244,'m'],[95,'Am','Americium',243,'m'],[96,'Cm','Curium',247,'m'],[97,'Bk','Berkelium',247,'m'],[98,'Cf','Californium',251,'m'],[99,'Es','Einsteinium',252,'m'],[100,'Fm','Fermium',257,'m'],[101,'Md','Mendelevium',258,'m'],[102,'No','Nobelium',259,'m'],[103,'Lr','Lawrencium',266,'m'],
+[104,'Rf','Rutherfordium',267,'m'],[105,'Db','Dubnium',268,'m'],[106,'Sg','Seaborgium',269,'m'],[107,'Bh','Bohrium',270,'m'],[108,'Hs','Hassium',269,'m'],[109,'Mt','Meitnerium',278,'m'],[110,'Ds','Darmstadtium',281,'m'],[111,'Rg','Roentgenium',282,'m'],[112,'Cn','Copernicium',285,'m'],[113,'Nh','Nihonium',286,'m'],[114,'Fl','Flerovium',289,'m'],[115,'Mc','Moscovium',290,'m'],[116,'Lv','Livermorium',293,'m'],[117,'Ts','Tennessine',294,'n'],[118,'Og','Oganesson',294,'g']];
+const PT=PT_RAW.map(([z,s,n,m,c])=>({z,s,n,m,c}));
+const BY_SYM={}; PT.forEach(e=>BY_SYM[e.s]=e);
+function ptPos(z){
+  if(z===1)return[1,1]; if(z===2)return[1,18];
+  if(z<=4)return[2,z-2]; if(z<=10)return[2,z+8];
+  if(z<=12)return[3,z-10]; if(z<=18)return[3,z];
+  if(z<=36)return[4,z-18]; if(z<=54)return[5,z-36];
+  if(z<=56)return[6,z-54]; if(z<=71)return[9,z-54]; if(z<=86)return[6,z-68];
+  if(z<=88)return[7,z-86]; if(z<=103)return[10,z-86]; return[7,z-100];
+}
+// Course list (the 50 to know). Multivalent transition metals flagged. Common mass numbers for isotope problems.
+const COURSE=[['H',1],['He',4],['Li',7],['Be',9],['B',11],['C',12],['N',14],['O',16],['F',19],['Ne',20],['Na',23],['Mg',24],['Al',27],['Si',28],['P',31],['S',32],['Cl',35],['Ar',40],['K',39],['Ca',40],['V',51],['Cr',52],['Mn',55],['Fe',56],['Co',59],['Ni',58],['Cu',63],['Zn',64],['As',75],['Se',80],['Br',79],['Kr',84],['Rb',85],['Sr',88],['Ag',107],['Sn',120],['I',127],['Xe',132],['Cs',133],['Ba',138],['La',139],['Pt',195],['Au',197],['Hg',202],['Pb',208],['Bi',209],['Rn',222],['Fr',223],['Ac',227],['U',238]];
+const MULTI=new Set(['Cr','Mn','Fe','Co','Ni','Cu','Sn','La','Pt','Au','Hg','Pb','Ac','U']);
+const COURSE_SET=new Set(COURSE.map(c=>c[0]));
+const MASSNUM={}; COURSE.forEach(([s,a])=>MASSNUM[s]=a);
+const ALT_ISO={C:[13,14],Cl:[37],Cu:[65],U:[235],K:[41],Fe:[54,57],O:[18],N:[15],H:[2,3],Li:[6],B:[10],Mg:[25,26],S:[34],Ca:[44],Ni:[60],Zn:[66],Br:[81],Ag:[109],Sn:[118],Ba:[137],Pb:[206,207],Hg:[200],Sr:[86,87]};
+// spelling variants accepted for element names
+const NAME_ALIASES={aluminium:'aluminum',sulphur:'sulfur',caesium:'cesium'};
+
+// Typical charge(s) for monatomic ions from the course list (used in atomic-structure problems)
+const ION_CHARGES={H:[1],Li:[1],Na:[1],K:[1],Rb:[1],Cs:[1],Fr:[1],Be:[2],Mg:[2],Ca:[2],Sr:[2],Ba:[2],Al:[3],Ag:[1],Zn:[2],N:[-3],P:[-3],As:[-3],O:[-2],S:[-2],Se:[-2],F:[-1],Cl:[-1],Br:[-1],I:[-1],Fe:[2,3],Cu:[1,2],Cr:[2,3],Mn:[2,4],Co:[2,3],Ni:[2],Sn:[2,4],Pb:[2,4],Au:[1,3],Hg:[2],Pt:[2,4]};
+
+// Section 4 ion list (exact course list)
+const IONS=[
+ // anions, monatomic
+ {n:'nitride',f:'N',c:-3,g:'a15'},{n:'phosphide',f:'P',c:-3,g:'a15'},{n:'arsenide',f:'As',c:-3,g:'a15'},
+ {n:'oxide',f:'O',c:-2,g:'a16'},{n:'sulfide',f:'S',c:-2,g:'a16'},{n:'selenide',f:'Se',c:-2,g:'a16'},
+ {n:'fluoride',f:'F',c:-1,g:'a17'},{n:'chloride',f:'Cl',c:-1,g:'a17'},{n:'bromide',f:'Br',c:-1,g:'a17'},{n:'iodide',f:'I',c:-1,g:'a17'},
+ // polyatomic anions
+ {n:'acetate',f:'CH3COO',alt:['C2H3O2'],c:-1,g:'poly',poly:true},{n:'carbonate',f:'CO3',c:-2,g:'poly',poly:true},{n:'chromate',f:'CrO4',c:-2,g:'poly',poly:true},{n:'cyanide',f:'CN',c:-1,g:'poly',poly:true},{n:'dichromate',f:'Cr2O7',c:-2,g:'poly',poly:true},{n:'bicarbonate',syn:['hydrogen carbonate'],f:'HCO3',c:-1,g:'poly',poly:true},{n:'hydroxide',f:'OH',c:-1,g:'poly',poly:true},{n:'nitrate',f:'NO3',c:-1,g:'poly',poly:true},{n:'nitrite',f:'NO2',c:-1,g:'poly',poly:true},{n:'permanganate',f:'MnO4',c:-1,g:'poly',poly:true},{n:'phosphate',f:'PO4',c:-3,g:'poly',poly:true},{n:'sulfate',f:'SO4',c:-2,g:'poly',poly:true},{n:'sulfite',f:'SO3',c:-2,g:'poly',poly:true},
+ // cations
+ {n:'hydrogen',f:'H',c:1,g:'c1'},{n:'lithium',f:'Li',c:1,g:'c1'},{n:'sodium',f:'Na',c:1,g:'c1'},{n:'potassium',f:'K',c:1,g:'c1'},{n:'rubidium',f:'Rb',c:1,g:'c1'},{n:'cesium',f:'Cs',c:1,g:'c1'},{n:'francium',f:'Fr',c:1,g:'c1'},
+ {n:'beryllium',f:'Be',c:2,g:'c2'},{n:'magnesium',f:'Mg',c:2,g:'c2'},{n:'calcium',f:'Ca',c:2,g:'c2'},{n:'strontium',f:'Sr',c:2,g:'c2'},{n:'barium',f:'Ba',c:2,g:'c2'},
+ {n:'aluminum',f:'Al',c:3,g:'cx'},{n:'ammonium',f:'NH4',c:1,g:'cx',poly:true},{n:'silver',f:'Ag',c:1,g:'cx'},{n:'zinc',f:'Zn',c:2,g:'cx'},{n:'mercury(I)',f:'Hg2',c:2,g:'cx',poly:true,note:'diatomic ion'},{n:'mercury(II)',f:'Hg',c:2,g:'cx'},
+ // acids & compounds (neutral)
+ {n:'hydrochloric acid',f:'HCl',c:0,g:'acid'},{n:'nitric acid',f:'HNO3',c:0,g:'acid'},{n:'sulfuric acid',f:'H2SO4',c:0,g:'acid'},{n:'phosphoric acid',f:'H3PO4',c:0,g:'acid'},{n:'acetic acid',f:'CH3COOH',alt:['HC2H3O2'],c:0,g:'acid'},
+ {n:'ammonia',f:'NH3',c:0,g:'cmp'},{n:'hydrogen sulfide',f:'H2S',c:0,g:'cmp'},{n:'methane',f:'CH4',c:0,g:'cmp'},{n:'water',f:'H2O',c:0,g:'cmp'}
+];
+const ION_BY_NAME={}; IONS.forEach(i=>ION_BY_NAME[i.n]=i);
+const ANIONS=IONS.filter(i=>i.c<0);
+// "-ide" roots for nonmetals in molecular naming
+const IDE={B:'boride',C:'carbide',N:'nitride',O:'oxide',F:'fluoride',Si:'silicide',P:'phosphide',S:'sulfide',Cl:'chloride',Se:'selenide',Br:'bromide',I:'iodide',As:'arsenide',H:'hydride'};
+const PREFIX=['','mono','di','tri','tetra','penta','hexa','hepta','octa','nona','deca'];
+const ROMAN=['','I','II','III','IV','V','VI','VII'];
+
+/* ===================== UTILITIES ===================== */
+const SUBD='₀₁₂₃₄₅₆₇₈₉',SUPD='⁰¹²³⁴⁵⁶⁷⁸⁹';
+const toSub=s=>s.replace(/[0-9]/g,d=>SUBD[+d]);
+const toSup=s=>s.replace(/[0-9]/g,d=>SUPD[+d]).replace(/\+/g,'⁺').replace(/-/g,'⁻');
+const fromUni=s=>s.replace(/[₀-₉]/g,c=>SUBD.indexOf(c)).replace(/[⁰¹²³⁴⁵⁶⁷⁸⁹]/g,c=>SUPD.indexOf(c)).replace(/⁺/g,'+').replace(/⁻/g,'-');
+const rnd=a=>a[Math.floor(Math.random()*a.length)];
+const rint=(a,b)=>a+Math.floor(Math.random()*(b-a+1));
+const gcd=(a,b)=>b?gcd(b,a%b):a;
+const esc=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+// render a formula string with subscripts: "Co(NO3)2" -> Co(NO<sub>3</sub>)<sub>2</sub>
+function fx(s){return '<span class="f">'+esc(s).replace(/(\d+)/g,'<sub>$1</sub>')+'</span>';}
+function chargeStr(c){if(!c)return'';const a=Math.abs(c);return (a>1?a:'')+(c>0?'+':'−');}
+function fxc(s,c){return '<span class="f">'+esc(s).replace(/(\d+)/g,'<sub>$1</sub>')+(c?'<sup>'+chargeStr(c)+'</sup>':'')+'</span>';}
+function chargeWords(c){return (Math.abs(c)===1?'':Math.abs(c))+(c>0?'+':'−');}
+// isotope notation
+function iso(sym,A){return '<span class="iso f"><sup>'+A+'</sup>'+sym+'</span>';}
+// number formatting
+function sig(x,n=3){if(x===0)return'0';const e=Math.floor(Math.log10(Math.abs(x)));const p=n-1-e;const r=Math.round(x*Math.pow(10,p))/Math.pow(10,p);return p>0?r.toFixed(Math.max(0,p)):String(r);}
+function sci(x,n=3){if(x===0)return'0';const e=Math.floor(Math.log10(Math.abs(x)));const m=x/Math.pow(10,e);return m.toFixed(n-1)+' × 10<sup>'+e+'</sup>';}
+function num(x,n=3){const a=Math.abs(x);if(a>=1e5||a<1e-3)return sci(x,n);return sig(x,n);}
+// parse a typed number: 3.3e24, 3.3 x 10^24, 3.3×10^24, 3.3*10^24, 3.3 x 10 24
+function parseNum(s){
+  if(s==null)return NaN; s=String(s).replace(/10\s*([⁰¹²³⁴⁵⁶⁷⁸⁹⁺⁻]+)/g,(m,d)=>'10^'+fromUni(d)).trim().toLowerCase().replace(/,/g,'').replace(/−/g,'-').replace(/×/g,'x').replace(/\*/g,'x').replace(/e\s*\+/g,'e');
+  s=s.replace(/\s*(g|mol|atoms|molecules|%|amu|formula units)\s*$/,'').trim();
+  let m=s.match(/^(-?[\d.]+)\s*x\s*10\s*\^?\s*\(?\s*(-?\d+)\s*\)?$/); if(m)return parseFloat(m[1])*Math.pow(10,parseInt(m[2]));
+  m=s.match(/^(-?[\d.]+)\s*e\s*(-?\d+)$/); if(m)return parseFloat(m[1])*Math.pow(10,parseInt(m[2]));
+  m=s.match(/^10\s*\^\s*(-?\d+)$/); if(m)return Math.pow(10,parseInt(m[1]));
+  if(/^-?[\d.]+$/.test(s))return parseFloat(s); return NaN;
+}
+function close(a,b,rel=0.02,abs=0){return Math.abs(a-b)<=Math.max(abs,rel*Math.abs(b));}
+// Formula parser: "Co(NO3)2" -> {units:[{atoms:{Co:1},n:1},{atoms:{N:1,O:3},n:2,group:true}], totals:{Co:1,N:2,O:6}} or null
+function parseFormula(str){
+  if(!str)return null; let s=str.replace(/\s+/g,'').replace(/[₀₁₂₃₄₅₆₇₈₉]/g,d=>'₀₁₂₃₄₅₆₇₈₉'.indexOf(d)).replace(/[\[\{]/g,'(').replace(/[\]\}]/g,')');
+  const units=[]; let i=0; const stack=[];
+  function readNum(){let m=s.slice(i).match(/^\d+/);if(m){i+=m[0].length;return parseInt(m[0]);}return 1;}
+  let cur=units;
+  while(i<s.length){
+    const ch=s[i];
+    if(ch==='('){stack.push(cur);const g={atoms:{},n:1,group:true,items:[]};cur.push(g);cur=g.items;i++;continue;}
+    if(ch===')'){if(!stack.length)return null;i++;const parent=stack.pop();const g=parent[parent.length-1];g.n=readNum();cur=parent;continue;}
+    const m=s.slice(i).match(/^[A-Z][a-z]?/); if(!m)return null; const el=m[0]; if(!BY_SYM[el])return null; i+=el.length; const n=readNum(); cur.push({atoms:{[el]:1},n,el});
+  }
+  if(stack.length)return null; if(!units.length)return null;
+  function fold(list,mult,tot){list.forEach(u=>{if(u.group){const inner={};fold(u.items,1,inner);u.atoms=inner;for(const k in inner)tot[k]=(tot[k]||0)+inner[k]*u.n*mult;}else{tot[u.el]=(tot[u.el]||0)+u.n*mult;}});}
+  const totals={}; fold(units,1,totals);
+  return {units,totals,first:units[0].group?Object.keys(units[0].atoms)[0]:units[0].el};
+}
+function sameTotals(a,b){const ka=Object.keys(a),kb=Object.keys(b);if(ka.length!==kb.length)return false;return ka.every(k=>a[k]===b[k]);}
+function molarMass(formula){const p=parseFormula(formula);if(!p)return NaN;let m=0;for(const k in p.totals)m+=BY_SYM[k].m*p.totals[k];return m;}
+function massBreakdown(formula){const p=parseFormula(formula);const parts=[];let m=0;for(const k in p.totals){const c=p.totals[k];parts.push((c>1?c+' × ':'')+BY_SYM[k].m.toFixed(BY_SYM[k].m%1?2:2)+(c>1?' = '+(c*BY_SYM[k].m).toFixed(2):''));m+=c*BY_SYM[k].m;}return {parts,m};}
+function normName(s){
+  s=String(s||'').toLowerCase().trim().replace(/[‐-―]/g,'-').replace(/\s+/g,' ').replace(/\s*\(\s*/g,'(').replace(/\s*\)\s*/g,') ').replace(/\s+$/,'').replace(/-/g,' ');
+  s=s.replace(/\bion\b/g,'').replace(/\s+/g,' ').trim();
+  for(const k in NAME_ALIASES)s=s.replace(new RegExp(k,'g'),NAME_ALIASES[k]);
+  s=s.replace(/sulph/g,'sulf');
+  return s;
+}
+function romanOf(n){return ROMAN[n]||String(n);}
+
+/* ===================== STORAGE ===================== */
+const KEY='chembench.v1';
+const GOALS={elements:60,atomic:30,avgmass:20,ions:60,naming:40,mole:30};const goal=id=>GOALS[id]||30;
+let store={topics:{}};
+try{const raw=localStorage.getItem(KEY);if(raw)store=JSON.parse(raw)||store;}catch(e){}
+function save(){try{localStorage.setItem(KEY,JSON.stringify(store));}catch(e){}}
+function tp(id){return store.topics[id]||(store.topics[id]={attempted:0,correct:0,streak:0,best:0,learned:false});}
+function record(id,ok){const t=tp(id);t.attempted++;if(ok){t.correct++;t.streak++;t.best=Math.max(t.best,t.streak);}else t.streak=0;save();}
+function pct(id){return Math.min(100,Math.round(100*tp(id).correct/goal(id)));}
+function resetProgress(){if(confirm('Reset all saved progress for every topic?')){store={topics:{}};save();render();}}
+</script>
+<script>
+/* ===================== LEARN CONTENT ===================== */
+const LEARN={};
+
+LEARN.elements=()=>`
+<section>
+  <h2>The 50 elements to know</h2>
+  <p>Know each name and symbol cold, in both directions. Elements marked with <span style="color:var(--copper);font-weight:700">*</span> are <b>multivalent transition metals</b>: their ion charge varies from compound to compound, so the charge is shown with a Roman numeral in the name, like iron(II) or iron(III).</p>
+  <div class="el-grid">${COURSE.map(([s])=>{const e=BY_SYM[s];return `<div class="el${MULTI.has(s)?' mv':''}"><div class="z">${e.z}</div><div class="sym">${e.s}</div><div class="nm">${e.n}</div></div>`}).join('')}</div>
+  <div class="callout tip"><p><b>Symbol rules.</b> The first letter is always capital, the second (if any) is always lowercase. <span class="f">Co</span> is cobalt; <span class="f">CO</span> is carbon monoxide. Some symbols come from Latin names: Na (natrium), K (kalium), Fe (ferrum), Cu (cuprum), Ag (argentum), Sn (stannum), Au (aurum), Hg (hydrargyrum), Pb (plumbum).</p></div>
+  <p class="muted" style="font-size:.9rem">You don't need to memorize periodic-table positions or groups. You'll have a table on assessments; open one anytime with the <b>Periodic table</b> button at the top.</p>
+</section>`;
+
+LEARN.atomic=()=>`
+<section>
+  <h2>Three particles</h2>
+  <div class="facts">
+    <div class="fact"><div class="k">Proton</div><div class="v">+1</div><div class="d">mass ≈ 1 amu · in the nucleus</div></div>
+    <div class="fact"><div class="k">Neutron</div><div class="v">0</div><div class="d">mass ≈ 1 amu · in the nucleus</div></div>
+    <div class="fact"><div class="k">Electron</div><div class="v">−1</div><div class="d">mass ≈ 1/1800 amu · negligible for mass number</div></div>
+  </div>
+  <ul>
+    <li><b>Atomic number (Z)</b> = number of protons. This is what defines the element: every atom with 6 protons is carbon, no matter what else it has.</li>
+    <li><b>Mass number (A)</b> = protons + neutrons. Electrons are so light they don't count.</li>
+    <li>So <b>neutrons = mass number − atomic number</b>.</li>
+  </ul>
+</section>
+<section>
+  <h2>Isotope notation</h2>
+  <p>The mass number is written as a left superscript on the symbol: ${iso('C',12)}, ${iso('C',14)}, ${iso('U',235)}. In plain text the same thing is written <b>C-12</b>, <b>carbon-12</b>, or <b>U-235</b>. The atomic number is sometimes written as a left subscript too, but it's redundant: the symbol already tells you the proton count.</p>
+  <div class="example"><div class="eyebrow">Worked example</div>
+    <p>${iso('Cl',37)} (chlorine-37), neutral atom</p>
+    <ol><li>Chlorine is element 17 → <b>17 protons</b>.</li><li>Neutrons = 37 − 17 = <b>20 neutrons</b>.</li><li>Neutral, so electrons = protons = <b>17 electrons</b>.</li></ol>
+  </div>
+</section>
+<section>
+  <h2>Ions: adjusting the electron count</h2>
+  <p>An ion is an atom that has lost or gained electrons. Protons never change. For any ion:</p>
+  <div class="fact" style="margin-bottom:12px"><div class="k">Rule</div><div class="v">electrons = protons − charge</div></div>
+  <ul>
+    <li>A <b>2+</b> ion has <b>2 fewer</b> electrons than protons (it lost 2).</li>
+    <li>A <b>3−</b> ion has <b>3 more</b> electrons than protons (it gained 3).</li>
+  </ul>
+  <div class="callout warn"><p><b>Common mistake.</b> A negative charge does <b>not</b> mean fewer electrons. Electrons are negative, so a negative ion has <b>extra</b> electrons. Think: "negative = gained negatives."</p></div>
+  <div class="callout"><p><b>Writing charges.</b> Put the number before the sign: <b>2+</b>, <b>3−</b>, not +2 or −3. A charge of one is written as just the sign: Na<sup>+</sup>, Cl<sup>−</sup>.</p></div>
+  <div class="example"><div class="eyebrow">Worked example</div>
+    <p>${iso('K',39)} with a 1+ charge</p>
+    <ol><li>Potassium is element 19 → <b>19 protons</b>.</li><li>Neutrons = 39 − 19 = <b>20 neutrons</b>.</li><li>Electrons = 19 − (+1) = <b>18 electrons</b>.</li></ol>
+  </div>
+</section>
+<section>
+  <h2>Polyatomic ions: count everything</h2>
+  <p>For an ion made of several atoms, add up the protons of every atom, then adjust electrons for the charge the same way.</p>
+  <div class="example"><div class="eyebrow">Worked example</div>
+    <p>Carbonate, ${fxc('CO3',-2)}</p>
+    <ol><li>Protons: C has 6, each O has 8 → 6 + 3 × 8 = <b>30 protons</b>.</li><li>Charge is 2−, so there are 2 extra electrons → 30 + 2 = <b>32 electrons</b>.</li></ol>
+  </div>
+</section>
+<section>
+  <h2>Naming single-atom ions</h2>
+  <ul>
+    <li><b>Positive ions</b> (metals) keep the element name: sodium ion, calcium ion, aluminum ion.</li>
+    <li><b>Negative ions</b> (nonmetals) change the ending to <b>-ide</b>: chloride, fluoride, oxide, sulfide, nitride, phosphide.</li>
+  </ul>
+</section>`;
+
+LEARN.avgmass=()=>`
+<section>
+  <h2>Why the mass on the table isn't a whole number</h2>
+  <p><b>Isotopes</b> are atoms of the same element with different numbers of neutrons, so they have different exact masses. Copper is a mix of ${iso('Cu',63)} atoms and ${iso('Cu',65)} atoms. The 63.55 on the periodic table is a <b>weighted average</b> of every naturally occurring isotope, weighted by how abundant each one is.</p>
+  <p>"Weighted" means the common isotope pulls the average toward itself. That's why the table shows 63.55 for copper, much closer to 63 than to 65: most copper atoms are Cu-63.</p>
+</section>
+<section>
+  <h2>The two-isotope setup</h2>
+  <p>Let <b>x</b> be the fractional abundance of isotope A (a decimal, so 0.69 means 69%). Then isotope B's abundance is <b>1 − x</b>, and:</p>
+  <div class="fact" style="margin-bottom:14px"><div class="k">Weighted average</div><div class="v">x · (mass A) + (1 − x) · (mass B) = average mass</div><div class="d">Solve for x, then multiply by 100 for a percent.</div></div>
+  <p>Rearranged, the direct formula is <span class="f">x = (average − mass B) ÷ (mass A − mass B)</span>.</p>
+  <div class="example"><div class="eyebrow">Worked example · copper</div>
+    <p>Cu-63 has a mass of 62.93 amu and Cu-65 has a mass of 64.93 amu. The average atomic mass is 63.546 amu. Find the percent abundance of each.</p>
+    <ol>
+      <li>Let x = fraction of Cu-63. Then fraction of Cu-65 = 1 − x.</li>
+      <li>x(62.93) + (1 − x)(64.93) = 63.546</li>
+      <li>62.93x + 64.93 − 64.93x = 63.546</li>
+      <li>−2.00x = 63.546 − 64.93 = −1.384</li>
+      <li>x = 0.692 → <b>69.2% Cu-63</b></li>
+      <li>1 − x = 0.308 → <b>30.8% Cu-65</b></li>
+    </ol>
+  </div>
+  <div class="callout tip"><p><b>Sanity-check shortcut.</b> The more abundant isotope is always the one whose mass is <b>closer to the average</b>. 63.546 is much closer to 62.93 than to 64.93, so Cu-63 must be the majority isotope. If your answer says otherwise, you've made a sign or algebra error.</p></div>
+</section>`;
+
+LEARN.ions=()=>{
+  const g=(id,title,note)=>`<div class="ion-group"><h4>${title}</h4>${IONS.filter(i=>i.g===id).map(i=>`<div class="ion"><span>${esc(i.n[0].toUpperCase()+i.n.slice(1))}${i.syn?' <span class="muted">/ '+i.syn.join(', ')+'</span>':''}${i.note?' <span class="muted">('+i.note+')</span>':''}</span><span>${fxc(i.f,i.c)}${i.alt?' <span class="muted">or</span> '+fxc(i.alt[0],i.c):''}</span></div>`).join('')}${note?`<p class="muted" style="font-size:.85rem;margin:8px 0 0">${note}</p>`:''}</div>`;
+  return `
+<section>
+  <h2>Anions (negative)</h2>
+  <p>Single-atom anions take the <b>-ide</b> ending and their charge follows from the group. Polyatomic anions are memorized as whole units: name, formula, <em>and</em> charge.</p>
+  <div class="ion-groups">
+    ${g('a15','Group 15 nonmetals · 3−')}${g('a16','Group 16 nonmetals · 2−')}${g('a17','Group 17 nonmetals · 1−')}
+  </div>
+  <div class="ion-groups" style="grid-template-columns:1fr">${g('poly','Polyatomic anions · memorize as units')}</div>
+  <div class="callout warn"><p><b>Look-alikes.</b> ${fxc('NO3',-1)} <b>nitrate</b>, ${fxc('NO2',-1)} <b>nitrite</b>, and ${fxc('N',-3)} <b>nitride</b> look similar but are completely different ions. The "-ate" one has more oxygens than the "-ite" one; "-ide" means no oxygen at all. Same pattern for sulfate / sulfite / sulfide.</p></div>
+</section>
+<section>
+  <h2>Cations (positive)</h2>
+  <div class="ion-groups">
+    ${g('c1','Group 1 metals + hydrogen · 1+')}${g('c2','Group 2 metals · 2+')}${g('cx','Fixed-charge exceptions · memorize individually','Mercury(I) is a two-atom ion, Hg<sub>2</sub><sup>2+</sup>, which is unusual. Mercury(II) is the ordinary single Hg<sup>2+</sup>.')}
+  </div>
+</section>
+<section>
+  <h2>Common acids and compounds</h2>
+  <p>These are neutral molecules, not ions. Their names don't follow the rules of the next topic, so just memorize them.</p>
+  <div class="ion-groups">${g('acid','Common acids')}${g('cmp','Common compounds · trivial names')}</div>
+</section>`;
+};
+
+LEARN.naming=()=>`
+<section>
+  <h2>Which system do I use?</h2>
+  <p>There are two naming systems and they never mix. The first question is always the same:</p>
+  <div class="decide">
+    <div class="q">Is there a metal (or ammonium) in the formula?</div>
+    <div class="opt"><b>No → molecular</b>Both elements are nonmetals. Use <b>Greek prefixes</b> to say how many of each atom. Never a Roman numeral.<br><span class="muted">CO<sub>2</sub> → carbon dioxide</span></div>
+    <div class="opt"><b>Yes → ionic</b>Metal + nonmetal, or ammonium + anion. <b>Never prefixes</b>; the charges fix the ratio. Multivalent metals get a Roman numeral.<br><span class="muted">FeCl<sub>3</sub> → iron(III) chloride</span></div>
+  </div>
+  <p class="muted" style="font-size:.9rem">Hydrogen counts as a nonmetal here (HCl is molecular), but the acids and trivial-name compounds from the previous topic keep their own names.</p>
+</section>
+<section>
+  <h2>A · Molecular (covalent) compounds</h2>
+  <p>Both elements are nonmetals. Say the count of each with a prefix, and give the second element an <b>-ide</b> ending.</p>
+  <div class="prefix-row">${PREFIX.slice(1).map((p,i)=>`<span><b>${i+1}</b>${p}</span>`).join('')}</div>
+  <ul>
+    <li><b>Mono is skipped on the first element only</b>, never on the second. NO is nitrogen <b>mon</b>oxide, not mononitrogen monoxide. CO is carbon monoxide.</li>
+    <li>The second element ends in <b>-ide</b>: oxide, chloride, sulfide, fluoride, nitride, phosphide, bromide, iodide.</li>
+    <li><b>Vowel-drop rule.</b> If a prefix ends in <b>a</b> or <b>o</b> and the next word starts with a vowel, drop that last letter: mono + oxide → <b>monoxide</b>, tetra + oxide → <b>tetroxide</b>, penta + oxide → <b>pentoxide</b>, deca + oxide → <b>decoxide</b>. "Di" and "tri" end in i, so they never drop: dioxide, trioxide.</li>
+    <li>No Roman numerals, ever, in this system.</li>
+  </ul>
+  <div class="example"><div class="eyebrow">Examples</div>
+    <ol><li>${fx('N2O4')} → <b>dinitrogen tetroxide</b> (tetra + oxide drops the a)</li><li>${fx('PCl5')} → <b>phosphorus pentachloride</b> (no mono on the first element)</li><li>${fx('SF6')} → <b>sulfur hexafluoride</b></li><li>${fx('P4O10')} → <b>tetraphosphorus decoxide</b></li></ol>
+  </div>
+</section>
+<section>
+  <h2>B · Ionic compounds</h2>
+  <p>A metal (or ammonium) with a nonmetal or polyatomic ion. Name the <b>cation first, then the anion</b>. No prefixes: the charges already tell you the ratio.</p>
+  <div class="two">
+    <div class="rule"><h3>Fixed-charge cation</h3><p>Group 1 (1+), Group 2 (2+), plus Al<sup>3+</sup>, Ag<sup>+</sup>, Zn<sup>2+</sup>, NH<sub>4</sub><sup>+</sup>. Just use the element name.</p><p class="muted">${fx('Na2S')} → sodium sulfide<br>${fx('Ca3(PO4)2')} → calcium phosphate</p></div>
+    <div class="rule"><h3>Multivalent cation</h3><p>Any other transition metal (Fe, Cu, Cr, Mn, Co, Ni, Sn, Pt, Au, Hg, Pb…). Work out its charge from the anion, then write it as a Roman numeral in parentheses.</p><p class="muted">${fx('FeO')} → iron(II) oxide<br>${fx('Fe2O3')} → iron(III) oxide</p></div>
+  </div>
+  <h3>Finding the Roman numeral</h3>
+  <p>The compound is neutral, so total positive = total negative. Multiply the anion's charge by how many there are, then divide by the number of metal atoms.</p>
+  <div class="example"><div class="eyebrow">Worked example</div>
+    <p>${fx('Fe2O3')}</p>
+    <ol><li>Oxide is 2−, and there are 3 → total negative = 6−.</li><li>Two Fe atoms must supply 6+ → each Fe is <b>3+</b>.</li><li>Name: <b>iron(III) oxide</b>.</li></ol>
+  </div>
+  <h3>The anion</h3>
+  <ul>
+    <li>Single nonmetal → its <b>-ide</b> name (chloride, oxide, nitride…).</li>
+    <li>Polyatomic ion → its memorized name, unchanged (nitrate, sulfate, hydroxide…). Never break it into prefixes.</li>
+    <li>Parentheses with a subscript mean <b>that many whole ions</b>: ${fx('Co(NO3)2')} is cobalt with <b>two nitrate ions</b> → cobalt(II) nitrate.</li>
+  </ul>
+  <h3>Writing the formula from a name</h3>
+  <p>Look up both charges, then use the smallest counts that cancel. A quick way is the <b>criss-cross</b>: the size of each charge becomes the other ion's subscript, then reduce.</p>
+  <div class="example"><div class="eyebrow">Worked example</div>
+    <p>aluminum sulfate</p>
+    <ol><li>Al<sup>3+</sup> and SO<sub>4</sub><sup>2−</sup>.</li><li>Need a multiple of both 3 and 2 → 6. Two Al (6+) and three sulfate (6−).</li><li>Sulfate is polyatomic and there are three, so it gets parentheses: <b>${fx('Al2(SO4)3')}</b>.</li></ol>
+  </div>
+  <div class="callout warn"><p><b>Classic errors.</b> "Dicalcium chloride" or "calcium dichloride" for CaCl<sub>2</sub> is wrong: prefixes belong to the molecular system only; the answer is calcium chloride. "Carbon(IV) oxide" for CO<sub>2</sub> is wrong: Roman numerals belong to the ionic system only; the answer is carbon dioxide. "Sodium(I) chloride" is also wrong: sodium is always 1+, so a numeral is never used.</p></div>
+</section>`;
+
+LEARN.mole=()=>`
+<section>
+  <h2>A counting unit</h2>
+  <p>A <b>mole</b> is a number, just like a dozen is 12. One mole is <b>6.02 × 10<sup>23</sup></b> things: Avogadro's number. It's huge because atoms are tiny; a mole of water is only about 18 g, a sip.</p>
+  <div class="facts">
+    <div class="fact"><div class="k">Avogadro's number</div><div class="v">6.02 × 10<sup>23</sup></div><div class="d">particles per mole</div></div>
+    <div class="fact"><div class="k">Molar mass</div><div class="v">g / mol</div><div class="d">the mass of one mole, read from the periodic table</div></div>
+  </div>
+</section>
+<section>
+  <h2>The four conversions</h2>
+  <div class="tscroll"><table>
+    <tr><th>From → to</th><th>Do this</th><th>Example</th></tr>
+    <tr><td>moles → atoms / molecules</td><td>multiply by 6.02 × 10<sup>23</sup></td><td>5.5 mol × 6.02 × 10<sup>23</sup> = <b>3.3 × 10<sup>24</sup> atoms</b></td></tr>
+    <tr><td>atoms / molecules → moles</td><td>divide by 6.02 × 10<sup>23</sup></td><td>4.6 × 10<sup>24</sup> atoms S ÷ 6.02 × 10<sup>23</sup> = <b>7.6 mol</b></td></tr>
+    <tr><td>moles → grams</td><td>multiply by molar mass</td><td>4.30 mol Al × 26.98 g/mol = <b>116 g</b></td></tr>
+    <tr><td>grams → moles</td><td>divide by molar mass</td><td>127.5 g NaCl ÷ 58.44 g/mol = <b>2.182 mol</b></td></tr>
+  </table></div>
+  <div class="callout tip"><p><b>Which way?</b> Moles are the hub. Going <em>from</em> moles you multiply; going <em>to</em> moles you divide. Check that your answer makes sense: a few grams of anything is a small fraction of a mole; a mole of anything is an enormous number of particles.</p></div>
+  <h3>Molar mass of a compound</h3>
+  <p>Add up the mass of every atom in the formula. Count every atom, including those inside parentheses.</p>
+  <div class="example"><div class="eyebrow">Worked example</div><p>NaCl: 22.99 (Na) + 35.45 (Cl) = <b>58.44 g/mol</b>. Then 127.5 g ÷ 58.44 g/mol = <b>2.182 mol</b>.</p></div>
+</section>
+<section>
+  <h2>Percent composition</h2>
+  <div class="fact" style="margin-bottom:14px"><div class="k">By mass</div><div class="v">% element = (mass of that element in one mole) ÷ (molar mass of compound) × 100%</div></div>
+  <div class="example"><div class="eyebrow">Worked example · %H in H<sub>2</sub>O</div>
+    <ol><li>Mass of H: 2 × 1.008 = 2.016 g</li><li>Molar mass of H<sub>2</sub>O: 2.016 + 16.00 = 18.02 g/mol</li><li>2.016 ÷ 18.02 × 100% = <b>11.2%</b></li></ol>
+  </div>
+  <div class="example"><div class="eyebrow">Worked example · %Fe in FeCl<sub>3</sub></div>
+    <ol><li>Mass of Fe: 55.85 g</li><li>Molar mass of FeCl<sub>3</sub>: 55.85 + 3 × 35.45 = 162.20 g/mol</li><li>55.85 ÷ 162.20 × 100% = <b>34.43%</b></li></ol>
+  </div>
+</section>`;
+</script>
+<script>
+/* ===================== QUESTION GENERATORS ===================== */
+const GEN={};
+const cap=s=>s?s[0].toUpperCase()+s.slice(1):s;
+
+/* 1. Elements */
+GEN.elements=()=>{
+  const [s]=rnd(COURSE); const e=BY_SYM[s]; const nm=e.n.toLowerCase();
+  const mvNote=MULTI.has(s)?` It's a multivalent transition metal, so its ion charge is shown with a Roman numeral.`:'';
+  if(Math.random()<.5){
+    return {type:'Symbol → name',ask:'Name this element.',prompt:`<span class="big f">${e.s}</span>`,
+      fields:[{key:'a',label:'Element name',placeholder:'type the name'}],
+      check:v=>{const ok=normName(v.a)===nm;return {ok,fields:{a:ok},why:`<p>${e.s} is <b>${e.n}</b>.${mvNote}</p>`};}};
+  }
+  return {type:'Name → symbol',ask:'Write the symbol for this element.',prompt:`<span class="big">${e.n}</span>`,
+    fields:[{key:'a',label:'Symbol',placeholder:'e.g. Na'}],
+    check:v=>{const u=(v.a||'').trim();const ok=u===e.s;const caseOnly=!ok&&u.toLowerCase()===e.s.toLowerCase();
+      return {ok:ok||caseOnly,fields:{a:ok||caseOnly},why:`<p>${e.n} is <b>${e.s}</b>.${mvNote}</p>`+(caseOnly?`<p class="muted">Accepted, but watch capitalization: first letter capital, second lowercase (<b>${e.s}</b>).</p>`:'')};}};
+};
+
+/* 2. Atomic structure & isotopes */
+GEN.atomic=()=>{
+  if(Math.random()<.35){
+    const ion=rnd(IONS.filter(i=>i.poly));
+    const p=parseFormula(ion.f);let P=0;const parts=[];for(const k in p.totals){P+=BY_SYM[k].z*p.totals[k];parts.push(`${k}: ${p.totals[k]>1?p.totals[k]+' × ':''}${BY_SYM[k].z}${p.totals[k]>1?' = '+p.totals[k]*BY_SYM[k].z:''}`);}
+    const E=P-ion.c;
+    return {type:'Polyatomic ion',ask:'Count the <b>total</b> protons and electrons in this ion.',prompt:`<span class="big">${fxc(ion.f,ion.c)}</span><span class="sub-line">${cap(ion.n)} ion</span>`,
+      fields:[{key:'p',label:'Total protons',placeholder:'#'},{key:'e',label:'Total electrons',placeholder:'#'}],
+      check:v=>{const fp=parseInt(v.p)===P,fe=parseInt(v.e)===E;return {ok:fp&&fe,fields:{p:fp,e:fe},
+        why:`<ol><li>Protons: ${parts.join('; ')} → <b>${P} protons</b>.</li><li>Charge is ${chargeWords(ion.c)}, so electrons = ${P} ${ion.c<0?'+ '+(-ion.c)+' (gained)':'− '+ion.c+' (lost)'} = <b>${E} electrons</b>.</li></ol>`,
+        diag:(!fe&&parseInt(v.e)===P+ion.c)?`<b>Sign flipped.</b> A ${chargeWords(ion.c)} charge means the ion has ${ion.c<0?'<b>gained</b> '+(-ion.c)+' electrons (more than protons)':'<b>lost</b> '+ion.c+' electrons (fewer than protons)'}.`:''};}};
+  }
+  const [s]=rnd(COURSE);const e=BY_SYM[s];
+  const A=(ALT_ISO[s]&&Math.random()<.4)?rnd(ALT_ISO[s]):MASSNUM[s];
+  const charges=ION_CHARGES[s];const c=(charges&&Math.random()<.6)?rnd(charges):0;
+  const P=e.z,N=A-P,E=P-c;
+  const plain=`${e.n.toLowerCase()}-${A}${c?', '+chargeWords(c)+' charge':', neutral atom'}`;
+  return {type:c?'Ion':'Isotope',ask:'Count the protons, neutrons, and electrons.',prompt:`<span class="big">${iso(e.s,A)}${c?'<sup class="f">'+chargeStr(c)+'</sup>':''}</span><span class="sub-line">${plain}</span>`,
+    fields:[{key:'p',label:'Protons',placeholder:'#'},{key:'n',label:'Neutrons',placeholder:'#'},{key:'e',label:'Electrons',placeholder:'#'}],
+    check:v=>{const fp=parseInt(v.p)===P,fn=parseInt(v.n)===N,fe=parseInt(v.e)===E;
+      let diag='';if(!fe&&c&&parseInt(v.e)===P+c)diag=`<b>Sign flipped.</b> A ${chargeWords(c)} charge means ${c<0?'<b>more</b> electrons than protons (it gained '+(-c)+')':'<b>fewer</b> electrons than protons (it lost '+c+')'}.`;
+      else if(!fe&&c&&parseInt(v.e)===P)diag=`<b>Don't forget the charge.</b> Electrons only equal protons in a neutral atom. This ion is ${chargeWords(c)}, so electrons = ${P} − (${c>0?'+':''}${c}) = ${E}.`;
+      else if(!fn&&parseInt(v.n)===A)diag=`<b>Mass number isn't neutrons.</b> Mass number = protons + neutrons, so neutrons = ${A} − ${P} = ${N}.`;
+      return {ok:fp&&fn&&fe,fields:{p:fp,n:fn,e:fe},
+        why:`<ol><li>${e.n} is element ${P} → <b>${P} protons</b>.</li><li>Neutrons = mass number − protons = ${A} − ${P} = <b>${N}</b>.</li><li>${c?`Charge ${chargeWords(c)}: electrons = ${P} − (${c>0?'+':''}${c}) = <b>${E}</b>.`:`Neutral atom: electrons = protons = <b>${E}</b>.`}</li></ol>`,diag};}};
+};
+
+/* 3. Average atomic mass */
+const ISO_PAIRS=[['Cu',63,62.930,65,64.928,63.546],['Cl',35,34.969,37,36.966,35.45],['B',10,10.013,11,11.009,10.81],['Li',6,6.015,7,7.016,6.941],['Ag',107,106.905,109,108.905,107.868],['Br',79,78.918,81,80.916,79.904],['Ga',69,68.926,71,70.925,69.723],['Rb',85,84.912,87,86.909,85.468],['Ir',191,190.961,193,192.963,192.217],['Tl',203,202.972,205,204.974,204.383],['Sb',121,120.904,123,122.904,121.760],['N',14,14.003,15,15.000,14.007],['In',113,112.904,115,114.904,114.818],['Re',185,184.953,187,186.956,186.207],['Eu',151,150.920,153,152.921,151.964]];
+GEN.avgmass=()=>{
+  let sym,name,A1,m1,A2,m2,avg;
+  if(Math.random()<.6){const r=rnd(ISO_PAIRS);sym=r[0];name=BY_SYM[sym].n;A1=r[1];m1=r[2];A2=r[3];m2=r[4];avg=r[5];}
+  else{sym='X';name='element X';A1=rint(20,210);m1=+(A1-0.1+Math.random()*0.2).toFixed(3);const d=rnd([1,2,2,3]);A2=A1+d;m2=+(A2-0.1+Math.random()*0.2).toFixed(3);const x=rint(8,92)/100;avg=+(x*m1+(1-x)*m2).toFixed(3);}
+  // sometimes list heavier isotope first
+  const flip=Math.random()<.4;const [a1,mA,a2,mB]=flip?[A2,m2,A1,m1]:[A1,m1,A2,m2];
+  const x=(avg-mB)/(mA-mB);const pA=x*100,pB=100-pA;
+  const lab=A=>`${sym}-${A}`;
+  return {type:'Weighted average',ask:'Find the percent abundance of each isotope.',prompt:`<span class="big">${cap(name)}</span><span class="sub-line">${lab(a1)} has a mass of <b>${mA.toFixed(3)} amu</b> and ${lab(a2)} has a mass of <b>${mB.toFixed(3)} amu</b>. The average atomic mass is <b>${avg.toFixed(3)} amu</b>.</span>`,
+    fields:[{key:'a',label:`% ${lab(a1)}`,placeholder:'%'},{key:'b',label:`% ${lab(a2)}`,placeholder:'%'}],
+    check:v=>{const ua=parseNum(v.a),ub=parseNum(v.b);const fa=close(ua,pA,0,0.5),fb=close(ub,pB,0,0.5);
+      const swapped=!fa&&!fb&&close(ua,pB,0,0.5)&&close(ub,pA,0,0.5);
+      const closer=Math.abs(avg-mA)<Math.abs(avg-mB)?lab(a1):lab(a2);
+      return {ok:fa&&fb,fields:{a:fa,b:fb},
+        why:`<ol><li>Let x = fraction of ${lab(a1)}, so ${lab(a2)} = 1 − x.</li><li>x(${mA.toFixed(3)}) + (1 − x)(${mB.toFixed(3)}) = ${avg.toFixed(3)}</li><li>${mA.toFixed(3)}x + ${mB.toFixed(3)} − ${mB.toFixed(3)}x = ${avg.toFixed(3)}</li><li>${(mA-mB).toFixed(3)}x = ${avg.toFixed(3)} − ${mB.toFixed(3)} = ${(avg-mB).toFixed(3)}</li><li>x = ${(avg-mB).toFixed(3)} ÷ ${(mA-mB).toFixed(3)} = ${x.toFixed(4)} → <b>${pA.toFixed(1)}% ${lab(a1)}</b></li><li>1 − x = ${(1-x).toFixed(4)} → <b>${pB.toFixed(1)}% ${lab(a2)}</b></li></ol><p class="muted">Check: ${avg.toFixed(3)} is closer to ${closer}'s mass, so ${closer} should be the more abundant one. ✓</p>`,
+        diag:swapped?`<b>Swapped.</b> Your two percentages are right but assigned to the wrong isotopes. Use the sanity check: the average (${avg.toFixed(3)}) is closer to ${closer}, so ${closer} is the majority isotope.`:''};}};
+};
+
+/* 4. Ions */
+function parseIonInput(s){
+  // returns a list of possible readings: [{formula,charge}]
+  s=(s||'').trim().replace(/−/g,'-').replace(/\s+/g,' ');
+  const sg=x=>x==='+'?1:-1;let m;
+  if((m=s.match(/^(.*?)\s*([⁰¹²³⁴⁵⁶⁷⁸⁹]*)([⁺⁻])$/)))return [{formula:m[1].trim(),charge:sg(fromUni(m[3]))*parseInt(fromUni(m[2])||'1')}];
+  if((m=s.match(/^(.*?)\s*([⁺⁻])([⁰¹²³⁴⁵⁶⁷⁸⁹]*)$/)))return [{formula:m[1].trim(),charge:sg(fromUni(m[2]))*parseInt(fromUni(m[3])||'1')}];
+  s=s.replace(/[⁺]/g,'+').replace(/[⁻]/g,'-');
+  if((m=s.match(/^(.*?)\s*\^\s*(\d*)\s*([+-])$/)))return [{formula:m[1].trim(),charge:sg(m[3])*parseInt(m[2]||'1')}];
+  if((m=s.match(/^(.*?)\s*\^\s*([+-])\s*(\d*)$/)))return [{formula:m[1].trim(),charge:sg(m[2])*parseInt(m[3]||'1')}];
+  if((m=s.match(/^(\S+) (\d*)\s*([+-])$/)))return [{formula:m[1],charge:sg(m[3])*parseInt(m[2]||'1')}];
+  if((m=s.match(/^(\S+) ([+-])\s*(\d*)$/)))return [{formula:m[1],charge:sg(m[2])*parseInt(m[3]||'1')}];
+  if((m=s.match(/^([A-Za-z0-9()₀-₉]+?)(\d)([+-])$/)))return [{formula:m[1]+m[2],charge:sg(m[3])},{formula:m[1],charge:sg(m[3])*parseInt(m[2])}];
+  if((m=s.match(/^([A-Za-z0-9()₀-₉]+)([+-])(\d)$/)))return [{formula:m[1],charge:sg(m[2])*parseInt(m[3])}];
+  if((m=s.match(/^([A-Za-z0-9()₀-₉]+)([+-])$/)))return [{formula:m[1],charge:sg(m[2])}];
+  if((m=s.match(/^([A-Za-z0-9()₀-₉]+)(?: ?0)?$/)))return [{formula:m[1],charge:0}];
+  return null;
+}
+GEN.ions=()=>{
+  const ion=rnd(IONS);
+  const disp=`${cap(ion.n)}${ion.syn?' <span class="muted">('+ion.syn.join(', ')+')</span>':''}`;
+  if(Math.random()<.5){
+    return {type:ion.c?'Name → formula':'Name → formula (neutral)',ask:`Write the formula${ion.c?' <b>with its charge</b>':''}.`,prompt:`<span class="big">${cap(ion.n)}</span>`,
+      fields:[{key:'a',label:'Formula and charge',placeholder:ion.c?'e.g. SO₄²⁻ or SO4 2-':'e.g. H₂O or H2O',tools:'ion',hint:'Leave the charge off for neutral molecules.'}],
+      check:v=>{const cands=parseIonInput(v.a)||[];const exp=parseFormula(ion.f);
+        const fMatch=c=>{const p=parseFormula(c.formula);return !!p&&(sameTotals(p.totals,exp.totals)||(ion.alt||[]).some(a=>sameTotals(p.totals,parseFormula(a).totals)));};
+        const best=cands.find(c=>fMatch(c)&&c.charge===ion.c)||cands.find(fMatch)||cands[0];
+        const p=best&&parseFormula(best.formula);const fOk=!!best&&fMatch(best);const cOk=!!best&&best.charge===ion.c;
+        let diag='';if(!p)diag=`<b>Couldn't read that.</b> Use element symbols with the right capitalization and digits for subscripts, then the charge: <span class="ans">SO4 2-</span>.`;
+        else if(fOk&&!cOk)diag=`<b>Formula right, charge wrong.</b> ${cap(ion.n)} is ${ion.c?chargeWords(ion.c):'a neutral molecule, no charge'}.`;
+        return {ok:fOk&&cOk,fields:{a:fOk&&cOk},why:`<p>${disp} is <b>${fxc(ion.f,ion.c)}</b>${ion.alt?' (also written '+fxc(ion.alt[0],ion.c)+')':''}${ion.note?', a '+ion.note:''}.</p>`,diag};}};
+  }
+  return {type:'Formula → name',ask:`Name this ${ion.c?'ion':'substance'}.`,prompt:`<span class="big">${fxc(ion.f,ion.c)}</span>`,
+    fields:[{key:'a',label:'Name',placeholder:'type the name'}],
+    check:v=>{const u=normName(v.a);const names=[ion.n,...(ion.syn||[])].map(normName);const ok=names.includes(u);
+      let diag='';const u2=u.replace(/\s/g,'');
+      if(!ok){const mix={nitrate:'nitrite/nitride',nitrite:'nitrate/nitride',nitride:'nitrate/nitrite',sulfate:'sulfite/sulfide',sulfite:'sulfate/sulfide',sulfide:'sulfate/sulfite',chromate:'dichromate',dichromate:'chromate',carbonate:'bicarbonate',bicarbonate:'carbonate'};
+        if(mix[ion.n]&&mix[ion.n].split('/').includes(u2))diag=`<b>Look-alike mix-up.</b> "-ate" has the most oxygens, "-ite" has one fewer, "-ide" has none. ${fxc(ion.f,ion.c)} is <b>${ion.n}</b>.`;}
+      return {ok,fields:{a:ok},why:`<p>${fxc(ion.f,ion.c)} is <b>${cap(ion.n)}</b>${ion.syn?' (also called '+ion.syn.join(', ')+')':''}.</p>`,diag};}};
+};
+
+/* 5. Naming compounds */
+const MOLEC=[['C',1,'O',1],['C',1,'O',2],['C',1,'S',2],['C',1,'Cl',4],['C',1,'Br',4],['N',2,'O',1],['N',1,'O',1],['N',1,'O',2],['N',2,'O',3],['N',2,'O',4],['N',2,'O',5],['N',1,'F',3],['N',1,'Cl',3],['S',1,'O',2],['S',1,'O',3],['S',1,'F',6],['S',1,'F',4],['S',2,'Cl',2],['S',1,'Cl',2],['S',2,'F',10],['P',1,'Cl',3],['P',1,'Cl',5],['P',1,'Br',3],['P',1,'F',5],['P',4,'O',10],['P',4,'O',6],['P',4,'S',3],['P',2,'O',5],['Si',1,'O',2],['Si',1,'Cl',4],['Si',1,'F',4],['O',1,'F',2],['Cl',1,'O',2],['Cl',2,'O',1],['Cl',2,'O',7],['Cl',1,'F',3],['Cl',1,'F',5],['Br',1,'F',3],['Br',1,'F',5],['I',1,'F',5],['I',1,'F',7],['I',1,'Cl',1],['I',2,'O',5],['Xe',1,'F',2],['Xe',1,'F',4],['Xe',1,'F',6],['Se',1,'F',6],['Se',1,'O',2],['Se',1,'Cl',4],['B',1,'F',3],['B',1,'Cl',3],['B',2,'O',3],['As',1,'F',3],['As',1,'Cl',3],['As',2,'O',3],['As',2,'S',3],['N',2,'F',4]];
+function joinPrefix(p,w){return (/[ao]$/.test(p)&&/^[aeiou]/.test(w))?p.slice(0,-1)+w:p+w;}
+function molName(e1,n1,e2,n2,opts={}){const w1=BY_SYM[e1].n.toLowerCase(),w2=IDE[e2];const first=n1>1?joinPrefix(PREFIX[n1],w1):(opts.monoFirst?joinPrefix('mono',w1):w1);const second=opts.noDrop?PREFIX[n2]+w2:joinPrefix(PREFIX[n2],w2);return first+' '+second;}
+const molFormula=(e1,n1,e2,n2)=>e1+(n1>1?n1:'')+e2+(n2>1?n2:'');
+const FIXED_CATIONS=[['Li','lithium',1],['Na','sodium',1],['K','potassium',1],['Rb','rubidium',1],['Cs','cesium',1],['Be','beryllium',2],['Mg','magnesium',2],['Ca','calcium',2],['Sr','strontium',2],['Ba','barium',2],['Al','aluminum',3],['Ag','silver',1],['Zn','zinc',2],['NH4','ammonium',1]];
+const MULTI_CATIONS=[['Fe','iron',[2,3]],['Cu','copper',[1,2]],['Cr','chromium',[2,3]],['Mn','manganese',[2,4]],['Co','cobalt',[2,3]],['Ni','nickel',[2,3]],['Sn','tin',[2,4]],['Pb','lead',[2,4]],['Pt','platinum',[2,4]],['Au','gold',[1,3]],['Hg','mercury',[2]]];
+function pickCation(){
+  if(Math.random()<.5){const [f,n,c]=rnd(FIXED_CATIONS);return {f,base:n,name:n,c,poly:f==='NH4',multi:false,el:f==='NH4'?'N':f};}
+  const [f,n,cs]=rnd(MULTI_CATIONS);
+  if(f==='Hg'&&Math.random()<.35)return {f:'Hg2',base:n,name:'mercury(I)',c:2,poly:true,multi:true,el:'Hg',hg1:true};
+  const c=rnd(cs);return {f,base:n,name:`${n}(${romanOf(c)})`,c,poly:false,multi:true,el:f};
+}
+function ionicFormula(cat,an){const g=gcd(cat.c,-an.c);const nc=-an.c/g,na=cat.c/g;
+  const cp=(cat.poly&&nc>1)?`(${cat.f})${nc}`:cat.f+(nc>1?nc:'');const ap=(an.poly&&na>1)?`(${an.f})${na}`:an.f+(na>1?na:'');return {formula:cp+ap,nc,na};}
+function makeIonic(){let cat,an;do{cat=pickCation();an=rnd(ANIONS);}while(cat.hg1&&an.c<-2);const {formula,nc,na}=ionicFormula(cat,an);return {kind:'ionic',cat,an,formula,nc,na,name:`${cat.name} ${an.n}`};}
+function makeMolecular(){const [e1,n1,e2,n2]=rnd(MOLEC);return {kind:'molecular',e1,n1,e2,n2,formula:molFormula(e1,n1,e2,n2),name:molName(e1,n1,e2,n2)};}
+const hasRoman=u=>/\((?:i|ii|iii|iv|v|vi|vii)\)/.test(u);
+const ELEMENT_NAMES=new Set(PT.map(e=>e.n.toLowerCase()));
+function hasPrefixWord(u){return u.replace(/\([ivx]+\)/g,'').split(' ').some(w=>w&&!ION_BY_NAME[w]&&!ELEMENT_NAMES.has(w)&&PREFIX.slice(1).some(p=>w.startsWith(p)));}
+function ionicWhy(q){const {cat,an,nc,na}=q;
+  if(cat.multi)return `<ol><li>${cap(an.n)} is ${chargeWords(an.c)}${na>1?', and there are '+na+' → total '+(-an.c*na)+'−':''}.</li><li>${nc>1?nc+' '+cat.base+' atoms must supply '+(-an.c*na)+'+ → each is <b>'+cat.c+'+</b>':cap(cat.base)+' must be <b>'+cat.c+'+</b>'} → written as a Roman numeral: <b>${cat.name}</b>.</li><li>Cation then anion: <b>${q.name}</b>.</li></ol>`;
+  return `<ol><li>${cap(cat.base)} always has a fixed charge (${chargeWords(cat.c)}), so no Roman numeral.</li><li>${cap(an.n)} is ${chargeWords(an.c)}. ${nc>1||na>1?`Ratio ${nc}:${na} makes it neutral, but the name never says the ratio.`:''}</li><li><b>${q.name}</b>.</li></ol>`;}
+function molWhy(q){const {e1,n1,e2,n2}=q;const w2=IDE[e2];const drop=/[ao]$/.test(PREFIX[n2])&&/^[aeiou]/.test(w2);
+  return `<ol><li>Both ${BY_SYM[e1].n.toLowerCase()} and ${BY_SYM[e2].n.toLowerCase()} are nonmetals → molecular, so use prefixes.</li><li>First element: ${n1>1?`${n1} → "${PREFIX[n1]}"`:'only one, so "mono" is skipped'} → ${q.name.split(' ')[0]}.</li><li>Second element: ${n2} → "${PREFIX[n2]}" + ${w2}${drop?` (drop the ${PREFIX[n2].slice(-1)} before the vowel)`:''} → ${q.name.split(' ')[1]}.</li><li><b>${q.name}</b>.</li></ol>`;}
+GEN.naming=()=>namingQ(Math.random()<.55?makeIonic():makeMolecular(),Math.random()<.5);
+function namingQ(q,formulaToName){
+  if(formulaToName){ // formula -> name
+    return {type:'Formula → name',ask:'Write the name for this compound.',prompt:`<span class="big">${fx(q.formula)}</span>`,
+      fields:[{key:'a',label:'Name',placeholder:'e.g. iron(III) oxide or dinitrogen tetroxide',hint:'Roman numerals in parentheses right after the metal: iron(III)'}],
+      check:v=>{const u=normName(v.a);const exp=normName(q.name);const ok=u===exp;let diag='';
+        if(!ok&&q.kind==='molecular'){
+          if(hasRoman(u))diag=`<b>Wrong system.</b> ${BY_SYM[q.e1].n} and ${BY_SYM[q.e2].n.toLowerCase()} are both nonmetals, so this is a <b>molecular</b> compound. Roman numerals only appear in ionic names for multivalent metals. Use Greek prefixes instead.`;
+          else if(u===normName(molName(q.e1,q.n1,q.e2,q.n2,{noDrop:true})))diag=`<b>Vowel-drop rule.</b> ${PREFIX[q.n2]} + ${IDE[q.e2]} → <b>${joinPrefix(PREFIX[q.n2],IDE[q.e2])}</b>: the prefix's last vowel is dropped before a word starting with a vowel.`;
+          else if(u===normName(molName(q.e1,q.n1,q.e2,q.n2,{monoFirst:true})))diag=`<b>Skip "mono" on the first element.</b> Mono is only ever used on the second element.`;
+          else if(u===normName(`${BY_SYM[q.e1].n} ${IDE[q.e2]}`))diag=`<b>Prefixes required.</b> Two nonmetals means a molecular compound, and prefixes are the only way the name shows how many atoms there are.`;
+          else if(!hasPrefixWord(u)&&u.includes(IDE[q.e2].slice(0,-3)))diag=`<b>Check the prefixes.</b> Count each atom: ${q.n1} ${BY_SYM[q.e1].n.toLowerCase()}, ${q.n2} ${BY_SYM[q.e2].n.toLowerCase()}.`;
+        }
+        if(!ok&&q.kind==='ionic'){const {cat,an}=q;
+          if(hasPrefixWord(u))diag=`<b>Wrong system.</b> ${cap(cat.base)} is a metal${cat.poly&&!cat.hg1?' ion (ammonium)':''}, so this is an <b>ionic</b> compound. Ionic names never use prefixes: the charges (${cat.base} ${chargeWords(cat.c)}, ${an.n} ${chargeWords(an.c)}) already fix the ratio.`;
+          else if(cat.multi&&!hasRoman(u))diag=`<b>Missing the Roman numeral.</b> ${cap(cat.base)} is multivalent, so the name must state its charge. Balance against ${an.n} (${chargeWords(an.c)}): ${cat.base} is ${cat.c}+ here → <b>${cat.name}</b>.`;
+          else if(!cat.multi&&hasRoman(u))diag=`<b>No Roman numeral needed.</b> ${cap(cat.base)} always has a ${chargeWords(cat.c)} charge, so the numeral is never written.`;
+          else if(cat.multi&&hasRoman(u)&&u.replace(/\([ivx]+\)/,'')===exp.replace(/\([ivx]+\)/,''))diag=cat.hg1?`<b>Mercury(I) is the diatomic ion.</b> Hg<sub>2</sub><sup>2+</sup> is two mercury atoms sharing a 2+ charge, so each mercury counts as 1+ → mercury(I).`:`<b>Wrong charge.</b> ${cap(an.n)} is ${chargeWords(an.c)}${q.na>1?' × '+q.na+' = '+(-an.c*q.na)+'−':''}; split across ${q.nc} ${cat.base} → each is ${cat.c}+ → <b>${cat.name}</b>.`;
+        }
+        return {ok,fields:{a:ok},why:(q.kind==='ionic'?ionicWhy(q):molWhy(q)),diag};}};
+  }
+  // name -> formula
+  return {type:'Name → formula',ask:'Write the formula for this compound.',prompt:`<span class="big">${q.name}</span>`,
+    fields:[{key:'a',label:'Formula',placeholder:'e.g. Fe₂O₃ or Co(NO3)2',tools:'formula',hint:'Parentheses around a polyatomic ion that appears more than once.'}],
+    check:v=>{const p=parseFormula(v.a);const exp=parseFormula(q.formula);let ok=false,diag='';
+      if(!p)diag=`<b>Couldn't read that formula.</b> Use symbols with correct capitalization (Co is cobalt, CO is carbon monoxide), digits for subscripts, and parentheses for groups: <span class="ans">Fe2(SO4)3</span>.`;
+      else{
+        const totOk=sameTotals(p.totals,exp.totals);
+        const expGroups=exp.units.filter(u=>u.group&&u.n>1);const userGroups=p.units.filter(u=>u.group&&u.n>1);
+        const groupsOk=expGroups.every(g=>userGroups.some(h=>h.n===g.n&&sameTotals(h.atoms,g.atoms)))&&userGroups.length===expGroups.length;
+        const firstOk=p.first===exp.first;
+        ok=totOk&&groupsOk&&firstOk;
+        if(!ok){
+          const sameEls=Object.keys(p.totals).sort().join()===Object.keys(exp.totals).sort().join();
+          if(totOk&&!firstOk)diag=`<b>Order.</b> Write the ${q.kind==='ionic'?'cation (the metal or ammonium)':'first element in the name'} first.`;
+          else if(totOk&&!groupsOk)diag=`<b>Parentheses.</b> ${q.kind==='ionic'?cap(q.an.n)+' is a polyatomic ion and there are '+q.na+' of them, so wrap it: ':'Write it as '}<span class="ans">${q.formula}</span>.`;
+          else if(q.kind==='ionic'&&sameEls){const {cat,an}=q;const k=Object.keys(exp.totals).reduce((m,el)=>Math.max(m,p.totals[el]/exp.totals[el]),0);const isMultiple=Object.keys(exp.totals).every(el=>p.totals[el]===exp.totals[el]*k)&&k>1&&Number.isInteger(k);
+            diag=isMultiple?`<b>Reduce.</b> Right ratio, but formulas use the smallest whole-number ratio: <span class="ans">${q.formula}</span>.`:`<b>Charges must balance.</b> ${cap(cat.base)} is ${chargeWords(cat.c)} and ${an.n} is ${chargeWords(an.c)}. You need ${q.nc} × ${cat.c}+ = ${q.na} × ${-an.c}− → <span class="ans">${q.formula}</span>.${cat.hg1?' Mercury(I) is the diatomic Hg<sub>2</sub><sup>2+</sup> ion, so the formula always has Hg<sub>2</sub>.':''}`;}
+          else if(q.kind==='molecular'&&sameEls)diag=`<b>Read the prefixes.</b> ${q.name.split(' ')[0]} → ${q.n1} ${BY_SYM[q.e1].n.toLowerCase()}; ${q.name.split(' ')[1]} → ${q.n2} ${BY_SYM[q.e2].n.toLowerCase()} (${PREFIX[q.n2]} = ${q.n2}).`;
+          else if(q.kind==='ionic')diag=`<b>Check the ions.</b> ${cap(q.cat.base)} is ${fxc(q.cat.f,q.cat.c)} and ${q.an.n} is ${fxc(q.an.f,q.an.c)}.`;
+          else diag=`<b>Check the elements.</b> ${cap(BY_SYM[q.e1].n)} is ${q.e1}; ${IDE[q.e2]} comes from ${BY_SYM[q.e2].n.toLowerCase()} (${q.e2}).`;
+        }
+      }
+      const why=q.kind==='ionic'?`<ol><li>${cap(q.cat.base)} ion: ${fxc(q.cat.f,q.cat.c)}${q.cat.multi?' (the numeral tells you the charge)':''}. ${cap(q.an.n)}: ${fxc(q.an.f,q.an.c)}.</li><li>Balance: ${q.nc} × ${q.cat.c}+ and ${q.na} × ${-q.an.c}− both equal ${q.nc*q.cat.c}.</li><li><b>${fx(q.formula)}</b></li></ol>`:`<ol><li>${q.name.split(' ')[0]} → ${q.n1} ${BY_SYM[q.e1].n.toLowerCase()} (${q.e1}).</li><li>${q.name.split(' ')[1]} → ${q.n2} ${BY_SYM[q.e2].n.toLowerCase()} (${q.e2}).</li><li><b>${fx(q.formula)}</b></li></ol>`;
+      return {ok,fields:{a:ok},why,diag};}};
+}
+
+/* 6. The mole */
+const SUBS=[['Cu','copper','atoms'],['Al','aluminum','atoms'],['Fe','iron','atoms'],['S','sulfur','atoms'],['C','carbon','atoms'],['Na','sodium','atoms'],['Ca','calcium','atoms'],['Zn','zinc','atoms'],['Ag','silver','atoms'],['Au','gold','atoms'],['Pb','lead','atoms'],['Mg','magnesium','atoms'],['K','potassium','atoms'],['Ni','nickel','atoms'],
+['H2O','water','molecules'],['NaCl','sodium chloride','formula units'],['CO2','carbon dioxide','molecules'],['NH3','ammonia','molecules'],['CH4','methane','molecules'],['H2SO4','sulfuric acid','molecules'],['HCl','hydrogen chloride','molecules'],['HNO3','nitric acid','molecules'],['NaOH','sodium hydroxide','formula units'],['CaCO3','calcium carbonate','formula units'],['KCl','potassium chloride','formula units'],['MgO','magnesium oxide','formula units'],['Fe2O3','iron(III) oxide','formula units'],['FeCl3','iron(III) chloride','formula units'],['Al2O3','aluminum oxide','formula units'],['C6H12O6','glucose','molecules'],['KNO3','potassium nitrate','formula units'],['CaCl2','calcium chloride','formula units'],['Na2SO4','sodium sulfate','formula units'],['CuSO4','copper(II) sulfate','formula units'],['NH4NO3','ammonium nitrate','formula units'],['Mg(OH)2','magnesium hydroxide','formula units'],['Ca(NO3)2','calcium nitrate','formula units'],['NaHCO3','sodium bicarbonate','formula units'],['K2CO3','potassium carbonate','formula units'],['SO2','sulfur dioxide','molecules'],['N2O','dinitrogen monoxide','molecules'],['PCl5','phosphorus pentachloride','molecules'],['C3H8','propane','molecules'],['O2','oxygen gas','molecules'],['N2','nitrogen gas','molecules'],['Cl2','chlorine gas','molecules'],['ZnCl2','zinc chloride','formula units'],['AgNO3','silver nitrate','formula units'],['BaSO4','barium sulfate','formula units'],['SnCl4','tin(IV) chloride','formula units'],['Al2(SO4)3','aluminum sulfate','formula units']];
+const NA=6.02e23;
+function mmSteps(f){const p=parseFormula(f);const parts=[];let m=0;for(const k in p.totals){const c=p.totals[k];parts.push(c>1?`${c} × ${BY_SYM[k].m.toFixed(2)} (${k}) = ${(c*BY_SYM[k].m).toFixed(2)}`:`${BY_SYM[k].m.toFixed(2)} (${k})`);m+=c*BY_SYM[k].m;}return {m,text:`Molar mass of ${fx(f)} = ${parts.join(' + ')} = <b>${m.toFixed(2)} g/mol</b>`};}
+const r2=(lo,hi)=>+sig(lo+Math.random()*(hi-lo),rnd([2,3,3]));
+GEN.mole=()=>{
+  const t=rnd(['n2p','p2n','n2g','g2n','pct','pct']);
+  const [f,name,unit]=rnd(SUBS);const label=`${name} (${f})`;const mm=mmSteps(f);
+  const fieldsFor=(lab,ph,hint)=>[{key:'a',label:lab,placeholder:ph,hint}];
+  const numCheck=(ans,tol,abs)=>v=>{const u=parseNum(v.a);const ok=!isNaN(u)&&close(u,ans,tol,abs||0);return {ok,u};};
+  if(t==='n2p'){const n=r2(0.2,12);const ans=n*NA;const c=numCheck(ans,.025);
+    return {type:'Moles → particles',ask:`How many ${unit} are in ${n} mol of ${label}?`,prompt:`<span class="big">${n} mol <span class="sub-line">${label}</span></span>`,fields:[{key:'a',label:`Number of ${unit}`,placeholder:'e.g. 3.3 × 10²⁴ or 3.3e24',tools:'sci'}],
+      check:v=>{const {ok}=c(v);return {ok,fields:{a:ok},why:`<ol><li>Going <em>from</em> moles → multiply by Avogadro's number.</li><li>${n} mol × 6.02 × 10<sup>23</sup> ${unit}/mol = <b>${sci(ans)} ${unit}</b></li></ol>`};}};}
+  if(t==='p2n'){const N=+sig(Math.pow(10,rint(22,25))*(1+Math.random()*9),rnd([2,3]));const ans=N/NA;const c=numCheck(ans,.025);
+    return {type:'Particles → moles',ask:`How many moles is ${sci(N,2)} ${unit} of ${label}?`,prompt:`<span class="big">${sci(N,2)} <span class="sub-line">${unit} of ${label}</span></span>`,fields:fieldsFor('Moles','mol'),
+      check:v=>{const {ok}=c(v);return {ok,fields:{a:ok},why:`<ol><li>Going <em>to</em> moles → divide by Avogadro's number.</li><li>${sci(N,2)} ÷ 6.02 × 10<sup>23</sup> = <b>${num(ans)} mol</b></li></ol>`};}};}
+  if(t==='n2g'){const n=r2(0.1,8);const ans=n*mm.m;const c=numCheck(ans,.025);
+    return {type:'Moles → grams',ask:`What is the mass of ${n} mol of ${label}?`,prompt:`<span class="big">${n} mol <span class="sub-line">${label}</span></span>`,fields:fieldsFor('Mass','g'),
+      check:v=>{const {ok}=c(v);return {ok,fields:{a:ok},why:`<ol><li>${mm.text}</li><li>Going <em>from</em> moles → multiply by molar mass.</li><li>${n} mol × ${mm.m.toFixed(2)} g/mol = <b>${num(ans,4)} g</b></li></ol>`};}};}
+  if(t==='g2n'){const g=r2(0.5,400);const ans=g/mm.m;const c=numCheck(ans,.025);
+    return {type:'Grams → moles',ask:`How many moles are in ${g} g of ${label}?`,prompt:`<span class="big">${g} g <span class="sub-line">${label}</span></span>`,fields:fieldsFor('Moles','mol'),
+      check:v=>{const {ok}=c(v);return {ok,fields:{a:ok},why:`<ol><li>${mm.text}</li><li>Going <em>to</em> moles → divide by molar mass.</li><li>${g} g ÷ ${mm.m.toFixed(2)} g/mol = <b>${num(ans,4)} mol</b></li></ol>`};}};}
+  // percent composition: needs a compound
+  let cf,cn;do{const s=rnd(SUBS);cf=s[0];cn=s[1];}while(Object.keys(parseFormula(cf).totals).length<2);
+  const p=parseFormula(cf);const el=rnd(Object.keys(p.totals));const cnt=p.totals[el];const part=cnt*BY_SYM[el].m;const M=molarMass(cf);const ans=part/M*100;const c=numCheck(ans,0,0.3);
+  return {type:'Percent composition',ask:`What is the percent by mass of <b>${BY_SYM[el].n.toLowerCase()}</b> in ${cn}?`,prompt:`<span class="big">${fx(cf)}</span>`,fields:fieldsFor(`% ${el} by mass`,'%'),
+    check:v=>{const {ok}=c(v);const s=mmSteps(cf);return {ok,fields:{a:ok},why:`<ol><li>Mass of ${el} in one mole: ${cnt>1?cnt+' × ':''}${BY_SYM[el].m.toFixed(2)} = ${part.toFixed(2)} g</li><li>${s.text}</li><li>${part.toFixed(2)} ÷ ${M.toFixed(2)} × 100% = <b>${ans.toFixed(2)}%</b></li></ol>`};}};
+};
+</script>
+<script>
+/* ===================== TOPICS & UI ===================== */
+const TOPICS=[
+ {id:'elements',title:'Elements & Symbols',blurb:'Fifty elements. Name to symbol and back, until it\'s automatic.',lead:'The 50 elements this course expects you to know by name and symbol.'},
+ {id:'atomic',title:'Atomic Structure & Isotopes',blurb:'Protons, neutrons, electrons. Isotope notation and ion charges.',lead:'Read an isotope symbol and count every particle, including for ions.'},
+ {id:'avgmass',title:'Average Atomic Mass',blurb:'Why the table shows 63.55 for copper, and how to solve for abundance.',lead:'Weighted averages of isotopes, and solving for percent abundance.'},
+ {id:'ions',title:'Ions to Memorize',blurb:'The course list of anions, cations, acids, and trivial-name compounds.',lead:'The exact list of ions, acids, and compounds you need to recall, with charges.'},
+ {id:'naming',title:'Naming Compounds',blurb:'Two systems, one decision rule. Prefixes or Roman numerals, never both.',lead:'Molecular vs. ionic naming, formula to name and name to formula.'},
+ {id:'mole',title:'The Mole & Avogadro\'s Number',blurb:'Moles, particles, grams, and percent composition.',lead:'Convert between moles, particles, and grams, and find percent composition.'}
+];
+const byId=id=>TOPICS.find(t=>t.id===id);
+const view=document.getElementById('view'),crumb=document.getElementById('crumb');
+let session=null;
+
+function render(){
+  const h=location.hash||'#home';
+  const m=h.match(/^#t\/([a-z]+)\/(learn|practice)$/);
+  if(m&&byId(m[1])){renderTopic(byId(m[1]),m[2]);}
+  else renderHome();
+  window.scrollTo({top:0,behavior:'instant'});
+}
+window.addEventListener('hashchange',render);
+
+function renderHome(){
+  crumb.textContent='';
+  let att=0,cor=0,done=0;TOPICS.forEach(t=>{const p=tp(t.id);att+=p.attempted;cor+=p.correct;if(p.correct>=goal(t.id))done++;});
+  const acc=att?Math.round(100*cor/att):0;
+  view.innerHTML=`
+  <div class="hero">
+    <div class="eyebrow">Chemistry · Unit 1</div>
+    <h1>Nomenclature &amp; the Mole.</h1>
+    <p class="lead">Six topics. Learn the rules, then drill until they stick. Every question checks itself and explains the answer.</p>
+    <div class="stats"><span class="chip"><b>${done}/${TOPICS.length}</b> topics mastered</span><span class="chip"><b>${att}</b> questions answered</span><span class="chip"><b>${acc}%</b> accuracy</span></div>
+  </div>
+  <div class="cards">${TOPICS.map((t,i)=>{const p=tp(t.id);const pc=pct(t.id);const done=p.correct>=goal(t.id);
+    return `<a class="card${done?' done':''}" href="#t/${t.id}/${p.learned?'practice':'learn'}"><div class="num">0${i+1}</div><h3>${t.title}</h3><div class="cfoot"><p>${t.blurb}</p><span class="go" title="${done?'Mastered':p.correct+' correct so far'}">${done?'✓':'→'}</span></div></a>`}).join('')}</div>`;
+}
+
+function renderTopic(t,tab){
+  crumb.textContent=t.title;
+  const p=tp(t.id);if(tab==='learn'&&!p.learned){p.learned=true;save();}
+  const pc=pct(t.id);const done=p.correct>=goal(t.id);const isP=tab==='practice';
+  const seg=`<div class="seg"><button class="${tab==='learn'?'active':''}" onclick="location.hash='#t/${t.id}/learn'">Learn</button><button class="${tab==='practice'?'active':''}" onclick="location.hash='#t/${t.id}/practice'">Practice</button></div>`;
+  const mastery=`<div class="mastery"><div class="bar"><i class="${done?'ok':''}" style="width:${pc}%"></i></div><span>${done?'Mastered':Math.min(p.correct,goal(t.id))+' of '+goal(t.id)+' correct answers to master'}${p.attempted?' · '+Math.round(100*p.correct/p.attempted)+'% accuracy':''}</span></div>`;
+  view.innerHTML=`
+  <div class="narrow">
+    <a class="btn sm" href="#home">← All topics</a>
+    <div class="thead">
+      <div class="eyebrow" style="margin-top:12px">Topic ${TOPICS.indexOf(t)+1} of ${TOPICS.length}</div>
+      <h1>${t.title}</h1>
+      <p class="lead">${t.lead}</p>
+      <div class="row">${seg}${mastery}</div>
+    </div>
+    <div id="panel"></div>
+  </div>`;
+  const panel=document.getElementById('panel');
+  if(tab==='learn'){panel.innerHTML=`<div class="learn">${LEARN[t.id]()}</div><div style="text-align:center;margin-top:36px"><a class="btn primary" href="#t/${t.id}/practice">Practice this topic →</a></div>`;}
+  else renderPractice(t);
+}
+
+/* ---------- practice ---------- */
+const ROUND=10;
+function ionList(filter){return '<div class="cols">'+IONS.filter(filter).map(i=>`<div><span>${cap(i.n)}</span><span>${fxc(i.f,i.c)}</span></div>`).join('')+'</div>';}
+const REF={
+  ions:{title:'Ions & formulas',html:()=>'<h4>Cations</h4>'+ionList(i=>i.c>0)+'<h4>Anions</h4>'+ionList(i=>i.c<0)+'<h4>Acids & compounds</h4>'+ionList(i=>i.c===0)},
+  naming:{title:'Ions & formulas',html:()=>'<h4>Cations · fixed charge</h4>'+ionList(i=>i.c>0)+'<p class="muted" style="font-size:.85rem;margin:6px 0 0">Multivalent metals (Fe, Cu, Cr, Mn, Co, Ni, Sn, Pb, Pt, Au, Hg) take their charge from the anion and show it as a Roman numeral. Prefixes: '+PREFIX.slice(1).map((p,i)=>`${i+1} ${p}`).join(', ')+'.</p><h4>Anions</h4>'+ionList(i=>i.c<0)},
+  mole:{title:'Molar masses & constants',html:()=>'<div class="cols">'+['H','C','N','O','F','Na','Mg','Al','Si','P','S','Cl','K','Ca','Fe','Cu','Zn','Ag','Sn','Ba','Au','Pb'].map(s=>`<div><span>${BY_SYM[s].n} (${s})</span><span class="f">${BY_SYM[s].m.toFixed(2)}</span></div>`).join('')+'</div><p class="muted" style="font-size:.85rem;margin:10px 0 0">g/mol. Avogadro\'s number: 6.02 × 10<sup>23</sup> particles per mole. The full table is under <b>Periodic table</b> at the top.</p>'},
+  atomic:{title:'The rules',html:()=>'<div class="facts"><div class="fact"><div class="k">Protons</div><div class="v">= atomic number</div></div><div class="fact"><div class="k">Neutrons</div><div class="v">= mass number − protons</div></div><div class="fact"><div class="k">Electrons</div><div class="v">= protons − charge</div><div class="d">2+ means 2 fewer; 3− means 3 more</div></div></div>'},
+  avgmass:{title:'The setup',html:()=>'<div class="facts"><div class="fact"><div class="k">Weighted average</div><div class="v">x·(mass A) + (1 − x)·(mass B) = average</div><div class="d">x = fraction of A. Solve: x = (average − mass B) ÷ (mass A − mass B)</div></div><div class="fact"><div class="k">Sanity check</div><div class="v">closer mass = more abundant</div></div></div>'}
+};
+function renderPractice(t){
+  if(!session||session.topic!==t.id)session={topic:t.id,i:0,score:0,q:null,answered:false};
+  const s=session;const panel=document.getElementById('panel');
+  if(s.i>=ROUND){
+    panel.innerHTML=`<div class="practice"><div class="qcard summary"><div class="eyebrow">Round complete</div><div class="score">${s.score}/${ROUND}</div><p>${s.score===ROUND?'Perfect round.':s.score>=7?'Solid. Keep going to lock it in.':'Worth another look at the Learn tab, then try again.'} Questions are generated fresh every round, so they never run out.</p><div class="qactions"><button class="btn primary" onclick="session=null;renderPractice(byId('${t.id}'))">Another round</button><a class="btn" href="#t/${t.id}/learn">Review the rules</a></div></div></div>`;return;
+  }
+  if(!s.q){s.q=GEN[t.id]();s.answered=false;}
+  const q=s.q;
+  panel.innerHTML=`<div class="practice">
+    <div class="round"><span>Question <b>${s.i+1}</b> of ${ROUND} · Score <b>${s.score}</b></span><span class="keys"><kbd>Enter</kbd> to check · <kbd>Enter</kbd> again to continue</span></div>
+    <div class="bar"><i style="width:${s.i/ROUND*100}%"></i></div>
+    <div class="qcard" id="qcard">
+      <div class="qtop"><span class="eyebrow">${q.type}</span><span class="qnum">Question ${s.i+1}</span></div>
+      <div class="ask">${q.ask||''}</div>
+      <div class="prompt">${q.prompt}</div>
+      <div class="inputs${q.fields.length>1?' multi':''}">${q.fields.map((f,i)=>`<div class="field" id="fld-${f.key}"><label for="in-${f.key}">${f.label}</label><input id="in-${f.key}" data-key="${f.key}" placeholder="${esc(f.placeholder||'')}" autocomplete="off" autocapitalize="off" spellcheck="false" ${i===0?'autofocus':''}>${f.tools?toolsHTML(f.tools,'in-'+f.key):''}${f.hint?`<div class="hint">${f.hint}</div>`:''}</div>`).join('')}</div>
+      <div id="fb"></div>
+      <div class="qactions" id="qactions"><button class="btn primary wide" id="check-btn" onclick="checkAnswer()">Check answer <kbd>Enter ↵</kbd><span class="arr">→</span></button><button class="skip" onclick="skipQuestion()">Skip this one</button></div>
+    </div>
+    ${REF[t.id]?`<details class="ref"><summary>${REF[t.id].title}</summary><div class="body">${REF[t.id].html()}</div></details>`:''}
+  </div>`;
+  const first=panel.querySelector('input');if(first)first.focus();
+  panel.querySelector('#qcard').addEventListener('keydown',e=>{if(e.key==='Enter'){e.preventDefault();if(!session.answered)checkAnswer();else nextQuestion();}});
+}
+const SUBS_T=[['x<sub>2</sub>','₂'],['x<sub>3</sub>','₃'],['x<sub>4</sub>','₄'],['( x )','()']];
+const CHG_T=[['+','⁺'],['−','⁻'],['2+','²⁺'],['2−','²⁻'],['3+','³⁺'],['3−','³⁻']];
+const TOOLSETS={
+  formula:{hint:'Type normally (Fe2O3), or insert a template.',tiles:SUBS_T},
+  ion:{hint:'Type normally (SO4 2-), or insert a template.',tiles:[...SUBS_T,...CHG_T]},
+  sci:{hint:'Type normally (3.3e24 or 3.3 x 10^24), or insert a template.',tiles:[22,23,24,25].map(e=>['× 10<sup>'+e+'</sup>',' × 10'+toSup(String(e))])}
+};
+function toolsHTML(kind,id){const t=TOOLSETS[kind];return `<div class="tools"><div class="tools-hint">${t.hint}</div><div class="tiles">${t.tiles.map(([lab,txt],i)=>`<button type="button" tabindex="-1" class="${/^[0-9+−]/.test(lab)?'chg':''}" onmousedown="event.preventDefault()" onclick="applyTool('${id}','${kind}',${i})">${lab}</button>`).join('')}</div></div>`;}
+function applyTool(id,kind,i){const el=document.getElementById(id);if(!el||el.disabled)return;const txt=TOOLSETS[kind].tiles[i][1];let s=el.selectionStart??el.value.length,e=el.selectionEnd??s,v=el.value;
+  v=v.slice(0,s)+txt+v.slice(e);el.value=v;const p=s+txt.length-(txt==='()'?1:0);el.setSelectionRange(p,p);el.focus();}
+function checkAnswer(){
+  const s=session;if(!s||s.answered)return;const q=s.q;
+  const vals={};document.querySelectorAll('#qcard input').forEach(i=>vals[i.dataset.key]=i.value);
+  if(Object.values(vals).every(v=>!String(v).trim())){document.querySelector('#qcard input').focus();return;}
+  const r=q.check(vals);s.answered=true;if(r.ok)s.score++;record(s.topic,r.ok);
+  document.querySelectorAll('#qcard input').forEach(i=>{i.disabled=true;const f=document.getElementById('fld-'+i.dataset.key);f.classList.add(r.fields&&r.fields[i.dataset.key]===false?'bad':'ok');});
+  document.getElementById('fb').innerHTML=`<div class="feedback ${r.ok?'ok':'bad'}"><div class="verdict">${r.ok?'Correct':'Not quite'}</div><div class="why">${r.why||''}</div>${r.diag?`<div class="diag">${r.diag}</div>`:''}</div>`;
+  document.getElementById('qactions').innerHTML=`<button class="btn primary wide" id="next-btn" onclick="nextQuestion()">${s.i+1>=ROUND?'See results':'Next question'} <kbd>Enter ↵</kbd><span class="arr">→</span></button>`;
+  document.getElementById('next-btn').focus({preventScroll:true});
+  updateMastery();
+  requestAnimationFrame(()=>{document.getElementById('qactions').scrollIntoView({block:'nearest',behavior:'smooth'});});
+}
+function nextQuestion(){const s=session;s.i++;s.q=null;s.answered=false;renderPractice(byId(s.topic));}
+function skipQuestion(){const s=session;if(s.answered)return;s.q=null;renderPractice(byId(s.topic));}
+function updateMastery(){const s=session;const p=tp(s.topic);const pc=pct(s.topic);const G=goal(s.topic);const done=p.correct>=G;const m=document.querySelector('.mastery');if(!m)return;
+  m.innerHTML=`<div class="bar"><i class="${done?'ok':''}" style="width:${pc}%"></i></div><span>${done?'Mastered':Math.min(p.correct,G)+' of '+G+' correct answers to master'} · ${Math.round(100*p.correct/p.attempted)}% accuracy</span>`;}
+
+/* ---------- periodic table ---------- */
+const FAMILY_NAME={alkali:'alkali metal',alkaline:'alkaline earth metal',transition:'transition metal',post:'post-transition metal',metalloid:'metalloid',nonmetal:'nonmetal',halogen:'halogen',noble:'noble gas',lanth:'lanthanide',actin:'actinide'};
+function family(e){const z=e.z,s=e.s;
+  if(['Li','Na','K','Rb','Cs','Fr'].includes(s))return 'alkali';
+  if(['Be','Mg','Ca','Sr','Ba','Ra'].includes(s))return 'alkaline';
+  if(['F','Cl','Br','I','At','Ts'].includes(s))return 'halogen';
+  if(e.c==='g')return 'noble';
+  if(z>=57&&z<=71)return 'lanth'; if(z>=89&&z<=103)return 'actin';
+  if(['B','Si','Ge','As','Sb','Te','Po'].includes(s))return 'metalloid';
+  if(['H','C','N','O','P','S','Se'].includes(s))return 'nonmetal';
+  if((z>=21&&z<=30)||(z>=39&&z<=48)||(z>=72&&z<=80)||(z>=104&&z<=112))return 'transition';
+  return 'post';}
+const unstable=z=>[43,61,84,85,86,87,88,89].includes(z)||z>=93;const massStr=e=>unstable(e.z)?'('+Math.round(e.m)+')':e.m.toFixed(2);
+function openTable(){
+  const ov=document.getElementById('pt-overlay');
+  if(!ov.dataset.built){
+    let cells='';
+    PT.forEach(e=>{const [r,c]=ptPos(e.z);cells+=`<button class="cell ${family(e)}${MULTI.has(e.s)?' mv':''}" style="grid-row:${r};grid-column:${c}" data-sym="${e.s}" onclick="ptSelect('${e.s}')" title="${e.n}"><span class="z">${e.z}</span><span class="s">${e.s}</span><span class="n">${e.n}</span><span class="m">${massStr(e)}</span></button>`;});
+    cells+=`<div class="gap" style="grid-row:6;grid-column:3">57–71</div><div class="gap" style="grid-row:7;grid-column:3">89–103</div><div class="spacer"></div>`;
+    ov.innerHTML=`<div class="pt-panel" role="dialog" aria-label="Periodic table">
+      <div class="pt-head"><h2>Periodic Table of the Elements</h2><span class="muted sub" style="font-size:.85rem">atomic mass in g/mol · <b style="color:var(--copper)">*</b> multivalent, needs a Roman numeral</span><input class="pt-search" id="pt-search" placeholder="Search element" autocomplete="off" spellcheck="false" oninput="ptSearch(this.value)" onkeydown="if(event.key==='Enter')ptSearchEnter()"><button class="btn sm" onclick="closeTable()">Close ✕</button></div>
+      <div class="pt-scroll"><div class="pt">${cells}</div></div>
+      <div class="pt-legend">${Object.keys(FAMILY_NAME).map(k=>`<span><i style="background:var(--c-${k})"></i>${FAMILY_NAME[k]}</span>`).join('')}</div>
+      <div class="pt-detail" id="pt-detail"><div class="empty">Click any element for its details and common ion charge.</div></div>
+      <p class="pt-note">Masses in parentheses are for elements with no stable isotopes. These are the atomic masses used for molar-mass problems in this hub.</p>
+    </div>`;
+    ov.dataset.built='1';
+  }
+  ov.classList.remove('hidden');document.body.style.overflow='hidden';
+  const si=document.getElementById('pt-search');if(si){si.value='';ptSearch('');setTimeout(()=>si.focus(),50);}
+}
+function ptSearch(q){q=(q||'').trim().toLowerCase();const grid=document.querySelector('.pt');if(!grid)return;grid.classList.toggle('searching',!!q);let hits=[];
+  grid.querySelectorAll('.cell').forEach(c=>{const e=BY_SYM[c.dataset.sym];const ok=q&&(e.s.toLowerCase().startsWith(q)||e.n.toLowerCase().startsWith(q)||String(e.z)===q);c.classList.toggle('hit',ok);c.classList.toggle('miss',!!q&&!ok);if(ok)hits.push(e.s);});
+  if(hits.length===1)ptSelect(hits[0]);}
+function ptSearchEnter(){const hit=document.querySelector('.pt .cell.hit');if(hit)ptSelect(hit.dataset.sym);}
+function closeTable(){document.getElementById('pt-overlay').classList.add('hidden');document.body.style.overflow='';}
+function ptSelect(sym){
+  const e=BY_SYM[sym];document.querySelectorAll('.pt .cell.sel').forEach(c=>c.classList.remove('sel'));
+  const btn=[...document.querySelectorAll('.pt .cell')].find(c=>c.querySelector('.s').textContent===sym);if(btn)btn.classList.add('sel');
+  const ch=ION_CHARGES[sym];const fam=family(e);
+  document.getElementById('pt-detail').innerHTML=`<div class="bigsym" style="background:var(--c-${fam})">${e.s}<small>${e.z}</small></div><div class="kvs"><span class="kv">Name <b>${e.n}</b></span><span class="kv">Atomic mass <b>${massStr(e)}</b></span><span class="kv">Family <b>${FAMILY_NAME[fam]}</b></span>${ch?`<span class="kv">Common ion${ch.length>1?'s':''} <b>${ch.map(c=>e.s+'<sup>'+chargeStr(c)+'</sup>').join(', ')}</b>${MULTI.has(sym)?' <span class="muted">(multivalent, Roman numeral)</span>':''}</span>`:''}</div>`;
+}
+document.addEventListener('keydown',e=>{if(e.key==='Escape')closeTable();});
+
+render();
+</script>
