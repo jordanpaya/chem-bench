@@ -173,6 +173,12 @@ th{font-size:.72rem;text-transform:uppercase;letter-spacing:.1em;color:var(--mut
 
 /* practice */
 .practice{width:100%}
+.catrow{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-bottom:16px}
+.catlabel{font-size:.76rem;text-transform:uppercase;letter-spacing:.1em;color:var(--muted);margin-right:2px}
+.catchip{border:1px solid var(--line);background:var(--surface);color:var(--muted);border-radius:999px;padding:7px 14px;font-size:.86rem;cursor:pointer;font-family:var(--body);transition:background .12s,border-color .12s,color .12s}
+.catchip:hover{border-color:var(--line-strong);color:var(--ink)}
+.catchip.active{background:var(--ink);color:var(--bg);border-color:var(--ink);font-weight:600}
+.catcount{font-size:.8rem;color:var(--muted);margin-left:auto;font-variant-numeric:tabular-nums}
 .round{display:flex;justify-content:space-between;align-items:center;font-size:.8rem;color:var(--muted);margin-bottom:10px;font-variant-numeric:tabular-nums;flex-wrap:wrap;gap:8px}
 .round b{color:var(--ink);font-weight:600}
 .round .keys{display:flex;gap:6px;align-items:center}
@@ -742,8 +748,15 @@ function parseIonInput(s){
   if((m=s.match(/^([A-Za-z0-9()₀-₉]+)(?: ?0)?$/)))return [{formula:m[1],charge:0}];
   return null;
 }
+const ION_CATS=[['cation','Cations'],['anion','Anions'],['poly','Polyatomic ions'],['acid','Acids'],['cmp','Compounds']];
+function ionCategory(ion){if(ion.g==='acid')return'acid';if(ion.g==='cmp')return'cmp';if(ion.poly)return'poly';return ion.c>0?'cation':'anion';}
+const ION_FILTER_KEY='chembench.ionFilter';
+function getIonFilter(){try{const raw=localStorage.getItem(ION_FILTER_KEY);if(raw){const a=JSON.parse(raw);if(Array.isArray(a)&&a.length)return a.filter(k=>ION_CATS.some(c=>c[0]===k));}}catch(e){}return ION_CATS.map(c=>c[0]);}
+function setIonFilter(arr){try{localStorage.setItem(ION_FILTER_KEY,JSON.stringify(arr));}catch(e){}}
+function ionPool(){const sel=getIonFilter();const pool=IONS.filter(i=>sel.includes(ionCategory(i)));return pool.length?pool:IONS;}
+function toggleIonCat(key){const sel=getIonFilter();const has=sel.includes(key);if(has&&sel.length===1)return;const next=has?sel.filter(k=>k!==key):[...sel,key];setIonFilter(next);if(session&&session.topic==='ions')session=null;renderPractice(byId('ions'));}
 GEN.ions=()=>{
-  const ion=rnd(IONS);
+  const ion=rnd(ionPool());
   const disp=`${cap(ion.n)}${ion.syn?' <span class="muted">('+ion.syn.join(', ')+')</span>':''}`;
   if(Math.random()<.5){
     return {type:ion.c?'Name → formula':'Name → formula (neutral)',ask:`Write the formula${ion.c?' <b>with its charge</b>':''}.`,prompt:`<span class="big">${cap(ion.n)}</span>`,
@@ -944,7 +957,9 @@ function renderPractice(t){
   }
   if(!s.q){s.q=GEN[t.id]();s.answered=false;}
   const q=s.q;
+  const catRow=t.id==='ions'?(()=>{const sel=getIonFilter();const n=IONS.filter(i=>sel.includes(ionCategory(i))).length;return `<div class="catrow"><span class="catlabel">Practicing</span>${ION_CATS.map(([k,label])=>`<button type="button" class="catchip${sel.includes(k)?' active':''}" onclick="toggleIonCat('${k}')">${label}</button>`).join('')}<span class="catcount">${n} ion${n===1?'':'s'} in this pool</span></div>`;})():'';
   panel.innerHTML=`<div class="practice">
+    ${catRow}
     <div class="round"><span>Question <b>${s.i+1}</b> of ${ROUND} · Score <b>${s.score}</b></span><span class="keys"><kbd>Enter</kbd> to check · <kbd>Enter</kbd> again to continue</span></div>
     <div class="bar"><i style="width:${s.i/ROUND*100}%"></i></div>
     <div class="qcard" id="qcard">
