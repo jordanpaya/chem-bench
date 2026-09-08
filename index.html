@@ -445,10 +445,10 @@ function romanOf(n){return ROMAN[n]||String(n);}
 
 /* ===================== THEME ===================== */
 const THEME_KEY='chembench.theme';
-function currentTheme(){const t=document.documentElement.dataset.theme;if(t==='dark'||t==='light')return t;return matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light';}
+function currentTheme(){const t=document.documentElement.dataset.theme;return (t==='dark'||t==='light')?t:'light';}
 function applyTheme(t){document.documentElement.dataset.theme=t;const b=document.querySelector('.theme-toggle span');if(b)b.textContent=t==='dark'?'Dark':'Light';}
 function toggleTheme(){const t=currentTheme()==='dark'?'light':'dark';applyTheme(t);try{localStorage.setItem(THEME_KEY,t);}catch(e){}}
-try{const saved=localStorage.getItem(THEME_KEY);if(saved==='dark'||saved==='light')applyTheme(saved);}catch(e){}
+try{const saved=localStorage.getItem(THEME_KEY);applyTheme(saved==='dark'?'dark':'light');}catch(e){applyTheme('light');}
 
 /* ===================== STORAGE ===================== */
 const KEY='chembench.v1';
