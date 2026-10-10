@@ -316,11 +316,159 @@ kbd{font-family:var(--mono);border:1px solid var(--line-strong);border-bottom-wi
   .hero .lead{font-size:1.05rem}
   .thead .lead{font-size:1.02rem}
 }
+/* ---------- units ---------- */
+.unit-seg{margin-bottom:24px}
+.card .num{display:flex;align-items:center;gap:8px}
+.hot{font-family:var(--body);font-size:.66rem;font-weight:600;letter-spacing:.07em;text-transform:uppercase;color:var(--copper);background:var(--copper-soft);padding:3px 8px;border-radius:999px}
+.lesson-links{display:flex;gap:10px;flex-wrap:wrap;margin-top:6px}
+/* ---------- multiple choice ---------- */
+.choices{display:grid;gap:10px;margin:0 0 16px}
+.choice{display:flex;align-items:flex-start;gap:12px;width:100%;text-align:left;padding:13px 16px;border:1.5px solid var(--line-strong);border-radius:10px;background:var(--bg);color:var(--ink);cursor:pointer;font:inherit;line-height:1.45;transition:border-color .12s,background .12s}
+.choice:hover:not(:disabled){border-color:var(--accent);background:var(--accent-soft)}
+.choice:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.choice .k{flex:none;width:24px;height:24px;border-radius:6px;border:1px solid var(--line-strong);display:grid;place-items:center;font-family:var(--mono);font-size:.78rem;color:var(--muted);margin-top:1px}
+.choice:disabled{cursor:default}
+.choice.right{border-color:var(--ok);background:var(--ok-soft)}
+.choice.wrong{border-color:var(--bad);background:var(--bad-soft)}
+.choice.dim{opacity:.5}
+.choices.pair{grid-template-columns:1fr 1fr}
+.choices.pair .choice{flex-direction:column;align-items:center;text-align:center;padding:18px 12px;gap:2px}
+.choices.pair .choice .k{display:none}
+.choices.pair .c{display:flex;flex-direction:column;align-items:center;gap:2px}
+.choice .sym{font-family:var(--display);font-size:2.1rem;font-weight:700;line-height:1.15}
+.choice .nm{font-size:.84rem;color:var(--muted)}
+.step2{margin-top:4px;padding-top:16px;border-top:1px dashed var(--line)}
+.step2 .ask{font-size:1.15rem;margin:0 0 14px}
+/* ---------- ranking ---------- */
+.rank-slots{display:flex;flex-wrap:wrap;gap:8px;align-items:center;justify-content:center;min-height:62px;padding:12px;border:1.5px dashed var(--line-strong);border-radius:12px;margin-bottom:12px}
+.rank-slots .ends{font-size:.72rem;text-transform:uppercase;letter-spacing:.1em;color:var(--muted)}
+.rank-slots .ph{color:var(--muted);font-size:.9rem}
+.rank-pool{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin-bottom:6px;min-height:48px}
+.rchip{border:1.5px solid var(--line-strong);background:var(--bg);color:var(--ink);border-radius:10px;padding:9px 16px;font-family:var(--mono);font-size:1.1rem;font-weight:600;cursor:pointer;min-width:60px}
+.rchip:hover{border-color:var(--accent)}
+.rchip .n{font-family:var(--body);font-size:.7rem;color:var(--muted);font-weight:600;margin-right:6px}
+.rchip.placed{background:var(--accent-soft);border-color:var(--accent)}
+.rchip.right{background:var(--ok-soft);border-color:var(--ok)}
+.rchip.wrong{background:var(--bad-soft);border-color:var(--bad)}
+.rank-help{text-align:center;font-size:.82rem;color:var(--muted);margin-bottom:14px}
+/* ---------- explain ---------- */
+.explain textarea{width:100%;min-height:130px;padding:12px 14px;border:2px solid var(--line-strong);border-radius:10px;background:var(--bg);color:var(--ink);font:inherit;line-height:1.5;resize:vertical}
+.explain textarea:focus{border-color:var(--accent);outline:0;box-shadow:0 0 0 3px var(--accent-soft)}
+.model{border:1px solid var(--line);border-radius:12px;padding:14px 18px;margin:14px 0;background:var(--bg)}
+.model .eyebrow{margin-bottom:6px}
+.keys-list{list-style:none;padding:0;margin:10px 0 0;display:grid;gap:8px}
+.keys-list label{display:flex;gap:10px;align-items:flex-start;cursor:pointer}
+.keys-list input{margin-top:4px;accent-color:var(--accent)}
+.selfgrade{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:12px}
+/* ---------- prompts ---------- */
+.cfg{font-family:var(--mono);font-weight:500;letter-spacing:0}
+.cfg sup{font-size:.68em}
+.prompt .cfg-big{font-size:1.7rem;color:var(--accent);line-height:1.5}
+.lvls{display:grid;gap:4px;justify-content:center;font-family:var(--mono);font-size:1.02rem}
+.clue{display:block;font-family:var(--display);font-size:1.25rem;font-weight:600;max-width:40ch;margin:0 auto;line-height:1.4}
+.feedback .note{font-size:.88rem;margin:8px 0 0}
+/* ---------- labs ---------- */
+.lab{border:1px solid var(--line);border-radius:16px;background:var(--surface);box-shadow:var(--shadow);padding:20px 22px}
+.lab-head h3{margin:4px 0 4px;font-size:1.3rem}
+.lab-head p{color:var(--muted);margin:0 0 16px}
+.lab-body{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.1fr);gap:22px;align-items:start}
+.lab-ctrl{display:flex;flex-direction:column;gap:12px}
+.lab-row{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+.lab-row>span{font-size:.74rem;text-transform:uppercase;letter-spacing:.1em;color:var(--muted);width:42px}
+.lab-out{border:1px solid var(--line);border-radius:12px;padding:12px 14px;background:var(--bg);display:grid;gap:7px;font-size:.9rem}
+.lab-out .kv{display:flex;justify-content:space-between;gap:12px;align-items:baseline}
+.lab-out .kv b{font-weight:600;text-align:right;font-variant-numeric:tabular-nums}
+.seg.levels button{padding:6px 13px;font-size:.92rem;font-family:var(--mono)}
+.swatch{display:inline-block;width:14px;height:14px;border-radius:4px;vertical-align:-2px;margin-right:6px;border:1px solid var(--line)}
+.elab-svg{width:100%;height:auto;max-height:320px;display:block}
+.elab-svg .lv{stroke:var(--line-strong);stroke-width:1.5}
+.elab-svg .lv.on{stroke:var(--ink);stroke-width:2.5}
+.elab-svg .lv.inf{stroke-dasharray:4 4}
+.elab-svg .lvt{fill:var(--muted);font-family:var(--mono);font-size:11px}
+/* spectrum */
+.spec{margin:16px 0 8px}
+.spec-bar{position:relative;display:flex;height:36px;border-radius:8px;border:1px solid var(--line);background:var(--surface)}
+.spec-bar>div{flex:1;display:grid;place-items:center;font-size:.72rem;color:var(--ink);border-right:1px solid var(--line);white-space:nowrap;overflow:hidden;padding:0 2px}
+.spec-bar>div:last-of-type{border-right:0}
+.spec-bar>div.spec-vis{background:linear-gradient(90deg,#d84a3c,#f08c2e,#eecb39,#4caf61,#3b82d6,#7b4bc9);color:#fff;font-weight:600;text-shadow:0 1px 2px rgba(0,0,0,.35)}
+.spec-ends{display:flex;justify-content:space-between;font-size:.76rem;color:var(--muted);margin-top:6px;gap:12px}
+.spec-ends span:last-child{text-align:right}
+.spec-mark{position:absolute;top:-11px;width:0;height:0;margin-left:-7px;border-left:7px solid transparent;border-right:7px solid transparent;border-top:9px solid var(--ink)}
+.spec-mark::after{content:"";position:absolute;left:-1px;top:-1px;width:2px;height:46px;background:var(--ink);opacity:.35}
+/* timeline */
+.tl{border-left:2px solid var(--line);padding-left:20px;margin:8px 0 4px 6px}
+.tl-item{position:relative;padding:0 0 18px}
+.tl-item::before{content:"";position:absolute;left:-27px;top:6px;width:10px;height:10px;border-radius:50%;background:var(--surface);border:2px solid var(--line-strong)}
+.tl-item.key::before{background:var(--copper);border-color:var(--copper)}
+.tl-item h4{margin:0 0 2px;font-family:var(--display);font-size:1.1rem}
+.tl-item h4 span{font-family:var(--mono);font-size:.76rem;color:var(--muted);font-weight:500;margin-left:10px}
+.tl-item p{margin:0}
+.tl-item .chg{font-size:.88rem;color:var(--muted);margin-top:2px}
+.tl-skip{font-size:.86rem;color:var(--muted);font-style:italic;padding:0 0 18px}
+/* orbital builder */
+.ob{display:grid;gap:7px;justify-content:center;margin:6px 0 14px}
+.ob-row{display:grid;grid-template-columns:34px auto;align-items:end;gap:10px}
+.ob-row .lbl{font-family:var(--mono);font-weight:600;color:var(--muted);text-align:right;font-size:.9rem;padding-bottom:4px}
+.ob-orbs{display:flex;gap:7px}
+.ob-orb{width:42px;height:32px;border:0;border-bottom:2px solid var(--ink);background:transparent;color:var(--ink);font-size:1.15rem;line-height:1;cursor:pointer;font-family:var(--body);display:grid;place-items:center;border-radius:4px 4px 0 0;padding:0}
+.ob-orb:hover:not(.static){background:var(--accent-soft)}
+.ob-orb.bad{border-bottom-color:var(--bad);background:var(--bad-soft)}
+.ob-orb.static{cursor:default}
+.rule .ob{justify-content:start;margin:10px 0 6px}
+.ob-ctrl{display:flex;gap:8px;flex-wrap:wrap;justify-content:center}
+.ob-el{display:flex;align-items:center;gap:14px;justify-content:center}
+.ob-el .sym{font-family:var(--display);font-size:2rem;font-weight:700;min-width:2em;text-align:center}
+.ob-msg{margin-top:14px}
+.ob-msg .feedback{margin:0}
+/* trend explorer + mini tables */
+.te-seg{flex-wrap:wrap;margin-bottom:10px}
+.te-dir{font-size:.92rem;color:var(--muted);margin-bottom:12px}
+.te-dir b{color:var(--ink)}
+.te-wrap{overflow-x:auto;padding:2px 0 4px}
+.te-grid,.mt-grid{display:grid;grid-template-columns:repeat(18,minmax(28px,1fr));gap:3px;min-width:560px}
+.te-cell{aspect-ratio:1;border-radius:5px;border:1px solid var(--line);display:grid;place-items:center;font-family:var(--display);font-weight:700;font-size:.8rem;cursor:pointer;color:var(--ink);background:var(--surface);padding:0}
+.te-cell:hover{outline:2px solid var(--accent);outline-offset:-1px}
+.te-cell.off{background:repeating-linear-gradient(45deg,var(--surface),var(--surface) 4px,var(--surface-2) 4px,var(--surface-2) 8px);color:var(--muted)}
+.te-cell.sel{outline:3px solid var(--copper);outline-offset:-1px;position:relative;z-index:1}
+.te-gap{display:grid;place-items:center;color:var(--muted);font-size:.7rem}
+.te-out{margin-top:14px}
+.te-out .feedback{margin:0}
+.mt-cell{aspect-ratio:1;border-radius:4px;display:grid;place-items:center;font-family:var(--display);font-weight:600;font-size:.7rem;color:var(--ink);background:var(--surface-2);border:1px solid var(--line)}
+.legend{display:flex;flex-wrap:wrap;gap:6px 16px;font-size:.8rem;color:var(--muted);margin:10px 0 4px}
+.legend span{display:inline-flex;align-items:center;gap:6px}
+.legend i{width:12px;height:12px;border-radius:3px;border:1px solid var(--line);display:inline-block}
+.b-s{background:var(--c-alkali)!important}.b-p{background:var(--c-nonmetal)!important}.b-d{background:var(--c-transition)!important}.b-f{background:var(--c-halogen)!important}
+.f-alkali{background:var(--c-alkali)!important}.f-alkaline{background:var(--c-alkaline)!important}.f-trans{background:var(--c-transition)!important}.f-inner{background:var(--c-lanth)!important}.f-halogen{background:var(--c-halogen)!important}.f-noble{background:var(--c-noble)!important}.f-h,.f-other{background:var(--surface)!important}
+/* learn bits */
+.rules3{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.trend-cards{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}
+.tcard{border:1px solid var(--line);border-radius:var(--rs);padding:16px 18px;background:var(--surface)}
+.tcard h3{margin:0 0 4px !important;font-size:1.12rem}
+.tcard .def{color:var(--muted);font-size:.92rem;margin:0 0 6px}
+.tcard .dir{font-family:var(--mono);font-size:.84rem;color:var(--accent);font-weight:600;margin:0 0 8px}
+.tcard p:last-child{margin:0;font-size:.93rem}
+.order-line{font-family:var(--mono);font-size:.9rem;line-height:1.8;background:var(--surface-2);border-radius:var(--rs);padding:10px 14px}
+.chain{font-family:var(--display);font-weight:600;font-size:1.05rem;background:var(--accent-soft);border-radius:var(--rs);padding:12px 16px}
+.iebars{display:grid;gap:8px;margin:12px 0 14px}
+.iebar{display:grid;grid-template-columns:40px 1fr 120px;gap:10px;align-items:center;font-size:.88rem}
+.iebar .l{font-family:var(--mono);color:var(--muted)}
+.iebar .b{height:16px;background:var(--surface-2);border-radius:999px;overflow:hidden}
+.iebar .b i{display:block;height:100%;background:var(--accent);border-radius:999px}
+.iebar .b i.jump{background:var(--copper)}
+.iebar .v{font-family:var(--mono);text-align:right;font-variant-numeric:tabular-nums}
+@media (max-width:760px){
+  main{padding-top:60px}
+  .lab-body,.rules3,.trend-cards{grid-template-columns:1fr}
+  .selfgrade{grid-template-columns:1fr}
+  .lab{padding:16px}
+  .spec-bar>div{font-size:.6rem}
+  .iebar{grid-template-columns:34px 1fr 96px}
+}
 </style>
 
 <main><div class="wrap" id="view"></div></main>
 <footer class="foot">
-  <span>Chemistry · Unit 1 · Nomenclature and the Mole</span>
+  <span id="foot-unit">Chemistry · Unit 2 · Atomic Theory and Periodic Trends</span>
   <span>Progress is saved in this browser.</span>
   <button class="linkbtn" onclick="resetProgress()">Reset all progress</button>
 </footer>
@@ -402,12 +550,12 @@ function chargeWords(c){return (Math.abs(c)===1?'':Math.abs(c))+(c>0?'+':'−');
 function iso(sym,A){return '<span class="iso f"><sup>'+A+'</sup>'+sym+'</span>';}
 // number formatting
 function sig(x,n=3){if(x===0)return'0';const e=Math.floor(Math.log10(Math.abs(x)));const p=n-1-e;const r=Math.round(x*Math.pow(10,p))/Math.pow(10,p);return p>0?r.toFixed(Math.max(0,p)):String(r);}
-function sci(x,n=3){if(x===0)return'0';const e=Math.floor(Math.log10(Math.abs(x)));const m=x/Math.pow(10,e);return m.toFixed(n-1)+' × 10<sup>'+e+'</sup>';}
+function sci(x,n=3){if(x===0)return'0';let e=Math.floor(Math.log10(Math.abs(x)));let m=+(x/Math.pow(10,e)).toFixed(n-1);if(Math.abs(m)>=10){m/=10;e++;}return m.toFixed(n-1).replace('-','−')+' × 10<sup>'+String(e).replace('-','−')+'</sup>';}
 function num(x,n=3){const a=Math.abs(x);if(a>=1e5||a<1e-3)return sci(x,n);return sig(x,n);}
 // parse a typed number: 3.3e24, 3.3 x 10^24, 3.3×10^24, 3.3*10^24, 3.3 x 10 24
 function parseNum(s){
   if(s==null)return NaN; s=String(s).replace(/10\s*([⁰¹²³⁴⁵⁶⁷⁸⁹⁺⁻]+)/g,(m,d)=>'10^'+fromUni(d)).trim().toLowerCase().replace(/,/g,'').replace(/−/g,'-').replace(/×/g,'x').replace(/\*/g,'x').replace(/e\s*\+/g,'e');
-  s=s.replace(/\s*(g|mol|atoms|molecules|%|amu|formula units)\s*$/,'').trim();
+  s=s.replace(/\s*(g|mol|atoms|molecules|%|amu|formula units|kj|j|hz|nm|m|s-1|\/s)\s*$/,'').trim();
   let m=s.match(/^(-?[\d.]+)\s*x\s*10\s*\^?\s*\(?\s*(-?\d+)\s*\)?$/); if(m)return parseFloat(m[1])*Math.pow(10,parseInt(m[2]));
   m=s.match(/^(-?[\d.]+)\s*e\s*(-?\d+)$/); if(m)return parseFloat(m[1])*Math.pow(10,parseInt(m[2]));
   m=s.match(/^10\s*\^\s*(-?\d+)$/); if(m)return Math.pow(10,parseInt(m[1]));
@@ -882,6 +1030,697 @@ GEN.mole=()=>{
 };
 </script>
 <script>
+/* ===================== UNIT 2: TOPICS, DATA & HELPERS ===================== */
+const U2_TOPICS=[
+ {id:'light',unit:2,hot:true,title:'Bohr Model & Light',blurb:'Wavelength, frequency, energy, and what electrons do when they jump.',lead:'Light as a wave, the two equations, and Bohr\'s energy levels, plus the short history of the atom.'},
+ {id:'config',unit:2,hot:true,title:'Orbitals & Electron Configurations',blurb:'Three rules, one filling order. Write the configuration for any atom or ion.',lead:'Orbital diagrams, complete and noble-gas configurations, ions, and isoelectronic species.'},
+ {id:'trends',unit:2,hot:true,title:'Periodic Properties',blurb:'Radius, ionization energy, electronegativity, and the why behind every trend.',lead:'Every trend explained with nuclear charge, shielding, and distance from the nucleus.'},
+ {id:'families',unit:2,title:'Families & the Periodic Table',blurb:'Alkali metals to noble gases. Valence electrons, ion charges, and element clues.',lead:'Named families, valence electrons, ion charges by group, and identifying elements from clues.'},
+ {id:'nomen',unit:2,title:'Nomenclature & Formulas',blurb:'Unit 1 naming review, plus predicting formulas from the periodic table.',lead:'Naming review, and writing formulas from where elements sit on the table.'}
+];
+const GOALS_U2={light:30,config:40,trends:40,families:25,nomen:30};
+
+const shuf=a=>{const b=a.slice();for(let i=b.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[b[i],b[j]]=[b[j],b[i]];}return b;};
+const pickN=(a,n)=>shuf(a).slice(0,n);
+function wpick(t){let r=Math.random()*t.reduce((s,[w])=>s+w,0);for(const [w,v] of t){if((r-=w)<0)return v;}return t[t.length-1][1];}
+function periodOf(z){return z<=2?1:z<=10?2:z<=18?3:z<=36?4:z<=54?5:z<=86?6:7;}
+const isF=z=>(z>=57&&z<=71)||(z>=89&&z<=103);
+function groupOf(z){return isF(z)?3:ptPos(z)[1];}
+function across(z){if(z>=57&&z<=71)return 3+(z-57)/15;if(z>=89&&z<=103)return 3+(z-89)/15;return ptPos(z)[1];}
+const EL=z=>PT[z-1];
+function valenceOf(z){if(z===2)return 2;const g=groupOf(z);if(g<=2)return g;if(g>=13)return g-10;return null;}
+const GROUP_CHARGE={1:1,2:2,13:3,15:-3,16:-2,17:-1};
+const ROMAN_G={1:'I',2:'II',13:'III',14:'IV',15:'V',16:'VI',17:'VII',18:'VIII'};
+const sp=(s,c)=>`${s}${c?'<sup>'+chargeStr(c)+'</sup>':''}`;
+const ionName=(s,c)=>c<0?(IDE[s]||BY_SYM[s].n.toLowerCase())+' ion':c>0?BY_SYM[s].n.toLowerCase()+' ion':BY_SYM[s].n.toLowerCase();
+const ord=n=>n+(['th','st','nd','rd'][(n%100>10&&n%100<14)?0:(n%10<4?n%10:0)]);
+const MG=PT.filter(e=>{const p=periodOf(e.z),g=groupOf(e.z);return p>=2&&p<=6&&(g<=2||g>=13);});
+const mgAt=(p,g)=>MG.find(e=>periodOf(e.z)===p&&groupOf(e.z)===g);
+
+/* ---------- multiple-choice helpers ---------- */
+function mcFrom(right,wrongs){const all=shuf([right,...wrongs]);return {choices:all,correct:all.indexOf(right)};}
+function bankQ(item,type){const {choices,correct}=mcFrom(item.a,item.d);return {kind:'mc',type:type||'Concept check',ask:item.q,prompt:item.p||'',choices,correct,why:`<p>${item.why}</p>`};}
+
+/* ---------- symbols & charges ---------- */
+function checkSymbol(input,sym){const u=String(input||'').trim().replace(/[^A-Za-z]/g,'');if(u===sym)return {ok:true};if(u.toLowerCase()===sym.toLowerCase())return {ok:true,note:`Accepted. Watch the capitalization: <b>${sym}</b>.`};return {ok:false};}
+function parseCharge(s){s=fromUni(String(s||'')).replace(/\s/g,'').replace(/−/g,'-');if(s==='0')return 0;const m=s.match(/^([+-])(\d?)$/)||s.match(/^(\d?)([+-])$/);if(!m)return NaN;const signFirst=/[+-]/.test(m[1]);const sign=signFirst?m[1]:m[2],dig=signFirst?m[2]:m[1];return (sign==='+'?1:-1)*(dig?+dig:1);}
+
+/* ---------- electron configurations ---------- */
+const ORB_SUBS=[['1s',2],['2s',2],['2p',6],['3s',2],['3p',6],['4s',2],['3d',10],['4p',6],['5s',2],['4d',10],['5p',6],['6s',2],['4f',14],['5d',10],['6p',6],['7s',2],['5f',14],['6d',10],['7p',6]];
+const SUB_IDX=Object.fromEntries(ORB_SUBS.map(([s],i)=>[s,i]));
+const SUB_CAP={s:2,p:6,d:10,f:14};
+const NOBLES=[[2,'He'],[10,'Ne'],[18,'Ar'],[36,'Kr'],[54,'Xe'],[86,'Rn']];
+function aufbauMap(n){const m={};let left=n;for(const [s,c] of ORB_SUBS){if(left<=0)break;const k=Math.min(c,left);m[s]=k;left-=k;}return m;}
+const mapTotal=m=>Object.values(m).reduce((a,b)=>a+b,0);
+function mapsEqual(a,b){for(const k of new Set([...Object.keys(a),...Object.keys(b)])){if((a[k]||0)!==(b[k]||0))return false;}return true;}
+const subsOf=m=>Object.keys(m).filter(k=>m[k]>0).sort((a,b)=>SUB_IDX[a]-SUB_IDX[b]);
+function displayOrder(m){const k=subsOf(m);[['4f','5d'],['5f','6d']].forEach(([f,d])=>{const fi=k.indexOf(f),di=k.indexOf(d);if(fi>=0&&di>fi&&m[d]===1&&m[f]<14){k.splice(di,1);k.splice(fi,0,d);}});return k;}
+const EXCEPT={Cr:{'4s':1,'3d':5},Cu:{'4s':1,'3d':10},Mo:{'5s':1,'4d':5},Ag:{'5s':1,'4d':10},Au:{'6s':1,'5d':10}};
+function neutralForms(z){const A=aufbauMap(z),forms=[A];
+  if((z>=57&&z<=70)||(z>=89&&z<=102)){const f=z<89?'4f':'5f',d=z<89?'5d':'6d',B={...A};B[f]-=1;if(!B[f])delete B[f];B[d]=(B[d]||0)+1;forms.push(B);}
+  const s=EL(z).s;if(EXCEPT[s])forms.push({...A,...EXCEPT[s]});return forms;}
+function ionMap(z,c){if(c<0)return aufbauMap(z-c);const m={...aufbauMap(z)};for(let k=0;k<c;k++){const t=subsOf(m).sort((a,b)=>(+b[0]-+a[0])||('spdf'.indexOf(b[1])-'spdf'.indexOf(a[1])))[0];m[t]--;if(!m[t])delete m[t];}return m;}
+function coreFor(n){let best=null;for(const x of NOBLES){if(x[0]<n)best=x;}return best;}
+const fmtSubs=(m,keys)=>keys.map(k=>`${k}<sup>${m[k]}</sup>`).join(' ');
+const fmtFull=m=>`<span class="cfg">${fmtSubs(m,displayOrder(m))}</span>`;
+function fmtAbbr(m){const core=coreFor(mapTotal(m));if(!core)return fmtFull(m);const cm=aufbauMap(core[0]),rest={};for(const k in m){const v=m[k]-(cm[k]||0);if(v>0)rest[k]=v;}return `<span class="cfg">[${core[1]}] ${fmtSubs(rest,displayOrder(rest))}</span>`;}
+function parseConfig(str){
+  let s=fromUni(String(str||'')).replace(/[\s,.^·]/g,'');if(!s)return null;
+  const m={};let core=null;
+  const cm=s.match(/^\[?(he|ne|ar|kr|xe|rn)\]?(?=[1-7]|$)/i);
+  if(cm){core=cm[1][0].toUpperCase()+cm[1][1].toLowerCase();Object.assign(m,aufbauMap(NOBLES.find(x=>x[1]===core)[0]));s=s.slice(cm[0].length);}
+  const re=/([1-7])([spdf])(\d{1,2}?)(?=[1-7][spdf]|$)/y,bad=[];
+  while(re.lastIndex<s.length){const t=re.exec(s);if(!t)return {err:true};const n=+t[1],l=t[2],c=+t[3],lab=n+l;
+    if(n<{s:1,p:2,d:3,f:4}[l]){bad.push({kind:'nosub',lab});continue;}
+    if(c>SUB_CAP[l])bad.push({kind:'over',lab,c});
+    m[lab]=(m[lab]||0)+c;}
+  return {map:m,core,bad};}
+function checkConfig(input,forms,o){
+  const p=parseConfig(input);
+  if(!p||p.err)return {ok:false,diag:'<b>Couldn\'t read that.</b> Write sublevels like <span class="ans">1s2 2s2 2p6</span>, optionally starting with a noble-gas core like <span class="ans">[Ne] 3s2</span>.'};
+  if(p.bad.length){const b=p.bad[0];return {ok:false,diag:b.kind==='nosub'?`<b>${b.lab} doesn't exist.</b> p sublevels start at n = 2, d at n = 3, and f at n = 4.`:`<b>${b.lab} can't hold ${b.c} electrons.</b> An ${b.lab[1]} sublevel has ${SUB_CAP[b.lab[1]]/2} orbital${b.lab[1]==='s'?'':'s'} with at most 2 electrons each, so it holds ${SUB_CAP[b.lab[1]]}.`};}
+  const ok=forms.some(f=>mapsEqual(f,p.map));let note='',diag='';
+  if(ok){if(o.want==='full'&&p.core)note='You used noble-gas shorthand. The question asked for the complete configuration, so on a test write out every sublevel.';
+    else if(o.want==='abbr'&&!p.core)note='Correct, but the question asked for the abbreviated form. Start with the previous noble gas in brackets.';
+    else if(o.want==='abbr'&&p.core&&coreFor(mapTotal(forms[0]))&&p.core!==coreFor(mapTotal(forms[0]))[1])note=`Correct, but the shorthand normally uses the closest noble gas before it: [${coreFor(mapTotal(forms[0]))[1]}].`;
+    return {ok,note};}
+  const tot=mapTotal(p.map);
+  if(tot!==o.expect)diag=`<b>Electron count.</b> Your configuration has ${tot} electron${tot===1?'':'s'}, but ${o.label} has ${o.expect}.`;
+  else if(o.wrongWay&&mapsEqual(o.wrongWay,p.map))diag='<b>Remove from the highest n first.</b> For transition-metal cations, the outer s electrons leave before the d electrons, even though s filled first.';
+  else{const ks=subsOf(p.map);const hi=ks.find(k=>ks.some(j=>SUB_IDX[j]<SUB_IDX[k]&&p.map[j]<SUB_CAP[j[1]]))||ks.find(k=>ORB_SUBS.some(([j,c])=>SUB_IDX[j]<SUB_IDX[k]&&(p.map[j]||0)<c));
+    diag=hi?`<b>Filling order.</b> ${hi} has electrons while a lower-energy sublevel still has room. Fill in Aufbau order: 1s 2s 2p 3s 3p 4s 3d 4p…`:'<b>Check each sublevel</b> against the filling order.';}
+  return {ok:false,diag};}
+function cfgAnswer(z,want){const f=neutralForms(z),show=m=>want==='abbr'?fmtAbbr(m):fmtFull(m);let h=show(f[0]);if(f.length>1)h+=`<br><span class="muted">Also accepted: ${f.slice(1).map(show).join(' or ')}</span>`;return h;}
+function unpaired(m){let u=0;for(const k in m){const o=SUB_CAP[k[1]]/2,c=m[k];u+=c<=o?c:2*o-c;}return u;}
+
+/* ---------- light ---------- */
+const CL=3.00e8,HP=6.63e-34,RH=2.18e-18;
+const En=n=>-RH/(n*n);
+const REGIONS=['radio','micro','ir','visible','uv','xray','gamma'];
+const REG_NAME={radio:'Radio waves',micro:'Microwaves',ir:'Infrared',visible:'Visible light',uv:'Ultraviolet',xray:'X-rays',gamma:'Gamma rays'};
+const REG_RANGE={radio:[1,1e4],micro:[1e-3,1],ir:[7e-7,1e-3],visible:[4e-7,7e-7],uv:[1e-8,4e-7],xray:[1e-11,1e-8],gamma:[1e-14,1e-11]};
+const REG_SAMPLE={radio:[10,500],micro:[2e-3,5e-2],ir:[2e-6,5e-5],visible:[4.2e-7,6.8e-7],uv:[5e-8,3e-7],xray:[5e-11,5e-9],gamma:[1e-13,5e-12]};
+function regionOf(l){return l<1e-11?'gamma':l<1e-8?'xray':l<4e-7?'uv':l<=7e-7?'visible':l<1e-3?'ir':l<1?'micro':'radio';}
+function sampleLam(reg){const [a,b]=REG_SAMPLE[reg];return +Math.exp(Math.log(a)+Math.random()*(Math.log(b)-Math.log(a))).toPrecision(3);}
+const COLORS=[['violet',415],['blue',465],['green',525],['yellow',575],['orange',605],['red',660]];
+function colorName(nm){return nm<440?'violet':nm<490?'blue':nm<560?'green':nm<590?'yellow':nm<625?'orange':'red';}
+function nmRGB(w){let r=0,g=0,b=0;if(w<440){r=-(w-440)/60;b=1;}else if(w<490){g=(w-440)/50;b=1;}else if(w<510){g=1;b=-(w-510)/20;}else if(w<580){r=(w-510)/70;g=1;}else if(w<645){r=1;g=-(w-645)/65;}else{r=1;}
+  const f=w<420?.3+.7*(w-380)/40:w>700?.3+.7*(780-w)/80:1;const c=x=>Math.round(255*Math.pow(Math.max(0,x)*f,.8));return `rgb(${c(r)},${c(g)},${c(b)})`;}
+function specStrip(markLam){
+  const segs=REGIONS.map(r=>`<div class="${r==='visible'?'spec-vis':''}">${REG_NAME[r].replace(' light','').replace(' waves','').replace(' rays','')}</div>`).join('');
+  let mark='';if(markLam){const i=REGIONS.indexOf(regionOf(markLam)),[lo,hi]=REG_RANGE[REGIONS[i]];const fr=1-(Math.log(markLam)-Math.log(lo))/(Math.log(hi)-Math.log(lo));const left=(i+Math.min(.97,Math.max(.03,fr)))/REGIONS.length*100;mark=`<span class="spec-mark" style="left:${left.toFixed(1)}%" title="${(markLam*1e9).toFixed(0)} nm"></span>`;}
+  return `<div class="spec"><div class="spec-bar">${segs}${mark}</div><div class="spec-ends"><span>← Longer wavelength · lower frequency · lower energy</span><span>Shorter wavelength · higher frequency · higher energy →</span></div></div>`;}
+
+/* ---------- energy-level explorer ---------- */
+const ELAB={from:3,to:2};
+function elabHTML(){return `<div class="lab" id="elab"><div class="lab-head"><span class="eyebrow">Try it</span><h3>Electron jump explorer</h3><p>Pick where a hydrogen electron starts and where it ends. Watch whether it absorbs or emits, and what light comes out.</p></div><div class="lab-body"><div id="elab-svg"></div><div class="lab-ctrl"><div class="lab-row"><span>From</span><div class="seg levels" id="elab-from"></div></div><div class="lab-row"><span>To</span><div class="seg levels" id="elab-to"></div></div><div id="elab-out" class="lab-out"></div></div></div><div id="elab-spec"></div></div>`;}
+function elabSet(k,n){ELAB[k]=n;elabRender();}
+function elabRender(){
+  const box=document.getElementById('elab');if(!box)return;const {from:f,to:t}=ELAB;
+  ['from','to'].forEach(k=>{document.getElementById('elab-'+k).innerHTML=[1,2,3,4,5,6].map(n=>`<button class="${ELAB[k]===n?'active':''}" onclick="elabSet('${k}',${n})">${n}</button>`).join('');});
+  const W=300,H=300,Y=n=>n===Infinity?H-14-(H-30)*(1-Math.pow(1/6,.8))-24:H-14-(H-30)*(1-Math.pow(1/n,.8));
+  let s=`<svg viewBox="0 0 ${W} ${H}" class="elab-svg" role="img" aria-label="Energy levels for hydrogen"><defs><marker id="ah" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="currentColor"/></marker></defs>`;
+  s+=`<line x1="44" x2="${W-12}" y1="${Y(Infinity)}" y2="${Y(Infinity)}" class="lv inf"/><text x="8" y="${Y(Infinity)+4}" class="lvt">n = ∞</text>`;
+  for(let n=1;n<=6;n++){const yy=Y(n);s+=`<line x1="44" x2="${W-12}" y1="${yy}" y2="${yy}" class="lv${n===f||n===t?' on':''}"/><text x="8" y="${yy+4}" class="lvt">n = ${n}</text>`;}
+  const out=document.getElementById('elab-out');
+  if(f===t){s+='</svg>';document.getElementById('elab-svg').innerHTML=s;out.innerHTML='<div class="muted">Pick two different levels.</div>';document.getElementById('elab-spec').innerHTML=specStrip();return;}
+  const dE=Math.abs(En(t)-En(f)),nu=dE/HP,lam=CL/nu,reg=regionOf(lam),em=t<f,nm=lam*1e9;
+  const col=reg==='visible'?nmRGB(nm):'var(--accent)';
+  s+=`<g style="color:${em?col:'var(--ink)'}"><line x1="${W/2+20}" x2="${W/2+20}" y1="${Y(f)}" y2="${Y(t)}" stroke="currentColor" stroke-width="3" marker-end="url(#ah)"/></g>`;
+  if(em)s+=`<path d="M${W/2+30},${(Y(f)+Y(t))/2} q6,-8 12,0 t12,0 t12,0 t12,0" fill="none" stroke="${col}" stroke-width="2.5"/>`;
+  s+='</svg>';document.getElementById('elab-svg').innerHTML=s;
+  out.innerHTML=`<div class="kv"><span>Process</span><b>${em?'Emission (falls, releases a photon)':'Absorption (jumps up, takes in a photon)'}</b></div>
+   <div class="kv"><span>E<sub>${f}</sub> → E<sub>${t}</sub></span><b>${sci(En(f),3)} → ${sci(En(t),3)} J</b></div>
+   <div class="kv"><span>Photon energy ΔE</span><b>${sci(dE,3)} J</b></div>
+   <div class="kv"><span>Frequency ν = ΔE ÷ h</span><b>${sci(nu,3)} Hz</b></div>
+   <div class="kv"><span>Wavelength λ = c ÷ ν</span><b>${nm>=1000?sci(lam,3)+' m':nm.toFixed(0)+' nm'}</b></div>
+   <div class="kv"><span>Type of light</span><b>${reg==='visible'?`<span class="swatch" style="background:${col}"></span>${cap(colorName(nm))} visible light`:REG_NAME[reg]}</b></div>`;
+  document.getElementById('elab-spec').innerHTML=specStrip(lam);}
+
+/* ---------- orbital diagram builder ---------- */
+const OB_ROWS=['4p','3d','4s','3p','3s','2p','2s','1s'];
+const OB={};
+function obInit(id,z){const cells={};OB_ROWS.forEach(s=>cells[s]=Array(SUB_CAP[s[1]]/2).fill(0));OB[id]={z,cells,locked:false,bad:{}};}
+function obGrid(cells,opt={}){return `<div class="ob">${OB_ROWS.filter(s=>!opt.rows||opt.rows.includes(s)).map(sub=>`<div class="ob-row"><span class="lbl">${sub}</span><div class="ob-orbs">${cells[sub].map((v,i)=>opt.id?`<button type="button" class="ob-orb${opt.bad&&opt.bad[sub]?' bad':''}${opt.locked?' static':''}" onclick="obClick('${opt.id}','${sub}',${i})" aria-label="${sub} orbital ${i+1}, ${['empty','one electron','two electrons'][v]}">${['','↑','↑↓'][v]}</button>`:`<span class="ob-orb static">${['','↑','↑↓'][v]}</span>`).join('')}</div></div>`).join('')}</div>`;}
+function obRedraw(id){const o=OB[id],el=document.getElementById(id+'-grid');if(el)el.innerHTML=obGrid(o.cells,{id,bad:o.bad,locked:o.locked});}
+function obClick(id,sub,i){const o=OB[id];if(!o||o.locked)return;o.cells[sub][i]=(o.cells[sub][i]+1)%3;o.bad={};obRedraw(id);}
+function obMap(id){const m={};for(const s of OB_ROWS){const c=OB[id].cells[s].reduce((a,b)=>a+b,0);if(c)m[s]=c;}return m;}
+function cellsFor(m){const cells={};OB_ROWS.forEach(s=>{const o=SUB_CAP[s[1]]/2,c=m[s]||0,arr=Array(o).fill(0);for(let i=0;i<Math.min(c,o);i++)arr[i]=1;for(let i=0;i<c-o;i++)arr[i]=2;cells[s]=arr;});return cells;}
+function obCheck(id){const o=OB[id],m=obMap(id),z=o.z,e=EL(z),issues=[],bad={};
+  const tot=mapTotal(m);if(tot!==z)issues.push(`<b>Electron count.</b> You placed ${tot} electron${tot===1?'':'s'}; ${e.n.toLowerCase()} has ${z}.`);
+  const order=ORB_SUBS.map(x=>x[0]).filter(s=>OB_ROWS.includes(s));
+  for(let i=0;i<order.length;i++){const s=order[i];if((m[s]||0)>0){const lower=order.slice(0,i).find(t=>(m[t]||0)<SUB_CAP[t[1]]);if(lower){bad[s]=1;issues.push(`<b>Aufbau.</b> ${s} has electrons, but ${lower} isn't full yet. Fill lower-energy orbitals first.`);break;}}}
+  OB_ROWS.forEach(s=>{const c=o.cells[s];if(c.length>1&&c.includes(2)&&c.includes(0)){bad[s]=1;issues.push(`<b>Hund's rule.</b> In ${s}, an orbital is paired while another is still empty. Put one electron in each orbital before pairing any.`);}});
+  const ok=!issues.length&&mapsEqual(aufbauMap(z),m);if(!issues.length&&!ok)issues.push('<b>Not the ground state.</b> Compare each sublevel with the filling order.');
+  o.bad=bad;return {ok,issues};}
+let OBL_Z=7;
+function obLearnHTML(){return `<div class="lab"><div class="lab-head"><span class="eyebrow">Try it</span><h3>Orbital diagram builder</h3><p>Tap an orbital to add an electron, tap again to pair it, and once more to clear it. Pauli's rule is built in: no orbital can hold more than two.</p></div><div class="ob-el"><button class="btn sm" onclick="obLearnStep(-1)" aria-label="Previous element">←</button><span class="sym" id="obl-sym"></span><button class="btn sm" onclick="obLearnStep(1)" aria-label="Next element">→</button></div><div class="muted" id="obl-name" style="text-align:center;margin-bottom:10px"></div><div id="obl-grid"></div><div class="ob-ctrl"><button class="btn primary sm" onclick="obLearnCheck()">Check</button><button class="btn sm" onclick="obLearnReset()">Clear</button><button class="btn sm" onclick="obLearnShow()">Show answer</button></div><div id="obl-msg" class="ob-msg"></div></div>`;}
+function obLearnRender(){if(!document.getElementById('obl-grid'))return;if(!OB.obl||OB.obl.z!==OBL_Z)obInit('obl',OBL_Z);const e=EL(OBL_Z);document.getElementById('obl-sym').textContent=e.s;document.getElementById('obl-name').textContent=`${e.n} · ${OBL_Z} electron${OBL_Z===1?'':'s'}`;obRedraw('obl');}
+function obLearnStep(d){OBL_Z=Math.min(36,Math.max(1,OBL_Z+d));obInit('obl',OBL_Z);document.getElementById('obl-msg').innerHTML='';obLearnRender();}
+function obLearnReset(){obInit('obl',OBL_Z);document.getElementById('obl-msg').innerHTML='';obRedraw('obl');}
+function obLearnShow(){OB.obl.cells=cellsFor(aufbauMap(OBL_Z));OB.obl.bad={};obRedraw('obl');document.getElementById('obl-msg').innerHTML=`<div class="feedback ok"><div class="why">${EL(OBL_Z).s}: ${fmtFull(aufbauMap(OBL_Z))}</div></div>`;}
+function obLearnCheck(){const r=obCheck('obl');obRedraw('obl');document.getElementById('obl-msg').innerHTML=`<div class="feedback ${r.ok?'ok':'bad'}"><div class="verdict">${r.ok?'Correct':'Not quite'}</div><div class="why">${r.ok?`All three rules followed. ${EL(OBL_Z).s}: ${fmtFull(aufbauMap(OBL_Z))}`:r.issues.map(x=>`<p>${x}</p>`).join('')}</div></div>`;}
+
+/* ---------- trend explorer & comparison reasoning ---------- */
+const TE_PROPS=[['radius','Atomic radius'],['ie','Ionization energy'],['en','Electronegativity'],['ea','Electron affinity'],['metal','Metallic character']];
+const TE_DIR={radius:'Larger going <b>down</b> a group and to the <b>left</b> across a period.',ie:'Higher going <b>up</b> a group and to the <b>right</b> across a period.',en:'Higher going <b>up</b> and to the <b>right</b>. Noble gases are left out: they don\'t form bonds.',ea:'Higher going <b>up</b> and to the <b>right</b>. Noble gases are left out: their shells are already full.',metal:'Higher going <b>down</b> and to the <b>left</b>. The exact opposite of ionization energy.'};
+const WEAK={radius:1,metal:1};
+const PROP_Q={radius:'has the larger atomic radius',ie:'has the higher first ionization energy',en:'has the higher electronegativity',ea:'has the higher electron affinity',metal:'is the more reactive metal',nonmetal:'is the more reactive nonmetal'};
+const OUTCOME={radius:'That makes the atom larger.',metal:'That makes it easier to lose electrons.',ie:'That means it takes more energy to remove an electron.',en:'That means it pulls harder on shared electrons in a bond.',ea:'That means it attracts an extra electron more strongly.',nonmetal:'That means it gains electrons more easily.'};
+const lc=z=>EL(z).n.toLowerCase();
+const noblePropOut=p=>p==='en'||p==='ea'||p==='nonmetal';
+function trendRel(a,b){const pa=periodOf(a),pb=periodOf(b),xa=across(a),xb=across(b);
+  if(pa===pb)return {rel:'period',strong:xa>xb?a:b,weak:xa>xb?b:a};
+  if(groupOf(a)===groupOf(b)&&!isF(a)&&!isF(b))return {rel:'group',strong:pa<pb?a:b,weak:pa<pb?b:a};
+  if((pa>pb&&xa<xb)||(pb>pa&&xb<xa))return {rel:'diag',weak:pa>pb?a:b,strong:pa>pb?b:a};
+  return {rel:'conflict',lower:pa>pb?a:b,upper:pa>pb?b:a};}
+function causeText(rel,w,l,weak){const W=EL(w).n,L=lc(l);
+  if(rel==='group')return weak?`${W} has more energy levels, so more shielding sits between its nucleus and its outer electrons. Those electrons are farther away and feel a weaker pull`:`${W} has fewer energy levels and less shielding, so its outer electrons are closer to the nucleus and feel a stronger pull`;
+  if(rel==='period')return weak?`${W} has fewer protons (a lower nuclear charge) than ${L}, with the same shielding, so it holds its outer electrons less tightly`:`${W} has more protons (a higher nuclear charge) than ${L}, with the same shielding, so it pulls its outer electrons in more tightly`;
+  return weak?`${W} is lower and farther left than ${L}: more shielding and a lower nuclear charge both weaken the pull on its outer electrons`:`${W} is higher and farther right than ${L}: less shielding and a higher nuclear charge both strengthen its pull on electrons`;}
+function wrongReasons(rel,w,l,weak,prop){const W=EL(w).n,L=lc(l);
+  const pool=rel==='group'?(weak?[`${W} has more electrons, and more electrons take up more space`,`${W} has a greater atomic mass`,`${W} has more protons pulling on its outer electrons`,`${W} has more neutrons in its nucleus`]:[`${W} has more protons than ${L}`,`${W}'s outer electrons are farther from the nucleus`,`${W} has more electrons to hold onto`,`${W} has a greater atomic mass`])
+   :rel==='period'?(weak?[`${W} has more energy levels than ${L}`,`${W} has more shielding than ${L}`,`${W} has more electrons than ${L}`]:[`${W} has more energy levels than ${L}`,`${W} has more shielding than ${L}`,`${W} is larger than ${L}`])
+   :(weak?[`${W} has more electrons, and more electrons take up more space`,`${W} has a greater atomic mass`,`${W} has more protons pulling on its outer electrons`]:[`${W} has more energy levels than ${L}`,`${W}'s outer electrons are farther from the nucleus`,`${W} has a greater atomic mass`]);
+  return pickN(pool,3).map(t=>t+'. '+OUTCOME[prop]);}
+function nobleReason(N){return `${EL(N).n} is a noble gas with a full outer shell. It doesn't gain electrons or form bonds, so noble gases are left out of this trend.`;}
+function comparePair(a,b,prop){ // returns {winner, rel, correct, wrongs, ambiguous}
+  const isNoble=z=>EL(z).c==='g';
+  if(noblePropOut(prop)&&(isNoble(a)||isNoble(b))){if(isNoble(a)&&isNoble(b))return {ambiguous:'Both are noble gases, which are left out of this trend.'};const N=isNoble(a)?a:b,w=N===a?b:a;
+    return {winner:w,rel:'noble',correct:nobleReason(N),wrongs:pickN([`${EL(w).n} has more protons than ${lc(N)}.`,`${EL(w).n} has more energy levels than ${lc(N)}.`,`${EL(N).n}'s outer electrons are too far from the nucleus to attract anything.`],3)};}
+  const r=trendRel(a,b);
+  if(r.rel==='conflict')return {ambiguous:`${EL(r.lower).n} is lower (more shielding) but ${lc(r.upper)} is farther left (lower nuclear charge). The two effects point in opposite directions, so trends alone can't settle this pair.`};
+  const weak=!!WEAK[prop],w=weak?r.weak:r.strong,l=w===a?b:a;
+  return {winner:w,rel:r.rel,correct:causeText(r.rel,w,l,weak)+'. '+OUTCOME[prop],wrongs:wrongReasons(r.rel,w,l,weak,prop)};}
+function posNote(a,b){const f=z=>`${EL(z).s}: period ${periodOf(z)}, group ${groupOf(z)}`;return `<p class="muted">${f(a)} · ${f(b)}</p>`;}
+let TE={prop:'radius',sel:[]};
+function teScore(z,prop){const p=periodOf(z),g=groupOf(z),weak=(p-1)/6*.6+(18-g)/17*.4;return WEAK[prop]?weak:1-weak;}
+function teHTML(){return `<div class="lab" id="te"><div class="lab-head"><span class="eyebrow">Try it</span><h3>Trend explorer</h3><p>Pick a trend to shade the table. Then tap any two elements to see which one wins, and why.</p></div><div class="seg small te-seg" id="te-seg"></div><div class="te-dir" id="te-dir"></div><div class="te-wrap"><div class="te-grid" id="te-grid"></div></div><p class="muted" style="font-size:.8rem;margin:8px 0 0">Shading shows the general direction of each trend, not exact values. The f-block is left out.</p><div id="te-out" class="te-out"></div></div>`;}
+function teRender(){if(!document.getElementById('te'))return;const P=TE.prop;
+  document.getElementById('te-seg').innerHTML=TE_PROPS.map(([k,l])=>`<button class="${k===P?'active':''}" onclick="TE.prop='${k}';teRender()">${l}</button>`).join('');
+  document.getElementById('te-dir').innerHTML=TE_DIR[P];
+  let h='';PT.forEach(e=>{if(isF(e.z)||e.z>118)return;const [r,c]=ptPos(e.z);if(r>7)return;const off=(P==='en'||P==='ea')&&e.c==='g';const sc=teScore(e.z,P),pct=Math.round(8+sc*72);
+    h+=`<button class="te-cell${off?' off':''}${TE.sel.includes(e.z)?' sel':''}" style="grid-row:${r};grid-column:${c};${off?'':`background:color-mix(in srgb,var(--accent) ${pct}%,var(--surface));color:${pct>50?'var(--bg)':'var(--ink)'}`}" onclick="teClick(${e.z})" title="${e.n}">${e.s}</button>`;});
+  h+=`<div class="te-gap" style="grid-row:6;grid-column:3">*</div><div class="te-gap" style="grid-row:7;grid-column:3">**</div>`;
+  document.getElementById('te-grid').innerHTML=h;
+  const out=document.getElementById('te-out');
+  if(TE.sel.length<2){out.innerHTML=`<div class="muted">${TE.sel.length?`Picked ${EL(TE.sel[0]).n}. Now tap a second element.`:'Tap two elements to compare them.'}</div>`;return;}
+  const [a,b]=TE.sel,P2=P,cp=comparePair(a,b,P2),lab=TE_PROPS.find(x=>x[0]===P2)[1].toLowerCase();
+  out.innerHTML=cp.ambiguous?`<div class="feedback bad"><div class="verdict">Too close to call</div><div class="why"><p>${cp.ambiguous}</p>${posNote(a,b)}</div></div>`:`<div class="feedback ok"><div class="verdict">${EL(cp.winner).n} ${PROP_Q[P2]}</div><div class="why"><p>${cp.correct}</p>${posNote(a,b)}</div></div>`;}
+function teClick(z){TE.sel=TE.sel.length>=2?[z]:TE.sel.includes(z)?TE.sel:[...TE.sel,z];teRender();}
+
+/* ---------- mini tables ---------- */
+function blockOf(z){if(isF(z))return 'f';const g=groupOf(z);return z===2||g<=2?'s':g>=13?'p':'d';}
+function miniTable(colorFn,labelFn){let h='';PT.forEach(e=>{if(e.z>118)return;const [r,c]=ptPos(e.z);h+=`<span class="mt-cell ${colorFn(e)}" style="grid-row:${r};grid-column:${c}" title="${e.n}">${e.s}</span>`;});return `<div class="te-wrap"><div class="mt-grid">${h}</div></div>`;}
+function blockMap(){return miniTable(e=>'b-'+blockOf(e.z))+`<div class="legend"><span><i class="b-s"></i>s-block · fills ns</span><span><i class="b-p"></i>p-block · fills np</span><span><i class="b-d"></i>d-block · fills (n−1)d</span><span><i class="b-f"></i>f-block · fills (n−2)f</span></div>`;}
+function famKey(e){const g=groupOf(e.z);if(e.z===1)return 'h';if(isF(e.z))return 'inner';if(g===1)return 'alkali';if(g===2)return 'alkaline';if(g===17)return 'halogen';if(g===18)return 'noble';if(g>=3&&g<=12)return 'trans';return 'other';}
+function familyMap(){return miniTable(e=>'f-'+famKey(e))+`<div class="legend"><span><i class="f-alkali"></i>Alkali metals (group 1)</span><span><i class="f-alkaline"></i>Alkaline earth metals (group 2)</span><span><i class="f-trans"></i>Transition metals</span><span><i class="f-inner"></i>Inner transition metals</span><span><i class="f-halogen"></i>Halogens (group 17)</span><span><i class="f-noble"></i>Noble gases (group 18)</span></div>`;}
+
+/* ===================== UNIT 2: LEARN CONTENT ===================== */
+const LEARN_INIT={};
+const S=x=>`<sup>${x}</sup>`;
+
+LEARN.light=()=>`
+<section>
+  <h2>A short history of the atom</h2>
+  <p>You only need the big picture here. Each model kept what worked and fixed what didn't.</p>
+  <div class="tl">
+    <div class="tl-item"><h4>Dalton<span>early 1800s</span></h4><p>All matter is made of tiny, solid, indivisible atoms. Atoms of the same element are identical.</p></div>
+    <div class="tl-skip">Later experiments found electrons and a tiny, dense, positive nucleus, which led to a "planetary" model with electrons circling like planets.</div>
+    <div class="tl-item key"><h4>Bohr<span>1913</span></h4><p>Electrons can only exist at fixed energy levels. They jump between levels by absorbing or releasing exact amounts of energy.</p><p class="chg">This explained why each element gives off only certain colors of light.</p></div>
+    <div class="tl-item"><h4>de Broglie<span>1923</span></h4><p>Moving electrons also behave like waves (a standing wave around the nucleus). An electron is both: this is wave–particle duality.</p></div>
+    <div class="tl-item"><h4>Heisenberg<span>1927</span></h4><p>The uncertainty principle: you can't know an electron's exact position and its momentum at the same time.</p></div>
+    <div class="tl-item"><h4>Schrödinger<span>1927</span></h4><p>His equation produces orbitals: 3D maps of where an electron is most likely to be found.</p><p class="chg">Neat planetary orbits are abandoned. This is the modern, quantum mechanical model.</p></div>
+  </div>
+</section>
+<section>
+  <h2>Light is a wave</h2>
+  <div class="facts">
+    <div class="fact"><div class="k">Wavelength · λ</div><div class="v">peak to peak</div><div class="d">in m or nm (1 nm = 10${S('−9')} m)</div></div>
+    <div class="fact"><div class="k">Frequency · ν</div><div class="v">waves per second</div><div class="d">in Hz, which is the same as s${S('−1')}</div></div>
+    <div class="fact"><div class="k">Amplitude</div><div class="v">wave height</div><div class="d">brightness, not energy per photon</div></div>
+  </div>
+  <p>Visible light is a thin slice of the <b>electromagnetic spectrum</b>. Across the whole spectrum, wavelength, frequency, and energy always move together:</p>
+  ${specStrip()}
+  <div class="callout tip"><p><b>The pattern.</b> Long wavelength means low frequency means low energy (radio). Short wavelength means high frequency means high energy (gamma). Within visible light, red has the lowest energy and violet has the highest.</p></div>
+</section>
+<section>
+  <h2>The two equations</h2>
+  <div class="facts">
+    <div class="fact"><div class="k">Speed of light</div><div class="v">c = λν</div><div class="d">c = 3.00 × 10${S(8)} m/s. λ and ν are inversely related.</div></div>
+    <div class="fact"><div class="k">Planck</div><div class="v">E = hν</div><div class="d">h = 6.63 × 10${S('−34')} J/Hz. E and ν are directly related.</div></div>
+  </div>
+  <p>Between them you can get from any one of λ, ν, or E to the other two. Watch two unit traps: convert <b>nm to m</b> before using c = λν, and convert <b>kJ to J</b> before using E = hν.</p>
+  <div class="example"><div class="eyebrow">Worked example</div><p>Sodium street lamps glow at 589 nm. Find the frequency and the energy of one photon.</p><ol><li>589 nm = 5.89 × 10${S('−7')} m</li><li>ν = c ÷ λ = (3.00 × 10${S(8)}) ÷ (5.89 × 10${S('−7')}) = <b>5.09 × 10${S(14)} Hz</b></li><li>E = hν = (6.63 × 10${S('−34')})(5.09 × 10${S(14)}) = <b>3.38 × 10${S('−19')} J</b></li></ol></div>
+</section>
+<section>
+  <h2>Bohr's energy levels</h2>
+  <p>In Bohr's model, an electron can only sit at certain energy levels, numbered n = 1, 2, 3, and so on. For hydrogen:</p>
+  <div class="fact" style="margin-bottom:14px"><div class="k">Energy of level n</div><div class="v">E<sub>n</sub> = −2.18 × 10${S('−18')} J × (1/n²)</div><div class="d">Negative because a free electron (n = ∞) counts as zero. Lower levels are more negative.</div></div>
+  <div class="two">
+    <div class="rule"><h3>Absorption · going up</h3><p>The electron takes in exactly the energy it needs and jumps to a higher level. The atom goes from its <b>ground state</b> to an <b>excited state</b>.</p></div>
+    <div class="rule"><h3>Emission · going down</h3><p>The electron falls to a lower level and releases the difference as one photon. Those photons make an element's <b>bright-line (emission) spectrum</b>.</p></div>
+  </div>
+  <p style="margin-top:14px">The photon carries the gap between the two levels: <b>ΔE = |E<sub>final</sub> − E<sub>initial</sub>|</b>. From there, E = hν gives its frequency and c = λν gives its wavelength.</p>
+  <div class="example"><div class="eyebrow">Worked example</div><p>A hydrogen electron falls from n = 3 to n = 2. What color is the light?</p><ol><li>E<sub>3</sub> = −2.18 × 10${S('−18')} ÷ 9 = −2.42 × 10${S('−19')} J</li><li>E<sub>2</sub> = −2.18 × 10${S('−18')} ÷ 4 = −5.45 × 10${S('−19')} J</li><li>ΔE = 5.45 − 2.42 = 3.03 × 10${S('−19')} J, released</li><li>ν = ΔE ÷ h = 4.57 × 10${S(14)} Hz</li><li>λ = c ÷ ν = 6.57 × 10${S('−7')} m = <b>657 nm, red light</b></li></ol></div>
+  <div class="callout"><p><b>Bigger drop, bigger energy.</b> Levels crowd together as n grows, so falls that end at n = 1 release the most energy (ultraviolet). Falls ending at n = 2 are visible. Small falls between high levels give infrared.</p></div>
+</section>
+<section>${elabHTML()}</section>`;
+LEARN_INIT.light=elabRender;
+
+LEARN.config=()=>`
+<section>
+  <h2>Energy levels, sublevels, orbitals</h2>
+  <p>Schrödinger's orbitals are regions where an electron is likely to be. They're organized in layers: each energy level n has sublevels, and each sublevel has a set number of orbitals.</p>
+  <div class="tscroll"><table><tr><th>Sublevel</th><th>Orbitals</th><th>Holds up to</th><th>First appears at</th></tr><tr><td>s</td><td>1</td><td>2 electrons</td><td>n = 1</td></tr><tr><td>p</td><td>3</td><td>6 electrons</td><td>n = 2</td></tr><tr><td>d</td><td>5</td><td>10 electrons</td><td>n = 3</td></tr><tr><td>f</td><td>7</td><td>14 electrons</td><td>n = 4</td></tr></table></div>
+  <p style="margin-top:12px">So 1p, 2d, and 3f don't exist. A configuration that uses one is impossible.</p>
+</section>
+<section>
+  <h2>The three rules</h2>
+  <div class="rules3">
+    <div class="rule"><h3>Aufbau principle</h3><p>"Build up." Electrons fill the lowest-energy orbital available first.</p>${obGrid(cellsFor({'1s':2,'2s':1}),{rows:['2s','1s']})}<p class="muted" style="font-size:.85rem;margin:0">Lithium: 1s fills before 2s.</p></div>
+    <div class="rule"><h3>Pauli exclusion principle</h3><p>An orbital holds at most two electrons, and they must have opposite spins: ↑↓.</p>${obGrid(cellsFor({'1s':2}),{rows:['1s']})}<p class="muted" style="font-size:.85rem;margin:0">Helium: one up, one down. A third can't fit.</p></div>
+    <div class="rule"><h3>Hund's rule</h3><p>In a set of equal-energy orbitals, every orbital gets one electron before any pair up.</p>${obGrid(cellsFor({'2p':3}),{rows:['2p']})}<p class="muted" style="font-size:.85rem;margin:0">Nitrogen's 2p: three singles, not a pair beside an empty orbital.</p></div>
+  </div>
+</section>
+<section>
+  <h2>Filling order: read it off the table</h2>
+  <p>The periodic table is your best friend. Each region of the table is the sublevel being filled, so reading the table left to right, top to bottom gives the filling order.</p>
+  ${blockMap()}
+  <p class="order-line">1s → 2s → 2p → 3s → 3p → 4s → 3d → 4p → 5s → 4d → 5p → 6s → 4f → 5d → 6p → 7s → 5f → 6d → 7p</p>
+  <div class="callout"><p><b>The d-block runs one level behind.</b> In row 4 it fills 3d, not 4d. The f-block runs two behind: row 6 fills 4f. That's why 4s comes before 3d.</p></div>
+  <div class="example"><div class="eyebrow">Worked example · gallium, 31 electrons</div><ol><li>Walk across the table to Ga: 1s${S(2)} 2s${S(2)} 2p${S(6)} 3s${S(2)} 3p${S(6)} 4s${S(2)} 3d${S(10)} 4p${S(1)}</li><li>Check the total: 2 + 2 + 6 + 2 + 6 + 2 + 10 + 1 = 31 ✓</li></ol></div>
+</section>
+<section>
+  <h2>Noble-gas shorthand</h2>
+  <p>Replace everything up to the previous noble gas with its symbol in brackets, then write what comes after.</p>
+  <div class="example"><div class="eyebrow">Examples</div><ol><li>Gallium: [Ar] 4s${S(2)} 3d${S(10)} 4p${S(1)}</li><li>Barium: [Xe] 6s${S(2)}</li><li>Praseodymium, an f-block element: [Xe] 6s${S(2)} 4f${S(3)}, or with one electron placed in 5d first, [Xe] 6s${S(2)} 5d${S(1)} 4f${S(2)}. <b>Both forms are accepted.</b></li></ol></div>
+  <p>The <b>valence electrons</b> are the ones in the highest energy level (largest n). Gallium has 3: 4s${S(2)} 4p${S(1)}. Everything inside the brackets is a <b>core electron</b>.</p>
+</section>
+<section>
+  <h2>Ions and isoelectronic species</h2>
+  <ul><li><b>Anions:</b> add the extra electrons to the next open spots. O${S('2−')}: 1s${S(2)} 2s${S(2)} 2p${S(6)}.</li><li><b>Cations:</b> remove electrons from the highest n first, which isn't always the last sublevel filled. Fe is [Ar] 4s${S(2)} 3d${S(6)}, so Fe${S('2+')} is [Ar] 3d${S(6)}: the 4s electrons leave first.</li></ul>
+  <p>Species with the same electron configuration are <b>isoelectronic</b>. O${S('2−')}, F${S('−')}, Na${S('+')}, and Mg${S('2+')} each have 10 electrons arranged like neon, so they're all isoelectronic with Ne and with each other.</p>
+  <div class="callout tip"><p><b>Why these ions form.</b> A noble-gas configuration has no partly filled sublevels, which makes it stable. Elements in the same group gain or lose the same number of electrons to reach one, so they form the same ion charge.</p></div>
+</section>
+<section>
+  <h2>Spotting a bad configuration</h2>
+  <div class="two">
+    <div class="rule"><h3>Excited (possible)</h3><p>The electron count is right, but an electron sits in a higher sublevel while a lower one still has room. Sodium written as 1s${S(2)} 2s${S(2)} 2p${S(6)} <b>3p${S(1)}</b> is excited: 3s is empty.</p></div>
+    <div class="rule"><h3>Impossible</h3><p>It uses a sublevel that doesn't exist (2d, 3f), or puts more electrons in a sublevel than it can hold (2p${S(8)}, 3s${S(3)}).</p></div>
+  </div>
+  <p style="margin-top:12px">If the total doesn't match the atomic number, it isn't the neutral atom. It's either a mistake or the configuration of an ion.</p>
+</section>
+<section>${obLearnHTML()}</section>`;
+LEARN_INIT.config=obLearnRender;
+
+LEARN.trends=()=>`
+<section>
+  <h2>Your toolkit</h2>
+  <p>Every trend comes back to one question: how hard does the nucleus pull on the outermost electrons? Three things decide that.</p>
+  <div class="facts">
+    <div class="fact"><div class="k">Nuclear charge · Z</div><div class="v">protons</div><div class="d">Goes up across a period and down a group.</div></div>
+    <div class="fact"><div class="k">Shielding</div><div class="v">inner electrons</div><div class="d">Layers of core electrons between the nucleus and the valence electrons. Goes up down a group; stays the same across a period.</div></div>
+    <div class="fact"><div class="k">Distance</div><div class="v">energy levels</div><div class="d">Each new period adds a level, so valence electrons sit farther out.</div></div>
+  </div>
+  <div class="fact" style="margin:10px 0 14px"><div class="k">Coulomb's law</div><div class="v">F<sub>att</sub> = kq₁q₂ / r²</div><div class="d">More nuclear charge, stronger pull. More distance r, much weaker pull, because r is squared.</div></div>
+  <div class="tscroll"><table><tr><th></th><th>Nuclear charge</th><th>Shielding</th><th>Pull on outer electrons</th></tr><tr><td>Across a period →</td><td>increases</td><td>stays the same</td><td><b>stronger</b></td></tr><tr><td>Down a group ↓</td><td>increases</td><td>increases</td><td><b>weaker</b></td></tr></table></div>
+  <div class="callout"><p><b>Down a group, shielding wins.</b> Going down adds protons, but it also adds a whole energy level. When nuclear charge and shielding work against each other, shielding matters more, so the pull gets weaker.</p></div>
+</section>
+<section>
+  <h2>The trends</h2>
+  <div class="trend-cards">
+    <div class="tcard"><h3>Atomic radius</h3><p class="def">Distance from the nucleus to the outermost electrons.</p><p class="dir">↓ larger down a group · ← larger to the left</p><p>Down: more levels and more shielding put the electrons farther out. Across: more protons pull the same level in tighter.</p></div>
+    <div class="tcard"><h3>Ionic radius</h3><p class="def">Size of an ion compared with its atom.</p><p class="dir">cations smaller · anions larger</p><p>A cation loses its outer electrons, and the leftover electrons are outnumbered by protons. An anion's extra electrons repel each other and spread out. In an isoelectronic series, more protons means smaller.</p></div>
+    <div class="tcard"><h3>First ionization energy</h3><p class="def">Energy needed to remove the outermost electron.</p><p class="dir">↑ higher up a group · → higher to the right</p><p>A stronger pull makes the electron harder to remove. Noble gases have the highest value in each period.</p></div>
+    <div class="tcard"><h3>Metallic character</h3><p class="def">How easily an atom loses electrons. Also called metal reactivity.</p><p class="dir">↓ higher down a group · ← higher to the left</p><p>The opposite of ionization energy. Francium is the most reactive metal. Larger metal atoms also conduct better: their loosely held electrons move freely through the "sea of electrons."</p></div>
+    <div class="tcard"><h3>Electron affinity</h3><p class="def">How easily an atom gains an electron. Also called nonmetal reactivity.</p><p class="dir">↑ higher up a group · → higher to the right</p><p>A strong pull can grab an extra electron. Fluorine is the most reactive nonmetal. Noble gases are left out because their shells are already full.</p></div>
+    <div class="tcard"><h3>Electronegativity</h3><p class="def">How strongly an atom pulls on shared electrons in a bond.</p><p class="dir">↑ higher up a group · → higher to the right</p><p>Same reasoning as electron affinity. Noble gases are left out because they don't form bonds.</p></div>
+  </div>
+</section>
+<section>
+  <h2>Two corners</h2>
+  <div class="two corners">
+    <div class="rule"><h3>Lower left · francium</h3><ul><li>Largest atoms</li><li>Lowest ionization energy</li><li>Most reactive metals</li></ul></div>
+    <div class="rule"><h3>Upper right · fluorine</h3><ul><li>Smallest atoms (besides noble gases)</li><li>Highest ionization energy, electron affinity, and electronegativity</li><li>Most reactive nonmetals</li></ul></div>
+  </div>
+</section>
+<section>
+  <h2>Successive ionization energies</h2>
+  <p>Removing a 2nd, 3rd, then 4th electron always takes more energy, because the same protons now pull on fewer electrons. The huge jump comes when you reach a core electron.</p>
+  <div class="iebars">${[['1st',578],['2nd',1817],['3rd',2745],['4th',11577]].map(([l,v])=>`<div class="iebar"><span class="l">${l}</span><span class="b"><i style="width:${(v/11577*100).toFixed(1)}%"${v>5000?' class="jump"':''}></i></span><span class="v">${v.toLocaleString()} kJ/mol</span></div>`).join('')}</div>
+  <p>Aluminum has 3 valence electrons (3s${S(2)} 3p${S(1)}). After losing those, it has neon's configuration. The 4th electron would have to come from a full inner level that's closer to the nucleus and less shielded, so the energy jumps about fourfold.</p>
+</section>
+<section>
+  <h2>Writing the explanation</h2>
+  <p>Tests ask you to explain, not just pick. Build every answer as the same chain:</p>
+  <p class="chain">position on the table → nuclear charge or shielding → distance of the outer electrons → strength of the pull → the property</p>
+  <div class="example"><div class="eyebrow">Example · Why is K a more reactive metal than Na?</div><p>"K is below Na in group 1, so it has one more energy level and more shielding. Its valence electron is farther from the nucleus and feels a weaker pull, so K loses that electron more easily."</p></div>
+</section>
+<section>${teHTML()}</section>`;
+LEARN_INIT.trends=teRender;
+
+LEARN.families=()=>`
+<section>
+  <h2>How the table is organized</h2>
+  <ul><li><b>Periods</b> (rows) each start a new energy level.</li><li><b>Groups</b>, or families (columns), share the same valence configuration ending. They gain or lose the same number of electrons, so they react alike.</li></ul>
+  ${familyMap()}
+</section>
+<section>
+  <h2>The named families</h2>
+  <div class="trend-cards">
+    <div class="tcard"><h3>Alkali metals</h3><p class="dir">Group 1 (I) · ends in ns${S(1)} · forms 1+</p><p>Soft, shiny, and the most reactive metals. They react violently with water. Li, Na, K, Rb, Cs, Fr. Hydrogen sits above them but isn't an alkali metal.</p></div>
+    <div class="tcard"><h3>Alkaline earth metals</h3><p class="dir">Group 2 (II) · ends in ns${S(2)} · forms 2+</p><p>Reactive metals, but less so than group 1. They lose 2 electrons to reach a noble-gas configuration. Be, Mg, Ca, Sr, Ba, Ra.</p></div>
+    <div class="tcard"><h3>Halogens</h3><p class="dir">Group 17 (VII) · ends in ns${S(2)} np${S(5)} · forms 1−</p><p>The most reactive nonmetals. They need just one electron to fill their shell and exist as diatomic molecules (F₂, Cl₂). F, Cl, Br, I, At.</p></div>
+    <div class="tcard"><h3>Noble gases</h3><p class="dir">Group 18 (VIII) · full valence shell · no ion</p><p>Colorless, monatomic gases that almost never react, because their shells are already full. He, Ne, Ar, Kr, Xe, Rn.</p></div>
+    <div class="tcard"><h3>Transition metals</h3><p class="dir">Groups 3–12 · d-block</p><p>Hard, shiny metals that often form more than one ion charge (that's why they get Roman numerals) and colorful compounds.</p></div>
+    <div class="tcard"><h3>Inner transition metals</h3><p class="dir">f-block · the two rows below</p><p>The lanthanides and actinides. They're pulled out of the table only to keep it from being too wide.</p></div>
+  </div>
+</section>
+<section>
+  <h2>Metals, nonmetals, metalloids</h2>
+  <div class="rules3">
+    <div class="rule"><h3>Metals</h3><p>Left and center. Shiny, conduct heat and electricity, can be hammered flat. They lose electrons to form cations.</p></div>
+    <div class="rule"><h3>Nonmetals</h3><p>Upper right. Dull, brittle as solids, poor conductors. Many are gases. They gain electrons to form anions.</p></div>
+    <div class="rule"><h3>Metalloids</h3><p>Along the staircase between them: B, Si, Ge, As, Sb, Te. Mixed properties; silicon is a semiconductor used in solar panels.</p></div>
+  </div>
+  <div class="callout tip"><p><b>Hydrogen is a special case.</b> Like lithium, it has one valence electron. Like fluorine, it's one electron short of a full shell. So it can act like either.</p></div>
+</section>
+<section>
+  <h2>Valence electrons and ion charges</h2>
+  <div class="tscroll"><table><tr><th>Group</th><th>Valence e⁻</th><th>Usual ion</th><th>Example</th></tr>
+  ${[[1,1,'1+','Na → Na⁺'],[2,2,'2+','Mg → Mg²⁺'],[13,3,'3+','Al → Al³⁺'],[14,4,'varies','C, Si'],[15,5,'3−','N → N³⁻'],[16,6,'2−','O → O²⁻'],[17,7,'1−','Cl → Cl⁻'],[18,8,'none','Ne, Ar']].map(([g,v,c,ex])=>`<tr><td>${g} (${ROMAN_G[g]})</td><td>${v}</td><td>${c}</td><td>${ex}</td></tr>`).join('')}</table></div>
+  <p style="margin-top:12px">Metals lose their valence electrons. Nonmetals gain enough to reach 8, so group 16 (6 valence electrons) forms 2−, not 6−.</p>
+</section>
+<section>
+  <h2>Identifying an element from clues</h2>
+  <ul><li><b>Ion charge</b> tells you the group: 2+ means group 2, 1− means group 17.</li><li><b>"Isoelectronic with"</b> tells you the electron count: a 2+ ion isoelectronic with Ar has 18 electrons, so the atom has 20. That's Ca.</li><li><b>Period</b> or "the smallest/largest in its group" tells you the row.</li><li><b>Properties</b> narrow it down: reacts with water → alkali or alkaline earth metal; unreactive gas → noble gas; diatomic, reactive nonmetal → halogen.</li></ul>
+</section>`;
+
+LEARN.nomen=()=>`
+<section>
+  <h2>What carries over from Unit 1</h2>
+  <p>Naming is fair game on this test. The decision rule hasn't changed: a metal (or ammonium) means ionic naming, with Roman numerals for multivalent metals. Two nonmetals means molecular naming with prefixes.</p>
+  <div class="lesson-links"><a class="btn" href="#t/naming/learn">Full lesson: Naming Compounds →</a><a class="btn" href="#t/ions/learn">Ions to Memorize →</a></div>
+</section>
+<section>
+  <h2>Formulas from the periodic table</h2>
+  <p>Unit 2 adds a shortcut: an element's group tells you its ion charge. Then you balance charges exactly like before.</p>
+  <div class="tscroll"><table><tr><th>Group</th><th>I</th><th>II</th><th>III</th><th>V</th><th>VI</th><th>VII</th></tr><tr><td>Ion charge</td><td>1+</td><td>2+</td><td>3+</td><td>3−</td><td>2−</td><td>1−</td></tr></table></div>
+  <div class="example"><div class="eyebrow">Worked example</div><p>Element Q is in group III and element Z is in group VI. What's the most likely formula?</p><ol><li>Q forms Q${S('3+')}; Z forms Z${S('2−')}</li><li>Find the smallest total that both charges divide into: 6. Two Q (6+) and three Z (6−).</li><li>Formula: <b>Q₂Z₃</b></li></ol></div>
+  <div class="callout"><p><b>Group number isn't the charge for nonmetals.</b> Group VI means 6 valence electrons, 2 short of 8, so the ion is 2−.</p></div>
+  <div class="example"><div class="eyebrow">With real elements</div><p>The alkaline earth metal in period 4 and the halogen in period 3: Ca${S('2+')} and Cl${S('−')} balance as <b>CaCl₂</b>, calcium chloride.</p></div>
+</section>`;
+
+/* ===================== UNIT 2: GENERATORS · LIGHT ===================== */
+const numField=(label,ph)=>[{key:'a',label,placeholder:ph||'e.g. 3.38e-19 or 3.38 × 10^-19',tools:'sci2'}];
+const r3=x=>+x.toPrecision(3);
+function numCheck(u,ans,alts){const ok=!isNaN(u)&&close(Math.abs(u),ans,0.025);let diag='';if(!ok&&!isNaN(u)){for(const [val,d] of alts){if(close(Math.abs(u),val,0.025)){diag=d;break;}}}return {ok,diag};}
+const D_NM='<b>Convert nm to m first.</b> c is in m/s, so λ must be in meters: multiply nm by 10<sup>−9</sup>.';
+const D_UNIT_NM='<b>Check the units.</b> The question asks for nanometers. Multiply meters by 10<sup>9</sup>.';
+const D_UNIT_M='<b>Check the units.</b> The question asks for meters, not nanometers.';
+const D_INV_C='<b>Rearrange carefully.</b> c = λν, so ν = c ÷ λ and λ = c ÷ ν.';
+const D_INV_H='<b>Rearrange carefully.</b> E = hν, so E = h × ν and ν = E ÷ h.';
+const D_KJ='<b>Convert kJ to J first.</b> Planck\'s constant is in J/Hz, so multiply kJ by 1000.';
+const LIGHT_BANK=[
+ {q:'As the wavelength of light increases, what happens to its frequency?',a:'It decreases',d:['It increases','It stays the same','It doubles'],why:'c = λν and c is constant, so wavelength and frequency are inversely related: when one goes up, the other goes down.'},
+ {q:'Which carries more energy per photon?',a:'Violet light',d:['Red light','They carry the same energy','It depends on brightness'],why:'Violet has a shorter wavelength and higher frequency than red. Since E = hν, higher frequency means more energy per photon.'},
+ {q:'Energy and frequency are ___ proportional.',a:'Directly',d:['Inversely','Not','Exponentially'],why:'E = hν: double the frequency and the energy doubles.'},
+ {q:'The amplitude (height) of a light wave relates to its…',a:'Brightness (intensity)',d:['Energy per photon','Frequency','Speed'],why:'Amplitude is about how much light there is, not how energetic each photon is. Energy per photon depends only on frequency.'},
+ {q:'An element\'s emission spectrum shows only certain colors because electrons…',a:'can only drop between fixed energy levels, releasing specific amounts of energy',d:['are destroyed when they release light','can have any energy at all','absorb every color equally'],why:'In Bohr\'s model, each fall between two fixed levels releases one exact amount of energy, which corresponds to one exact wavelength. That gives separate bright lines instead of a full rainbow.'},
+ {q:'An electron absorbs a photon. What happens to it?',a:'It jumps to a higher energy level',d:['It falls to a lower energy level','It leaves the nucleus','Nothing; electrons can\'t absorb light'],why:'Absorbing energy moves the electron up to an excited state. Releasing energy (emission) is the fall back down.'},
+ {q:'What is an atom\'s ground state?',a:'Its lowest-energy electron arrangement',d:['Its highest-energy arrangement','The state after it emits light','Any arrangement with paired electrons'],why:'Ground state means every electron is in the lowest level available. Anything higher is an excited state.'},
+ {q:'Who proposed that electrons exist only at fixed energy levels and jump between them?',a:'Bohr',d:['Dalton','Heisenberg','de Broglie'],why:'Bohr\'s model (1913) explained emission spectra with fixed energy levels and "quantum leaps" between them.'},
+ {q:'Who suggested that moving electrons also behave like waves?',a:'de Broglie',d:['Bohr','Dalton','Schrödinger'],why:'de Broglie (1923) described the electron as a standing wave: wave–particle duality.'},
+ {q:'Whose principle says you can\'t know an electron\'s exact position and momentum at the same time?',a:'Heisenberg',d:['Schrödinger','Bohr','Dalton'],why:'That\'s Heisenberg\'s uncertainty principle (1927).'},
+ {q:'Whose equation produces orbitals, 3D maps of where an electron is likely to be?',a:'Schrödinger',d:['Heisenberg','Bohr','de Broglie'],why:'Solutions to Schrödinger\'s equation are orbitals, which replaced the idea of fixed planetary orbits.'},
+ {q:'What did the quantum mechanical model replace?',a:'Electrons traveling in neat, fixed orbits',d:['The idea that atoms have a nucleus','The idea that atoms contain electrons','The idea that energy is conserved'],why:'Because we can\'t pin down an electron\'s path, the modern model uses probability maps (orbitals) instead of planetary orbits.'},
+ {q:'Dalton pictured the atom as…',a:'a solid, indivisible sphere',d:['a nucleus with electrons in fixed levels','a cloud of probability','a wave'],why:'Dalton\'s atomic theory treated atoms as tiny, solid, indivisible particles.'}
+];
+const LIGHT_GEN={
+ lam2nu(){const reg=rnd(['visible','visible','uv','ir','xray','micro','radio']);const lam=sampleLam(reg);const useNm=(reg==='visible'||reg==='uv')&&Math.random()<.6;const given=useNm?`${r3(lam*1e9)} nm`:`${sci(lam,3)} m`;const nu=CL/lam;
+  return {type:'Wavelength → frequency',ask:'What is the frequency of this light?',prompt:`<span class="big">λ = ${given}</span>`,fields:numField('Frequency (Hz)','e.g. 5.09e14 or 5.09 × 10^14'),
+   check:v=>{const r=numCheck(parseNum(v.a),nu,[[nu*1e-9,D_NM],[lam/CL,D_INV_C],[CL*lam,D_INV_C]]);return {...r,fields:{a:r.ok},why:`<ol>${useNm?`<li>${given} = ${sci(lam,3)} m</li>`:''}<li>c = λν, so ν = c ÷ λ</li><li>ν = (3.00 × 10<sup>8</sup> m/s) ÷ (${sci(lam,3)} m) = <b>${sci(nu,3)} Hz</b></li></ol>`};}};},
+ nu2lam(){const reg=rnd(['visible','visible','uv','ir','xray','micro','radio']);const nu=r3(CL/sampleLam(reg));const lam=CL/nu;const askNm=reg==='visible'&&Math.random()<.6;const ans=askNm?lam*1e9:lam;
+  return {type:'Frequency → wavelength',ask:'What is the wavelength of this light?',prompt:`<span class="big">ν = ${sci(nu,3)} Hz</span>`,fields:numField(askNm?'Wavelength (nm)':'Wavelength (m)',askNm?'e.g. 589':undefined),
+   check:v=>{const r=numCheck(parseNum(v.a),ans,askNm?[[lam,D_UNIT_NM],[nu/CL,D_INV_C]]:[[lam*1e9,D_UNIT_M],[nu/CL,D_INV_C],[nu*CL,D_INV_C]]);return {...r,fields:{a:r.ok},why:`<ol><li>c = λν, so λ = c ÷ ν</li><li>λ = (3.00 × 10<sup>8</sup>) ÷ (${sci(nu,3)}) = <b>${sci(lam,3)} m</b>${askNm?` = <b>${(lam*1e9).toFixed(0)} nm</b>`:''}</li><li>That's ${REG_NAME[regionOf(lam)].toLowerCase()}${regionOf(lam)==='visible'?` (${colorName(lam*1e9)})`:''}.</li></ol>`};}};},
+ nu2E(){const nu=r3(CL/sampleLam(rnd(['visible','uv','ir','xray'])));const E=HP*nu;
+  return {type:'Frequency → energy',ask:'What is the energy of one photon of this light?',prompt:`<span class="big">ν = ${sci(nu,3)} Hz</span>`,fields:numField('Energy (J)'),
+   check:v=>{const r=numCheck(parseNum(v.a),E,[[nu/HP,D_INV_H],[HP/nu,D_INV_H]]);return {...r,fields:{a:r.ok},why:`<ol><li>E = hν</li><li>E = (6.63 × 10<sup>−34</sup> J/Hz)(${sci(nu,3)} Hz) = <b>${sci(E,3)} J</b></li></ol>`};}};},
+ E2nu(){const nu0=CL/sampleLam(rnd(['visible','uv','ir']));const kj=Math.random()<.35;const E=r3(HP*nu0*(kj?1e-3:1));const EJ=kj?E*1000:E;const nu=EJ/HP;
+  return {type:'Energy → frequency',ask:'What frequency of light carries this much energy per photon?',prompt:`<span class="big">E = ${sci(E,3)} ${kj?'kJ':'J'}</span>`,fields:numField('Frequency (Hz)','e.g. 5.09e14 or 5.09 × 10^14'),
+   check:v=>{const r=numCheck(parseNum(v.a),nu,[[E/HP,kj?D_KJ:D_INV_H],[HP/EJ,D_INV_H],[EJ*HP,D_INV_H]]);return {...r,fields:{a:r.ok},why:`<ol>${kj?`<li>${sci(E,3)} kJ × 1000 = ${sci(EJ,3)} J</li>`:''}<li>E = hν, so ν = E ÷ h</li><li>ν = (${sci(EJ,3)} J) ÷ (6.63 × 10<sup>−34</sup> J/Hz) = <b>${sci(nu,3)} Hz</b></li></ol>`};}};},
+ lam2E(){const nm=r3(sampleLam(rnd(['visible','visible','uv']))*1e9);const lam=nm*1e-9,nu=CL/lam,E=HP*nu;
+  return {type:'Wavelength → energy',ask:'What is the energy of one photon at this wavelength?',prompt:`<span class="big">λ = ${nm} nm</span>`,fields:numField('Energy (J)'),
+   check:v=>{const r=numCheck(parseNum(v.a),E,[[E*1e9,D_NM],[HP*nm/CL,D_INV_C],[nu,'<b>One more step.</b> That\'s the frequency. Now use E = hν.']]);return {...r,fields:{a:r.ok},why:`<ol><li>${nm} nm = ${sci(lam,3)} m</li><li>ν = c ÷ λ = ${sci(nu,3)} Hz</li><li>E = hν = (6.63 × 10<sup>−34</sup>)(${sci(nu,3)}) = <b>${sci(E,3)} J</b></li></ol>`};}};},
+ E2lam(){const E=r3(HP*CL/sampleLam(rnd(['visible','visible','uv'])));const nu=E/HP,lam=CL/nu,nm=lam*1e9;
+  return {type:'Energy → wavelength',ask:'A photon has this energy. What is its wavelength?',prompt:`<span class="big">E = ${sci(E,3)} J</span>`,fields:numField('Wavelength (nm)','e.g. 449'),
+   check:v=>{const r=numCheck(parseNum(v.a),nm,[[lam,D_UNIT_NM],[nu,'<b>One more step.</b> That\'s the frequency. Now use λ = c ÷ ν.']]);return {...r,fields:{a:r.ok},why:`<ol><li>ν = E ÷ h = (${sci(E,3)}) ÷ (6.63 × 10<sup>−34</sup>) = ${sci(nu,3)} Hz</li><li>λ = c ÷ ν = ${sci(lam,3)} m = <b>${nm.toFixed(0)} nm</b></li><li>That's ${regionOf(lam)==='visible'?colorName(nm)+' visible light':REG_NAME[regionOf(lam)].toLowerCase()}.</li></ol>`};}};},
+ bohr(){let ni,nf;do{ni=rint(1,6);nf=rint(1,6);}while(ni===nf);const em=nf<ni,dE=Math.abs(En(nf)-En(ni)),nu=dE/HP,lam=CL/nu,nm=lam*1e9;
+  return {type:'Bohr model',ask:em?`A hydrogen electron falls from n = ${ni} to n = ${nf}. Find the energy and wavelength of the photon it emits.`:`A hydrogen electron is excited from n = ${ni} to n = ${nf}. Find the energy and wavelength of the photon it absorbs.`,prompt:`<span class="big">n = ${ni} → n = ${nf}</span><span class="sub-line">E<sub>n</sub> = −2.18 × 10<sup>−18</sup> J × (1/n²)</span>`,
+   fields:[{key:'a',label:'Photon energy (J)',placeholder:'e.g. 4.09e-19',tools:'sci2'},{key:'b',label:'Wavelength (nm)',placeholder:'e.g. 486'}],
+   check:v=>{const ea=numCheck(parseNum(v.a),dE,[[Math.abs(En(ni)),'<b>Use both levels.</b> The photon carries the difference: ΔE = |E<sub>final</sub> − E<sub>initial</sub>|.'],[Math.abs(En(nf)),'<b>Use both levels.</b> The photon carries the difference: ΔE = |E<sub>final</sub> − E<sub>initial</sub>|.'],[RH*Math.abs(1/nf-1/ni),'<b>Square n.</b> E<sub>n</sub> uses 1/n², not 1/n.']]);
+    const eb=numCheck(parseNum(v.b),nm,[[lam,D_UNIT_NM]]);
+    return {ok:ea.ok&&eb.ok,fields:{a:ea.ok,b:eb.ok},diag:ea.diag||eb.diag,why:`<ol><li>E<sub>${ni}</sub> = −2.18 × 10<sup>−18</sup> ÷ ${ni*ni} = ${sci(En(ni),3)} J</li><li>E<sub>${nf}</sub> = −2.18 × 10<sup>−18</sup> ÷ ${nf*nf} = ${sci(En(nf),3)} J</li><li>ΔE = <b>${sci(dE,3)} J</b>, ${em?'released (emission)':'absorbed'}</li><li>ν = ΔE ÷ h = ${sci(nu,3)} Hz</li><li>λ = c ÷ ν = ${sci(lam,3)} m = <b>${nm.toFixed(0)} nm</b>, ${regionOf(lam)==='visible'?colorName(nm)+' visible light':REG_NAME[regionOf(lam)].toLowerCase()}</li></ol>`};}};},
+ levels(){const t=x=>Math.round(x*10)/10;const L=[null,-t(12+Math.random()*8),-t(7+Math.random()*3),-t(3+Math.random()*3),-t(.5+Math.random()*2)].map(x=>x===null?null:x*1e-19);
+  let i,j;do{i=rint(1,4);j=rint(1,4);}while(i===j);const up=j>i,dE=Math.abs(L[j]-L[i]),nu=dE/HP,lam=CL/nu;const what=rnd(['E','nu','lam']);
+  const ans={E:dE,nu,lam}[what],lab={E:'Photon energy (J)',nu:'Frequency (Hz)',lam:'Wavelength (m)'}[what];
+  const table=`<span class="lvls">${[4,3,2,1].map(n=>`<span>E<sub>${n}</sub> = ${sci(L[n],2)} J</span>`).join('')}</span>`;
+  return {type:'Energy levels',ask:`An electron in this atom ${up?'is excited':'drops'} from E<sub>${i}</sub> to E<sub>${j}</sub>. ${what==='E'?`What energy must the photon ${up?'have':'carry'}?`:what==='nu'?`What is the frequency of the photon ${up?'absorbed':'emitted'}?`:`What is the wavelength of the photon ${up?'absorbed':'emitted'}?`}`,prompt:table,fields:numField(lab),
+   check:v=>{const r=numCheck(parseNum(v.a),ans,[[Math.abs(L[i]),'<b>Use both levels.</b> The photon carries the gap between them.'],[Math.abs(L[j]),'<b>Use both levels.</b> The photon carries the gap between them.'],[lam*1e9,D_UNIT_M]]);
+    return {...r,fields:{a:r.ok},why:`<ol><li>ΔE = |${sci(L[j],2)} − (${sci(L[i],2)})| = ${sci(dE,3)} J</li>${what!=='E'?`<li>ν = ΔE ÷ h = ${sci(nu,3)} Hz</li>`:''}${what==='lam'?`<li>λ = c ÷ ν = ${sci(lam,3)} m</li>`:''}<li>Answer: <b>${sci(ans,3)} ${what==='E'?'J':what==='nu'?'Hz':'m'}</b></li></ol>`};}};},
+ jump(){const k=rnd(['dir','most','longest']);
+  if(k==='dir'){let a,b;do{a=rint(1,6);b=rint(1,6);}while(a===b);const up=b>a;return {kind:'mc',type:'Absorption or emission',ask:`An electron moves from n = ${a} to n = ${b}. Is energy absorbed or emitted?`,choices:['Absorbed','Emitted'],correct:up?0:1,layout:'pair',why:`<p>${up?`Moving up to a higher level takes energy, so the atom <b>absorbs</b> a photon.`:`Falling to a lower level releases energy, so the atom <b>emits</b> a photon.`}</p>`};}
+  const pairs=[];while(pairs.length<4){const hi=rint(2,6),lo=rint(1,hi-1);const dE=En(hi)-En(lo);if(!pairs.some(p=>Math.abs(p.dE-dE)<1e-21))pairs.push({hi,lo,dE});}
+  const target=k==='most'?pairs.reduce((m,p)=>p.dE>m.dE?p:m):pairs.reduce((m,p)=>p.dE<m.dE?p:m);
+  return {kind:'mc',type:'Comparing transitions',ask:k==='most'?'Which electron fall releases the most energy?':'Which electron fall emits light with the longest wavelength?',choices:pairs.map(p=>`n = ${p.hi} → n = ${p.lo}`),correct:pairs.indexOf(target),
+   why:`<p>${k==='most'?'The biggest energy gap wins.':'Longest wavelength means lowest energy, so look for the smallest gap.'} Levels crowd together as n grows, so falls to n = 1 are the largest and falls between high levels are the smallest.</p><p>${pairs.map(p=>`${p.hi} → ${p.lo}: ${sci(p.dE,3)} J`).join(' · ')}</p>`};},
+ region(){const reg=rnd(REGIONS);const lam=reg==='visible'?COLORS[rint(0,5)][1]*1e-9:sampleLam(reg);const asNu=reg!=='visible'&&Math.random()<.4;
+  if(reg==='visible'&&Math.random()<.5){const nm=Math.round(lam*1e9+rint(-8,8));const c=colorName(nm);const opts=[c,...pickN(COLORS.map(x=>x[0]).filter(x=>x!==c),3)];const {choices,correct}=mcFrom(cap(c),opts.slice(1).map(cap));
+   return {kind:'mc',type:'Visible light',ask:'What color is light at this wavelength?',prompt:`<span class="big">λ = ${nm} nm</span>`,choices,correct,why:`<p>Visible light runs from about 400 nm (violet) to 700 nm (red): violet, blue, green, yellow, orange, red as wavelength increases. ${nm} nm is ${c}.</p>`};}
+  const others=pickN(REGIONS.filter(r=>r!==reg),3);const {choices,correct}=mcFrom(REG_NAME[reg],others.map(r=>REG_NAME[r]));
+  return {kind:'mc',type:'Electromagnetic spectrum',ask:'Which part of the electromagnetic spectrum is this?',prompt:`<span class="big">${asNu?`ν = ${sci(CL/lam,3)} Hz`:`λ = ${sci(lam,3)} m`}</span>`,choices,correct,
+   why:`<p>${asNu?`First convert: λ = c ÷ ν = ${sci(lam,3)} m. `:''}From longest to shortest wavelength: radio, microwave, infrared, visible (about 4–7 × 10<sup>−7</sup> m), ultraviolet, X-ray, gamma. This one is <b>${REG_NAME[reg].toLowerCase()}</b>.</p>`};},
+ cmp(){const [a,b]=pickN(REGIONS,2);const what=rnd(['energy','wavelength','frequency']);const ia=REGIONS.indexOf(a),ib=REGIONS.indexOf(b);const win=what==='wavelength'?(ia<ib?a:b):(ia>ib?a:b);
+  return {kind:'mc',type:'Electromagnetic spectrum',ask:`Which has ${what==='energy'?'more energy per photon':what==='wavelength'?'the longer wavelength':'the higher frequency'}?`,choices:[REG_NAME[a],REG_NAME[b]],correct:win===a?0:1,layout:'pair',
+   why:`<p>Order by increasing energy and frequency (and decreasing wavelength): radio → microwave → infrared → visible → ultraviolet → X-ray → gamma. ${REG_NAME[win]} ${what==='wavelength'?'is earlier in that list, so its wavelength is longer':'is later in that list'}.</p>`};},
+ concept(){return bankQ(rnd(LIGHT_BANK),'Concept check');}
+};
+GEN.light=()=>LIGHT_GEN[wpick([[10,'lam2nu'],[8,'nu2lam'],[8,'nu2E'],[8,'E2nu'],[8,'lam2E'],[6,'E2lam'],[12,'bohr'],[8,'levels'],[9,'jump'],[8,'region'],[6,'cmp'],[11,'concept']])]();
+
+/* ===================== UNIT 2: GENERATORS · CONFIGURATIONS ===================== */
+const CFG_FULL=[...Array(36)].map((_,i)=>i+3);
+const CFG_ABBR=[...[...Array(54)].map((_,i)=>i+3),57,59,60,62,63,64,72,74,78,79,80,82,83,87,88,89,90,92,94];
+const ION_POOL=[['Li',1],['Na',1],['K',1],['Rb',1],['Be',2],['Mg',2],['Ca',2],['Sr',2],['Ba',2],['Al',3],['Ga',3],['N',-3],['P',-3],['O',-2],['S',-2],['Se',-2],['F',-1],['Cl',-1],['Br',-1],['I',-1],['Fe',2],['Fe',3],['Co',2],['Ni',2],['Cu',2],['Zn',2],['Mn',2],['Ti',2],['Cr',3],['Sn',2],['Pb',2],['Cd',2]];
+const ISO_MG=[['N',-3],['O',-2],['F',-1],['Na',1],['Mg',2],['Al',3],['P',-3],['S',-2],['Cl',-1],['K',1],['Ca',2],['Se',-2],['Br',-1],['Rb',1],['Sr',2],['I',-1],['Cs',1],['Ba',2]];
+const ERR_OPTS=['It\'s correct: this is the ground state.','It\'s an excited state: an electron sits in a higher sublevel while a lower one has room.','It\'s impossible: it uses a sublevel that doesn\'t exist.','It\'s impossible: a sublevel holds more electrons than it can.','It has the wrong number of electrons for this neutral atom.'];
+function listOf(m){return subsOf(m).map(k=>[k,m[k]]);}
+function fmtList(L){return `<span class="cfg">${L.map(([k,c])=>`${k}<sup>${c}</sup>`).join(' ')}</span>`;}
+const CFG_GEN={
+ full(){const z=rnd(CFG_FULL),e=EL(z),forms=neutralForms(z);
+  return {type:'Complete configuration',ask:'Write the complete ground-state electron configuration.',prompt:`<span class="big">${e.n}</span><span class="sub-line">${e.s} · atomic number ${z}</span>`,fields:[{key:'a',label:'Configuration',placeholder:'e.g. 1s2 2s2 2p6 3s1',tools:'config'}],
+   check:v=>{const r=checkConfig(v.a,forms,{want:'full',expect:z,label:e.n.toLowerCase()});return {...r,fields:{a:r.ok},why:`<p>${e.n} has ${z} electrons. Fill in order until they're all placed:</p><p>${cfgAnswer(z,'full')}</p>`};}};},
+ abbr(){const z=rnd(CFG_ABBR),e=EL(z),forms=neutralForms(z);
+  return {type:'Noble-gas configuration',ask:'Write the abbreviated (noble-gas) electron configuration.',prompt:`<span class="big">${e.n}</span><span class="sub-line">${e.s} · atomic number ${z}</span>`,fields:[{key:'a',label:'Configuration',placeholder:'e.g. [Ne] 3s2 3p1',tools:'config'}],
+   check:v=>{const r=checkConfig(v.a,forms,{want:'abbr',expect:z,label:e.n.toLowerCase()});return {...r,fields:{a:r.ok},why:`<p>The noble gas before ${e.s} is ${coreFor(z)[1]}. Write it in brackets, then continue filling:</p><p>${cfgAnswer(z,'abbr')}</p>`};}};},
+ ion(){const [s,c]=rnd(ION_POOL),z=BY_SYM[s].z,ne=z-c,m=ionMap(z,c),want=ne<=20&&Math.random()<.5?'full':'abbr';
+  let wrongWay=null;if(c>0&&groupOf(z)>=3&&groupOf(z)<=12){const A={...aufbauMap(z)};let k=c;for(const sub of subsOf(A).reverse()){while(k>0&&A[sub]>0){A[sub]--;k--;}if(!A[sub])delete A[sub];}wrongWay=A;}
+  return {type:'Ion configuration',ask:`Write the ${want==='full'?'complete':'abbreviated'} electron configuration for this ion.`,prompt:`<span class="big">${sp(s,c)}</span><span class="sub-line">${cap(ionName(s,c))} · ${z} protons</span>`,fields:[{key:'a',label:'Configuration',placeholder:want==='full'?'e.g. 1s2 2s2 2p6':'e.g. [Ar] 3d6',tools:'config'}],
+   check:v=>{const r=checkConfig(v.a,[m],{want,expect:ne,label:sp(s,c),wrongWay});if(!r.ok&&!r.diag.includes('Remove')&&parseConfig(v.a)&&parseConfig(v.a).map&&mapTotal(parseConfig(v.a).map)===z)r.diag=`<b>Adjust for the charge.</b> That's the neutral atom. ${c>0?`A ${chargeStr(c)} ion has lost ${c} electron${c>1?'s':''}`:`A ${chargeStr(c)} ion has gained ${-c} electron${c<-1?'s':''}`}, so it has ${ne}.`;
+    return {...r,fields:{a:r.ok},why:`<p>${sp(s,c)} has ${z} − (${c>0?'+':''}${c}) = ${ne} electrons. ${c>0?`Start from neutral ${s} and remove ${c} from the highest n first.`:`Add ${-c} to neutral ${s}.`}</p><p>${want==='full'?fmtFull(m):fmtAbbr(m)}</p>`};}};},
+ ident(){const z=rnd([...CFG_FULL,...CFG_ABBR]),e=EL(z),forms=neutralForms(z),f=forms.length>1&&Math.random()<.5?forms[1]:forms[0],full=z<=36&&Math.random()<.5;
+  return {type:'Identify the element',ask:'Which element has this ground-state configuration?',prompt:`<span class="big cfg-big">${full?fmtFull(f):fmtAbbr(f)}</span>`,fields:[{key:'a',label:'Element symbol',placeholder:'e.g. Ga'}],
+   check:v=>{const r=checkSymbol(v.a,e.s);return {ok:r.ok,note:r.note,fields:{a:r.ok},why:`<p>Add up every electron, including the noble-gas core: ${z} electrons, so the atomic number is ${z}. That's <b>${e.n.toLowerCase()} (${e.s})</b>.</p>`};}};},
+ count(){const k=wpick([[3,'p'],[2,'s'],[3,'sub'],[3,'val'],[3,'unp']]);let z,ans,ask,how;
+  if(k==='val'){const e=rnd(MG.filter(x=>periodOf(x.z)<=5));z=e.z;ans=valenceOf(z);ask='How many valence electrons does this atom have?';how=`Valence electrons are the ones in the highest energy level. ${fmtAbbr(aufbauMap(z))}: count the electrons with n = ${periodOf(z)}.`;}
+  else if(k==='unp'){do{z=rint(3,36);}while(z===24||z===29);ans=unpaired(aufbauMap(z));ask='How many unpaired electrons does this atom have in its ground state?';how=`Only the last, partly filled sublevel can have unpaired electrons. By Hund's rule, its electrons spread out one per orbital before pairing. ${fmtFull(aufbauMap(z))}`;}
+  else if(k==='sub'){z=rint(11,54);const m=aufbauMap(z);const occ=subsOf(m).filter(x=>x!=='1s');const sub=Math.random()<.2?rnd(['3d','4p','4d','5p'].filter(x=>!m[x])||['3d']):rnd(occ);const S2=sub||'3d';ans=m[S2]||0;ask=`How many electrons are in the ${S2} sublevel of this atom?`;how=`${fmtFull(m)}${ans?'':` There are no electrons in ${S2}.`}`;}
+  else{z=rint(5,54);const m=aufbauMap(z);ans=subsOf(m).filter(x=>x[1]===k).reduce((a,x)=>a+m[x],0);ask=`How many ${k} electrons does this atom have in total?`;how=`Add up every ${k} sublevel: ${fmtFull(m)}`;}
+  const e=EL(z);
+  return {type:'Counting electrons',ask,prompt:`<span class="big">${e.n}</span><span class="sub-line">${e.s} · atomic number ${z}</span>`,fields:[{key:'a',label:'Number of electrons',placeholder:'#'}],
+   check:v=>{const ok=parseInt(v.a)===ans&&String(v.a).trim()!=='';return {ok,fields:{a:ok},why:`<p>${how}</p><p>Answer: <b>${ans}</b></p>`};}};},
+ iso(){if(Math.random()<.5){const [s,c]=rnd(ISO_MG),z=BY_SYM[s].z,n=z-c,N=NOBLES.find(x=>x[0]===n);
+   return {type:'Isoelectronic',ask:'Which neutral atom is isoelectronic with this ion?',prompt:`<span class="big">${sp(s,c)}</span>`,fields:[{key:'a',label:'Element symbol',placeholder:'e.g. Ar'}],
+    check:v=>{const r=checkSymbol(v.a,N[1]);return {ok:r.ok,note:r.note,fields:{a:r.ok},why:`<p>${sp(s,c)} has ${z} − (${c>0?'+':''}${c}) = ${n} electrons, the same number and arrangement as neutral <b>${BY_SYM[N[1]].n.toLowerCase()} (${N[1]})</b>.</p>`};}};}
+  const N=rnd(NOBLES.slice(1,5)),c=rnd(N[0]===10||N[0]===18||N[0]===36?[1,2,-1,-2,-3]:[1,2,-1,-2]),z=N[0]+c,s=EL(z).s;
+  return {type:'Isoelectronic',ask:`Which ion with a ${chargeStr(c)} charge is isoelectronic with ${BY_SYM[N[1]].n.toLowerCase()}?`,prompt:`<span class="big">${N[1]}</span><span class="sub-line">${N[0]} electrons</span>`,fields:[{key:'a',label:'Ion',placeholder:'e.g. K+',tools:'ion'}],
+   check:v=>{const cands=parseIonInput(v.a)||[];const same=x=>fromUni(x.formula).replace(/[^A-Za-z]/g,'').toLowerCase()===s.toLowerCase();const hit=cands.find(x=>same(x)&&x.charge===c)||cands.find(x=>same(x)&&x.charge===0);const ok=!!hit;
+    return {ok,note:ok&&hit.charge===0?`Accepted. Write the charge too: <b>${sp(s,c)}</b>.`:'',fields:{a:ok},why:`<p>The ion needs ${N[0]} electrons. With a ${chargeStr(c)} charge, the atom ${c>0?'loses':'gains'} ${Math.abs(c)}, so it started with ${N[0]} − (${c>0?'+':''}${c}) = ${z}. That's <b>${sp(s,c)}</b>.</p>`};}};},
+ error(){let z;do{z=rint(5,38);}while(z===24||z===29);const e=EL(z),L=listOf(aufbauMap(z));let kind=rnd(['excited','nosub','over','count','ok']),shown=L.map(x=>x.slice());
+  if(kind==='excited'){const last=shown[shown.length-1];const nx=ORB_SUBS[SUB_IDX[last[0]]+1][0];last[1]--;if(!last[1])shown.pop();shown.push([nx,1]);}
+  else if(kind==='nosub'){const i=shown.findIndex(x=>x[0]==='2p');if(i<0)kind='over';else shown[i][0]='2d';}
+  if(kind==='over'){const i=shown.findIndex(x=>x[0]==='2p'&&x[1]===6);if(i>=0&&shown[i+1]&&shown[i+1][0]==='3s'){shown[i][1]+=shown[i+1][1];shown.splice(i+1,1);}else{shown=L.map(x=>x.slice());const j=shown.findIndex(x=>x[0][1]==='s'&&x[1]===2&&shown[shown.indexOf(x)+1]);shown[j][1]=3;const nx=shown[j+1];nx[1]--;if(!nx[1])shown.splice(j+1,1);}}
+  let ionLabel='';if(kind==='count'){const g=groupOf(z);let m;if(g>=15&&g<=17){m=ionMap(z,g-18);ionLabel=sp(e.s,g-18);}else if(g<=2||g===13){m=ionMap(z,valenceOf(z));ionLabel=sp(e.s,valenceOf(z));}else if(g>=3&&g<=12){m=ionMap(z,2);ionLabel=sp(e.s,2);}else m=aufbauMap(z+rnd([-1,1]));shown=listOf(m);}
+  const idx={ok:0,excited:1,nosub:2,over:3,count:4}[kind];
+  const expl={ok:'Every sublevel is filled in order and the total matches.',excited:'The total is right, but an electron skipped ahead into a higher sublevel while a lower one had room. That\'s a real but excited state, not the ground state.',nosub:'2d doesn\'t exist. d sublevels only start at n = 3.',over:'A sublevel is over capacity. s holds at most 2 electrons and p at most 6.',count:`The electrons add up to ${shown.reduce((a,x)=>a+x[1],0)}, not ${z}, so this can't be neutral ${e.s}.${ionLabel?` It's actually the configuration of the ${ionLabel} ion.`:''}`}[kind];
+  return {kind:'mc',type:'Spot the mistake',ask:`This was written for neutral ${e.n.toLowerCase()} (${z} electrons). What's wrong with it?`,prompt:`<span class="big cfg-big">${fmtList(shown)}</span>`,choices:ERR_OPTS,correct:idx,why:`<p>${expl}</p><p>Correct ground state: ${fmtFull(aufbauMap(z))}</p>`};},
+ orbital(){let z;do{z=rint(3,30);}while(z===24||z===29);const e=EL(z);return {kind:'orbital',z,type:'Orbital diagram',ask:`Draw the ground-state orbital diagram for ${e.n.toLowerCase()}.`,prompt:`<span class="big">${e.s}</span><span class="sub-line">${e.n} · ${z} electrons</span>`};}
+};
+GEN.config=()=>CFG_GEN[wpick([[14,'full'],[16,'abbr'],[14,'ion'],[12,'ident'],[12,'count'],[8,'iso'],[12,'error'],[12,'orbital']])]();
+
+/* ===================== UNIT 2: GENERATORS · PERIODIC TRENDS ===================== */
+const pairChoice=z=>`<span class="sym">${EL(z).s}</span><span class="nm">${EL(z).n}</span>`;
+const spChoice=([s,c])=>`<span class="sym">${sp(s,c)}</span><span class="nm">${c?cap(ionName(s,c)):BY_SYM[s].n}</span>`;
+const TREND_POOLS={
+ radius:MG,ie:MG,
+ en:MG.filter(e=>e.c!=='g'),ea:MG.filter(e=>e.c!=='g'),
+ metal:MG.filter(e=>e.c==='m'&&groupOf(e.z)<=13),
+ nonmetal:MG.filter(e=>e.c==='n'&&groupOf(e.z)>=15&&periodOf(e.z)<=5)};
+function trendPair(prop){const pool=TREND_POOLS[prop];
+  for(let t=0;t<200;t++){const rel=wpick([[4,'group'],[4,'period'],[2,'diag']]);const a=rnd(pool),b=rnd(pool);if(a===b)continue;const pa=periodOf(a.z),pb=periodOf(b.z),ga=groupOf(a.z),gb=groupOf(b.z);
+    if(rel==='group'&&ga===gb&&pa!==pb)return [a.z,b.z];if(rel==='period'&&pa===pb&&ga!==gb)return [a.z,b.z];
+    if(rel==='diag'&&pa!==pb&&ga!==gb&&((pa>pb)===(ga<gb)))return [a.z,b.z];}
+  return [Z_('Na'),Z_('Cs')];}
+function Z_(s){return BY_SYM[s].z;}
+const TREND_BANK=[
+ {q:'What happens to shielding as you move across a period?',a:'It stays about the same',d:['It increases','It decreases','It doubles each element'],why:'Across a period, electrons are added to the same energy level, so no new inner layers form. Shielding stays constant.'},
+ {q:'What happens to nuclear charge as you move down a group?',a:'It increases',d:['It decreases','It stays the same','It drops to zero'],why:'Every step down adds protons, so the nuclear charge goes up. The extra shielding is what makes the pull weaker anyway.'},
+ {q:'When nuclear charge and shielding point in opposite directions, which matters more?',a:'Shielding',d:['Nuclear charge','Neither; they cancel out','Atomic mass'],why:'Going down a group adds protons and a whole new energy level. Shielding wins, which is why atoms get bigger and lose electrons more easily going down.'},
+ {q:'Why is an atom\'s second ionization energy always higher than its first?',a:'The same protons now pull on fewer electrons, so each one is held more tightly',d:['The second electron is farther from the nucleus','The atom gains protons after losing an electron','The second electron has more mass'],why:'After one electron leaves, there\'s less electron–electron repulsion but the same nuclear charge. The ion contracts and the next electron is held tighter.'},
+ {q:'Why are noble gases left out of the electronegativity trend?',a:'They don\'t form bonds, so they don\'t attract shared electrons',d:['They have no electrons','They are too large','They have no protons'],why:'Electronegativity is about pulling on electrons in a bond. With full shells, noble gases don\'t bond.'},
+ {q:'Where is the most reactive metal on the periodic table?',a:'Bottom left (francium)',d:['Top right (fluorine)','Top left (lithium)','Bottom right (radon)'],why:'Lower left means the most shielding and the weakest pull on valence electrons, so they leave most easily.'},
+ {q:'Where is the most reactive nonmetal on the periodic table?',a:'Top right, not counting noble gases (fluorine)',d:['Bottom left (francium)','Bottom right (astatine)','The noble gases'],why:'Upper right means a high nuclear charge, little shielding, and small size: the strongest pull for gaining an electron.'},
+ {q:'Which trend runs exactly opposite to ionization energy?',a:'Metallic character (metal reactivity)',d:['Electronegativity','Electron affinity','Nonmetal reactivity'],why:'Ionization energy measures how hard it is to remove an electron; metallic character measures how easy it is. They point to opposite corners.'},
+ {q:'Why does potassium conduct electricity better than sodium?',a:'K\'s outer electron is farther out and more loosely held, so it moves more freely',d:['K has more protons pushing its electrons','K has fewer energy levels than Na','K is a nonmetal'],why:'Metals conduct through a "sea" of mobile electrons. More shielding in K means a weaker hold on that electron, so it moves more easily.'},
+ {q:'Compared with its neutral atom, a cation is…',a:'smaller',d:['larger','the same size','sometimes larger, sometimes smaller'],why:'A cation loses electrons (often its whole outer level), and the remaining electrons are pulled in by the same number of protons.'},
+ {q:'Compared with its neutral atom, an anion is…',a:'larger',d:['smaller','the same size','sometimes larger, sometimes smaller'],why:'Extra electrons repel each other and spread out, while the nuclear charge stays the same.'},
+ {q:'Which element in each period has the highest first ionization energy?',a:'The noble gas',d:['The alkali metal','The halogen','The alkaline earth metal'],why:'Noble gases are at the far right, with the highest nuclear charge for their period and a full, stable shell.'},
+ {q:'In Coulomb\'s law, F = kq₁q₂/r², what happens to the attraction if r doubles?',a:'It drops to one-fourth',d:['It drops to one-half','It doubles','It stays the same'],why:'r is squared in the denominator: 2² = 4, so the force becomes 1/4 as strong.'},
+ {q:'Electron affinity is also called…',a:'nonmetal reactivity',d:['metallic character','ionization energy','shielding'],why:'Nonmetals react by gaining electrons, so the easier an atom gains one (higher electron affinity), the more reactive it is as a nonmetal.'},
+ {q:'Going down a group, why does atomic radius increase even though protons are added?',a:'Each period adds an energy level, and the extra shielding outweighs the added nuclear charge',d:['Atoms get heavier, so they take up more room','More protons push the electrons away','Neutrons take up more space'],why:'More levels put valence electrons farther away, and inner layers shield them. Shielding beats the added protons.'}
+];
+const EXPLAIN_BANK=[
+ {q:'Explain why atomic radius decreases from sodium to chlorine.',model:'Across period 3, protons are added, so nuclear charge increases, while electrons go into the same energy level, so shielding stays the same. The stronger pull draws the outer electrons closer, so the atoms get smaller.',keys:['Nuclear charge increases across the period','Shielding stays the same','Stronger pull brings outer electrons closer']},
+ {q:'Explain why cesium has a lower first ionization energy than lithium.',model:'Cesium is far below lithium in group 1, so it has more energy levels and much more shielding. Its valence electron is farther from the nucleus and feels a weaker pull, so less energy is needed to remove it.',keys:['More energy levels / more shielding','Valence electron is farther from the nucleus','Weaker attraction, so easier to remove']},
+ {q:'Explain why the S²⁻ ion is larger than a neutral S atom.',model:'S²⁻ has the same 16 protons as S but two extra electrons. The added electron–electron repulsion pushes the electrons apart, and the same nuclear charge is spread over more electrons, so the ion is larger.',keys:['Same number of protons','Two extra electrons','More repulsion spreads the electrons out']},
+ {q:'Explain why Mg²⁺ is smaller than a neutral Mg atom.',model:'Mg²⁺ has lost its two 3s electrons, so its whole outer energy level is gone. Its 12 protons now pull on only 10 electrons, so the remaining electrons are held more tightly and closer in.',keys:['Lost the outer energy level (3s)','More protons than electrons','Remaining electrons pulled in tighter']},
+ {q:'Explain the large jump between the second and third ionization energies of magnesium.',model:'Magnesium has two valence electrons. After losing them, it has neon\'s stable configuration. The third electron would come from the inner 2p level, which is closer to the nucleus and less shielded, so it takes far more energy to remove.',keys:['Mg has 2 valence electrons','After losing them it has a noble-gas configuration','The 3rd electron is a core electron: closer and less shielded']},
+ {q:'Explain why fluorine is more electronegative than iodine.',model:'Fluorine is at the top of group 17, so it has fewer energy levels and less shielding than iodine. Shared electrons in a bond sit closer to fluorine\'s nucleus and feel a stronger pull, so fluorine attracts them more.',keys:['Fewer energy levels / less shielding','Shared electrons are closer to the nucleus','Stronger pull on bonding electrons']},
+ {q:'Explain why chlorine has a higher electron affinity than phosphorus.',model:'Both are in period 3, so they have the same shielding. Chlorine has more protons, so a higher nuclear charge, and pulls more strongly on an incoming electron. That makes it easier for chlorine to gain an electron.',keys:['Same period, same shielding','Chlorine has more protons (higher nuclear charge)','Stronger pull on an added electron']},
+ {q:'Explain why barium is a more reactive metal than magnesium.',model:'Barium is lower in group 2, so it has more energy levels and more shielding. Its valence electrons are farther from the nucleus and held more weakly, so barium loses them more easily, which is what makes a metal reactive.',keys:['More energy levels / more shielding','Valence electrons farther away and held weakly','Loses electrons more easily']},
+ {q:'Explain why noble gases are not included in the electronegativity trend.',model:'Electronegativity describes how strongly an atom pulls on shared electrons in a bond. Noble gases already have full valence shells, so they don\'t form bonds and have no shared electrons to attract.',keys:['Electronegativity is about electrons in a bond','Noble gases have full valence shells','They don\'t form bonds']},
+ {q:'Explain why the second ionization energy of sodium is much larger than its first.',model:'Sodium has one valence electron (3s¹). Removing it leaves Na⁺ with neon\'s configuration. The next electron must come from the 2p level, a core level closer to the nucleus with less shielding, so it\'s held far more tightly.',keys:['Na has 1 valence electron','Na⁺ has a noble-gas configuration','The 2nd electron is a core electron: closer, less shielded']}
+];
+const ISO_SERIES=[[['N',-3],['O',-2],['F',-1],['Ne',0],['Na',1],['Mg',2],['Al',3]],[['P',-3],['S',-2],['Cl',-1],['Ar',0],['K',1],['Ca',2]],[['Se',-2],['Br',-1],['Kr',0],['Rb',1],['Sr',2]]];
+const TR_GEN={
+ compare(){let prop=wpick([[22,'radius'],[20,'ie'],[16,'en'],[12,'ea'],[16,'metal'],[10,'nonmetal']]);let a,b;
+  if((prop==='en'||prop==='ea'||prop==='nonmetal')&&Math.random()<.15){const p=rint(2,5);a=mgAt(p,18).z;b=mgAt(p,rint(15,17)).z;if(prop==='nonmetal')prop='ea';}
+  else[a,b]=trendPair(prop);
+  if(Math.random()<.5)[a,b]=[b,a];
+  const cp=comparePair(a,b,prop);if(cp.ambiguous)return TR_GEN.compare();
+  const {choices,correct}=mcFrom(cp.correct,cp.wrongs);
+  return {kind:'mc',type:'Compare & explain',ask:`Which ${PROP_Q[prop]}?`,choices:[pairChoice(a),pairChoice(b)],correct:cp.winner===a?0:1,layout:'pair',
+   step2:{ask:`Why does ${lc(cp.winner)} ${PROP_Q[prop].replace(/^has /,'have ').replace(/^is /,'count as ')}?`,choices,correct},
+   why:`<p><b>${EL(cp.winner).n}.</b> ${cp.correct}</p>${posNote(a,b)}`};},
+ ionsize(){const k=rnd(['anion','cation','iso']);let A,B,win,correct,wrongs;
+  if(k==='anion'){const [s,c]=rnd([['N',-3],['O',-2],['F',-1],['P',-3],['S',-2],['Cl',-1],['Se',-2],['Br',-1],['I',-1]]);A=[s,0];B=[s,c];win=B;const n=BY_SYM[s].n;
+   correct=`${sp(s,c)} has the same ${BY_SYM[s].z} protons as ${n.toLowerCase()} but ${-c} extra electron${c<-1?'s':''}. More electron–electron repulsion spreads the electrons out.`;
+   wrongs=[`${sp(s,c)} has more protons than ${n.toLowerCase()}.`,`${sp(s,c)} has an extra energy level.`,`The negative charge pushes the nucleus away from the electrons.`];}
+  else if(k==='cation'){const [s,c]=rnd([['Li',1],['Na',1],['K',1],['Mg',2],['Ca',2],['Sr',2],['Al',3],['Ba',2]]);A=[s,0];B=[s,c];win=A;const n=BY_SYM[s].n;
+   correct=`${sp(s,c)} has lost its outer energy level, and its ${BY_SYM[s].z} protons now pull on fewer electrons, so it's smaller. That leaves ${n.toLowerCase()} as the larger one.`;
+   wrongs=[`${n} has more protons than ${sp(s,c)}.`,`${sp(s,c)} gained protons when it became positive.`,`${n} is heavier, so it takes up more space.`];}
+  else{const ser=rnd(ISO_SERIES);[A,B]=pickN(ser,2);const pa=BY_SYM[A[0]].z,pb=BY_SYM[B[0]].z;win=pa<pb?A:B;const lo=win,hi=win===A?B:A,ne=pa-A[1];
+   correct=`Both have ${ne} electrons, but ${sp(...lo)} has only ${BY_SYM[lo[0]].z} protons (vs. ${BY_SYM[hi[0]].z}), so its nucleus holds those electrons less tightly.`;
+   wrongs=[`${sp(...lo)} has more electrons than ${sp(...hi)}.`,`${sp(...lo)} has more energy levels than ${sp(...hi)}.`,`${sp(...lo)} has a greater atomic mass.`];}
+  if(Math.random()<.5)[A,B]=[B,A];
+  const m=mcFrom(correct,wrongs);
+  return {kind:'mc',type:'Ionic radius',ask:'Which is larger?',choices:[spChoice(A),spChoice(B)],correct:win===A?0:1,layout:'pair',step2:{ask:`Why is ${sp(...win)} larger?`,choices:m.choices,correct:m.correct},why:`<p><b>${sp(...win)}.</b> ${correct}</p>`};},
+ rank(){const k=wpick([[4,'iso'],[4,'period'],[3,'group']]);let items,order,prop='radius',low,high,why;
+  if(k==='iso'){const ser=rnd(ISO_SERIES),n=rint(3,4);items=pickN(ser,n);order=items.map((_,i)=>i).sort((i,j)=>BY_SYM[items[j][0]].z-BY_SYM[items[i][0]].z);
+   why=`All have ${BY_SYM[items[0][0]].z-items[0][1]} electrons. More protons pull the same electrons in tighter, so the ion with the most protons is smallest.`;}
+  else{prop=rnd(['radius','ie','en']);const pool=prop==='en'?MG.filter(e=>e.c!=='g'):MG;let els;
+   if(k==='period'){const p=rint(2,5);els=pickN(pool.filter(e=>periodOf(e.z)===p),rint(3,4));}
+   else{const g=rnd([1,2,13,14,15,16,17]);els=pickN(pool.filter(e=>groupOf(e.z)===g),rint(3,4));}
+   items=els.map(e=>[e.s,0]);const key=z=>k==='period'?across(z):-periodOf(z);
+   order=items.map((_,i)=>i).sort((i,j)=>{const d=key(BY_SYM[items[i][0]].z)-key(BY_SYM[items[j][0]].z);return prop==='radius'?-d:d;});
+   why=k==='period'?(prop==='radius'?'Across a period, nuclear charge rises while shielding stays the same, so atoms get smaller to the right.':`Across a period, nuclear charge rises with the same shielding, so the pull gets stronger and ${prop==='ie'?'ionization energy':'electronegativity'} increases to the right.`)
+     :(prop==='radius'?'Down a group, each element adds an energy level and more shielding, so atoms get larger going down.':`Down a group, more shielding and distance weaken the pull, so ${prop==='ie'?'ionization energy':'electronegativity'} decreases going down.`);}
+  [low,high]=prop==='radius'?['Smallest','Largest']:['Lowest','Highest'];
+  const label={radius:'atomic radius',ie:'first ionization energy',en:'electronegativity'}[prop];
+  return {kind:'rank',type:'Ranking',ask:`Put these in order from ${low.toLowerCase()} to ${high.toLowerCase()} ${k==='iso'?'radius':label}.`,items:items.map(([s,c])=>sp(s,c)),order,low,high,
+   why:`<p>${order.map(i=>sp(...items[i])).join(' &lt; ')}</p><p>${why}</p>`};},
+ succ(){if(Math.random()<.55){const s=rnd(['Li','Na','K','Be','Mg','Ca','B','Al','Ga']),z=BY_SYM[s].z,v=valenceOf(z);const opts=['1st → 2nd','2nd → 3rd','3rd → 4th','4th → 5th'];
+   return {kind:'mc',type:'Successive ionization energies',ask:`Between which two ionization energies of ${BY_SYM[s].n.toLowerCase()} is there a huge jump?`,prompt:`<span class="big">${s}</span><span class="sub-line">${fmtAbbr(aufbauMap(z))}</span>`,choices:opts,correct:v-1,
+    why:`<p>${BY_SYM[s].n} has ${v} valence electron${v>1?'s':''}. After losing ${v>1?'them':'it'}, it has the noble-gas configuration of ${coreFor(z)[1]}. The ${ord(v+1)} electron would come from a full inner level that's closer to the nucleus and less shielded, so the jump is between the ${ord(v)} and ${ord(v+1)}.</p>`};}
+  const p=rint(2,4),v=rint(1,3),cands=[1,2,13,14].map(g=>mgAt(p,g)),ans=cands[v<=2?v-1:2];
+  return {kind:'mc',type:'Successive ionization energies',ask:`An element in period ${p} shows a huge jump between its ${ord(v)} and ${ord(v+1)} ionization energies. Which element is it?`,choices:cands.map(e=>`${e.n} (${e.s})`),correct:cands.indexOf(ans),
+   why:`<p>The jump comes right after the last valence electron is removed. A jump after the ${ord(v)} means ${v} valence electron${v>1?'s':''}, which is group ${v<=2?v:13} in period ${p}: <b>${ans.n.toLowerCase()}</b>.</p>`};},
+ concept(){return bankQ(rnd(TREND_BANK),'Concept check');},
+ explain(){const it=rnd(EXPLAIN_BANK);return {kind:'explain',type:'Explain it',ask:it.q,model:it.model,keys:it.keys};}
+};
+GEN.trends=()=>TR_GEN[wpick([[34,'compare'],[14,'ionsize'],[16,'rank'],[10,'succ'],[14,'concept'],[12,'explain']])]();
+
+/* ===================== UNIT 2: GENERATORS · FAMILIES & NOMENCLATURE ===================== */
+const FAMS={alkali:{name:'Alkali metals',g:1,els:['Li','Na','K','Rb','Cs']},alkaline:{name:'Alkaline earth metals',g:2,els:['Be','Mg','Ca','Sr','Ba']},halogen:{name:'Halogens',g:17,els:['F','Cl','Br','I']},noble:{name:'Noble gases',g:18,els:['He','Ne','Ar','Kr','Xe']},trans:{name:'Transition metals',g:null,els:['Sc','Ti','V','Cr','Mn','Fe','Co','Ni','Cu','Zn','Ag','Au','Pt','Hg']}};
+const FAM_SING={alkali:'alkali metal',alkaline:'alkaline earth metal',halogen:'halogen',noble:'noble gas'};
+const FAM_CLUES=[
+ ['alkali','A soft, silvery metal that can be cut with a knife. It reacts violently with water and forms ions with a 1+ charge.'],
+ ['alkaline','A shiny metal that forms ions with a 2+ charge. It reacts with water, but less violently than the metals in group 1.'],
+ ['halogen','A very reactive nonmetal that exists as diatomic molecules and forms ions with a 1− charge.'],
+ ['noble','A colorless gas made of single atoms. Its valence shell is full, and it almost never forms compounds.'],
+ ['trans','A hard, shiny metal that can form ions with more than one charge and often makes brightly colored compounds.']];
+const CLASS_CLUES=[['Metal','Shiny, conducts heat and electricity well, and can be hammered into thin sheets.'],['Nonmetal','A dull, brittle solid that does not conduct electricity.'],['Metalloid','Shiny but brittle, and conducts electricity only partly. It\'s a semiconductor used in computer chips.']];
+const FAM_BANK=[
+ {q:'Why do elements in the same group have similar chemical properties?',a:'They have the same number of valence electrons',d:['They have the same number of protons','They have the same atomic mass','They have the same number of energy levels'],why:'Elements in a column share the same valence configuration ending, so they gain or lose the same number of electrons and react alike.'},
+ {q:'What does each period (row) of the periodic table represent?',a:'A new energy level of electrons',d:['The number of valence electrons','A chemical family','The number of neutrons'],why:'Each new row starts filling a new principal energy level.'},
+ {q:'Hydrogen is sometimes compared to both lithium and fluorine. Why?',a:'Like Li it has one valence electron; like F it\'s one electron short of a full shell',d:['It is a metal and a nonmetal at the same time','It has the same mass as both','It forms 2+ and 2− ions'],why:'H has one electron in its only shell: one valence electron like the alkali metals, and one away from helium\'s full shell like the halogens.'},
+ {q:'What are valence electrons?',a:'The electrons in the outermost energy level',d:['All electrons in the d sublevel','The electrons closest to the nucleus','Electrons that have been removed'],why:'Valence electrons sit in the highest energy level, and they\'re the ones involved in reactions.'},
+ {q:'Which family has a completely full valence shell?',a:'Noble gases',d:['Halogens','Alkali metals','Alkaline earth metals'],why:'Noble gases have filled s and p sublevels in their outer level (helium has a full 1s), which is why they barely react.'},
+ {q:'How many valence electrons do the halogens have?',a:'7',d:['1','2','8'],why:'Halogens end in ns² np⁵: 2 + 5 = 7 valence electrons, one short of a full octet.'},
+ {q:'Alkaline earth metals form ions with what charge?',a:'2+',d:['1+','2−','1−'],why:'They have 2 valence electrons (ns²) and lose both to reach a noble-gas configuration.'},
+ {q:'Where are the metalloids on the periodic table?',a:'Along the staircase line between metals and nonmetals',d:['In the far left column','In the bottom two rows','In the middle of the d-block'],why:'B, Si, Ge, As, Sb, and Te sit on the stair-step boundary and share properties of both metals and nonmetals.'},
+ {q:'Elements in which group lose 2 electrons to reach a noble-gas configuration?',a:'Group 2, the alkaline earth metals',d:['Group 1, the alkali metals','Group 16','Group 17, the halogens'],why:'Group 2 elements end in ns². Losing both electrons leaves the configuration of the noble gas before them.'},
+ {q:'Which pair is isoelectronic?',a:'Na⁺ and F⁻',d:['Na and F','Na⁺ and Cl⁻','Mg and Ne'],why:'Na⁺ (11 − 1) and F⁻ (9 + 1) both have 10 electrons, arranged like neon.'}
+];
+const FAM_GEN={
+ family(){const k=rnd(Object.keys(FAMS)),s=rnd(FAMS[k].els);const {choices,correct}=mcFrom(FAMS[k].name,Object.keys(FAMS).filter(x=>x!==k).map(x=>FAMS[x].name).slice(0,3));
+  return {kind:'mc',type:'Families',ask:'Which family does this element belong to?',prompt:`<span class="big">${s}</span><span class="sub-line">${BY_SYM[s].n}</span>`,choices,correct,why:`<p>${BY_SYM[s].n} is in ${k==='trans'?'the d-block (groups 3–12)':'group '+FAMS[k].g}, so it's one of the <b>${FAMS[k].name.toLowerCase()}</b>.</p>`};},
+ famgroup(){const k=rnd(['alkali','alkaline','halogen','noble']);const g=FAMS[k].g,opts=[1,2,17,18].map(x=>`Group ${x} (${ROMAN_G[x]})`);
+  return {kind:'mc',type:'Families',ask:`Which group are the ${FAMS[k].name.toLowerCase()} in?`,choices:opts,correct:[1,2,17,18].indexOf(g),why:`<p>The ${FAMS[k].name.toLowerCase()} make up group ${g}: ${FAMS[k].els.join(', ')}.</p>`};},
+ valence(){const e=rnd(MG.filter(x=>periodOf(x.z)<=5)),v=valenceOf(e.z);
+  return {type:'Valence electrons',ask:'How many valence electrons does this element have?',prompt:`<span class="big">${e.s}</span><span class="sub-line">${e.n}</span>`,fields:[{key:'a',label:'Valence electrons',placeholder:'#'}],
+   check:x=>{const ok=parseInt(x.a)===v;return {ok,fields:{a:ok},why:`<p>${e.n} is in group ${groupOf(e.z)} (${ROMAN_G[groupOf(e.z)]}), so it has <b>${v}</b> valence electrons. ${fmtAbbr(aufbauMap(e.z))}</p>`};}};},
+ charge(){const e=rnd(MG.filter(x=>GROUP_CHARGE[groupOf(x.z)]&&periodOf(x.z)<=5&&!(groupOf(x.z)===13&&x.s==='B'))),g=groupOf(e.z),c=GROUP_CHARGE[g];
+  return {type:'Ion charge',ask:'What charge does this element usually form as an ion?',prompt:`<span class="big">${e.s}</span><span class="sub-line">${e.n}</span>`,fields:[{key:'a',label:'Charge',placeholder:'e.g. 2+ or 1-',tools:'ion'}],
+   check:x=>{const u=parseCharge(x.a);const ok=u===c;let diag='';if(!ok&&u===valenceOf(e.z)*(c<0?-1:1)&&c<0)diag=`<b>Count to 8.</b> ${e.n} has ${valenceOf(e.z)} valence electrons and gains ${-c} to reach a full octet, so the charge is ${chargeStr(c)}.`;else if(!ok&&!isNaN(u)&&u===-c)diag='<b>Check the sign.</b> Metals lose electrons and become positive; nonmetals gain electrons and become negative.';
+    return {ok,fields:{a:ok},diag,why:`<p>${e.n} is in group ${g} with ${valenceOf(e.z)} valence electrons. It ${c>0?`loses ${c}`:`gains ${-c}`} to reach a noble-gas configuration, forming <b>${sp(e.s,c)}</b>.</p>`};}};},
+ identify(){const k=rnd(['fam','pos','ion','iso','val']);let e,clue;
+  if(k==='fam'){const f=rnd(['alkali','alkaline','halogen','noble']);const p=f==='noble'?rint(2,5):rint(2,5);e=mgAt(p,FAMS[f].g);clue=`I'm the ${FAM_SING[f]} in period ${p}.`;}
+  else if(k==='pos'){e=rnd(MG.filter(x=>periodOf(x.z)<=5));clue=`I'm in period ${periodOf(e.z)}, group ${groupOf(e.z)} (${ROMAN_G[groupOf(e.z)]}).`;}
+  else if(k==='ion'){e=rnd(MG.filter(x=>GROUP_CHARGE[groupOf(x.z)]&&periodOf(x.z)<=5&&x.s!=='B'));clue=`I form an ion with a ${chargeStr(GROUP_CHARGE[groupOf(e.z)])} charge, and I'm in period ${periodOf(e.z)}.`;}
+  else if(k==='iso'){const [s,c]=rnd(ISO_MG);e=BY_SYM[s];const n=e.z-c;clue=`My ${chargeStr(c)} ion is isoelectronic with ${BY_SYM[NOBLES.find(x=>x[0]===n)[1]].n}.`;}
+  else{e=rnd(MG.filter(x=>periodOf(x.z)<=4&&groupOf(x.z)!==18));clue=`I have ${valenceOf(e.z)} valence electron${valenceOf(e.z)>1?'s':''}, and they're in energy level ${periodOf(e.z)}.`;}
+  return {type:'Identify the element',ask:'Which element am I?',prompt:`<span class="clue">“${clue}”</span>`,fields:[{key:'a',label:'Element symbol',placeholder:'e.g. Mg'}],
+   check:x=>{const r=checkSymbol(x.a,e.s);return {ok:r.ok,note:r.note,fields:{a:r.ok},why:`<p>That's <b>${e.n.toLowerCase()} (${e.s})</b>: period ${periodOf(e.z)}, group ${groupOf(e.z)}.</p>`};}};},
+ classify(){if(Math.random()<.4){const [ans,desc]=rnd(CLASS_CLUES);const {choices,correct}=mcFrom(ans,['Metal','Nonmetal','Metalloid'].filter(x=>x!==ans));return {kind:'mc',type:'Metals & nonmetals',ask:'Which kind of element fits this description?',prompt:`<span class="clue">${desc}</span>`,choices,correct,why:`<p>Metals are shiny conductors that bend; nonmetals are dull and don't conduct; metalloids are in between. This is a <b>${ans.toLowerCase()}</b>.</p>`};}
+  const e=rnd(PT.filter(x=>x.z<=56&&x.z>2));const ans=e.c==='m'?'Metal':e.c==='d'?'Metalloid':'Nonmetal';const {choices,correct}=mcFrom(ans,['Metal','Nonmetal','Metalloid'].filter(x=>x!==ans));
+  return {kind:'mc',type:'Metals & nonmetals',ask:'Is this element a metal, nonmetal, or metalloid?',prompt:`<span class="big">${e.s}</span><span class="sub-line">${e.n}</span>`,choices,correct,why:`<p>${e.n} is a <b>${ans.toLowerCase()}</b>. Metals are to the left of the staircase, nonmetals to the upper right (plus noble gases), and metalloids sit right on it.</p>`};},
+ clue(){const [k,desc]=rnd(FAM_CLUES);const {choices,correct}=mcFrom(FAMS[k].name,Object.keys(FAMS).filter(x=>x!==k).map(x=>FAMS[x].name).slice(0,3));
+  return {kind:'mc',type:'Families',ask:'Which family does this element most likely belong to?',prompt:`<span class="clue">${desc}</span>`,choices,correct,why:`<p>Those properties fit the <b>${FAMS[k].name.toLowerCase()}</b>.</p>`};},
+ concept(){return bankQ(rnd(FAM_BANK),'Concept check');}
+};
+GEN.families=()=>FAM_GEN[wpick([[14,'family'],[6,'famgroup'],[14,'valence'],[14,'charge'],[20,'identify'],[10,'classify'],[10,'clue'],[12,'concept']])]();
+
+const LETTERS=['Q','T','X','Z','R','D','J','L','M','G'];
+const POS_DESC=[['Na','the alkali metal in period 3'],['K','the alkali metal in period 4'],['Li','the alkali metal in period 2'],['Mg','the alkaline earth metal in period 3'],['Ca','the alkaline earth metal in period 4'],['Ba','the alkaline earth metal in period 6'],['Al','the group 13 element in period 3']];
+const NEG_DESC=[['F','the halogen in period 2'],['Cl','the halogen in period 3'],['Br','the halogen in period 4'],['O','the group 16 element in period 2'],['S','the group 16 element in period 3'],['N','the group 15 element in period 2']];
+function subf(a,n){return n>1?`${a}<sub>${n}</sub>`:a;}
+const NOMEN_GEN={
+ letters(){const gm=rnd([1,2,13]),gn=rnd([15,16,17]),cm=GROUP_CHARGE[gm],cn=-GROUP_CHARGE[gn],g=gcd(cm,cn),a=cn/g,b=cm/g;const [X,Y]=pickN(LETTERS,2);
+  const right=subf(X,a)+subf(Y,b);const opts=new Set([right]);[[b,a],[1,1],[cm,cn],[cn,cm],[a+1,b],[2,3],[3,2]].forEach(([p,q])=>{if(opts.size<4)opts.add(subf(X,p)+subf(Y,q));});
+  const {choices,correct}=mcFrom(right,[...opts].slice(1));
+  return {kind:'mc',type:'Formula from groups',ask:`Element ${X} is in group ${ROMAN_G[gm]} and element ${Y} is in group ${ROMAN_G[gn]}. What's the most probable formula for a compound of ${X} and ${Y}?`,choices,correct,
+   why:`<ol><li>Group ${ROMAN_G[gm]} → ${X}<sup>${chargeStr(cm)}</sup>. Group ${ROMAN_G[gn]} → ${Y}<sup>${chargeStr(-cn)}</sup>.</li><li>Balance: ${a} × ${cm}+ = ${b} × ${cn}− = ${a*cm}.</li><li><b>${right}</b></li></ol>`};},
+ real(){const [ps,pd]=rnd(POS_DESC),[ns,nd]=rnd(NEG_DESC),cp=GROUP_CHARGE[groupOf(BY_SYM[ps].z)],cn=-GROUP_CHARGE[groupOf(BY_SYM[ns].z)],g=gcd(cp,cn),a=cn/g,b=cp/g,f=ps+(a>1?a:'')+ns+(b>1?b:'');
+  return {type:'Formula from the table',ask:`Write the formula for the compound formed by ${pd} and ${nd}.`,prompt:'',fields:[{key:'a',label:'Formula',placeholder:'e.g. MgCl2',tools:'formula'}],
+   check:v=>{const p=parseFormula(v.a),exp=parseFormula(f);const ok=!!p&&sameTotals(p.totals,exp.totals)&&p.first===ps;let diag='';if(!p)diag='<b>Couldn\'t read that formula.</b> Use symbols with correct capitalization and digits for subscripts.';else if(!ok&&sameTotals(p.totals,exp.totals))diag='<b>Order.</b> Write the metal first.';
+    return {ok,fields:{a:ok},diag,why:`<ol><li>${cap(pd)} is <b>${ps}</b>, which forms ${sp(ps,cp)}.</li><li>${cap(nd)} is <b>${ns}</b>, which forms ${sp(ns,-cn)}.</li><li>Balance the charges: <b>${fx(f)}</b></li></ol>`};}};}
+};
+GEN.nomen=()=>{const k=wpick([[40,'naming'],[20,'ions'],[20,'letters'],[20,'real']]);if(k==='naming')return GEN.naming();if(k==='ions')return GEN.ions();return NOMEN_GEN[k]();};
+
+Object.assign(GOALS,GOALS_U2);
+</script>
+<script>
 /* ===================== TOPICS & UI ===================== */
 const TOPICS=[
  {id:'elements',title:'Elements & Symbols',blurb:'Fifty elements. Name to symbol and back, until it\'s automatic.',lead:'The 50 elements this course expects you to know by name and symbol.'},
@@ -891,45 +1730,54 @@ const TOPICS=[
  {id:'naming',title:'Naming Compounds',blurb:'Two systems, one decision rule. Prefixes or Roman numerals, never both.',lead:'Molecular vs. ionic naming, formula to name and name to formula.'},
  {id:'mole',title:'The Mole & Avogadro\'s Number',blurb:'Moles, particles, grams, and percent composition.',lead:'Convert between moles, particles, and grams, and find percent composition.'}
 ];
+TOPICS.forEach(t=>t.unit=1);TOPICS.push(...U2_TOPICS);
 const byId=id=>TOPICS.find(t=>t.id===id);
 const view=document.getElementById('view');
 const PT_BTN='<button class="btn sm pt-btn" onclick="openTable()"><i><b></b><b></b><b></b><b></b><b></b><b></b></i>Periodic table</button>';
 let session=null;
 let ionFilterOpen=false;
 
+/* ---------- units & routing ---------- */
+const UNITS={1:{h1:['Nomenclature','&amp; the Mole.'],lead:'Six topics. Learn the rules, then drill until they stick. Every question checks itself and explains the answer.',foot:'Chemistry · Unit 1 · Nomenclature and the Mole'},
+ 2:{h1:['Atomic Theory','&amp; Periodic Trends.'],lead:'Five topics. Learn the ideas, then practice explaining them. Every question checks itself, including your reasoning.',foot:'Chemistry · Unit 2 · Atomic Theory and Periodic Trends'}};
+const DEFAULT_UNIT=2;
+function setFoot(u){const f=document.getElementById('foot-unit');if(f)f.textContent=UNITS[u].foot;}
 function render(){
   const h=location.hash||'#home';
   const m=h.match(/^#t\/([a-z]+)\/(learn|practice)$/);
-  if(m&&byId(m[1])){renderTopic(byId(m[1]),m[2]);}
-  else renderHome();
+  if(m&&byId(m[1]))renderTopic(byId(m[1]),m[2]);
+  else{const u=h.match(/^#u([12])$/);renderHome(u?+u[1]:DEFAULT_UNIT);}
   window.scrollTo({top:0,behavior:'instant'});
 }
 window.addEventListener('hashchange',render);
 
-function renderHome(){
-  let att=0,cor=0,done=0;TOPICS.forEach(t=>{const p=tp(t.id);att+=p.attempted;cor+=p.correct;if(p.correct>=goal(t.id))done++;});
+function renderHome(unit){
+  const list=TOPICS.filter(t=>t.unit===unit),U=UNITS[unit];setFoot(unit);
+  let att=0,cor=0,done=0;list.forEach(t=>{const p=tp(t.id);att+=p.attempted;cor+=p.correct;if(p.correct>=goal(t.id))done++;});
   const acc=att?Math.round(100*cor/att):0;
   view.innerHTML=`
   <div class="hero">
-    <div class="eyebrow">Chemistry · Unit 1</div>
-    <h1><span>Nomenclature</span><span>&amp; the Mole.</span></h1>
-    <p class="lead">Six topics. Learn the rules, then drill until they stick. Every question checks itself and explains the answer.</p>
-    <div class="stats"><span class="chip"><b>${done}/${TOPICS.length}</b> topics mastered</span><span class="chip"><b>${att}</b> questions answered</span><span class="chip"><b>${acc}%</b> accuracy</span>${PT_BTN}</div>
+    <div class="seg unit-seg" role="tablist" aria-label="Unit">${[1,2].map(u=>`<button role="tab" aria-selected="${u===unit}" class="${u===unit?'active':''}" onclick="location.hash='#u${u}'">Unit ${u}</button>`).join('')}</div>
+    <div class="eyebrow">Chemistry · Unit ${unit}</div>
+    <h1><span>${U.h1[0]}</span><span>${U.h1[1]}</span></h1>
+    <p class="lead">${U.lead}</p>
+    <div class="stats"><span class="chip"><b>${done}/${list.length}</b> topics mastered</span><span class="chip"><b>${att}</b> questions answered</span><span class="chip"><b>${acc}%</b> accuracy</span>${PT_BTN}</div>
   </div>
-  <div class="cards">${TOPICS.map((t,i)=>{const p=tp(t.id);const pc=pct(t.id);const done=p.correct>=goal(t.id);
-    return `<a class="card${done?' done':''}" href="#t/${t.id}/${p.learned?'practice':'learn'}"><div class="num">0${i+1}</div><h3>${t.title}</h3><div class="cfoot"><p>${t.blurb}</p><span class="go" title="${done?'Mastered':p.correct+' correct so far'}">${done?'✓':'→'}</span></div></a>`}).join('')}</div>`;
+  <div class="cards">${list.map((t,i)=>{const p=tp(t.id);const d=p.correct>=goal(t.id);
+    return `<a class="card${d?' done':''}" href="#t/${t.id}/${p.learned?'practice':'learn'}"><div class="num">0${i+1}${t.hot?'<span class="hot">Heavily tested</span>':''}</div><h3>${t.title}</h3><div class="cfoot"><p>${t.blurb}</p><span class="go" title="${d?'Mastered':p.correct+' correct so far'}">${d?'✓':'→'}</span></div></a>`}).join('')}</div>`;
 }
 
 function renderTopic(t,tab){
   const p=tp(t.id);if(tab==='learn'&&!p.learned){p.learned=true;save();}
-  const pc=pct(t.id);const done=p.correct>=goal(t.id);const isP=tab==='practice';
+  const list=TOPICS.filter(x=>x.unit===t.unit);setFoot(t.unit);
+  const pc=pct(t.id);const done=p.correct>=goal(t.id);
   const seg=`<div class="seg"><button class="${tab==='learn'?'active':''}" onclick="location.hash='#t/${t.id}/learn'">Learn</button><button class="${tab==='practice'?'active':''}" onclick="location.hash='#t/${t.id}/practice'">Practice</button></div>`;
   const mastery=`<div class="mastery"><div class="bar"><i class="${done?'ok':''}" style="width:${pc}%"></i></div><span>${done?'Mastered':Math.min(p.correct,goal(t.id))+' of '+goal(t.id)+' correct answers to master'}${p.attempted?' · '+Math.round(100*p.correct/p.attempted)+'% accuracy':''}</span></div>`;
   view.innerHTML=`
   <div class="narrow">
-    <div class="toprow"><a class="btn sm" href="#home">← All topics</a>${PT_BTN}</div>
+    <div class="toprow"><a class="btn sm" href="#u${t.unit}">← All topics</a>${PT_BTN}</div>
     <div class="thead">
-      <div class="eyebrow" style="margin-top:12px">Topic ${TOPICS.indexOf(t)+1} of ${TOPICS.length}</div>
+      <div class="eyebrow" style="margin-top:12px">Unit ${t.unit} · Topic ${list.indexOf(t)+1} of ${list.length}</div>
       <h1>${t.title}</h1>
       <p class="lead">${t.lead}</p>
       <div class="row">${seg}${mastery}</div>
@@ -937,7 +1785,7 @@ function renderTopic(t,tab){
     <div id="panel"></div>
   </div>`;
   const panel=document.getElementById('panel');
-  if(tab==='learn'){panel.innerHTML=`<div class="learn">${LEARN[t.id]()}</div><div style="text-align:center;margin-top:36px"><a class="btn primary" href="#t/${t.id}/practice">Practice this topic →</a></div>`;}
+  if(tab==='learn'){panel.innerHTML=`<div class="learn">${LEARN[t.id]()}</div><div style="text-align:center;margin-top:36px"><a class="btn primary" href="#t/${t.id}/practice">Practice this topic →</a></div>`;if(typeof LEARN_INIT!=='undefined'&&LEARN_INIT[t.id])LEARN_INIT[t.id]();}
   else renderPractice(t);
 }
 
@@ -951,33 +1799,70 @@ const REF={
   atomic:{title:'The rules',html:()=>'<div class="facts"><div class="fact"><div class="k">Protons</div><div class="v">= atomic number</div></div><div class="fact"><div class="k">Neutrons</div><div class="v">= mass number − protons</div></div><div class="fact"><div class="k">Electrons</div><div class="v">= protons − charge</div><div class="d">2+ means 2 fewer; 3− means 3 more</div></div></div>'},
   avgmass:{title:'The setup',html:()=>'<div class="facts"><div class="fact"><div class="k">Weighted average</div><div class="v">x·(mass A) + (1 − x)·(mass B) = average</div><div class="d">x = fraction of A. Solve: x = (average − mass B) ÷ (mass A − mass B)</div></div><div class="fact"><div class="k">Sanity check</div><div class="v">closer mass = more abundant</div></div></div>'}
 };
+Object.assign(REF,{
+ light:{title:'Equations & constants',html:()=>`<div class="facts"><div class="fact"><div class="k">Speed of light</div><div class="v">c = λν</div><div class="d">c = 3.00 × 10<sup>8</sup> m/s</div></div><div class="fact"><div class="k">Planck</div><div class="v">E = hν</div><div class="d">h = 6.63 × 10<sup>−34</sup> J/Hz</div></div><div class="fact"><div class="k">Bohr · hydrogen</div><div class="v">E<sub>n</sub> = −2.18 × 10<sup>−18</sup> J / n²</div><div class="d">ΔE = |E<sub>final</sub> − E<sub>initial</sub>|</div></div></div><p class="muted" style="font-size:.85rem;margin:8px 0 0">1 nm = 10<sup>−9</sup> m · 1 kJ = 1000 J · visible light runs from about 400 nm (violet) to 700 nm (red).</p>${specStrip()}`},
+ config:{title:'Filling order & capacities',html:()=>`<p class="order-line">1s 2s 2p 3s 3p 4s 3d 4p 5s 4d 5p 6s 4f 5d 6p 7s 5f 6d 7p</p><p class="muted" style="font-size:.85rem;margin:8px 0 0">s holds 2 · p holds 6 · d holds 10 · f holds 14. Noble gases: He 2, Ne 10, Ar 18, Kr 36, Xe 54, Rn 86. Cations lose electrons from the highest n first.</p>`},
+ trends:{title:'The toolkit',html:()=>`<div class="tscroll"><table><tr><th></th><th>Nuclear charge</th><th>Shielding</th><th>Pull on outer e⁻</th></tr><tr><td>Across →</td><td>increases</td><td>same</td><td><b>stronger</b></td></tr><tr><td>Down ↓</td><td>increases</td><td>increases</td><td><b>weaker</b></td></tr></table></div><p class="muted" style="font-size:.85rem;margin:10px 0 0">Radius and metallic character grow toward the lower left. Ionization energy, electron affinity, and electronegativity grow toward the upper right. Noble gases are left out of electron affinity and electronegativity.</p>`},
+ families:{title:'Charges by group',html:()=>`<div class="tscroll"><table><tr><th>Group</th><th>1 (I)</th><th>2 (II)</th><th>13 (III)</th><th>15 (V)</th><th>16 (VI)</th><th>17 (VII)</th><th>18 (VIII)</th></tr><tr><td>Valence e⁻</td><td>1</td><td>2</td><td>3</td><td>5</td><td>6</td><td>7</td><td>8</td></tr><tr><td>Ion</td><td>1+</td><td>2+</td><td>3+</td><td>3−</td><td>2−</td><td>1−</td><td>none</td></tr></table></div>`},
+ nomen:{title:'Ions & formulas',html:()=>REF.naming.html()}
+});
 function renderPractice(t){
   if(!session||session.topic!==t.id)session={topic:t.id,i:0,score:0,q:null,answered:false};
   const s=session;const panel=document.getElementById('panel');
   if(s.i>=ROUND){
-    panel.innerHTML=`<div class="practice"><div class="qcard summary"><div class="eyebrow">Round complete</div><div class="score">${s.score}/${ROUND}</div><p>${s.score===ROUND?'Perfect round.':s.score>=7?'Solid. Keep going to lock it in.':'Worth another look at the Learn tab, then try again.'} Questions are generated fresh every round, so they never run out.</p><div class="qactions"><button class="btn primary" onclick="session=null;renderPractice(byId('${t.id}'))">Another round</button><a class="btn" href="#t/${t.id}/learn">Review the rules</a></div></div></div>`;return;
+    panel.innerHTML=`<div class="practice"><div class="qcard summary"><div class="eyebrow">Round complete</div><div class="score">${s.score}/${ROUND}</div><p>${s.score===ROUND?'Perfect round.':s.score>=7?'Solid. Keep going to lock it in.':'Worth another look at the Learn tab, then try again.'} Questions are generated fresh every round, so they never run out.</p><div class="qactions"><button class="btn primary" onclick="session=null;renderPractice(byId('${t.id}'))">Another round</button><a class="btn" href="#t/${t.id}/learn">Review the lesson</a></div></div></div>`;return;
   }
-  if(!s.q){s.q=GEN[t.id]();s.answered=false;}
-  const q=s.q;
+  if(!s.q){s.q=GEN[t.id]();s.answered=false;s.stage=1;s.rank=[];s.revealed=false;}
+  const q=s.q,kind=q.kind||'fields';
   const catRow=t.id==='ions'?(()=>{const sel=getIonFilter();const n=IONS.filter(i=>sel.includes(ionCategory(i))).length;const label=sel.length===5?'All categories':ION_CATS.filter(([k])=>sel.includes(k)).map(([,l])=>l).join(', ');
     return `<details class="ref catbox"${ionFilterOpen?' open':''} ontoggle="ionFilterOpen=this.open"><summary>Which ions to practice <span class="sum">· ${label} · ${n} ion${n===1?'':'s'}</span></summary><div class="body"><div class="catchips">${ION_CATS.map(([k,lab])=>`<button type="button" class="catchip${sel.includes(k)?' active':''}" onclick="toggleIonCat('${k}')">${lab}</button>`).join('')}</div></div></details>`;})():'';
+  const skip=`<button class="skip" onclick="skipQuestion()">Skip this one</button>`;
+  const checkBtn=(l='Check answer')=>`<button class="btn primary wide" id="check-btn" onclick="checkAnswer()">${l} <kbd>Enter ↵</kbd><span class="arr">→</span></button>`;
+  let body='',actions=checkBtn()+skip,keys='<kbd>Enter</kbd> to check · <kbd>Enter</kbd> again to continue';
+  if(kind==='mc'){body=mcHTML(q.choices,q.layout,1);actions=skip;keys=`<kbd>1</kbd>–<kbd>${q.choices.length}</kbd> to answer · <kbd>Enter</kbd> to continue`;}
+  else if(kind==='rank'){body=rankHTML(q);}
+  else if(kind==='orbital'){obInit('obq',q.z);body=`<div class="rank-help">Tap an orbital to add an electron, tap again to pair it, once more to clear it.</div><div id="obq-grid">${obGrid(OB.obq.cells,{id:'obq'})}</div>`;}
+  else if(kind==='explain'){body=`<div class="explain"><textarea id="explain-in" aria-label="Your explanation" placeholder="Write your explanation in a few sentences. Bring in nuclear charge, shielding, or distance where they matter."></textarea></div><div id="explain-reveal"></div>`;actions=`<button class="btn primary wide" id="check-btn" onclick="checkAnswer()">Compare with the model answer <span class="arr">→</span></button>`+skip;keys='Write it out, then compare';}
+  else body=`<div class="inputs${q.fields.length>1?' multi':''}">${q.fields.map((f,i)=>`<div class="field" id="fld-${f.key}"><label for="in-${f.key}">${f.label}</label><input id="in-${f.key}" data-key="${f.key}" placeholder="${esc(f.placeholder||'')}" autocomplete="off" autocapitalize="off" spellcheck="false" ${i===0?'autofocus':''}>${f.tools?toolsHTML(f.tools,'in-'+f.key):''}${f.hint?`<div class="hint">${f.hint}</div>`:''}</div>`).join('')}</div>`;
   panel.innerHTML=`<div class="practice">
     ${catRow}
-    <div class="round"><span>Question <b>${s.i+1}</b> of ${ROUND} · Score <b>${s.score}</b></span><span class="keys"><kbd>Enter</kbd> to check · <kbd>Enter</kbd> again to continue</span></div>
+    <div class="round"><span>Question <b>${s.i+1}</b> of ${ROUND} · Score <b>${s.score}</b></span><span class="keys">${keys}</span></div>
     <div class="bar"><i style="width:${s.i/ROUND*100}%"></i></div>
     <div class="qcard" id="qcard">
       <div class="qtop"><span class="eyebrow">${q.type}</span><span class="qnum">Question ${s.i+1}</span></div>
       <div class="ask">${q.ask||''}</div>
-      <div class="prompt">${q.prompt}</div>
-      <div class="inputs${q.fields.length>1?' multi':''}">${q.fields.map((f,i)=>`<div class="field" id="fld-${f.key}"><label for="in-${f.key}">${f.label}</label><input id="in-${f.key}" data-key="${f.key}" placeholder="${esc(f.placeholder||'')}" autocomplete="off" autocapitalize="off" spellcheck="false" ${i===0?'autofocus':''}>${f.tools?toolsHTML(f.tools,'in-'+f.key):''}${f.hint?`<div class="hint">${f.hint}</div>`:''}</div>`).join('')}</div>
+      ${q.prompt?`<div class="prompt">${q.prompt}</div>`:'<div style="height:20px"></div>'}
+      <div id="qbody">${body}</div>
+      <div id="step2"></div>
       <div id="fb"></div>
-      <div class="qactions" id="qactions"><button class="btn primary wide" id="check-btn" onclick="checkAnswer()">Check answer <kbd>Enter ↵</kbd><span class="arr">→</span></button><button class="skip" onclick="skipQuestion()">Skip this one</button></div>
+      <div class="qactions" id="qactions">${actions}</div>
     </div>
     ${REF[t.id]?`<details class="ref"><summary>${REF[t.id].title}</summary><div class="body">${REF[t.id].html()}</div></details>`:''}
   </div>`;
-  const first=panel.querySelector('input');if(first)first.focus();
-  panel.querySelector('#qcard').addEventListener('keydown',e=>{if(e.key==='Enter'){e.preventDefault();if(!session.answered)checkAnswer();else nextQuestion();}});
+  const f=panel.querySelector(kind==='mc'?'.choice':kind==='explain'?'textarea':kind==='rank'?'.rank-pool .rchip':kind==='orbital'?'.ob-orb':'#qcard input');if(f)f.focus({preventScroll:true});
+  panel.querySelector('#qcard').addEventListener('keydown',qKeys);
 }
+function qKeys(e){const s=session;if(!s||!s.q)return;const q=s.q,kind=q.kind||'fields';
+  if(e.key==='Enter'){
+    if(e.target.tagName==='TEXTAREA'&&!(e.metaKey||e.ctrlKey))return;
+    if(s.answered){e.preventDefault();nextQuestion();return;}
+    if(e.target.tagName==='BUTTON')return;
+    e.preventDefault();if(kind!=='mc')checkAnswer();return;}
+  if(kind==='mc'&&!s.answered&&/^[1-9]$/.test(e.key)&&e.target.tagName!=='TEXTAREA'&&e.target.tagName!=='INPUT'){const i=+e.key-1,n=(s.stage===2?q.step2.choices:q.choices).length;if(i<n){e.preventDefault();pickMC(s.stage,i);}}
+}
+function mcHTML(choices,layout,stage){return `<div class="choices${layout==='pair'?' pair':''}" id="mc-${stage}">${choices.map((c,i)=>`<button type="button" class="choice" onclick="pickMC(${stage},${i})"><span class="k">${i+1}</span><span class="c">${c}</span></button>`).join('')}</div>`;}
+function pickMC(stage,i){const s=session;if(!s||s.answered||stage!==s.stage)return;const q=s.q,corr=stage===1?q.correct:q.step2.correct;
+  document.querySelectorAll(`#mc-${stage} .choice`).forEach((b,k)=>{b.disabled=true;b.classList.add(k===corr?'right':k===i?'wrong':'dim');});
+  if(stage===1&&i===corr&&q.step2){s.stage=2;const box=document.getElementById('step2');box.innerHTML=`<div class="step2"><div class="ask">${q.step2.ask}</div>${mcHTML(q.step2.choices,null,2)}</div>`;const f=box.querySelector('.choice');if(f)f.focus({preventScroll:true});requestAnimationFrame(()=>box.scrollIntoView({block:'nearest',behavior:'smooth'}));return;}
+  if(stage===1&&i!==corr)return finishQuestion({ok:false,why:q.why});
+  if(stage===2&&i!==corr)return finishQuestion({ok:false,verdict:'Right answer, wrong reason',why:q.why});
+  finishQuestion({ok:true,why:q.why});}
+function rankHTML(q,done){const placed=session.rank;
+  const slot=placed.length?placed.map((it,pos)=>`<button type="button" class="rchip placed${done?(it===q.order[pos]?' right':' wrong'):''}" ${done?'disabled':''} onclick="rankUndo(${pos})" aria-label="Position ${pos+1}"><span class="n">${pos+1}</span>${q.items[it]}</button>`).join(''):'<span class="ph">Tap the items below in order</span>';
+  const pool=q.items.map((x,i)=>placed.includes(i)?'':`<button type="button" class="rchip" onclick="rankTap(${i})">${x}</button>`).join('');
+  return `<div class="rank-slots"><span class="ends">${q.low}</span>${slot}<span class="ends">${q.high}</span></div>${done?'':`<div class="rank-pool">${pool}</div><div class="rank-help">Tap a placed item to send it back.</div>`}`;}
+function rankTap(i){const s=session;if(s.answered||s.rank.includes(i))return;s.rank.push(i);document.getElementById('qbody').innerHTML=rankHTML(s.q);const n=document.querySelector('.rank-pool .rchip');(n||document.getElementById('check-btn')).focus({preventScroll:true});}
+function rankUndo(pos){const s=session;if(s.answered)return;s.rank.splice(pos,1);document.getElementById('qbody').innerHTML=rankHTML(s.q);}
 const SUBS_T=[['x<sub>2</sub>','₂'],['x<sub>3</sub>','₃'],['x<sub>4</sub>','₄'],['( x )','()']];
 const CHG_T=[['+','⁺'],['−','⁻'],['2+','²⁺'],['2−','²⁻'],['3+','³⁺'],['3−','³⁻']];
 const TOOLSETS={
@@ -985,21 +1870,35 @@ const TOOLSETS={
   ion:{hint:'Type normally (SO4 2-), or insert a template.',tiles:[...SUBS_T,...CHG_T]},
   sci:{hint:'Type normally (3.3e24 or 3.3 x 10^24), or insert a template.',tiles:[22,23,24,25].map(e=>['× 10<sup>'+e+'</sup>',' × 10'+toSup(String(e))])}
 };
+Object.assign(TOOLSETS,{
+ sci2:{hint:'Type 3.38e-19 or 3.38 x 10^-19, or insert a template.',tiles:[['× 10ⁿ',' × 10^'],['× 10⁻³⁴',' × 10⁻³⁴'],['× 10⁻¹⁹',' × 10⁻¹⁹'],['× 10⁻¹⁸',' × 10⁻¹⁸'],['× 10⁻⁷',' × 10⁻⁷'],['× 10⁸',' × 10⁸'],['× 10¹⁴',' × 10¹⁴']]},
+ config:{hint:'Type 1s2 2s2 2p6 (no superscripts needed). Tap a noble gas to start the shorthand.',tiles:NOBLES.map(([,s])=>['['+s+']','['+s+'] '])}
+});
 function toolsHTML(kind,id){const t=TOOLSETS[kind];return `<div class="tools"><div class="tools-hint">${t.hint}</div><div class="tiles">${t.tiles.map(([lab,txt],i)=>`<button type="button" tabindex="-1" class="${/^[0-9+−]/.test(lab)?'chg':''}" onmousedown="event.preventDefault()" onclick="applyTool('${id}','${kind}',${i})">${lab}</button>`).join('')}</div></div>`;}
 function applyTool(id,kind,i){const el=document.getElementById(id);if(!el||el.disabled)return;const txt=TOOLSETS[kind].tiles[i][1];let s=el.selectionStart??el.value.length,e=el.selectionEnd??s,v=el.value;
   v=v.slice(0,s)+txt+v.slice(e);el.value=v;const p=s+txt.length-(txt==='()'?1:0);el.setSelectionRange(p,p);el.focus();}
 function checkAnswer(){
-  const s=session;if(!s||s.answered)return;const q=s.q;
-  const vals={};document.querySelectorAll('#qcard input').forEach(i=>vals[i.dataset.key]=i.value);
-  if(Object.values(vals).every(v=>!String(v).trim())){document.querySelector('#qcard input').focus();return;}
-  const r=q.check(vals);s.answered=true;if(r.ok)s.score++;record(s.topic,r.ok);
-  document.querySelectorAll('#qcard input').forEach(i=>{i.disabled=true;const f=document.getElementById('fld-'+i.dataset.key);f.classList.add(r.fields&&r.fields[i.dataset.key]===false?'bad':'ok');});
-  document.getElementById('fb').innerHTML=`<div class="feedback ${r.ok?'ok':'bad'}"><div class="verdict">${r.ok?'Correct':'Not quite'}</div><div class="why">${r.why||''}</div>${r.diag?`<div class="diag">${r.diag}</div>`:''}</div>`;
-  document.getElementById('qactions').innerHTML=`<button class="btn primary wide" id="next-btn" onclick="nextQuestion()">${s.i+1>=ROUND?'See results':'Next question'} <kbd>Enter ↵</kbd><span class="arr">→</span></button>`;
-  document.getElementById('next-btn').focus({preventScroll:true});
-  updateMastery();
-  requestAnimationFrame(()=>{document.getElementById('qactions').scrollIntoView({block:'nearest',behavior:'smooth'});});
+  const s=session;if(!s||s.answered)return;const q=s.q,kind=q.kind||'fields';
+  if(kind==='mc')return;
+  if(kind==='rank'){if(s.rank.length<q.items.length){const p=document.querySelector('.rank-pool .rchip');if(p)p.focus();return;}
+    const ok=s.rank.every((v,k)=>v===q.order[k]);s.answered=true;document.getElementById('qbody').innerHTML=rankHTML(q,true);s.answered=false;return finishQuestion({ok,why:q.why});}
+  if(kind==='orbital'){const r=obCheck('obq');OB.obq.locked=true;obRedraw('obq');const m=aufbauMap(q.z),last=subsOf(m).pop();
+    return finishQuestion({ok:r.ok,why:r.ok?`<p>All three rules followed.</p><p>${fmtFull(m)}</p>`:`${r.issues.map(x=>`<p>${x}</p>`).join('')}<p>Correct diagram:</p>${obGrid(cellsFor(m),{rows:OB_ROWS.filter(x=>SUB_IDX[x]<=SUB_IDX[last])})}<p>${fmtFull(m)}</p>`});}
+  if(kind==='explain'){if(s.revealed)return;const ta=document.getElementById('explain-in');if(!ta.value.trim()){ta.focus();return;}s.revealed=true;ta.disabled=true;
+    document.getElementById('explain-reveal').innerHTML=`<div class="model"><div class="eyebrow">Model answer</div><p>${q.model}</p><div class="eyebrow" style="margin-top:12px">Did yours include these?</div><ul class="keys-list">${q.keys.map(k=>`<li><label><input type="checkbox"> ${k}</label></li>`).join('')}</ul></div><div class="selfgrade"><button class="btn primary" onclick="selfGrade(true)">I covered the key ideas</button><button class="btn" onclick="selfGrade(false)">I missed some</button></div>`;
+    document.getElementById('qactions').innerHTML='';document.querySelector('.selfgrade .btn').focus({preventScroll:true});requestAnimationFrame(()=>document.querySelector('.selfgrade').scrollIntoView({block:'nearest',behavior:'smooth'}));return;}
+  const vals={};document.querySelectorAll('#qcard .field input').forEach(i=>vals[i.dataset.key]=i.value);
+  if(Object.values(vals).every(v=>!String(v).trim())){document.querySelector('#qcard .field input').focus();return;}
+  const r=q.check(vals);
+  document.querySelectorAll('#qcard .field input').forEach(i=>{i.disabled=true;const f=document.getElementById('fld-'+i.dataset.key);f.classList.add(r.fields&&r.fields[i.dataset.key]===false?'bad':'ok');});
+  finishQuestion(r);
 }
+function selfGrade(ok){document.querySelectorAll('.selfgrade .btn').forEach(b=>b.disabled=true);finishQuestion({ok,verdict:ok?'Nice work':'Worth another look',why:ok?'':'<p>Reread the model answer and notice how it moves from the element\'s position, to nuclear charge or shielding, to the pull on the electrons.</p>'});}
+function finishQuestion(r){const s=session;s.answered=true;if(r.ok)s.score++;record(s.topic,r.ok);
+  document.getElementById('fb').innerHTML=`<div class="feedback ${r.ok?'ok':'bad'}"><div class="verdict">${r.verdict||(r.ok?'Correct':'Not quite')}</div>${r.why?`<div class="why">${r.why}</div>`:''}${r.note?`<p class="muted note">${r.note}</p>`:''}${r.diag?`<div class="diag">${r.diag}</div>`:''}</div>`;
+  document.getElementById('qactions').innerHTML=`<button class="btn primary wide" id="next-btn" onclick="nextQuestion()">${s.i+1>=ROUND?'See results':'Next question'} <kbd>Enter ↵</kbd><span class="arr">→</span></button>`;
+  document.getElementById('next-btn').focus({preventScroll:true});updateMastery();
+  requestAnimationFrame(()=>{document.getElementById('qactions').scrollIntoView({block:'nearest',behavior:'smooth'});});}
 function nextQuestion(){const s=session;s.i++;s.q=null;s.answered=false;renderPractice(byId(s.topic));}
 function skipQuestion(){const s=session;if(s.answered)return;s.q=null;renderPractice(byId(s.topic));}
 function updateMastery(){const s=session;const p=tp(s.topic);const pc=pct(s.topic);const G=goal(s.topic);const done=p.correct>=G;const m=document.querySelector('.mastery');if(!m)return;
