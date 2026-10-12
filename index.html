@@ -1482,7 +1482,7 @@ const LIGHT_GEN={
    check:v=>{const ea=numCheck(parseNum(v.a),dE,[[Math.abs(En(ni)),'<b>Use both levels.</b> The photon carries the difference: ΔE = |E<sub>final</sub> − E<sub>initial</sub>|.'],[Math.abs(En(nf)),'<b>Use both levels.</b> The photon carries the difference: ΔE = |E<sub>final</sub> − E<sub>initial</sub>|.'],[RH*Math.abs(1/nf-1/ni),'<b>Square n.</b> E<sub>n</sub> uses 1/n², not 1/n.']]);
     const eb=numCheck(parseNum(v.b),nm,[[lam,D_UNIT_NM]]);
     return {ok:ea.ok&&eb.ok,fields:{a:ea.ok,b:eb.ok},diag:ea.diag||eb.diag,why:`<ol><li>E<sub>${ni}</sub> = −2.18 × 10<sup>−18</sup> ÷ ${ni*ni} = ${sci(En(ni),3)} J</li><li>E<sub>${nf}</sub> = −2.18 × 10<sup>−18</sup> ÷ ${nf*nf} = ${sci(En(nf),3)} J</li><li>ΔE = <b>${sci(dE,3)} J</b>, ${em?'released (emission)':'absorbed'}</li><li>ν = ΔE ÷ h = ${sci(nu,3)} Hz</li><li>λ = c ÷ ν = ${sci(lam,3)} m = <b>${nm.toFixed(0)} nm</b>, ${regionOf(lam)==='visible'?colorName(nm)+' visible light':REG_NAME[regionOf(lam)].toLowerCase()}</li></ol>`};}};},
- levels(){const t=x=>Math.round(x*10)/10;const L=[null,-t(12+Math.random()*8),-t(7+Math.random()*3),-t(3+Math.random()*3),-t(.5+Math.random()*2)].map(x=>x===null?null:x*1e-19);
+ levels(){const t=x=>Math.round(x*10)/10;const L=[null,-t(12+Math.random()*8),-t(7+Math.random()*3),-t(3+Math.random()*3),-t(.5+Math.random()*2)].map(x=>x===null?null:+(x*1e-19).toPrecision(2));
   let i,j;do{i=rint(1,4);j=rint(1,4);}while(i===j);const up=j>i,dE=Math.abs(L[j]-L[i]),nu=dE/HP,lam=CL/nu;const what=rnd(['E','nu','lam']);
   const ans={E:dE,nu,lam}[what],lab={E:'Photon energy (J)',nu:'Frequency (Hz)',lam:'Wavelength (m)'}[what];
   const table=`<span class="lvls">${[4,3,2,1].map(n=>`<span>E<sub>${n}</sub> = ${sci(L[n],2)} J</span>`).join('')}</span>`;
