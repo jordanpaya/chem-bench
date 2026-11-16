@@ -464,17 +464,72 @@ kbd{font-family:var(--mono);border:1px solid var(--line-strong);border-bottom-wi
   .spec-bar>div{font-size:.6rem}
   .iebar{grid-template-columns:34px 1fr 96px}
 }
+/* ---------- units 3 & 4 ---------- */
+.st{font-family:var(--body);font-size:.6em;color:var(--muted);font-weight:400;margin-left:1px;letter-spacing:0}
+.eqn{font-family:var(--mono);font-weight:500}
+.eqn .blank{color:var(--copper);letter-spacing:-.05em}
+.prompt .big.eqn{font-size:1.55rem;font-weight:600;line-height:1.7;letter-spacing:0}
+.big-eq{font-size:1.4rem;text-align:center;color:var(--accent);margin:8px 0 14px}
+.eqn.sm{font-size:.84rem}
+p.eqn{margin:.3em 0 .6em}
+.feedback .eqn,.example .eqn{font-size:.98em}
+.inputs.coefs{grid-template-columns:repeat(auto-fit,minmax(104px,1fr))}
+.inputs.coefs .field label{font-weight:500}
+.inputs.coefs .field input{text-align:center}
+.choices.eqchoices .choice{font-size:.9rem}
+.choices.eqchoices .choice .c{line-height:1.7}
+.obs{display:grid;grid-template-columns:auto auto;gap:6px 18px;justify-content:center;font-size:1rem;text-align:left}
+.obs b{font-weight:600}.obs b.y{color:var(--copper)}.obs b.n{color:var(--muted)}
+.solt{font-size:.8rem;min-width:620px}
+.solt th{text-transform:none;letter-spacing:0;font-size:.82rem;color:var(--ink);background:var(--surface-2);text-align:center;white-space:nowrap;padding:6px 6px}
+.solt td{padding:3px;text-align:center;border-bottom:0}
+.solt button{width:100%;min-width:38px;height:30px;border-radius:6px;border:1px solid var(--c-line);cursor:pointer;font-family:var(--mono);font-size:.72rem;color:var(--ink);padding:0}
+.solt button.s,.legend i.k-s{background:var(--c-nonmetal)}
+.solt button.i,.legend i.k-i{background:var(--c-alkaline)}
+.solt button.q,.legend i.k-q{background:var(--surface-2);color:var(--muted)}
+.solt button:hover,.solt button.sel{outline:2px solid var(--accent);outline-offset:-1px}
+.actlist{display:flex;flex-wrap:wrap;gap:5px;align-items:center;margin:10px 0 6px}
+.actlist span{font-family:var(--display);font-weight:700;font-size:.9rem;padding:4px 9px;border-radius:7px;background:var(--surface);border:1px solid var(--line)}
+.actlist span.h{background:var(--copper-soft);border-color:var(--copper);color:var(--copper)}
+.actlist i{font-style:normal;color:var(--muted);font-size:.8rem}
+.road{display:flex;flex-wrap:wrap;align-items:center;gap:6px;margin:12px 0}
+.road .box{padding:9px 13px;border-radius:9px;background:var(--accent-soft);font-weight:600;font-size:.92rem;white-space:nowrap}
+.road .arr{display:inline-flex;flex-direction:column;align-items:center;color:var(--muted);font-size:1rem;line-height:1.1}
+.road .arr i{font-style:normal;font-size:.7rem;font-family:var(--mono);white-space:nowrap}
+.cols2{display:grid;grid-template-columns:1fr 1fr;gap:8px 20px}
+.cols2 div{display:flex;flex-direction:column;font-size:.86rem}
+.cols2 span{color:var(--muted)}
+.rulelist{margin:0;padding-left:1.2em;font-size:.9rem}
+.rulelist li{margin-bottom:.35em}
+.lab-row.wide{align-items:flex-start;margin-bottom:10px}
+.lab-row.wide>span{width:64px;padding-top:8px}
+.lab-row.wide .seg{flex:1;margin:0}
+label.slide{display:flex;flex-direction:column;gap:6px;font-size:.88rem;color:var(--muted)}
+label.slide b{color:var(--ink);font-family:var(--mono);margin-left:6px}
+label.slide input{width:100%;accent-color:var(--accent)}
+.cuv{display:inline-block;height:30px;border:1.5px solid var(--line-strong);border-top:0;border-radius:0 0 5px 5px;vertical-align:middle}
+.indt .sw{display:inline-block;width:14px;height:14px;border-radius:50%;border:1px solid var(--line-strong);vertical-align:-2px;margin-right:7px}
+.tcard .eqn.sm{color:var(--muted);margin:6px 0 0}
+.unit-seg{flex-wrap:wrap}
+@media (max-width:760px){
+  .prompt .big.eqn{font-size:1.12rem}
+  .big-eq{font-size:1.1rem}
+  .cols2{grid-template-columns:1fr}
+  .unit-seg button{padding:8px 14px;font-size:.92rem}
+  .lab-row.wide{flex-direction:column}
+}
+@media (max-width:460px){.tag.docket .long{display:none}}
 </style>
 
 <main><div class="wrap" id="view"></div></main>
 <footer class="foot">
-  <span id="foot-unit">Chemistry · Unit 2 · Atomic Theory and Periodic Trends</span>
+  <span id="foot-unit">Chemistry · Unit 3 · Chemical Reactions</span>
   <span>Progress is saved in this browser.</span>
   <button class="linkbtn" onclick="resetProgress()">Reset all progress</button>
 </footer>
 <button class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle light or dark mode"><svg class="moon" viewBox="0 0 24 24"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg><svg class="sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg><span>Theme</span></button>
 <span class="tag made">Made by Jordan Paya</span>
-<a class="tag docket" href="https://docket.jordanpaya.com" target="_blank" rel="noopener">Track your homework with <b>Docket</b> ↗</a>
+<a class="tag docket" href="https://docket.jordanpaya.com" target="_blank" rel="noopener"><span class="long">Track your homework with </span><b>Docket</b> ↗</a>
 <div id="pt-overlay" class="overlay hidden" onclick="if(event.target===this)closeTable()"></div>
 <script>
 /* ===================== DATA ===================== */
@@ -555,7 +610,7 @@ function num(x,n=3){const a=Math.abs(x);if(a>=1e5||a<1e-3)return sci(x,n);return
 // parse a typed number: 3.3e24, 3.3 x 10^24, 3.3×10^24, 3.3*10^24, 3.3 x 10 24
 function parseNum(s){
   if(s==null)return NaN; s=String(s).replace(/10\s*([⁰¹²³⁴⁵⁶⁷⁸⁹⁺⁻]+)/g,(m,d)=>'10^'+fromUni(d)).trim().toLowerCase().replace(/,/g,'').replace(/−/g,'-').replace(/×/g,'x').replace(/\*/g,'x').replace(/e\s*\+/g,'e');
-  s=s.replace(/\s*(g|mol|atoms|molecules|%|amu|formula units|kj|j|hz|nm|m|s-1|\/s)\s*$/,'').trim();
+  s=s.replace(/\s*(g\/mol|g|mol|atoms|molecules|%|amu|formula units|kj|j|hz|nm|ml|l|m|s-1|\/s|drops)\s*$/,'').trim();
   let m=s.match(/^(-?[\d.]+)\s*x\s*10\s*\^?\s*\(?\s*(-?\d+)\s*\)?$/); if(m)return parseFloat(m[1])*Math.pow(10,parseInt(m[2]));
   m=s.match(/^(-?[\d.]+)\s*e\s*(-?\d+)$/); if(m)return parseFloat(m[1])*Math.pow(10,parseInt(m[2]));
   m=s.match(/^10\s*\^\s*(-?\d+)$/); if(m)return Math.pow(10,parseInt(m[1]));
@@ -1721,6 +1776,886 @@ GEN.nomen=()=>{const k=wpick([[40,'naming'],[20,'ions'],[20,'letters'],[20,'real
 Object.assign(GOALS,GOALS_U2);
 </script>
 <script>
+/* ===================== UNITS 3 & 4: TOPICS, DATA & HELPERS ===================== */
+const U34_TOPICS=[
+ {id:'balance',unit:3,title:'Balancing & Reaction Types',blurb:'Balance any equation and name the eight reaction types on sight.',lead:'Conservation of mass, balancing equations, and classifying reactions.'},
+ {id:'solub',unit:3,title:'Solubility & Precipitation',blurb:'The solubility rules, and predicting when two solutions make a solid.',lead:'Use the solubility rules to predict precipitates and write their formulas.'},
+ {id:'netionic',unit:3,title:'Total & Net Ionic Equations',blurb:"Split what dissolves, keep what doesn't, and cancel the spectators.",lead:'Go from a molecular equation to the total ionic and net ionic equations.'},
+ {id:'redox',unit:3,title:'Activity Series & Redox',blurb:'Which metal wins, oxidation numbers, and who loses or gains electrons.',lead:'Single replacement reactions, oxidation numbers, and oxidizing and reducing agents.'},
+ {id:'acidbase',unit:3,title:'Acid–Base Reactions',blurb:'Neutralization, acids with carbonates, and what the indicators tell you.',lead:'Predict the products of acid reactions and read indicator colors.'},
+ {id:'stoich',unit:4,title:'Stoichiometry',blurb:'Grams to moles to moles to grams, plus percent yield.',lead:'Use the balanced equation as a recipe to convert between any two substances.'},
+ {id:'limiting',unit:4,title:'Limiting Reactants',blurb:"Find what runs out first, how much product forms, and what's left over.",lead:'Identify the limiting reactant, the theoretical yield, and the leftover excess.'},
+ {id:'molarity',unit:4,title:'Molarity & Dilutions',blurb:'Moles per liter, ion concentrations, and M₁V₁ = M₂V₂.',lead:'Calculate concentrations, prepare solutions, and dilute them.'},
+ {id:'titration',unit:4,title:'Solution Stoichiometry & Titrations',blurb:'Stoichiometry with volumes: titrations and precipitate masses.',lead:'Combine molarity with mole ratios to solve titration and precipitation problems.'},
+ {id:'beer',unit:4,title:"Beer's Law",blurb:'Absorbance, concentration, and why a darker solution absorbs more.',lead:'Relate absorbance to concentration and path length with A = εbc.'}
+];
+const GOALS_U34={balance:40,solub:40,netionic:30,redox:40,acidbase:30,stoich:30,limiting:25,molarity:30,titration:25,beer:20};
+
+const stt=s=>`<span class="st">(${s})</span>`;
+const kf=n=>n>1?n+' ':'';
+const ION3=(f,n,c,poly)=>({f,n,c,poly:!!poly});
+const CAT3=[ION3('Na','sodium',1),ION3('K','potassium',1),ION3('Li','lithium',1),ION3('NH4','ammonium',1,1),ION3('Mg','magnesium',2),ION3('Ca','calcium',2),ION3('Sr','strontium',2),ION3('Ba','barium',2),ION3('Al','aluminum',3),ION3('Zn','zinc',2),ION3('Fe','iron(II)',2),ION3('Fe','iron(III)',3),ION3('Cu','copper(II)',2),ION3('Ni','nickel(II)',2),ION3('Co','cobalt(II)',2),ION3('Mn','manganese(II)',2),ION3('Ag','silver',1),ION3('Pb','lead(II)',2)];
+const AN3=[ION3('NO3','nitrate',-1,1),ION3('CH3COO','acetate',-1,1),ION3('Cl','chloride',-1),ION3('Br','bromide',-1),ION3('I','iodide',-1),ION3('SO4','sulfate',-2,1),ION3('CO3','carbonate',-2,1),ION3('PO4','phosphate',-3,1),ION3('OH','hydroxide',-1,1),ION3('S','sulfide',-2)];
+const catBy=n=>CAT3.find(x=>x.n===n),anBy=n=>AN3.find(x=>x.n===n);
+const ionH=i=>fxc(i.f,i.c);
+
+/* ---------- solubility ---------- */
+const SOL_RULES={
+ always:'Compounds of group 1 metals and ammonium (NH₄⁺) are always soluble.',
+ nitrate:'All nitrates and acetates are soluble.',
+ halide:'Chlorides, bromides, and iodides are soluble, except with Ag⁺, Pb²⁺, and Hg₂²⁺.',
+ sulfate:'Sulfates are soluble, except with Ca²⁺, Sr²⁺, Ba²⁺, Pb²⁺, and Ag⁺.',
+ hydroxide:'Hydroxides and sulfides are insoluble, except with group 1 metals, NH₄⁺, and Ca²⁺, Sr²⁺, Ba²⁺.',
+ carbonate:'Carbonates and phosphates are insoluble, except with group 1 metals and NH₄⁺.'};
+const RULE_ANIONS={nitrate:['NO3','CH3COO'],halide:['Cl','Br','I'],sulfate:['SO4'],hydroxide:['OH','S'],carbonate:['CO3','PO4']};
+const anionRule=a=>Object.keys(RULE_ANIONS).find(k=>RULE_ANIONS[k].includes(a));
+function solInfo(cat,an){const A=an.f,C=cat.f,fe3=C==='Fe'&&cat.c===3;let sol,rule,iffy=false;
+  if(['Na','K','Li','NH4'].includes(C)){sol=true;rule='always';if(C==='NH4'&&A==='OH')iffy=true;}
+  else if(A==='NO3'||A==='CH3COO'){sol=true;rule='nitrate';if(A==='CH3COO'&&C==='Ag')iffy=true;}
+  else if(A==='Cl'||A==='Br'||A==='I'){sol=!['Ag','Pb'].includes(C);rule='halide';if(A==='I'&&(C==='Cu'||fe3))iffy=true;}
+  else if(A==='SO4'){sol=!['Ca','Sr','Ba','Pb','Ag'].includes(C);rule='sulfate';}
+  else if(A==='OH'||A==='S'){sol=['Ca','Sr','Ba'].includes(C);rule='hydroxide';
+    if(A==='OH'&&['Ca','Sr','Ag'].includes(C))iffy=true;if(A==='S'&&(['Mg','Ca','Sr','Ba','Al'].includes(C)||fe3))iffy=true;}
+  else{sol=false;rule='carbonate';if(A==='CO3'&&(C==='Al'||fe3))iffy=true;}
+  return {sol,rule,iffy};}
+function cmpd(cat,an){const {formula,nc,na}=ionicFormula(cat,an);return {cat,an,f:formula,nc,na,name:cat.n+' '+an.n,...solInfo(cat,an)};}
+const ALL_CMPD=[];CAT3.forEach(c=>AN3.forEach(a=>{const x=cmpd(c,a);if(!x.iffy)ALL_CMPD.push(x);}));
+const cH=x=>fx(x.f)+stt(x.sol?'aq':'s');
+
+/* ---------- equations ---------- */
+const totalsOf=f=>parseFormula(f).totals;
+function balanceEq(R,P,max=8){const all=[...R,...P],T=all.map(totalsOf),els=[...new Set(T.flatMap(t=>Object.keys(t)))],n=all.length,c=Array(n).fill(1);
+  const ok=()=>els.every(e=>{let s=0;for(let i=0;i<n;i++)s+=(i<R.length?1:-1)*c[i]*(T[i][e]||0);return s===0;});
+  const rec=i=>{if(i===n)return ok();for(let v=1;v<=max;v++){c[i]=v;if(rec(i+1))return true;}return false;};
+  return rec(0)?c.slice():null;}
+function atomCheck(R,P,c){const all=[...R,...P],T=all.map(totalsOf),els=[...new Set(T.flatMap(t=>Object.keys(t)))];
+  for(const e of els){let l=0,r=0;all.forEach((_,i)=>{const v=c[i]*(T[i][e]||0);if(i<R.length)l+=v;else r+=v;});if(l!==r)return {el:e,l,r};}return null;}
+function eqHTML(e,o={}){const part=(f,i)=>(o.blank?'<span class="blank">__</span> ':o.bare?'':kf(e.c[i]))+fx(f)+(e.s&&!o.nostate?stt(e.s[i]):'');
+  return e.R.map((f,i)=>part(f,i)).join(' + ')+' → '+e.P.map((f,i)=>part(f,e.R.length+i)).join(' + ');}
+const RX=(str,type,redox)=>{const [l,r]=str.split(' -> '),R=[],P=[],c=[];const eat=(side,arr)=>side.split(' + ').forEach(t=>{const m=t.match(/^(\d+) (.+)$/);c.push(m?+m[1]:1);arr.push(m?m[2]:t);});eat(l,R);eat(r,P);return {R,P,c,type,redox:!!redox};};
+const TYPE_NAME={syn:'Synthesis',dec:'Decomposition',comb:'Combustion',metal:'Metal replacement',halogen:'Halogen replacement',ppt:'Precipitation',ab:'Acid–base',ac:'Acid–carbonate'};
+const TYPE_HOW={syn:'Two or more substances combine into a single product.',dec:'One reactant breaks apart into two or more products.',comb:'A fuel containing carbon and hydrogen reacts with O₂ to make CO₂ and H₂O.',metal:'A metal element takes the place of another metal (or hydrogen) in a compound.',halogen:'A halogen element takes the place of another halogen in a compound.',ppt:'Two soluble ionic compounds swap partners, and one new compound is an insoluble solid.',ab:'An acid and a hydroxide base make a salt and water.',ac:'An acid and a carbonate make a salt, CO₂ gas, and water.'};
+const RXN=[
+ RX('2 Na + Cl2 -> 2 NaCl','syn',1),RX('2 Mg + O2 -> 2 MgO','syn',1),RX('4 Al + 3 O2 -> 2 Al2O3','syn',1),RX('2 Al + 3 Br2 -> 2 AlBr3','syn',1),RX('N2 + 3 H2 -> 2 NH3','syn',1),RX('2 H2 + O2 -> 2 H2O','syn',1),RX('4 Fe + 3 O2 -> 2 Fe2O3','syn',1),RX('P4 + 5 O2 -> P4O10','syn',1),RX('2 K + Br2 -> 2 KBr','syn',1),RX('4 Li + O2 -> 2 Li2O','syn',1),RX('3 Mg + N2 -> Mg3N2','syn',1),RX('2 SO2 + O2 -> 2 SO3','syn',1),RX('3 Ca + N2 -> Ca3N2','syn',1),RX('2 Fe + 3 Cl2 -> 2 FeCl3','syn',1),RX('S8 + 8 O2 -> 8 SO2','syn',1),RX('CaO + H2O -> Ca(OH)2','syn',0),
+ RX('2 KClO3 -> 2 KCl + 3 O2','dec',1),RX('2 H2O2 -> 2 H2O + O2','dec',1),RX('2 HgO -> 2 Hg + O2','dec',1),RX('2 NaHCO3 -> Na2CO3 + H2O + CO2','dec',0),RX('2 H2O -> 2 H2 + O2','dec',1),RX('2 NaN3 -> 2 Na + 3 N2','dec',1),RX('2 Al2O3 -> 4 Al + 3 O2','dec',1),RX('2 N2O5 -> 4 NO2 + O2','dec',1),RX('2 NaCl -> 2 Na + Cl2','dec',1),RX('2 Ag2O -> 4 Ag + O2','dec',1),RX('2 NH3 -> N2 + 3 H2','dec',1),RX('MgCO3 -> MgO + CO2','dec',0),
+ RX('CH4 + 2 O2 -> CO2 + 2 H2O','comb',1),RX('C3H8 + 5 O2 -> 3 CO2 + 4 H2O','comb',1),RX('2 C2H6 + 7 O2 -> 4 CO2 + 6 H2O','comb',1),RX('2 C4H10 + 13 O2 -> 8 CO2 + 10 H2O','comb',1),RX('C2H4 + 3 O2 -> 2 CO2 + 2 H2O','comb',1),RX('2 CH3OH + 3 O2 -> 2 CO2 + 4 H2O','comb',1),RX('C2H5OH + 3 O2 -> 2 CO2 + 3 H2O','comb',1),RX('C6H12O6 + 6 O2 -> 6 CO2 + 6 H2O','comb',1),RX('C5H12 + 8 O2 -> 5 CO2 + 6 H2O','comb',1),RX('2 C2H2 + 5 O2 -> 4 CO2 + 2 H2O','comb',1),RX('2 C6H6 + 15 O2 -> 12 CO2 + 6 H2O','comb',1),RX('2 C3H6 + 9 O2 -> 6 CO2 + 6 H2O','comb',1),
+ RX('Zn + 2 HCl -> ZnCl2 + H2','metal',1),RX('2 Al + 6 HCl -> 2 AlCl3 + 3 H2','metal',1),RX('Cu + 2 AgNO3 -> Cu(NO3)2 + 2 Ag','metal',1),RX('2 Al + 3 CuSO4 -> Al2(SO4)3 + 3 Cu','metal',1),RX('Zn + 2 AgNO3 -> Zn(NO3)2 + 2 Ag','metal',1),RX('2 Na + 2 H2O -> 2 NaOH + H2','metal',1),RX('2 Al + 3 H2SO4 -> Al2(SO4)3 + 3 H2','metal',1),RX('3 Mg + 2 FeCl3 -> 3 MgCl2 + 2 Fe','metal',1),RX('2 K + 2 H2O -> 2 KOH + H2','metal',1),RX('Ca + 2 H2O -> Ca(OH)2 + H2','metal',1),RX('3 Zn + 2 H3PO4 -> Zn3(PO4)2 + 3 H2','metal',1),RX('2 Al + 3 Pb(NO3)2 -> 2 Al(NO3)3 + 3 Pb','metal',1),RX('Fe + 2 HCl -> FeCl2 + H2','metal',1),RX('Ni + 2 AgNO3 -> Ni(NO3)2 + 2 Ag','metal',1),
+ RX('Cl2 + 2 KBr -> 2 KCl + Br2','halogen',1),RX('Br2 + 2 NaI -> 2 NaBr + I2','halogen',1),RX('Cl2 + 2 NaI -> 2 NaCl + I2','halogen',1),RX('F2 + 2 KBr -> 2 KF + Br2','halogen',1),RX('3 Cl2 + 2 AlBr3 -> 2 AlCl3 + 3 Br2','halogen',1),RX('Br2 + CaI2 -> CaBr2 + I2','halogen',1),
+ RX('Pb(NO3)2 + 2 KI -> PbI2 + 2 KNO3','ppt',0),RX('BaCl2 + Na2SO4 -> BaSO4 + 2 NaCl','ppt',0),RX('3 CaCl2 + 2 Na3PO4 -> Ca3(PO4)2 + 6 NaCl','ppt',0),RX('FeCl3 + 3 NaOH -> Fe(OH)3 + 3 NaCl','ppt',0),RX('Na2CO3 + CaCl2 -> CaCO3 + 2 NaCl','ppt',0),RX('3 AgNO3 + K3PO4 -> Ag3PO4 + 3 KNO3','ppt',0),RX('Al2(SO4)3 + 3 BaCl2 -> 3 BaSO4 + 2 AlCl3','ppt',0),RX('2 NaOH + CuSO4 -> Cu(OH)2 + Na2SO4','ppt',0),RX('2 AgNO3 + MgCl2 -> 2 AgCl + Mg(NO3)2','ppt',0),RX('Pb(NO3)2 + Na2SO4 -> PbSO4 + 2 NaNO3','ppt',0),RX('2 AgNO3 + Na2S -> Ag2S + 2 NaNO3','ppt',0),RX('3 Zn(NO3)2 + 2 K3PO4 -> Zn3(PO4)2 + 6 KNO3','ppt',0),RX('K2CO3 + Ba(NO3)2 -> BaCO3 + 2 KNO3','ppt',0),
+ RX('H2SO4 + 2 NaOH -> Na2SO4 + 2 H2O','ab',0),RX('2 HCl + Ca(OH)2 -> CaCl2 + 2 H2O','ab',0),RX('H3PO4 + 3 KOH -> K3PO4 + 3 H2O','ab',0),RX('2 HNO3 + Ba(OH)2 -> Ba(NO3)2 + 2 H2O','ab',0),RX('3 HCl + Al(OH)3 -> AlCl3 + 3 H2O','ab',0),RX('2 H3PO4 + 3 Ca(OH)2 -> Ca3(PO4)2 + 6 H2O','ab',0),RX('3 H2SO4 + 2 Al(OH)3 -> Al2(SO4)3 + 6 H2O','ab',0),RX('2 HNO3 + Mg(OH)2 -> Mg(NO3)2 + 2 H2O','ab',0),RX('H2SO4 + 2 KOH -> K2SO4 + 2 H2O','ab',0),RX('2 CH3COOH + Ba(OH)2 -> Ba(CH3COO)2 + 2 H2O','ab',0),RX('HNO3 + LiOH -> LiNO3 + H2O','ab',0),
+ RX('2 HCl + CaCO3 -> CaCl2 + CO2 + H2O','ac',0),RX('2 HNO3 + Na2CO3 -> 2 NaNO3 + CO2 + H2O','ac',0),RX('H2SO4 + 2 NaHCO3 -> Na2SO4 + 2 CO2 + 2 H2O','ac',0),RX('2 CH3COOH + CaCO3 -> Ca(CH3COO)2 + CO2 + H2O','ac',0),RX('2 HCl + K2CO3 -> 2 KCl + CO2 + H2O','ac',0),RX('2 HNO3 + MgCO3 -> Mg(NO3)2 + CO2 + H2O','ac',0),RX('H2SO4 + Li2CO3 -> Li2SO4 + CO2 + H2O','ac',0),
+ RX('Fe2O3 + 3 CO -> 2 Fe + 3 CO2','other',1),RX('2 H2S + 3 O2 -> 2 SO2 + 2 H2O','other',1),RX('2 KOH + CO2 -> K2CO3 + H2O','other',0),RX('3 NO2 + H2O -> 2 HNO3 + NO','other',1),RX('TiCl4 + 2 Mg -> Ti + 2 MgCl2','metal',1),RX('SiO2 + 3 C -> SiC + 2 CO','other',1),RX('2 NO + O2 -> 2 NO2','syn',1),RX('2 Al + Fe2O3 -> Al2O3 + 2 Fe','metal',1),RX('WO3 + 3 H2 -> W + 3 H2O','other',1),RX('2 CuO + C -> 2 Cu + CO2','other',1)
+];
+const RXN_BAL=RXN.filter(e=>Math.max(...e.c)>1);
+const RXN_ST=RXN.filter(e=>Math.max(...e.c)<=13&&e.R[0]!=='S8');
+const RXN_LIM=RXN_ST.filter(e=>e.R.length===2);
+
+/* ---------- double replacement ---------- */
+function makeDR(want){for(let t=0;t<600;t++){const A=rnd(CAT3),B=rnd(CAT3),X=rnd(AN3),Y=rnd(AN3);if(A.f===B.f||X.f===Y.f)continue;
+    const r1=cmpd(A,X),r2=cmpd(B,Y),p1=cmpd(A,Y),p2=cmpd(B,X);if([r1,r2,p1,p2].some(x=>x.iffy)||!r1.sol||!r2.sol)continue;
+    const ins=[p1,p2].filter(x=>!x.sol);if(ins.length>1)continue;if(want!==undefined&&ins.length!==want)continue;
+    const c=balanceEq([r1.f,r2.f],[p1.f,p2.f]);if(!c)continue;
+    return {r1,r2,p1,p2,ppt:ins[0]||null,other:ins[0]?(ins[0]===p1?p2:p1):null,e:{R:[r1.f,r2.f],P:[p1.f,p2.f],c,s:['aq','aq',p1.sol?'aq':'s',p2.sol?'aq':'s']}};}
+  return makeDR();}
+const nieP=p=>`${kf(p.nc)}${ionH(p.cat)}${stt('aq')} + ${kf(p.na)}${ionH(p.an)}${stt('aq')} → ${fx(p.f)}${stt('s')}`;
+const dissocH=(x,k=1)=>`${kf(k*x.nc)}${ionH(x.cat)}${stt('aq')} + ${kf(k*x.na)}${ionH(x.an)}${stt('aq')}`;
+function totalIonicH(d){const side=(arr,off)=>arr.map((x,i)=>x.sol?dissocH(x,d.e.c[off+i]):kf(d.e.c[off+i])+fx(x.f)+stt('s')).join(' + ');return side([d.r1,d.r2],0)+' → '+side([d.p1,d.p2],2);}
+
+/* ---------- activity series & single replacement ---------- */
+const ACT=['Li','K','Ba','Ca','Na','Mg','Al','Zn','Cr','Fe','Co','Ni','Sn','Pb','H','Cu','Ag','Pt','Au'];
+const actIdx=s=>ACT.indexOf(s);
+const METALS=[{s:'Mg',n:'magnesium',c:2},{s:'Al',n:'aluminum',c:3},{s:'Zn',n:'zinc',c:2},{s:'Fe',n:'iron',c:2,ion:'iron(II)'},{s:'Co',n:'cobalt',c:2,ion:'cobalt(II)'},{s:'Ni',n:'nickel',c:2,ion:'nickel(II)'},{s:'Sn',n:'tin',c:2,ion:'tin(II)'},{s:'Pb',n:'lead',c:2,ion:'lead(II)'},{s:'Cu',n:'copper',c:2,ion:'copper(II)'},{s:'Ag',n:'silver',c:1},{s:'Au',n:'gold',c:3,ion:'gold(III)'}];
+const SOLN_CATS=[...METALS.filter(m=>m.s!=='Au'),{s:'Na',n:'sodium',c:1},{s:'K',n:'potassium',c:1},{s:'Ca',n:'calcium',c:2}];
+const mIon=m=>({f:m.s,n:m.ion||m.n,c:m.c});
+const NO3=()=>anBy('nitrate');
+function makeSR(want){for(let t=0;t<300;t++){const M=rnd(METALS),N=rnd(SOLN_CATS);if(M.s===N.s)continue;const reacts=actIdx(M.s)<actIdx(N.s);if(want!==undefined&&reacts!==want)continue;
+    const an=NO3(),salt=cmpd0(mIon(N),an),prod=cmpd0(mIon(M),an);
+    const e={R:[M.s,salt.f],P:[prod.f,N.s],c:balanceEq([M.s,salt.f],[prod.f,N.s]),s:['s','aq','aq','s']};if(!e.c)continue;
+    const g=gcd(M.c,N.c),a=N.c/g,b=M.c/g;
+    return {M,N,an,salt,prod,reacts,e,nie:`${kf(a)}${fx(M.s)}${stt('s')} + ${kf(b)}${fxc(N.s,N.c)}${stt('aq')} → ${kf(a)}${fxc(M.s,M.c)}${stt('aq')} + ${kf(b)}${fx(N.s)}${stt('s')}`,a,b};}
+  return makeSR();}
+function cmpd0(cat,an){const {formula,nc,na}=ionicFormula(cat,an);return {cat,an,f:formula,nc,na,name:cat.n+' '+an.n,sol:true};}
+const SR_ACIDS=[{f:'HCl',n:'hydrochloric acid',an:'chloride'},{f:'H2SO4',n:'sulfuric acid',an:'sulfate'}];
+function makeMA(want){for(let t=0;t<200;t++){const M=rnd(METALS),A=rnd(SR_ACIDS);const reacts=actIdx(M.s)<actIdx('H');if(want!==undefined&&reacts!==want)continue;
+    if(M.s==='Pb'||(M.s==='Ag'&&A.f==='HCl'))continue;const prod=cmpd0(mIon(M),anBy(A.an));const c=balanceEq([M.s,A.f],[prod.f,'H2']);if(!c)continue;
+    return {M,A,prod,reacts,e:{R:[M.s,A.f],P:[prod.f,'H2'],c,s:['s','aq','aq','g']}};}
+  return makeMA();}
+const HALS=[{s:'F',n:'fluorine',ide:'fluoride',st:'g'},{s:'Cl',n:'chlorine',ide:'chloride',st:'g'},{s:'Br',n:'bromine',ide:'bromide',st:'l'},{s:'I',n:'iodine',ide:'iodide',st:'s'}];
+function makeHal(want){for(let t=0;t<200;t++){const X=rnd(HALS),Y=rnd(HALS);if(X===Y)continue;const reacts=HALS.indexOf(X)<HALS.indexOf(Y);if(want!==undefined&&reacts!==want)continue;
+    const cat=rnd([catBy('sodium'),catBy('potassium'),catBy('calcium'),catBy('magnesium'),catBy('lithium')]);
+    const salt=cmpd0(cat,{f:Y.s,n:Y.ide,c:-1}),prod=cmpd0(cat,{f:X.s,n:X.ide,c:-1});const R=[X.s+'2',salt.f],P=[prod.f,Y.s+'2'],c=balanceEq(R,P);if(!c)continue;
+    return {X,Y,cat,salt,prod,reacts,e:{R,P,c,s:[X.st,'aq','aq',Y.st]}};}
+  return makeHal();}
+
+/* ---------- acids & bases ---------- */
+const ACIDS=[{f:'HCl',n:'hydrochloric acid',h:1,an:'chloride',strong:1},{f:'HNO3',n:'nitric acid',h:1,an:'nitrate',strong:1},{f:'H2SO4',n:'sulfuric acid',h:2,an:'sulfate',strong:1},{f:'H3PO4',n:'phosphoric acid',h:3,an:'phosphate'},{f:'CH3COOH',n:'acetic acid',h:1,an:'acetate'}];
+const BASES=[{f:'NaOH',n:'sodium hydroxide',oh:1,cat:'sodium',sol:1},{f:'KOH',n:'potassium hydroxide',oh:1,cat:'potassium',sol:1},{f:'LiOH',n:'lithium hydroxide',oh:1,cat:'lithium',sol:1},{f:'Ca(OH)2',n:'calcium hydroxide',oh:2,cat:'calcium',sol:1},{f:'Ba(OH)2',n:'barium hydroxide',oh:2,cat:'barium',sol:1},{f:'Mg(OH)2',n:'magnesium hydroxide',oh:2,cat:'magnesium',sol:0},{f:'Al(OH)3',n:'aluminum hydroxide',oh:3,cat:'aluminum',sol:0}];
+function makeAB(o={}){for(let t=0;t<200;t++){const A=rnd(o.acids||ACIDS),B=rnd(o.bases||BASES);const salt=cmpd(catBy(B.cat),anBy(A.an));if(o.solSalt&&(!salt.sol||salt.iffy))continue;
+    const c=balanceEq([A.f,B.f],[salt.f,'H2O']);if(!c)continue;return {A,B,salt,e:{R:[A.f,B.f],P:[salt.f,'H2O'],c,s:['aq',B.sol?'aq':'s',salt.sol?'aq':'s','l']}};}
+  return makeAB();}
+const CARBS=[{f:'CaCO3',n:'calcium carbonate',cat:'calcium',s:'s'},{f:'Na2CO3',n:'sodium carbonate',cat:'sodium',s:'aq'},{f:'K2CO3',n:'potassium carbonate',cat:'potassium',s:'aq'},{f:'MgCO3',n:'magnesium carbonate',cat:'magnesium',s:'s'},{f:'NaHCO3',n:'sodium bicarbonate',cat:'sodium',s:'aq'},{f:'ZnCO3',n:'zinc carbonate',cat:'zinc',s:'s'},{f:'Li2CO3',n:'lithium carbonate',cat:'lithium',s:'aq'}];
+function makeAC(){for(let t=0;t<200;t++){const A=rnd(ACIDS.filter(a=>a.f!=='H3PO4')),C=rnd(CARBS);const salt=cmpd(catBy(C.cat),anBy(A.an));if(!salt.sol||salt.iffy)continue;
+    const R=[A.f,C.f],P=[salt.f,'CO2','H2O'],c=balanceEq(R,P);if(!c)continue;return {A,C,salt,e:{R,P,c,s:['aq',C.s,'aq','g','l']}};}
+  return makeAC();}
+const IND={phth:{n:'phenolphthalein',acid:'Colorless',neutral:'Colorless',base:'Pink'},btb:{n:'bromothymol blue',acid:'Yellow',neutral:'Green',base:'Blue'}};
+const NEUTRALS=[['NaCl','sodium chloride'],['KNO3','potassium nitrate'],['H2O','pure water'],['KCl','potassium chloride'],['NaNO3','sodium nitrate']];
+
+/* ---------- oxidation numbers ---------- */
+const OXB=[['H2O',0,{H:1,O:-2}],['CO2',0,{C:4,O:-2}],['CO',0,{C:2,O:-2}],['CH4',0,{C:-4,H:1}],['NH3',0,{N:-3,H:1}],['NH4',1,{N:-3,H:1}],['NO3',-1,{N:5,O:-2}],['NO2',-1,{N:3,O:-2}],['NO2',0,{N:4,O:-2}],['NO',0,{N:2,O:-2}],['N2O',0,{N:1,O:-2}],['N2O5',0,{N:5,O:-2}],['N2',0,{N:0}],['O2',0,{O:0}],['Cl2',0,{Cl:0}],['S8',0,{S:0}],['Fe',0,{Fe:0}],['Na',0,{Na:0}],['SO2',0,{S:4,O:-2}],['SO3',0,{S:6,O:-2}],['SO4',-2,{S:6,O:-2}],['SO3',-2,{S:4,O:-2}],['H2S',0,{H:1,S:-2}],['H2SO4',0,{H:1,S:6,O:-2}],['HNO3',0,{H:1,N:5,O:-2}],['PO4',-3,{P:5,O:-2}],['H3PO4',0,{H:1,P:5,O:-2}],['P4O10',0,{P:5,O:-2}],['PCl3',0,{P:3,Cl:-1}],['PCl5',0,{P:5,Cl:-1}],['CO3',-2,{C:4,O:-2}],['HCO3',-1,{H:1,C:4,O:-2}],['MnO4',-1,{Mn:7,O:-2}],['MnO2',0,{Mn:4,O:-2}],['Cr2O7',-2,{Cr:6,O:-2}],['CrO4',-2,{Cr:6,O:-2}],['KClO3',0,{K:1,Cl:5,O:-2}],['ClO3',-1,{Cl:5,O:-2}],['ClO',-1,{Cl:1,O:-2}],['HClO4',0,{H:1,Cl:7,O:-2}],['HCl',0,{H:1,Cl:-1}],['NaCl',0,{Na:1,Cl:-1}],['Fe2O3',0,{Fe:3,O:-2}],['FeO',0,{Fe:2,O:-2}],['CuO',0,{Cu:2,O:-2}],['Cu2O',0,{Cu:1,O:-2}],['Al2O3',0,{Al:3,O:-2}],['MgCl2',0,{Mg:2,Cl:-1}],['CaCO3',0,{Ca:2,C:4,O:-2}],['KMnO4',0,{K:1,Mn:7,O:-2}],['Na2SO4',0,{Na:1,S:6,O:-2}],['AgNO3',0,{Ag:1,N:5,O:-2}],['Mg',2,{Mg:2}],['Cl',-1,{Cl:-1}],['Al',3,{Al:3}],['S',-2,{S:-2}],['Cu',2,{Cu:2}],['CS2',0,{C:4,S:-2}],['SF6',0,{S:6,F:-1}],['K2Cr2O7',0,{K:1,Cr:6,O:-2}],['Na2S',0,{Na:1,S:-2}],['NaHCO3',0,{Na:1,H:1,C:4,O:-2}],['CCl4',0,{C:4,Cl:-1}],['SiO2',0,{Si:4,O:-2}],['Na2O',0,{Na:1,O:-2}],['ZnSO4',0,{Zn:2,S:6,O:-2}],['KNO3',0,{K:1,N:5,O:-2}],['H2O2',0,{H:1,O:-1}],['Ca3N2',0,{Ca:2,N:-3}],['PbO2',0,{Pb:4,O:-2}]];
+const oxS=n=>n===0?'0':(n>0?'+':'−')+Math.abs(n);
+function parseOx(s){s=fromUni(String(s||'')).replace(/\s/g,'').replace(/−/g,'-');let m=s.match(/^([+-]?)(\d)$/);if(m)return (m[1]==='-'?-1:1)*+m[2];m=s.match(/^(\d)([+-])$/);if(m)return (m[2]==='-'?-1:1)*+m[1];return NaN;}
+const RDX=[['2 Mg + O2 -> 2 MgO','Mg',[0,2],'O',[0,-2],'O2','Mg'],['CH4 + 2 O2 -> CO2 + 2 H2O','C',[-4,4],'O',[0,-2],'O2','CH4'],['2 Na + Cl2 -> 2 NaCl','Na',[0,1],'Cl',[0,-1],'Cl2','Na'],['Fe2O3 + 3 CO -> 2 Fe + 3 CO2','C',[2,4],'Fe',[3,0],'Fe2O3','CO'],['2 Al + Fe2O3 -> Al2O3 + 2 Fe','Al',[0,3],'Fe',[3,0],'Fe2O3','Al'],['N2 + 3 H2 -> 2 NH3','H',[0,1],'N',[0,-3],'N2','H2'],['Cl2 + 2 KBr -> 2 KCl + Br2','Br',[-1,0],'Cl',[0,-1],'Cl2','KBr'],['Zn + 2 HCl -> ZnCl2 + H2','Zn',[0,2],'H',[1,0],'HCl','Zn'],['Cu + 2 AgNO3 -> Cu(NO3)2 + 2 Ag','Cu',[0,2],'Ag',[1,0],'AgNO3','Cu'],['2 H2 + O2 -> 2 H2O','H',[0,1],'O',[0,-2],'O2','H2'],['4 Fe + 3 O2 -> 2 Fe2O3','Fe',[0,3],'O',[0,-2],'O2','Fe'],['2 SO2 + O2 -> 2 SO3','S',[4,6],'O',[0,-2],'O2','SO2'],['Mg + CuSO4 -> MgSO4 + Cu','Mg',[0,2],'Cu',[2,0],'CuSO4','Mg'],['2 Na + 2 H2O -> 2 NaOH + H2','Na',[0,1],'H',[1,0],'H2O','Na'],['2 Al + 3 Br2 -> 2 AlBr3','Al',[0,3],'Br',[0,-1],'Br2','Al'],['Br2 + 2 NaI -> 2 NaBr + I2','I',[-1,0],'Br',[0,-1],'Br2','NaI'],['2 CuO + C -> 2 Cu + CO2','C',[0,4],'Cu',[2,0],'CuO','C'],['WO3 + 3 H2 -> W + 3 H2O','H',[0,1],'W',[6,0],'WO3','H2'],['2 H2S + 3 O2 -> 2 SO2 + 2 H2O','S',[-2,4],'O',[0,-2],'O2','H2S'],['3 Mg + N2 -> Mg3N2','Mg',[0,2],'N',[0,-3],'N2','Mg'],['2 Al + 6 HCl -> 2 AlCl3 + 3 H2','Al',[0,3],'H',[1,0],'HCl','Al'],['Zn + 2 AgNO3 -> Zn(NO3)2 + 2 Ag','Zn',[0,2],'Ag',[1,0],'AgNO3','Zn']
+ ].map(([s,ox,oxc,red,redc,OA,RA])=>({e:RX(s,'',1),ox,oxc,red,redc,OA,RA}));
+
+/* ===================== UNIT 3: GENERATORS ===================== */
+const eqBig=(e,o)=>`<span class="big eqn">${eqHTML(e,o)}</span>`;
+const nfield=(label,ph)=>[{key:'a',label,placeholder:ph||'number'}];
+const intOk=(v,ans)=>String(v).trim()!==''&&parseInt(v)===ans&&/^\s*\d+\s*$/.test(String(v));
+const explainQ=(it,type)=>({kind:'explain',type:type||'Explain it',ask:it.q,model:it.model,keys:it.keys,placeholder:'Write your answer in a few sentences, the way you would on the test.'});
+function formulaCheck(input,target,first){const p=parseFormula(input),exp=parseFormula(target);if(!p)return {ok:false,diag:"<b>Couldn't read that formula.</b> Use correct capitalization and digits for subscripts, like <span class=\"ans\">Ca3(PO4)2</span>."};
+  const ok=sameTotals(p.totals,exp.totals)&&(!first||p.first===first);let diag='';if(!ok&&sameTotals(p.totals,exp.totals))diag='<b>Order.</b> Write the cation (the metal or ammonium) first.';return {ok,diag};}
+
+/* ---------- balancing & reaction types ---------- */
+const BAL_BANK=[
+ {q:'Which of these is conserved in every balanced chemical equation?',a:'Both atoms and mass',d:['Molecules','Moles of gas','Coefficients'],why:'Atoms are only rearranged, never created or destroyed, so the number of each kind of atom and the total mass stay the same. The number of molecules can change.'},
+ {q:'When balancing an equation, which numbers are you allowed to change?',a:'Only the coefficients',d:['Only the subscripts','Both coefficients and subscripts','Neither'],why:'Changing a subscript changes the substance itself (H₂O vs. H₂O₂). Coefficients only change how many of each you have.'},
+ {q:'Which of these elements exists as a diatomic molecule?',a:'Nitrogen',d:['Sodium','Carbon','Neon'],why:'The seven diatomic elements are H₂, N₂, O₂, F₂, Cl₂, Br₂, and I₂. Write them with a subscript 2 whenever they appear alone.'},
+ {q:'What does the symbol (aq) mean in an equation?',a:'Dissolved in water',d:['A pure liquid','A gas','A solid precipitate'],why:'(aq) is aqueous: dissolved in water. (s) is solid, (l) is a pure liquid, and (g) is gas.'},
+ {q:'Which of these is a chemical change?',a:'Iron rusting',d:['Ice melting','Salt dissolving in water','Water boiling'],why:'Rusting makes a new substance (iron oxide). Melting, dissolving, and boiling change the form but not the identity.'},
+ {q:'What are the products of the complete combustion of any hydrocarbon?',a:'CO₂ and H₂O',d:['CO₂ and H₂','C and H₂O','CO and O₂'],why:'Complete combustion with O₂ turns all the carbon into CO₂ and all the hydrogen into H₂O.'},
+ {q:'A sealed flask holds 12.0 g of reactants. After they react completely, what is the mass of the products?',a:'12.0 g',d:['Less than 12.0 g','More than 12.0 g','It depends on the reaction'],why:'Conservation of mass: no atoms enter or leave a sealed container, so the mass is unchanged.'},
+ {q:'In the equation 2 H₂ + O₂ → 2 H₂O, what does the coefficient 2 in front of H₂O tell you?',a:'Two molecules (or moles) of water form',d:['Each water has two oxygen atoms','Water has a 2+ charge','The reaction happens twice as fast'],why:'Coefficients count whole molecules or moles. Subscripts count atoms inside one molecule.'}
+];
+const TYPE_WORDS=[['A strip of zinc is dropped into hydrochloric acid, and bubbles of hydrogen gas form.','metal'],['Propane burns in oxygen, producing carbon dioxide and water vapor.','comb'],['Heating a white solid breaks it down into a different solid and a gas.','dec'],['Two clear solutions are mixed, and a yellow solid appears.','ppt'],['Chlorine gas is bubbled through a potassium iodide solution, which turns brown as iodine forms.','halogen'],['Vinegar is poured on limestone. It fizzes and releases carbon dioxide.','ac'],['An antacid tablet containing magnesium hydroxide reacts with stomach acid to make a salt and water.','ab'],['Iron filings and sulfur powder are heated and form a single black compound.','syn'],['An electric current splits water into hydrogen gas and oxygen gas.','dec'],['Calcium metal and fluorine gas combine to form calcium fluoride.','syn'],['A copper wire placed in silver nitrate solution grows silver crystals as the solution turns blue.','metal'],['Sulfuric acid is mixed with potassium hydroxide solution. The products are a dissolved salt and water.','ab'],['Mixing silver nitrate and sodium chloride solutions turns the liquid cloudy white.','ppt'],['Hydrochloric acid dripped onto baking soda makes it foam with CO₂ bubbles.','ac'],['Bromine water is added to a sodium iodide solution, and iodine is released.','halogen'],['Methane from a gas stove burns with a blue flame.','comb']];
+const SYN_M=[['Na','sodium',1],['K','potassium',1],['Li','lithium',1],['Mg','magnesium',2],['Ca','calcium',2],['Ba','barium',2],['Al','aluminum',3],['Zn','zinc',2]];
+const SYN_N=[['Cl','chlorine',-1],['Br','bromine',-1],['F','fluorine',-1],['I','iodine',-1],['O','oxygen',-2],['S','sulfur',-2],['N','nitrogen',-3]];
+function typeChoices(t){return mcFrom(TYPE_NAME[t],pickN(Object.keys(TYPE_NAME).filter(k=>k!==t),3).map(k=>TYPE_NAME[k]));}
+const BAL_GEN={
+ balance(){const e=rnd(RXN_BAL),all=[...e.R,...e.P];
+  return {type:'Balance the equation',ask:'Balance this equation with the lowest whole-number coefficients.',prompt:eqBig(e,{blank:1}),inputsClass:'coefs',fields:all.map((f,i)=>({key:'c'+i,label:fx(f),placeholder:'1'})),
+   check:v=>{const u=all.map((_,i)=>{const t=String(v['c'+i]||'').trim();return t===''?1:(/^\d+$/.test(t)?+t:NaN);});const ok=u.every((x,i)=>x===e.c[i]);let diag='';
+    if(!ok){if(u.some(isNaN))diag='<b>Whole numbers only.</b> Coefficients are counting numbers like 1, 2, 3.';else{const bad=atomCheck(e.R,e.P,u);
+      diag=bad?`<b>${BY_SYM[bad.el].n} isn't balanced.</b> Your coefficients give ${bad.l} ${bad.el} on the left and ${bad.r} on the right.`:'<b>Balanced, but not in lowest terms.</b> Divide every coefficient by their common factor.';}}
+    const fields={};all.forEach((_,i)=>fields['c'+i]=ok||u[i]===e.c[i]);
+    return {ok,fields,diag,why:`<p class="eqn">${eqHTML(e)}</p><p class="muted">Check: ${[...new Set(all.flatMap(f=>Object.keys(totalsOf(f))))].map(el=>{let l=0;e.R.forEach((f,i)=>l+=e.c[i]*(totalsOf(f)[el]||0));return `${l} ${el}`;}).join(', ')} on each side.</p>`};}};},
+ sum(){const e=rnd(RXN_BAL),s=e.c.reduce((a,b)=>a+b,0);
+  return {type:'Sum of coefficients',ask:'When this equation is balanced with the lowest whole-number coefficients, what is the sum of all the coefficients?',prompt:eqBig(e,{bare:1}),fields:nfield('Sum of coefficients','#'),
+   check:v=>{const ok=intOk(v.a,s);return {ok,fields:{a:ok},diag:!ok&&parseInt(v.a)===s-e.c.filter(x=>x===1).length?'<b>Count the 1s.</b> A substance with no number written still has a coefficient of 1.':'',why:`<p class="eqn">${eqHTML(e)}</p><p>${e.c.join(' + ')} = <b>${s}</b></p>`};}};},
+ o2(){const e=rnd(RXN.filter(x=>x.type==='comb')),k=e.c[1];
+  return {type:'Combustion',ask:`In the balanced equation for the complete combustion of ${fx(e.R[0])}, what is the coefficient of O₂?`,prompt:`<span class="big eqn">${fx(e.R[0])} + O<sub>2</sub> → CO<sub>2</sub> + H<sub>2</sub>O</span>`,fields:nfield('Coefficient of O₂','#'),
+   check:v=>{const ok=intOk(v.a,k);return {ok,fields:{a:ok},why:`<p>Balance C first, then H, and leave O for last. If O comes out as a fraction, double everything.</p><p class="eqn">${eqHTML(e)}</p><p>The coefficient of O₂ is <b>${k}</b>.</p>`};}};},
+ type(){const k=wpick([[5,'bank'],[2,'dr'],[1,'sr'],[1,'ab'],[1,'ac'],[1,'hal']]);let e,t;
+  if(k==='bank'){e=rnd(RXN.filter(x=>x.type!=='other'));t=e.type;}else if(k==='dr'){e=makeDR(1).e;t='ppt';}else if(k==='sr'){e=makeSR(true).e;t='metal';}else if(k==='ab'){e=makeAB({solSalt:1}).e;t='ab';}else if(k==='ac'){e=makeAC().e;t='ac';}else{e=makeHal(true).e;t='halogen';}
+  const {choices,correct}=typeChoices(t);
+  return {kind:'mc',type:'Reaction type',ask:'What type of reaction is this?',prompt:eqBig(e),choices,correct,why:`<p><b>${TYPE_NAME[t]}.</b> ${TYPE_HOW[t]}</p>`};},
+ word(){const [d,t]=rnd(TYPE_WORDS);const {choices,correct}=typeChoices(t);return {kind:'mc',type:'Reaction type',ask:'What type of reaction is being described?',prompt:`<span class="clue">${d}</span>`,choices,correct,why:`<p><b>${TYPE_NAME[t]}.</b> ${TYPE_HOW[t]}</p>`};},
+ atoms(){const x=rnd(ALL_CMPD.filter(c=>c.an.poly||c.cat.poly)),k=rint(2,4),T=totalsOf(x.f),el=rnd(Object.keys(T)),ans=k*T[el];
+  return {type:'Counting atoms',ask:`How many ${BY_SYM[el].n.toLowerCase()} atoms are in this many formula units?`,prompt:`<span class="big eqn">${k} ${fx(x.f)}</span>`,fields:nfield(`${BY_SYM[el].n} atoms`,'#'),
+   check:v=>{const ok=intOk(v.a,ans);return {ok,fields:{a:ok},diag:!ok&&parseInt(v.a)===T[el]?'<b>Use the coefficient too.</b> It multiplies every atom in the formula.':'',why:`<p>One ${fx(x.f)} has ${T[el]} ${el}. ${/\(/.test(x.f)?'A subscript outside parentheses multiplies everything inside. ':''}The coefficient ${k} multiplies the whole formula: ${k} × ${T[el]} = <b>${ans}</b>.</p>`};}};},
+ synth(){const [ms,mn,mc]=rnd(SYN_M),[ns,nn,nc]=rnd(SYN_N),g=gcd(mc,-nc),a=-nc/g,b=mc/g,f=ms+(a>1?a:'')+ns+(b>1?b:'');if(ns==='N'&&!['Li','Mg','Ca','Ba','Al'].includes(ms))return BAL_GEN.synth();
+  return {type:'Predict the product',ask:`${cap(mn)} metal reacts with ${nn} in a synthesis reaction. Write the formula of the product.`,prompt:`<span class="big eqn">${ms} + ${['O','N','F','Cl','Br','I'].includes(ns)?fx(ns+'2'):ns} → ?</span>`,fields:[{key:'a',label:'Formula of the product',placeholder:'e.g. MgCl2',tools:'formula'}],
+   check:v=>{const r=formulaCheck(v.a,f,ms);return {...r,fields:{a:r.ok},why:`<p>${cap(mn)} forms ${sp(ms,mc)} and ${nn} forms ${sp(ns,nc)}. Balance the charges: <b>${fx(f)}</b>.</p>`};}};},
+ concept(){return bankQ(rnd(BAL_BANK));}
+};
+GEN.balance=()=>BAL_GEN[wpick([[34,'balance'],[8,'sum'],[7,'o2'],[18,'type'],[10,'word'],[8,'atoms'],[7,'synth'],[8,'concept']])]();
+
+/* ---------- solubility & precipitation ---------- */
+const SOL_BANK=[
+ {q:'What is a precipitate?',a:'An insoluble solid that forms when two solutions are mixed',d:['A gas that bubbles out of a solution','Any compound dissolved in water','A solution that changes color'],why:'When ions from two solutions meet and form an insoluble compound, it leaves the solution as a solid: the precipitate.'},
+ {q:'Two solutions are mixed, and both possible products are soluble. What happens?',a:'No reaction: all the ions stay dissolved',d:['Two precipitates form','One precipitate forms','A gas is released'],why:'If nothing leaves the solution as a solid, liquid, or gas, every ion is a spectator and there is no reaction.'},
+ {q:'Which cation always forms soluble compounds?',a:'K⁺',d:['Ag⁺','Pb²⁺','Ba²⁺'],why:'Compounds of group 1 metals (and ammonium) are always soluble.'},
+ {q:'Which anion always forms soluble compounds?',a:'NO₃⁻',d:['CO₃²⁻','OH⁻','PO₄³⁻'],why:'All nitrates are soluble, which is why nitrates are so common as lab solutions.'},
+ {q:'A student wants a solution that contains Pb²⁺ ions. Which compound should they dissolve?',a:'Pb(NO₃)₂',d:['PbCl₂','PbSO₄','PbCO₃'],why:'All nitrates are soluble. The chloride, sulfate, and carbonate of lead are insoluble.'},
+ {q:'After a precipitation reaction, how could you collect the solid product?',a:'Filter the mixture, then dry the solid',d:['Boil the mixture until it is dry','Add more water','Add an indicator'],why:'Filtering separates the insoluble solid from the solution. Boiling it dry would leave the dissolved salt mixed in.'},
+ {q:'An unknown solution gives a bright green flame. Which ion does it most likely contain?',a:'Ba²⁺',d:['Na⁺','K⁺','Li⁺'],why:'Flame test colors: barium is green, sodium yellow-orange, potassium lilac, lithium crimson, strontium red, and calcium orange-red.'}
+];
+const SOL_EXPL=[
+ {q:'Solutions of sodium sulfate and barium nitrate are mixed and a white solid forms. Explain what the solid is and why it forms.',model:"The ions swap partners, so the possible products are barium sulfate and sodium nitrate. Sodium nitrate is soluble (group 1 compounds and nitrates always are), but sulfates are insoluble with Ba²⁺. Ba²⁺ and SO₄²⁻ ions join into solid BaSO₄, the precipitate, while Na⁺ and NO₃⁻ stay dissolved as spectator ions.",keys:['Products are BaSO₄ and NaNO₃ (partners swap)','BaSO₄ is insoluble by the sulfate rule','Na⁺ and NO₃⁻ stay dissolved as spectators']},
+ {q:'Solutions of potassium chloride and sodium nitrate are mixed. Explain why no reaction occurs.',model:'Swapping partners would give potassium nitrate and sodium chloride. Both are soluble, because compounds of group 1 metals are always soluble. No solid, liquid, or gas forms, so all four ions stay dissolved as spectator ions and nothing has reacted.',keys:['Possible products: KNO₃ and NaCl','Both products are soluble','All ions are spectators, so no reaction']},
+ {q:'An unknown solution forms a precipitate with sodium sulfate but not with sodium chloride. Explain what this tells you about the cation.',model:"No precipitate with chloride rules out Ag⁺ and Pb²⁺, whose chlorides are insoluble. A precipitate with sulfate means the cation forms an insoluble sulfate, so it could be Ca²⁺, Sr²⁺, or Ba²⁺. A flame test could narrow it down further.",keys:['No chloride precipitate rules out Ag⁺ and Pb²⁺','Insoluble sulfate points to Ca²⁺, Sr²⁺, or Ba²⁺','Another test (like a flame test) narrows it down']}
+];
+const UNK_SETS=[['potassium','barium','magnesium','lead(II)'],['sodium','barium','zinc','lead(II)'],['ammonium','barium','copper(II)','lead(II)'],['lithium','barium','nickel(II)','lead(II)']];
+function ruleStep(x){const own=anionRule(x.an.f),right=SOL_RULES[x.rule];const wrong=Object.keys(SOL_RULES).filter(k=>k!==x.rule&&k!==own&&!(k==='always'&&['Na','K','Li','NH4'].includes(x.cat.f)));const m=mcFrom(right,pickN(wrong,3).map(k=>SOL_RULES[k]));return {ask:`Which rule tells you about ${x.name}?`,choices:m.choices,correct:m.correct};}
+const SOL_GEN={
+ isSol(){const x=rnd(Math.random()<.5?ALL_CMPD.filter(c=>c.sol):ALL_CMPD.filter(c=>!c.sol));
+  return {kind:'mc',type:'Soluble or insoluble',ask:'Is this compound soluble or insoluble in water?',prompt:`<span class="big eqn">${fx(x.f)}</span><span class="sub-line">${x.name}</span>`,choices:['Soluble','Insoluble'],correct:x.sol?0:1,layout:'pair',step2:ruleStep(x),why:`<p><b>${cap(x.name)} is ${x.sol?'soluble':'insoluble'}.</b> ${SOL_RULES[x.rule]}</p>`};},
+ which(){const ins=Math.random()<.6;const right=rnd(ALL_CMPD.filter(c=>c.sol!==ins)),wrong=pickN(ALL_CMPD.filter(c=>c.sol===ins&&c.f!==right.f),3);const m=mcFrom(fx(right.f),wrong.map(c=>fx(c.f)));
+  return {kind:'mc',type:'Solubility rules',ask:`Which of these compounds is ${ins?'insoluble':'soluble'} in water?`,choices:m.choices,correct:m.correct,why:`<p><b>${fx(right.f)}</b> (${right.name}) is ${right.sol?'soluble':'insoluble'}. ${SOL_RULES[right.rule]}</p><p class="muted">${wrong.map(c=>`${fx(c.f)}: ${c.sol?'soluble':'insoluble'}`).join(' · ')}</p>`};},
+ forms(){const d=makeDR(Math.random()<.65?1:0),yes=!!d.ppt;const m=yes?mcFrom(fx(d.ppt.f),[fx(d.other.f),fx(d.r1.f),fx(d.r2.f)]):null;
+  return {kind:'mc',type:'Precipitation',ask:'Will a precipitate form when these two solutions are mixed?',prompt:`<span class="big eqn">${cH(d.r1)} + ${cH(d.r2)}</span><span class="sub-line">${d.r1.name} + ${d.r2.name}</span>`,choices:['Yes, a precipitate forms','No reaction'],correct:yes?0:1,layout:'pair',
+   step2:yes?{ask:'What is the precipitate?',choices:m.choices,correct:m.correct}:null,
+   why:yes?`<p>Swap partners: the possible products are ${fx(d.p1.f)} and ${fx(d.p2.f)}. <b>${fx(d.ppt.f)} is insoluble</b>, so it precipitates. ${SOL_RULES[d.ppt.rule]}</p><p class="eqn">${eqHTML(d.e)}</p>`:`<p>Swap partners: the possible products are ${fx(d.p1.f)} and ${fx(d.p2.f)}. Both are soluble, so every ion stays dissolved and <b>no reaction</b> occurs.</p>`};},
+ formula(){const d=makeDR(1);
+  return {type:'Identify the precipitate',ask:'These two solutions are mixed and a precipitate forms. Write the formula of the precipitate.',prompt:`<span class="big eqn">${cH(d.r1)} + ${cH(d.r2)}</span><span class="sub-line">${d.r1.name} + ${d.r2.name}</span>`,fields:[{key:'a',label:'Formula of the precipitate',placeholder:'e.g. BaSO4',tools:'formula'}],
+   check:v=>{const r=formulaCheck(v.a,d.ppt.f,d.ppt.cat.f==='NH4'?'N':d.ppt.cat.f);const p=parseFormula(v.a);if(!r.ok&&p&&sameTotals(p.totals,totalsOf(d.other.f)))r.diag=`<b>That's the soluble product.</b> ${cap(d.other.name)} stays dissolved. ${SOL_RULES[d.other.rule]}`;
+    return {...r,fields:{a:r.ok},why:`<p>The possible products are ${fx(d.p1.f)} and ${fx(d.p2.f)}. <b>${fx(d.ppt.f)}</b> (${d.ppt.name}) is the insoluble one. ${SOL_RULES[d.ppt.rule]}</p><p class="eqn">${eqHTML(d.e)}</p>`};}};},
+ adds(){for(let t=0;t<100;t++){const base=rnd(ALL_CMPD.filter(c=>c.sol&&['Na','K','NH4'].includes(c.cat.f)&&!['NO3','CH3COO'].includes(c.an.f)));
+    const ok=c=>c.sol&&c.an.f==='NO3'&&c.cat.f!==base.cat.f;const forms=c=>{const p=cmpd(c.cat,base.an);return !p.iffy&&!p.sol;},no=c=>{const p=cmpd(c.cat,base.an);return !p.iffy&&p.sol;};
+    const R=ALL_CMPD.filter(c=>ok(c)&&forms(c)),W=ALL_CMPD.filter(c=>ok(c)&&no(c));if(!R.length||W.length<3)continue;const right=rnd(R),wr=pickN(W,3),m=mcFrom(cH(right),wr.map(cH)),p=cmpd(right.cat,base.an);
+    return {kind:'mc',type:'Precipitation',ask:`Which solution would form a precipitate when added to a solution of ${base.name}?`,prompt:`<span class="big eqn">${cH(base)}</span>`,choices:m.choices,correct:m.correct,why:`<p>The ${base.an.n} ion would pair with each new cation. Only <b>${fx(p.f)}</b> (${p.name}) is insoluble. ${SOL_RULES[p.rule]}</p>`};}
+  return SOL_GEN.which();},
+ unknown(){const set=rnd(UNK_SETS).map(catBy),tests=['chloride','sulfate','hydroxide','carbonate'].map(anBy),target=rnd(set);const row=c=>tests.map(a=>!cmpd(c,a).sol);
+  const m=mcFrom(ionH(target),set.filter(c=>c!==target).map(ionH));
+  return {kind:'mc',type:'Unknown ion',ask:'An unknown nitrate solution is tested with four sodium solutions. Which cation does it contain?',prompt:`<span class="obs">${tests.map((a,i)=>`<span>sodium ${a.n}</span><b class="${row(target)[i]?'y':'n'}">${row(target)[i]?'precipitate':'no reaction'}</b>`).join('')}</span>`,choices:m.choices,correct:m.correct,
+   why:`<p>Match the pattern to the rules. ${cap(target.n)}: ${tests.map((a,i)=>`${a.n} ${row(target)[i]?'insoluble':'soluble'}`).join(', ')}.</p><p class="muted">${set.filter(c=>c!==target).map(c=>`${c.n} would give: ${row(c).map(x=>x?'ppt':'none').join(', ')}`).join(' · ')}</p>`};},
+ concept(){return bankQ(rnd(SOL_BANK));},
+ explain(){return explainQ(rnd(SOL_EXPL));}
+};
+GEN.solub=()=>SOL_GEN[wpick([[26,'isSol'],[14,'which'],[20,'forms'],[14,'formula'],[9,'adds'],[6,'unknown'],[7,'concept'],[4,'explain']])]();
+
+/* ---------- net ionic ---------- */
+const NIE_BANK=[
+ {q:'What is a spectator ion?',a:'An ion that is dissolved before and after the reaction, unchanged',d:['An ion that forms the precipitate','An ion with no charge','An ion that changes its charge'],why:'Spectator ions appear identically on both sides of the total ionic equation, so they cancel out of the net ionic equation.'},
+ {q:'Which substances are split into ions in a total ionic equation?',a:'Only dissolved (aq) ionic compounds and strong acids',d:['Everything in the equation','Only the solids','Only the products'],why:'Solids, pure liquids like H₂O, and gases stay together. Only substances that exist as separate ions in solution are split.'},
+ {q:'When Al₂(SO₄)₃ dissolves, what happens to the sulfate ion?',a:'It stays together as SO₄²⁻',d:['It splits into S and 4 O','It splits into S⁶⁺ and O²⁻ ions','It becomes SO₄³⁻'],why:'Polyatomic ions stay intact as a unit. One Al₂(SO₄)₃ gives 2 Al³⁺ and 3 SO₄²⁻.'},
+ {q:'A net ionic equation must be balanced in…',a:'both atoms and charge',d:['atoms only','charge only','neither'],why:'The atoms must match on both sides, and the total charge on the left must equal the total charge on the right.'},
+ {q:'If every ion in a total ionic equation is a spectator, the net ionic equation is…',a:'nothing: no reaction occurred',d:['the same as the total ionic equation','the same as the molecular equation','H⁺ + OH⁻ → H₂O'],why:'When everything cancels, nothing actually changed. The solutions simply mixed.'},
+ {q:'What is the net ionic equation for any strong acid reacting with a soluble hydroxide base?',a:'H⁺(aq) + OH⁻(aq) → H₂O(l)',d:['Na⁺(aq) + Cl⁻(aq) → NaCl(s)','H₂(g) + O₂(g) → H₂O(l)','2 H⁺(aq) + O²⁻(aq) → H₂O(l)'],why:'The acid supplies H⁺ and the base supplies OH⁻. The metal cation and the acid anion are spectators.'}
+];
+function uniqHTML(arr){const seen=new Set();return arr.filter(x=>x&&!seen.has(x)&&seen.add(x));}
+const NIE_GEN={
+ ppt(){const d=makeDR(1),right=nieP(d.ppt);const wrongs=uniqHTML([totalIonicH(d),nieP({...d.other,sol:false}),eqHTML(d.e),(d.ppt.nc>1||d.ppt.na>1)?`${ionH(d.ppt.cat)}${stt('aq')} + ${ionH(d.ppt.an)}${stt('aq')} → ${fx(d.ppt.f)}${stt('s')}`:`${fx(d.ppt.f)}${stt('s')} → ${ionH(d.ppt.cat)}${stt('aq')} + ${ionH(d.ppt.an)}${stt('aq')}`]).filter(x=>x!==right);const m=mcFrom(right,pickN(wrongs,3));
+  return {kind:'mc',type:'Net ionic equation',ask:'Which is the net ionic equation for this reaction?',prompt:eqBig(d.e),choices:m.choices,correct:m.correct,cls:'eqchoices',why:`<p>Split the dissolved compounds into ions, then cancel the spectators (${ionH(d.other.cat)} and ${ionH(d.other.an)}). Only the ions that form the solid remain:</p><p class="eqn">${right}</p>`};},
+ spect(){const d=makeDR(1),pair=(a,b)=>`${ionH(a)} and ${ionH(b)}`;const m=mcFrom(pair(d.other.cat,d.other.an),[pair(d.ppt.cat,d.ppt.an),pair(d.r1.cat,d.r2.cat),pair(d.r1.an,d.r2.an)]);
+  return {kind:'mc',type:'Spectator ions',ask:'Which ions are the spectator ions in this reaction?',prompt:eqBig(d.e),choices:m.choices,correct:m.correct,why:`<p>${ionH(d.ppt.cat)} and ${ionH(d.ppt.an)} leave the solution as solid ${fx(d.ppt.f)}. The other two ions, <b>${pair(d.other.cat,d.other.an)}</b>, are dissolved on both sides, so they're spectators.</p>`};},
+ dissoc(){const x=rnd(ALL_CMPD.filter(c=>c.sol&&(c.nc>1||c.na>1))),right=dissocH(x);const clump=i=>fxc(i.poly&&(i===x.cat?x.nc:x.na)>1?`(${i.f})${i===x.cat?x.nc:x.na}`:i.f+((i===x.cat?x.nc:x.na)>1?(i===x.cat?x.nc:x.na):''),i.c*(i===x.cat?x.nc:x.na));
+  const wrongs=uniqHTML([fx(x.f)+stt('s'),`${ionH(x.cat)}${stt('aq')} + ${ionH(x.an)}${stt('aq')}`,`${clump(x.cat)}${stt('aq')} + ${clump(x.an)}${stt('aq')}`,x.nc!==x.na?`${kf(x.na)}${ionH(x.cat)}${stt('aq')} + ${kf(x.nc)}${ionH(x.an)}${stt('aq')}`:null]).filter(w=>w!==right);const m=mcFrom(right,pickN(wrongs,3));
+  return {kind:'mc',type:'Total ionic equations',ask:`How should dissolved ${x.name} be written in a total ionic equation?`,prompt:`<span class="big eqn">${fx(x.f)}${stt('aq')}</span>`,choices:m.choices,correct:m.correct,cls:'eqchoices',why:`<p>A soluble ionic compound separates into its ions. The subscripts become coefficients, and polyatomic ions stay intact: <span class="eqn">${right}</span></p>`};},
+ count(){const x=rnd(ALL_CMPD.filter(c=>c.sol&&(c.nc>1||c.na>1))),k=rint(1,3),which=rnd(['total','cat','an']),ans=k*(which==='total'?x.nc+x.na:which==='cat'?x.nc:x.na);
+  return {type:'Counting ions',ask:`${k} mol of ${x.name} dissolves completely. How many moles of ${which==='total'?'ions (total)':which==='cat'?x.cat.n+' ions':x.an.n+' ions'} are in the solution?`,prompt:`<span class="big eqn">${fx(x.f)}</span>`,fields:nfield('Moles of ions','#'),
+   check:v=>{const ok=intOk(v.a,ans);return {ok,fields:{a:ok},why:`<p>${fx(x.f)} → ${dissocH(x)}. Each mole gives ${x.nc} mol ${ionH(x.cat)} and ${x.na} mol ${ionH(x.an)}. For ${k} mol: <b>${ans} mol</b>.</p>`};}};},
+ sr(){const d=makeSR(true),right=d.nie;const an=d.an,tot=`${kf(d.a)}${fx(d.M.s)}${stt('s')} + ${kf(d.e.c[1]*d.salt.nc)}${fxc(d.N.s,d.N.c)}${stt('aq')} + ${kf(d.e.c[1]*d.salt.na)}${ionH(an)}${stt('aq')} → ${kf(d.e.c[2]*d.prod.nc)}${fxc(d.M.s,d.M.c)}${stt('aq')} + ${kf(d.e.c[2]*d.prod.na)}${ionH(an)}${stt('aq')} + ${kf(d.b)}${fx(d.N.s)}${stt('s')}`;
+  const rev=`${kf(d.b)}${fx(d.N.s)}${stt('s')} + ${kf(d.a)}${fxc(d.M.s,d.M.c)}${stt('aq')} → ${kf(d.b)}${fxc(d.N.s,d.N.c)}${stt('aq')} + ${kf(d.a)}${fx(d.M.s)}${stt('s')}`;
+  const unb=(d.a>1||d.b>1)?`${fx(d.M.s)}${stt('s')} + ${fxc(d.N.s,d.N.c)}${stt('aq')} → ${fxc(d.M.s,d.M.c)}${stt('aq')} + ${fx(d.N.s)}${stt('s')}`:`${fx(d.M.s)}${stt('s')} + ${ionH(an)}${stt('aq')} → ${fx(d.prod.f)}${stt('aq')}`;
+  const m=mcFrom(right,uniqHTML([tot,rev,unb]));
+  return {kind:'mc',type:'Net ionic equation',ask:'Which is the net ionic equation for this metal replacement reaction?',prompt:eqBig(d.e),choices:m.choices,correct:m.correct,cls:'eqchoices',why:`<p>The ${an.n} ion is dissolved on both sides, so it's a spectator. What actually changes: ${d.M.n} atoms become ions, and ${d.N.ion||d.N.n} ions become metal. Check that the charge balances too.</p><p class="eqn">${right}</p>`};},
+ ab(){const ins=Math.random()<.4;const d=makeAB({acids:ACIDS.filter(a=>a.strong&&a.f!=='H2SO4'),bases:BASES.filter(b=>ins?!b.sol:(b.sol&&b.f!=='Ca(OH)2')),solSalt:1}),n=d.B.oh,cat=catBy(d.B.cat);
+  const simple=`H<sup>+</sup>${stt('aq')} + OH<sup>−</sup>${stt('aq')} → ${fx('H2O')}${stt('l')}`,full=`${kf(n)}H<sup>+</sup>${stt('aq')} + ${fx(d.B.f)}${stt('s')} → ${ionH(cat)}${stt('aq')} + ${kf(n)}${fx('H2O')}${stt('l')}`,right=ins?full:simple;
+  const m=mcFrom(right,uniqHTML([ins?simple:null,eqHTML(d.e),`${ionH(cat)}${stt('aq')} + ${kf(d.salt.na)}${ionH(d.salt.an)}${stt('aq')} → ${fx(d.salt.f)}${stt('s')}`,`2 H<sup>+</sup>${stt('aq')} + O<sup>2−</sup>${stt('aq')} → ${fx('H2O')}${stt('l')}`]).slice(0,3));
+  return {kind:'mc',type:'Net ionic equation',ask:'Which is the net ionic equation for this acid–base reaction?',prompt:eqBig(d.e),choices:m.choices,correct:m.correct,cls:'eqchoices',why:ins?`<p>${fx(d.B.f)} is an <b>insoluble</b> base, so it stays together as a solid in the ionic equation. The acid's anion is the only spectator.</p><p class="eqn">${right}</p>`:`<p>Both the acid and the base are dissolved and split into ions. The metal cation and the acid's anion are spectators, leaving the same net ionic equation as every strong acid with a soluble base:</p><p class="eqn">${right}</p>`};},
+ keep(){const k=rnd(['s','l','g']);const right=k==='s'?(()=>{const x=rnd(ALL_CMPD.filter(c=>!c.sol));return fx(x.f)+stt('s');})():k==='l'?fx('H2O')+stt('l'):fx('CO2')+stt('g');const m=mcFrom(right,pickN(ALL_CMPD.filter(c=>c.sol),3).map(cH));
+  return {kind:'mc',type:'Total ionic equations',ask:'Which of these is NOT split into ions in a total ionic equation?',choices:m.choices,correct:m.correct,why:`<p>Only dissolved (aq) ionic compounds are split. ${k==='s'?'An insoluble solid':k==='l'?'Liquid water':'A gas'} stays written as one unit: <b>${right}</b>.</p>`};},
+ concept(){return bankQ(rnd(NIE_BANK));}
+};
+GEN.netionic=()=>NIE_GEN[wpick([[26,'ppt'],[16,'spect'],[14,'dissoc'],[8,'count'],[12,'sr'],[12,'ab'],[6,'keep'],[8,'concept']])]();
+
+/* ---------- activity series & redox ---------- */
+const RDX_BANK=[
+ {q:'Oxidation is…',a:'the loss of electrons',d:['the gain of electrons','the gain of protons','the loss of oxygen only'],why:'OIL RIG: Oxidation Is Loss, Reduction Is Gain (of electrons).'},
+ {q:'When an element is reduced, its oxidation number…',a:'decreases',d:['increases','stays the same','becomes zero'],why:'Reduction is gaining electrons. Electrons are negative, so the oxidation number goes down.'},
+ {q:'The oxidizing agent in a reaction is the substance that…',a:'is reduced (it takes electrons from something else)',d:['is oxidized','contains the most oxygen','has the highest charge'],why:'The oxidizing agent causes oxidation by taking electrons, so it is itself reduced.'},
+ {q:'In any redox reaction, the number of electrons lost…',a:'equals the number of electrons gained',d:['is greater than the number gained','is less than the number gained','is always two'],why:'Electrons are transferred, not created. Every electron one atom loses, another gains.'},
+ {q:'What is the oxidation number of any element in its pure, uncombined form?',a:'0',d:['+1','Its group number','−1'],why:'An atom of a pure element (Na, O₂, Cl₂, S₈) has not gained or lost electrons to another kind of atom.'},
+ {q:'Which type of reaction is never a redox reaction?',a:'Precipitation',d:['Combustion','Metal replacement','Synthesis of a compound from its elements'],why:'In precipitation, ions just swap partners. No oxidation numbers change.'},
+ {q:'Metals above hydrogen in the activity series can…',a:'react with acids to produce hydrogen gas',d:['never form ions','replace any metal above them','only react with bases'],why:'A metal above H is more active than hydrogen, so it replaces the H⁺ in an acid, releasing H₂.'},
+ {q:'A more active metal is one that…',a:'loses electrons (is oxidized) more easily',d:['gains electrons more easily','has a higher density','has more protons'],why:'Activity is how readily a metal gives up electrons to become a cation. This connects to metallic character from Unit 2.'},
+ {q:'What is wrong with this "reaction"? 2 F⁻ + 2 Br⁻ → F₂ + Br₂',a:'Both elements are oxidized, and nothing is reduced',d:['Both elements are reduced','Fluorine is not diatomic','Nothing is wrong'],why:'Both go from −1 to 0, losing electrons. Oxidation can\'t happen without a reduction to accept those electrons.'}
+];
+const RDX_EXPL=[
+ {q:'A piece of copper is placed in a solution of zinc nitrate, and nothing happens. Explain why.',model:'Copper is below zinc on the activity series, so copper is less active: it loses electrons less easily than zinc does. A metal can only replace a metal ion that is below it on the series, so copper cannot replace zinc, and no reaction occurs.',keys:['Copper is below zinc on the activity series','A metal only replaces ions of metals below it','So no reaction occurs']},
+ {q:'Explain why the reaction Mg + 2 HCl → MgCl₂ + H₂ is a redox reaction, and identify the oxidizing and reducing agents.',model:'Magnesium goes from 0 to +2, so it loses electrons and is oxidized. Hydrogen goes from +1 in HCl to 0 in H₂, so it gains electrons and is reduced. Because electrons are transferred, it is redox. Mg is the reducing agent (it is oxidized) and HCl is the oxidizing agent (it is reduced).',keys:['Mg: 0 → +2, oxidized','H: +1 → 0, reduced','Mg is the reducing agent; HCl is the oxidizing agent']},
+ {q:'Explain why a precipitation reaction is not a redox reaction.',model:'In a precipitation reaction the ions only change partners. Each ion keeps the same charge before and after, so no oxidation numbers change and no electrons are transferred. A redox reaction requires one element to lose electrons and another to gain them.',keys:['Ions only swap partners','No oxidation numbers change','Redox needs a transfer of electrons']}
+];
+const L3=['Q','R','T','X','Z','D'];
+const RDX_GEN={
+ will(){const k=wpick([[5,'sr'],[3,'ma'],[2,'hal']]);let d,prompt,rsn,wr;
+  if(k==='sr'){d=makeSR();prompt=`<span class="big eqn">${fx(d.M.s)}${stt('s')} + ${fx(d.salt.f)}${stt('aq')} → ?</span><span class="sub-line">${d.M.n} metal + ${d.salt.name} solution</span>`;
+   rsn=d.reacts?`${cap(d.M.n)} is above ${d.N.n} on the activity series, so it can replace ${d.N.n} ions.`:`${cap(d.M.n)} is below ${d.N.n} on the activity series, so it can't replace ${d.N.n} ions.`;
+   wr=[d.reacts?`${cap(d.M.n)} is below ${d.N.n} on the activity series, so it reacts.`:`${cap(d.M.n)} is above ${d.N.n} on the activity series, so it can't react.`,`All nitrates are soluble, so ${d.reacts?'a reaction always happens':'nothing can happen'}.`,`${cap(d.N.n)} has a ${d.N.c>=d.M.c?'larger or equal':'smaller'} charge than ${d.M.n}.`];}
+  else if(k==='ma'){d=makeMA();prompt=`<span class="big eqn">${fx(d.M.s)}${stt('s')} + ${fx(d.A.f)}${stt('aq')} → ?</span><span class="sub-line">${d.M.n} metal + ${d.A.n}</span>`;
+   rsn=d.reacts?`${cap(d.M.n)} is above hydrogen on the activity series, so it replaces the hydrogen in the acid and releases H₂ gas.`:`${cap(d.M.n)} is below hydrogen on the activity series, so it can't replace the hydrogen in the acid.`;
+   wr=[d.reacts?`${cap(d.M.n)} is below hydrogen on the activity series.`:`${cap(d.M.n)} is above hydrogen on the activity series.`,'All metals react with all acids.','Acids only react with bases, never with metals.'];}
+  else{d=makeHal();prompt=`<span class="big eqn">${fx(d.X.s+'2')}${stt(d.X.st)} + ${fx(d.salt.f)}${stt('aq')} → ?</span><span class="sub-line">${d.X.n} + ${d.salt.name} solution</span>`;
+   rsn=d.reacts?`${cap(d.X.n)} is more active than ${d.Y.n} (it's higher in group 17), so it replaces the ${d.Y.ide} ion.`:`${cap(d.X.n)} is less active than ${d.Y.n} (it's lower in group 17), so it can't replace the ${d.Y.ide} ion.`;
+   wr=[d.reacts?`${cap(d.X.n)} is less active than ${d.Y.n}.`:`${cap(d.X.n)} is more active than ${d.Y.n}.`,'Halogens get more active going down the group.','Halogens can only replace metals.'];}
+  const m=mcFrom(rsn,wr);
+  return {kind:'mc',type:'Will it react?',ask:'Does a reaction occur?',prompt,choices:['Reaction','No reaction'],correct:d.reacts?0:1,layout:'pair',step2:{ask:'Why?',choices:m.choices,correct:m.correct},why:`<p>${rsn}</p>${d.reacts?`<p class="eqn">${eqHTML(d.e)}</p>`:''}`};},
+ products(){const d=makeSR();const right=d.reacts?`${fx(d.prod.f)} + ${fx(d.N.s)}`:'No reaction';const alt=cmpd0({f:d.M.s,c:d.M.c===1?2:1},d.an);
+  const m=mcFrom(right,uniqHTML([d.reacts?'No reaction':`${fx(d.prod.f)} + ${fx(d.N.s)}`,`${fx(d.M.s+d.N.s)} + ${fx(d.an.f)}`,`${fx(d.prod.f)} + ${fxc(d.N.s,d.N.c)}`,`${fx(d.salt.f)} + ${fx(d.M.s)}`]).filter(x=>x!==right).slice(0,3));
+  return {kind:'mc',type:'Predict the products',ask:`${cap(d.M.n)} metal is placed in a solution of ${d.salt.name}. What are the products?`,prompt:`<span class="big eqn">${fx(d.M.s)}${stt('s')} + ${fx(d.salt.f)}${stt('aq')} → ?</span>`,choices:m.choices,correct:m.correct,
+   why:d.reacts?`<p>${cap(d.M.n)} is above ${d.N.n} on the activity series, so it replaces it. ${cap(d.M.n)} forms ${fxc(d.M.s,d.M.c)}, and ${d.N.n} comes out as a solid metal.</p><p class="eqn">${eqHTML(d.e)}</p>`:`<p>${cap(d.M.n)} is below ${d.N.n} on the activity series, so it can't replace it. <b>No reaction.</b></p>`};},
+ acid(){const d=makeMA(true);const right=`${fx(d.prod.f)} + ${fx('H2')}`;const m=mcFrom(right,[`${fx(d.prod.f)} + ${fx('H2O')}`,`${fx(d.prod.f)} + ${fx('CO2')} + ${fx('H2O')}`,'No reaction']);
+  return {kind:'mc',type:'Predict the products',ask:`What are the products when ${d.M.n} metal reacts with ${d.A.n}?`,prompt:`<span class="big eqn">${fx(d.M.s)}${stt('s')} + ${fx(d.A.f)}${stt('aq')} → ?</span>`,choices:m.choices,correct:m.correct,why:`<p>An active metal (above H) replaces the hydrogen in an acid: metal + acid → salt + <b>hydrogen gas</b>. Water forms with a base, and CO₂ forms with a carbonate.</p><p class="eqn">${eqHTML(d.e)}</p>`};},
+ rank(){const els=pickN(METALS,rint(3,4));const order=els.map((_,i)=>i).sort((i,j)=>actIdx(els[j].s)-actIdx(els[i].s));
+  return {kind:'rank',type:'Activity series',ask:'Put these metals in order from least active to most active.',items:els.map(m=>m.s),order,low:'Least active',high:'Most active',why:`<p>${order.map(i=>els[i].s).join(' &lt; ')}</p><p>Metals higher on the activity series lose electrons more easily.</p>`};},
+ deduce(){const [A,B,C]=pickN(L3,3);const right=`${C} > ${A} > ${B}`;const m=mcFrom(right,[`${A} > ${B} > ${C}`,`${B} > ${A} > ${C}`,`${C} > ${B} > ${A}`]);
+  return {kind:'mc',type:'Activity series',ask:'Rank the three metals from most active to least active.',prompt:`<span class="clue">A strip of metal ${A} is placed in a solution of ${B} nitrate, and metal ${B} coats the strip. A second strip of ${A} is placed in a solution of ${C} nitrate, and nothing happens.</span>`,choices:m.choices,correct:m.correct,why:`<p>${A} replaced ${B}, so ${A} is more active than ${B}. ${A} could not replace ${C}, so ${C} is more active than ${A}. Order: <b>${right}</b>.</p>`};},
+ oxnum(){const [f,c,ox]=rnd(OXB),els=Object.keys(ox),hard=els.filter(e=>!((e==='O'&&ox[e]===-2)||(e==='H'&&ox[e]===1))),el=Math.random()<.85&&hard.length?rnd(hard):rnd(els),T=totalsOf(f),ans=ox[el],others=els.filter(e=>e!==el);
+  const eqn=others.length?`${T[el]>1?T[el]:''}x ${others.map(e=>`+ ${T[e]>1?T[e]:''}(${oxS(ox[e])})`).join(' ')} = ${oxS(c).replace('+','')}`:'';
+  const how=els.length===1?(c===0?`A pure element always has an oxidation number of <b>0</b>.`:`For a single-atom ion, the oxidation number equals the charge: <b>${oxS(ans)}</b>.`):`<p>Let x be ${el}. The oxidation numbers must add up to the overall charge (${oxS(c)}):</p><p class="eqn">${eqn}</p><p>x = <b>${oxS(ans)}</b></p>${f==='H2O2'?'<p class="muted">Hydrogen peroxide is the exception to the "oxygen is −2" rule: H is +1, which forces each O to be −1.</p>':''}`;
+  return {type:'Oxidation numbers',ask:`What is the oxidation number of ${BY_SYM[el].n.toLowerCase()} in this ${c?'ion':(els.length===1?'element':'compound')}?`,prompt:`<span class="big eqn">${fxc(f,c)}</span>`,fields:[{key:'a',label:`Oxidation number of ${el}`,placeholder:'e.g. +4 or -2'}],
+   check:v=>{const u=parseOx(v.a),ok=u===ans;let diag='';if(!ok&&!isNaN(u)&&T[el]>1&&u===ans*T[el])diag=`<b>That's the total for all ${T[el]} ${el} atoms.</b> Divide by ${T[el]} to get the oxidation number of each one.`;else if(!ok&&!isNaN(u)&&u===-ans&&ans!==0)diag='<b>Check the sign.</b>';else if(!ok&&c!==0&&els.length>1&&!isNaN(u)&&u===ans-c/T[el])diag=`<b>Use the charge.</b> The oxidation numbers add up to ${oxS(c)}, not 0, because this is an ion.`;
+    return {ok,fields:{a:ok},diag,why:how};}};},
+ oxidized(){const r=rnd(RDX),what=rnd(['ox','red']),els=[...new Set([...r.e.R,...r.e.P].flatMap(f=>Object.keys(totalsOf(f))))],right=r[what];const m=mcFrom(BY_SYM[right].n,els.filter(e=>e!==right).map(e=>BY_SYM[e].n));
+  return {kind:'mc',type:'Redox',ask:`Which element is ${what==='ox'?'oxidized':'reduced'} in this reaction?`,prompt:eqBig(r.e),choices:m.choices,correct:m.correct,layout:els.length===2?'pair':null,
+   why:`<p><b>${BY_SYM[r.ox].n}</b> goes from ${oxS(r.oxc[0])} to ${oxS(r.oxc[1])}: its oxidation number increases, so it loses electrons and is <b>oxidized</b>.</p><p><b>${BY_SYM[r.red].n}</b> goes from ${oxS(r.redc[0])} to ${oxS(r.redc[1])}: its oxidation number decreases, so it gains electrons and is <b>reduced</b>.</p>`};},
+ agent(){const r=rnd(RDX),what=rnd(['OA','RA']);
+  return {kind:'mc',type:'Redox',ask:`Which reactant is the ${what==='OA'?'oxidizing':'reducing'} agent?`,prompt:eqBig(r.e),choices:r.e.R.map(f=>fx(f)),correct:r.e.R.indexOf(r[what]),layout:'pair',
+   why:`<p>${BY_SYM[r.ox].n} is oxidized (${oxS(r.oxc[0])} → ${oxS(r.oxc[1])}) and ${BY_SYM[r.red].n.toLowerCase()} is reduced (${oxS(r.redc[0])} → ${oxS(r.redc[1])}).</p><p>The <b>reducing agent</b> is the reactant that contains the oxidized element: ${fx(r.RA)}. The <b>oxidizing agent</b> is the reactant that contains the reduced element: ${fx(r.OA)}.</p>`};},
+ isRedox(){const e=rnd(RXN.filter(x=>x.type!=='other'));
+  return {kind:'mc',type:'Redox',ask:'Is this a redox reaction?',prompt:eqBig(e),choices:['Redox','Not redox'],correct:e.redox?0:1,layout:'pair',why:e.redox?`<p><b>Redox.</b> This is a ${TYPE_NAME[e.type].toLowerCase()} reaction in which an element changes oxidation number${e.R.concat(e.P).some(f=>Object.keys(totalsOf(f)).length===1)?': look for the pure element (oxidation number 0) on one side that is part of a compound on the other':''}.</p>`:`<p><b>Not redox.</b> No oxidation numbers change. ${e.type==='ppt'||e.type==='ab'||e.type==='ac'?'Precipitation, acid–base, and acid–carbonate reactions only swap ion partners.':'Every element keeps the same oxidation number on both sides.'}</p>`};},
+ concept(){return bankQ(rnd(RDX_BANK));},
+ explain(){return explainQ(rnd(RDX_EXPL));}
+};
+GEN.redox=()=>RDX_GEN[wpick([[20,'will'],[10,'products'],[6,'acid'],[8,'rank'],[5,'deduce'],[22,'oxnum'],[10,'oxidized'],[7,'agent'],[5,'isRedox'],[5,'concept'],[2,'explain']])]();
+
+/* ---------- acid–base ---------- */
+const AB_BANK=[
+ {q:'What are the products of any acid reacting with a hydroxide base?',a:'A salt and water',d:['A salt and hydrogen gas','A salt, carbon dioxide, and water','Only water'],why:'Neutralization: the H⁺ from the acid and the OH⁻ from the base form water. The leftover ions make the salt.'},
+ {q:'What gas is produced when an acid reacts with a carbonate?',a:'Carbon dioxide',d:['Hydrogen','Oxygen','Chlorine'],why:'Acid + carbonate → salt + CO₂ + H₂O. The fizzing is CO₂ escaping.'},
+ {q:'What gas is produced when an acid reacts with an active metal like zinc?',a:'Hydrogen',d:['Carbon dioxide','Oxygen','Water vapor'],why:'Acid + active metal → salt + H₂. The metal replaces the hydrogen in the acid.'},
+ {q:'What ion do all acids produce in water?',a:'H⁺',d:['OH⁻','Na⁺','O²⁻'],why:'Acids release hydrogen ions, H⁺, in water. Bases release hydroxide ions, OH⁻.'},
+ {q:'Sulfuric acid, H₂SO₄, is called diprotic. What does that mean?',a:'Each molecule can supply two H⁺ ions',d:['It contains two sulfur atoms','It has a 2+ charge','It needs two molecules to react'],why:'Mono-, di-, and triprotic acids supply 1, 2, or 3 H⁺ each. H₂SO₄ needs two OH⁻ to be fully neutralized.'},
+ {q:'In a titration, what is the job of the indicator?',a:'To change color when the acid and base have neutralized each other',d:['To speed up the reaction','To neutralize the extra acid','To make the solution more concentrated'],why:'The color change signals the endpoint, when moles of H⁺ equal moles of OH⁻.'},
+ {q:'An antacid tablet relieves heartburn because it…',a:'contains a base that neutralizes stomach acid',d:['contains an acid that dissolves food','coats the stomach with a precipitate','absorbs water'],why:'Antacids contain bases such as Mg(OH)₂, Al(OH)₃, or CaCO₃ that react with HCl in the stomach.'}
+];
+const SUBST=[...ACIDS.map(a=>({f:a.f,n:a.n,k:'acid'})),...BASES.filter(b=>b.sol).map(b=>({f:b.f,n:b.n,k:'base'})),...NEUTRALS.map(([f,n])=>({f,n,k:'neutral'}))];
+const AB_GEN={
+ classify(){const s=rnd(SUBST),lab={acid:'Acid',base:'Base',neutral:'Neither (neutral)'};
+  return {kind:'mc',type:'Acid or base',ask:'Is this substance an acid, a base, or neither?',prompt:`<span class="big eqn">${fx(s.f)}</span><span class="sub-line">${s.n}</span>`,choices:['Acid','Base','Neither (neutral)'],correct:['acid','base','neutral'].indexOf(s.k),
+   why:`<p><b>${lab[s.k]}.</b> ${s.k==='acid'?`Acids release H⁺ in water. Their formulas usually start with H${s.f==='CH3COOH'?' (acetic acid is the exception: its acidic H is written at the end, in COOH)':''}.`:s.k==='base'?'Bases release OH⁻ in water. Look for a metal with hydroxide.':s.f==='H2O'?'Pure water is neutral.':'This is a salt: a metal cation with a non-hydroxide anion. It has no H⁺ or OH⁻ to release.'}</p>`};},
+ color(){const ik=rnd(['phth','btb']),I=IND[ik],s=rnd(SUBST),ans=I[s.k];const all=ik==='phth'?['Colorless','Pink','Yellow','Blue']:['Yellow','Green','Blue','Pink'];
+  return {kind:'mc',type:'Indicators',ask:`A few drops of ${I.n} are added to this solution. What color do you see?`,prompt:`<span class="big eqn">${fx(s.f)}</span><span class="sub-line">${s.n}</span>`,choices:all,correct:all.indexOf(ans),
+   why:`<p>${cap(s.n)} is ${s.k==='neutral'?'neutral':'a'+(s.k==='acid'?'n acid':' base')}. ${cap(I.n)} is <b>${I.acid.toLowerCase()}</b> in acid, <b>${I.neutral.toLowerCase()}</b> when neutral, and <b>${I.base.toLowerCase()}</b> in base.</p>`};},
+ whichSol(){const ik=rnd(['phth','btb']),I=IND[ik],k=ik==='phth'?'base':rnd(['acid','base']),right=rnd(SUBST.filter(s=>s.k===k)),wrong=pickN(SUBST.filter(s=>s.k!==k&&!(ik==='phth'&&false)),3);const m=mcFrom(fx(right.f),wrong.map(s=>fx(s.f)));
+  return {kind:'mc',type:'Indicators',ask:`Which solution will turn ${I.n} ${I[k].toLowerCase()}?`,choices:m.choices,correct:m.correct,why:`<p>${cap(I.n)} turns ${I[k].toLowerCase()} in a${k==='acid'?'n acid':' base'}. <b>${fx(right.f)}</b> (${right.n}) is the only ${k} listed.</p>`};},
+ salt(){const d=makeAB();
+  return {type:'Predict the salt',ask:`${cap(d.A.n)} reacts with ${d.B.n}. Write the formula of the salt that forms.`,prompt:`<span class="big eqn">${fx(d.A.f)} + ${fx(d.B.f)} → ? + ${fx('H2O')}</span>`,fields:[{key:'a',label:'Formula of the salt',placeholder:'e.g. Na2SO4',tools:'formula'}],
+   check:v=>{const r=formulaCheck(v.a,d.salt.f,d.salt.cat.f);return {...r,fields:{a:r.ok},why:`<p>The salt is the base's cation with the acid's anion: ${ionH(d.salt.cat)} and ${ionH(d.salt.an)} make <b>${fx(d.salt.f)}</b> (${d.salt.name}).</p><p class="eqn">${eqHTML(d.e)}</p>`};}};},
+ products(){const k=rnd(['ab','ac','ma']);let d,right,wr,ask,why;
+  if(k==='ab'){d=makeAB();right=`${fx(d.salt.f)} + ${fx('H2O')}`;wr=[`${fx(d.salt.f)} + ${fx('H2')}`,`${fx(d.salt.f)} + ${fx('CO2')} + ${fx('H2O')}`,`${fx(d.salt.f)} only`];ask=`${d.A.n} reacts with ${d.B.n}`;why='Acid + hydroxide base → salt + water.';}
+  else if(k==='ac'){d=makeAC();right=`${fx(d.salt.f)} + ${fx('CO2')} + ${fx('H2O')}`;wr=[`${fx(d.salt.f)} + ${fx('H2O')}`,`${fx(d.salt.f)} + ${fx('H2')}`,`${fx(d.salt.f)} + ${fx('CO2')}`];ask=`${d.A.n} reacts with ${d.C.n}`;why='Acid + carbonate → salt + carbon dioxide + water.';}
+  else{d=makeMA(true);right=`${fx(d.prod.f)} + ${fx('H2')}`;wr=[`${fx(d.prod.f)} + ${fx('H2O')}`,`${fx(d.prod.f)} + ${fx('CO2')} + ${fx('H2O')}`,`${fx(d.prod.f)} + ${fx('O2')}`];ask=`${d.A.n} reacts with ${d.M.n} metal`;why='Acid + active metal → salt + hydrogen gas.';}
+  const m=mcFrom(right,wr);return {kind:'mc',type:'Predict the products',ask:`What are the products when ${ask}?`,prompt:`<span class="big eqn">${fx(d.e.R[0])} + ${fx(d.e.R[1])} → ?</span>`,choices:m.choices,correct:m.correct,why:`<p>${why}</p><p class="eqn">${eqHTML(d.e)}</p>`};},
+ ratio(){const A=rnd(ACIDS.filter(a=>a.f!=='CH3COOH'||true)),B=rnd(BASES),g=gcd(A.h,B.oh),na=B.oh/g,nb=A.h/g;const dir=Math.random()<.5,k=rint(1,4)*(dir?na:nb),ans=dir?k*nb/na:k*na/nb;
+  return {type:'Mole ratios',ask:dir?`How many moles of ${B.n} are needed to completely neutralize ${k} mol of ${A.n}?`:`How many moles of ${A.n} are needed to completely neutralize ${k} mol of ${B.n}?`,prompt:`<span class="big eqn">${fx(A.f)} + ${fx(B.f)}</span>`,fields:nfield(`Moles of ${fx(dir?B.f:A.f)}`,'mol'),
+   check:v=>{const u=parseNum(v.a),ok=!isNaN(u)&&close(u,ans,0.01);return {ok,fields:{a:ok},diag:!ok&&close(u,k,0.001)&&ans!==k?'<b>Not always 1 to 1.</b> Count the H⁺ each acid supplies and the OH⁻ each base supplies.':'',why:`<p>Each ${fx(A.f)} supplies ${A.h} H⁺ and each ${fx(B.f)} supplies ${B.oh} OH⁻. They neutralize when H⁺ = OH⁻, so the ratio is ${na} ${fx(A.f)} : ${nb} ${fx(B.f)}.</p><p>${k} mol × ${dir?`${nb}/${na}`:`${na}/${nb}`} = <b>${num(ans,3)} mol</b></p>`};}};},
+ drops(){const A=rnd(ACIDS.filter(a=>a.strong)),B=rnd(BASES.filter(b=>b.sol&&b.f!=='Ca(OH)2')),nD=rint(2,10)*6,ans=nD*B.oh/A.h;
+  return {type:'Mole ratios',ask:`${cap(A.n)} and ${B.n} solutions have the same molarity. How many drops of the acid are needed to neutralize ${nD} drops of the base?`,prompt:`<span class="big eqn">${fx(A.f)} + ${fx(B.f)}</span>`,fields:nfield('Drops of acid','#'),
+   check:v=>{const u=parseNum(v.a),ok=!isNaN(u)&&close(u,ans,0.01);return {ok,fields:{a:ok},why:`<p>Equal molarity means equal moles per drop. Each ${fx(A.f)} supplies ${A.h} H⁺ and each ${fx(B.f)} supplies ${B.oh} OH⁻.</p><p>${nD} drops of base supply ${nD*B.oh} "drops' worth" of OH⁻, which needs ${nD*B.oh} ÷ ${A.h} = <b>${ans} drops</b> of acid.</p>`};}};},
+ clue(){const [d,t]=rnd([['Mixing two solutions produces only a dissolved salt and water. An indicator changes color.','ab'],['An acid is poured onto a white solid, which fizzes. The gas puts out a flame.','ac'],['A metal strip in acid bubbles. The gas pops when lit.','metal'],['Two clear solutions make a cloudy solid when mixed.','ppt']]);const opts=['ab','ac','metal','ppt'],m=mcFrom(TYPE_NAME[t],opts.filter(x=>x!==t).map(x=>TYPE_NAME[x]));
+  return {kind:'mc',type:'Reaction type',ask:'Which type of reaction fits these observations?',prompt:`<span class="clue">${d}</span>`,choices:m.choices,correct:m.correct,why:`<p><b>${TYPE_NAME[t]}.</b> ${TYPE_HOW[t]} ${t==='ac'?'CO₂ puts out a flame.':t==='metal'?'Hydrogen gas makes a "pop" when lit.':''}</p>`};},
+ concept(){return bankQ(rnd(AB_BANK));}
+};
+GEN.acidbase=()=>AB_GEN[wpick([[12,'classify'],[14,'color'],[8,'whichSol'],[16,'salt'],[16,'products'],[12,'ratio'],[6,'drops'],[6,'clue'],[10,'concept']])]();
+
+/* ===================== UNIT 4: GENERATORS ===================== */
+const MM=f=>molarMass(f);
+const g3=x=>num(x,3);
+class SigNum extends Number{constructor(v,n){super(+(+v).toPrecision(n));this.n=n;}toString(){return sig(+this,this.n);}}
+const qn=(v,n)=>new SigNum(v,n),q3=v=>qn(v,3);
+const rAmt=(lo,hi)=>q3(lo+Math.random()*(hi-lo));
+const mm2=f=>MM(f).toFixed(2);
+function numQ(v,ans,alts){const r=numCheck(parseNum(v.a),ans,(alts||[]).filter(a=>a&&isFinite(a[0])&&!close(a[0],ans,0.03)));return {...r,fields:{a:r.ok}};}
+const D_RATIO='<b>Use the mole ratio.</b> The coefficients in the balanced equation tell you how many moles of one substance go with the other.';
+const D_FLIP='<b>Flip the mole ratio.</b> Put the substance you want on top and the substance you have on the bottom, so the units cancel.';
+const D_G2MOL='<b>Convert grams to moles first.</b> Coefficients are mole ratios, not gram ratios. Divide by the molar mass before using the ratio.';
+const D_MOL2G='<b>One more step.</b> That is the number of moles. Multiply by the molar mass to get grams.';
+const D_ML='<b>Convert mL to L.</b> Molarity is moles per <i>liter</i>, so divide milliliters by 1000 first.';
+
+/* ---------- stoichiometry ---------- */
+const ST_BANK=[
+ {q:'In a balanced equation, the coefficients give the ratio of…',a:'moles of each substance',d:['grams of each substance','atoms in each formula','liters of each solution'],why:'Coefficients count particles, so they give mole ratios. Masses have to be converted to moles before you use them.'},
+ {q:'What is the first step in almost every stoichiometry problem that gives you grams?',a:'Convert the grams to moles',d:['Multiply the grams by the coefficient','Divide the grams by the coefficient','Convert the grams to liters'],why:'The mole ratio only works on moles: grams → moles → mole ratio → moles → grams.'},
+ {q:'A reaction has a theoretical yield of 20.0 g, but only 15.0 g is collected. What is the percent yield?',a:'75.0%',d:['133%','5.00%','25.0%'],why:'Percent yield = actual ÷ theoretical × 100 = 15.0 ÷ 20.0 × 100 = 75.0%.'},
+ {q:'Why is the actual yield of a reaction usually less than the theoretical yield?',a:'Some product is lost or the reaction does not go to completion',d:['The balanced equation is wrong','Mass is destroyed in the reaction','Molar masses change during the reaction'],why:'Product sticks to glassware, side reactions happen, or not everything reacts. Mass is still conserved.'},
+ {q:'For 2 H₂ + O₂ → 2 H₂O, which statement is true?',a:'2 mol of H₂ react with 1 mol of O₂',d:['2 g of H₂ react with 1 g of O₂','1 mol of H₂ makes 2 mol of H₂O','2 mol of O₂ are needed for each mole of H₂'],why:'The coefficients 2 : 1 : 2 are mole ratios. In grams, that is about 4 g of H₂ with 32 g of O₂.'},
+ {q:'The theoretical yield is…',a:'the maximum amount of product, calculated from the limiting reactant',d:['the amount of product actually collected in the lab','always 100 g','the mass of the reactants'],why:'Theoretical yield comes from stoichiometry. Actual yield is what you measure in the lab.'}
+];
+function stoichQ(mode){const e=rnd(RXN_ST),all=[...e.R,...e.P];let i,j;do{i=Math.random()<.75?rint(0,e.R.length-1):rint(0,all.length-1);j=rint(0,all.length-1);}while(i===j);
+  const gm=mode[0]==='g',tm=mode[1]==='g',A=all[i],B=all[j],cA=e.c[i],cB=e.c[j],MA=MM(A),MB=MM(B);
+  const x=gm?rAmt(2,90):rAmt(0.15,6),nA=gm?x/MA:x,nB=nA*cB/cA,ans=tm?nB*MB:nB,rA=i<e.R.length,rB=j<e.R.length,unit=tm?'grams':'moles',amount=`${x} ${gm?'g':'mol'} of ${fx(A)}`;
+  const ask=rA&&!rB?`How many ${unit} of ${fx(B)} can be produced from ${amount}?`:rA&&rB?`How many ${unit} of ${fx(B)} are needed to react completely with ${amount}?`:!rA&&rB?`How many ${unit} of ${fx(B)} are needed to produce ${amount}?`:`How many ${unit} of ${fx(B)} form along with ${amount}?`;
+  const k=tm?MB:1,steps=[];if(gm)steps.push(`${x} g ${fx(A)} ÷ ${mm2(A)} g/mol = ${g3(nA)} mol ${fx(A)}`);steps.push(`${g3(nA)} mol ${fx(A)} × (${cB} mol ${fx(B)} ÷ ${cA} mol ${fx(A)}) = ${tm?g3(nB):'<b>'+g3(nB)+'</b>'} mol ${fx(B)}`);if(tm)steps.push(`${g3(nB)} mol × ${mm2(B)} g/mol = <b>${g3(ans)} g ${fx(B)}</b>`);
+  return {type:{mm:'Moles → moles',mg:'Moles → grams',gm:'Grams → moles',gg:'Grams → grams'}[mode],ask,prompt:eqBig(e),fields:nfield(tm?`Mass of ${fx(B)} (g)`:`Moles of ${fx(B)}`,tm?'g':'mol'),
+   check:v=>({...numQ(v,ans,[[nA*k,D_RATIO],[nA*cA/cB*k,D_FLIP],gm?[x*cB/cA*k,D_G2MOL]:null,gm&&tm?[x*cB/cA,D_G2MOL]:null,tm?[nB,D_MOL2G]:null]),why:`<ol>${steps.map(s=>`<li>${s}</li>`).join('')}</ol>`})};}
+const ST_GEN={
+ mm(){return stoichQ('mm');},mg(){return stoichQ('mg');},gm(){return stoichQ('gm');},gg(){return stoichQ('gg');},
+ yield(){const e=rnd(RXN_ST),i=rint(0,e.R.length-1),j=e.R.length+rint(0,e.P.length-1),A=e.R[i],B=e.P[j-e.R.length],x=rAmt(4,80),nB=x/MM(A)*e.c[j]/e.c[i],theo=nB*MM(B),act=q3(theo*(0.5+Math.random()*0.45)),ans=act/theo*100;
+  return {type:'Percent yield',ask:`${x} g of ${fx(A)} reacts completely, and ${act} g of ${fx(B)} is collected. What is the percent yield?`,prompt:eqBig(e),fields:nfield('Percent yield (%)','%'),
+   check:v=>({...numQ(v,ans,[[theo/act*100,'<b>Actual goes on top.</b> Percent yield = actual ÷ theoretical × 100.'],[theo,'<b>That is the theoretical yield in grams.</b> Now divide the actual yield by it and multiply by 100.'],[act/x*100,'<b>Compare product with product.</b> Find the theoretical yield of the product first, then divide the actual yield by it.']]),
+    why:`<ol><li>Theoretical yield: ${x} g ÷ ${mm2(A)} g/mol × (${e.c[j]}/${e.c[i]}) × ${mm2(B)} g/mol = ${g3(theo)} g ${fx(B)}</li><li>Percent yield = ${act} g ÷ ${g3(theo)} g × 100 = <b>${g3(ans)}%</b></li></ol>`})};},
+ concept(){return bankQ(rnd(ST_BANK));}
+};
+GEN.stoich=()=>ST_GEN[wpick([[10,'mm'],[14,'mg'],[14,'gm'],[34,'gg'],[18,'yield'],[10,'concept']])]();
+
+/* ---------- limiting reactants ---------- */
+const LIM_BANK=[
+ {q:'The limiting reactant is the one that…',a:'is completely used up first',d:['has the smaller mass','has the smaller coefficient','is left over at the end'],why:'The limiting reactant runs out first and stops the reaction. It decides how much product can form.'},
+ {q:'How do you find the limiting reactant?',a:'Convert each reactant to moles and divide by its coefficient; the smaller result is limiting',d:['Pick the reactant with fewer grams','Pick the reactant with the larger molar mass','Pick the reactant with the smaller coefficient'],why:'Grams alone are misleading. Moles ÷ coefficient shows how many "batches" of the reaction each reactant can supply.'},
+ {q:'Which reactant should you use to calculate the theoretical yield?',a:'The limiting reactant',d:['The excess reactant','Whichever has more moles','The average of both'],why:'Product stops forming when the limiting reactant runs out, so it sets the maximum amount of product.'},
+ {q:'A recipe needs 2 slices of bread and 1 slice of cheese per sandwich. With 10 slices of bread and 8 slices of cheese, what is the limiting ingredient?',a:'Bread: it only makes 5 sandwiches',d:['Cheese: there are fewer slices','Neither: both run out together','Cheese: it makes 8 sandwiches'],why:'10 bread ÷ 2 = 5 sandwiches; 8 cheese ÷ 1 = 8 sandwiches. Bread runs out first even though there is more of it.'},
+ {q:'After a reaction with a limiting reactant is complete, what is left in the container?',a:'The products and the leftover excess reactant',d:['Only the products','Only the limiting reactant','Equal amounts of both reactants'],why:'All of the limiting reactant is gone. Some of the excess reactant remains, along with the products.'}
+];
+function limSetup(){for(let t=0;t<200;t++){const e=rnd(RXN_LIM),[cA,cB]=e.c,MA=MM(e.R[0]),MB=MM(e.R[1]),ext0=(4+Math.random()*50)/(cA*MA),f=rnd([0.45,0.6,0.75,1.3,1.6,2.1]);
+    const gA=q3(ext0*cA*MA),gB=q3(ext0*cB*f*MB);if(gB>400||gB<0.5)continue;const nA=gA/MA,nB=gB/MB,xA=nA/cA,xB=nB/cB,lim=xA<xB?0:1,ext=Math.min(xA,xB),ex=1-lim;
+    const pj=rint(0,e.P.length-1),P=e.P[pj],cP=e.c[2+pj],theo=ext*cP*MM(P),left=((ex?nB:nA)-ext*e.c[ex])*MM(e.R[ex]);
+    const cmp=`<li>${gA} g ${fx(e.R[0])} ÷ ${mm2(e.R[0])} g/mol = ${g3(nA)} mol; ÷ coefficient ${cA} = ${g3(xA)}</li><li>${gB} g ${fx(e.R[1])} ÷ ${mm2(e.R[1])} g/mol = ${g3(nB)} mol; ÷ coefficient ${cB} = ${g3(xB)}</li><li>The smaller result belongs to ${fx(e.R[lim])}, so <b>${fx(e.R[lim])} is limiting</b> and ${fx(e.R[ex])} is in excess.</li>`;
+    return {e,gA,gB,nA,nB,xA,xB,lim,ex,ext,P,cP,theo,left,cmp,given:`${gA} g of ${fx(e.R[0])} and ${gB} g of ${fx(e.R[1])}`,otherTheo:Math.max(xA,xB)*cP*MM(P)};}
+  return limSetup();}
+const LIM_GEN={
+ which(){const s=limSetup(),askEx=Math.random()<.3;
+  return {kind:'mc',type:'Limiting reactant',ask:`${s.given} are combined. Which reactant is ${askEx?'in excess':'the limiting reactant'}?`,prompt:eqBig(s.e),choices:s.e.R.map(f=>fx(f)),correct:askEx?s.ex:s.lim,layout:'pair',why:`<ol>${s.cmp}</ol>`};},
+ theo(){const s=limSetup();
+  return {type:'Theoretical yield',ask:`${s.given} are combined. What mass of ${fx(s.P)} can form?`,prompt:eqBig(s.e),fields:nfield(`Mass of ${fx(s.P)} (g)`,'g'),
+   check:v=>({...numQ(v,s.theo,[[s.otherTheo,`<b>You used the excess reactant.</b> ${fx(s.e.R[s.lim])} runs out first, so it decides how much product forms.`]]),why:`<ol>${s.cmp}<li>${g3(s.lim?s.nB:s.nA)} mol ${fx(s.e.R[s.lim])} × (${s.cP}/${s.e.c[s.lim]}) × ${mm2(s.P)} g/mol = <b>${g3(s.theo)} g ${fx(s.P)}</b></li></ol>`})};},
+ excess(){const s=limSetup(),used=s.ext*s.e.c[s.ex]*MM(s.e.R[s.ex]),start=s.ex?s.gB:s.gA;
+  return {type:'Excess reactant',ask:`${s.given} are combined. After the reaction stops, how many grams of the excess reactant are left over?`,prompt:eqBig(s.e),fields:nfield('Mass left over (g)','g'),
+   check:v=>({...numQ(v,s.left,[[used,'<b>That is how much of the excess reactant was used.</b> Subtract it from the starting amount to find what is left.'],[start,'<b>Some of it reacts.</b> Find how much the limiting reactant uses up, then subtract.']]),
+    why:`<ol>${s.cmp}<li>${fx(s.e.R[s.ex])} used: ${g3(s.lim?s.nB:s.nA)} mol ${fx(s.e.R[s.lim])} × (${s.e.c[s.ex]}/${s.e.c[s.lim]}) × ${mm2(s.e.R[s.ex])} g/mol = ${g3(used)} g</li><li>Left over: ${start} g − ${g3(used)} g = <b>${g3(s.left)} g ${fx(s.e.R[s.ex])}</b></li></ol>`})};},
+ pyield(){const s=limSetup(),act=q3(s.theo*(0.55+Math.random()*0.4)),ans=act/s.theo*100;
+  return {type:'Percent yield',ask:`${s.given} react, and ${act} g of ${fx(s.P)} is collected. What is the percent yield?`,prompt:eqBig(s.e),fields:nfield('Percent yield (%)','%'),
+   check:v=>({...numQ(v,ans,[[act/s.otherTheo*100,`<b>Use the limiting reactant.</b> The theoretical yield comes from ${fx(s.e.R[s.lim])}, which runs out first.`],[s.theo,'<b>That is the theoretical yield.</b> Divide the actual yield by it and multiply by 100.']]),
+    why:`<ol>${s.cmp}<li>Theoretical yield from ${fx(s.e.R[s.lim])}: ${g3(s.theo)} g ${fx(s.P)}</li><li>${act} g ÷ ${g3(s.theo)} g × 100 = <b>${g3(ans)}%</b></li></ol>`})};},
+ abstract(){const [X,Y,Z]=pickN(['A','B','D','E','G','X','Y','Z'],3),a=rint(1,3),b=rint(1,3),c=rint(1,4);if(a===b&&a>1)return LIM_GEN.abstract();const ext=rnd([0.1,0.2,0.25,0.5]),f=rnd([1.5,2,2.5,3]),sw=Math.random()<.5;
+  const nX=q3(ext*a*(sw?f:1)),nY=q3(ext*b*(sw?1:f)),lim=sw?Y:X,exN=sw?nX-ext*a:nY-ext*b,what=rnd(['prod','left']),ans=what==='prod'?ext*c:exN;
+  return {type:'Limiting reactant',ask:what==='prod'?`${nX} mol of ${X} and ${nY} mol of ${Y} are combined. How many moles of ${Z} can form?`:`${nX} mol of ${X} and ${nY} mol of ${Y} are combined. How many moles of the excess reactant are left over?`,prompt:`<span class="big eqn">${kf(a)}${X} + ${kf(b)}${Y} → ${kf(c)}${Z}</span>`,fields:nfield(what==='prod'?`Moles of ${Z}`:'Moles left over','mol'),
+   check:v=>({...numQ(v,ans,[[what==='prod'?(sw?nX/a:nY/b)*c:(sw?nX:nY),what==='prod'?'<b>You used the excess reactant.</b> Divide each reactant\'s moles by its coefficient; the smaller result is limiting.':'<b>Subtract what reacted.</b> Some of the excess reactant is used up by the limiting reactant.']]),
+    why:`<ol><li>${X}: ${nX} ÷ ${a} = ${g3(nX/a)}. ${Y}: ${nY} ÷ ${b} = ${g3(nY/b)}. The smaller is ${lim}, so <b>${lim} is limiting</b>.</li>${what==='prod'?`<li>${sw?nY:nX} mol ${lim} × (${c}/${sw?b:a}) = <b>${g3(ans)} mol ${Z}</b></li>`:`<li>${sw?X:Y} used: ${sw?nY:nX} mol ${lim} × (${sw?a:b}/${sw?b:a}) = ${g3(sw?ext*a:ext*b)} mol</li><li>Left over: ${sw?nX:nY} − ${g3(sw?ext*a:ext*b)} = <b>${g3(ans)} mol ${sw?X:Y}</b></li>`}</ol>`})};},
+ concept(){return bankQ(rnd(LIM_BANK));}
+};
+GEN.limiting=()=>LIM_GEN[wpick([[22,'which'],[26,'theo'],[18,'excess'],[12,'pyield'],[12,'abstract'],[10,'concept']])]();
+
+/* ---------- molarity & dilutions ---------- */
+const SOLUTES=[['NaCl','sodium chloride'],['KI','potassium iodide'],['NaOH','sodium hydroxide'],['KNO3','potassium nitrate'],['CaCl2','calcium chloride'],['Na2SO4','sodium sulfate'],['AgNO3','silver nitrate'],['CuSO4','copper(II) sulfate'],['C6H12O6','glucose'],['KBr','potassium bromide'],['MgCl2','magnesium chloride'],['Al(NO3)3','aluminum nitrate'],['Na2CO3','sodium carbonate'],['K3PO4','potassium phosphate'],['NH4Cl','ammonium chloride'],['K2SO4','potassium sulfate'],['LiOH','lithium hydroxide'],['FeCl3','iron(III) chloride'],['HCl','hydrochloric acid'],['HNO3','nitric acid']];
+const MOL_BANK=[
+ {q:'Molarity is defined as…',a:'moles of solute per liter of solution',d:['grams of solute per liter of solution','moles of solute per liter of solvent','moles of solute per kilogram of solution'],why:'M = mol ÷ L. The volume is the total volume of the finished solution, not just the water added.'},
+ {q:'When water is added to dilute a solution, what stays the same?',a:'The moles of solute',d:['The molarity','The total volume','The mass of the solution'],why:'Diluting adds solvent only. The same moles of solute are spread through a larger volume, so the molarity drops. That is why M₁V₁ = M₂V₂ works.'},
+ {q:'To make 1.00 L of 1.00 M NaCl, you should dissolve 1.00 mol of NaCl and then…',a:'add water until the total volume is 1.00 L',d:['add exactly 1.00 L of water','add 1.00 kg of water','boil the solution'],why:'The solute takes up space. Adding 1.00 L of water would give more than 1.00 L of solution and a concentration below 1.00 M.'},
+ {q:'Which piece of glassware is best for making a solution of a precise molarity?',a:'A volumetric flask',d:['A beaker','An Erlenmeyer flask','A test tube'],why:'A volumetric flask has a single mark for one exact volume. Beakers and Erlenmeyer flasks are only approximate.'},
+ {q:'A 2.0 M solution is diluted to twice its original volume. What is the new molarity?',a:'1.0 M',d:['4.0 M','2.0 M','0.50 M'],why:'Same moles in double the volume means half the concentration.'},
+ {q:'Which solution contains the most moles of solute?',a:'2.0 L of 0.50 M',d:['0.50 L of 1.0 M','0.10 L of 3.0 M','1.0 L of 0.75 M'],why:'Moles = M × V: 1.0 mol, compared with 0.50, 0.30, and 0.75 mol.'}
+];
+function dilExplain(){const [f,n]=rnd(SOLUTES),M1=rnd([2,3,4,6,12]),V2=rnd([100,250,500]),M2=rnd([0.1,0.2,0.25,0.5]),V1=M2*V2/M1;
+  return {kind:'explain',type:'Explain it',ask:`Describe how you would prepare ${V2} mL of ${M2.toFixed(2)} M ${n} from a ${M1.toFixed(1)} M stock solution.`,placeholder:'Do the calculation, then describe the steps in words.',model:`M₁V₁ = M₂V₂, so V₁ = (${M2.toFixed(2)} M × ${V2} mL) ÷ ${M1.toFixed(1)} M = ${g3(V1)} mL. Measure ${g3(V1)} mL of the ${M1.toFixed(1)} M stock solution, put it in a ${V2} mL volumetric flask, and add water until the total volume reaches ${V2} mL (about ${g3(V2-V1)} mL of water). Mix.`,keys:[`Uses M₁V₁ = M₂V₂ to get ${g3(V1)} mL of stock`,`Adds water up to a total volume of ${V2} mL`,'Says total volume, not "add '+V2+' mL of water"']};}
+const MOL_GEN={
+ mFromG(){const [f,n]=rnd(SOLUTES),V=rnd([100,150,200,250,400,500,750,1000,1500,2000]),M0=rAmt(0.05,2),g=q3(M0*V/1000*MM(f)),mol=g/MM(f),ans=mol/(V/1000);
+  return {type:'Molarity',ask:`${g} g of ${n} is dissolved to make ${V} mL of solution. What is the molarity?`,prompt:`<span class="big eqn">${fx(f)}</span>`,fields:nfield('Molarity (M)','M'),
+   check:v=>({...numQ(v,ans,[[mol/V,D_ML],[g/(V/1000),'<b>Convert grams to moles first.</b> Molarity uses moles of solute, not grams.'],[mol,'<b>That is the moles of solute.</b> Now divide by the volume in liters.']]),why:`<ol><li>${g} g ÷ ${mm2(f)} g/mol = ${g3(mol)} mol</li><li>${V} mL = ${g3(V/1000)} L</li><li>M = ${g3(mol)} mol ÷ ${g3(V/1000)} L = <b>${g3(ans)} M</b></li></ol>`})};},
+ gForM(){const [f,n]=rnd(SOLUTES),V=rnd([100,250,500,750,1000,1500,2500]),M=rAmt(0.05,3),mol=M*V/1000,ans=mol*MM(f);
+  return {type:'Making a solution',ask:`What mass of ${n} is needed to make ${V} mL of a ${M} M solution?`,prompt:`<span class="big eqn">${fx(f)}</span>`,fields:nfield('Mass (g)','g'),
+   check:v=>({...numQ(v,ans,[[ans*1000,D_ML],[mol,D_MOL2G]]),why:`<ol><li>Moles = M × V = ${M} mol/L × ${g3(V/1000)} L = ${g3(mol)} mol</li><li>${g3(mol)} mol × ${mm2(f)} g/mol = <b>${g3(ans)} g</b></li></ol>`})};},
+ vFromG(){const [f,n]=rnd(SOLUTES),M=rnd([0.1,0.2,0.25,0.5,1,1.5,2]),V0=rAmt(0.1,3),g=q3(M*V0*MM(f)),mol=g/MM(f),ans=mol/M;
+  return {type:'Molarity',ask:`What volume of ${M.toFixed(2)} M solution can be made from ${g} g of ${n}?`,prompt:`<span class="big eqn">${fx(f)}</span>`,fields:nfield('Volume (L)','L'),
+   check:v=>({...numQ(v,ans,[[ans*1000,'<b>Check the units.</b> The question asks for liters.'],[mol*M,'<b>Rearrange M = mol ÷ L.</b> Volume = moles ÷ molarity.']]),why:`<ol><li>${g} g ÷ ${mm2(f)} g/mol = ${g3(mol)} mol</li><li>V = mol ÷ M = ${g3(mol)} ÷ ${M.toFixed(2)} = <b>${g3(ans)} L</b></li></ol>`})};},
+ ions(){const x=rnd(ALL_CMPD.filter(c=>c.sol&&(c.nc>1||c.na>1)&&!c.cat.poly)),M=rnd([0.1,0.15,0.2,0.25,0.3,0.4,0.5,0.75,1.2,2]),which=rnd(['cat','an','an']),ion=which==='cat'?x.cat:x.an,k=which==='cat'?x.nc:x.na,ans=M*k;
+  return {type:'Ion concentration',ask:`What is the concentration of ${ion.n} ions in a ${M.toFixed(2)} M solution of ${x.name}?`,prompt:`<span class="big eqn">${fx(x.f)}</span>`,fields:nfield(`[${ionH(ion)}] (M)`,'M'),
+   check:v=>({...numQ(v,ans,[k>1?[M,`<b>Count the ions.</b> Each formula unit of ${x.f} releases ${k} ${ion.n} ions.`]:null,[M/k,'<b>Multiply, don\'t divide.</b> More ions per formula unit means a higher ion concentration.'],[M*(x.nc+x.na),'<b>That is the total ion concentration.</b> The question asks only about one ion.']]),
+    why:`<p>${fx(x.f)} → ${dissocH(x)}</p><p>Each mole of ${x.name} gives ${k} mol of ${ionH(ion)}, so [${ionH(ion)}] = ${k} × ${M.toFixed(2)} M = <b>${g3(ans)} M</b>.</p>`})};},
+ dilute(){const [f,n]=rnd(SOLUTES),M1=rnd([1,1.5,2,3,4,6,12,15,18]),M2=q3(M1*rnd([0.02,0.05,0.1,0.125,0.2,0.25,0.4])),V2=rnd([50,100,200,250,500,750,1000]),V1=M2*V2/M1,what=rnd(['V1','V1','M2','water','V2']);
+  const base=`${M1.toFixed(1)} M ${n}`;let ask,ans,lab,alts,why;
+  if(what==='V1'){ask=`How many mL of ${base} are needed to make ${V2} mL of a ${M2} M solution?`;ans=V1;lab='Volume of stock (mL)';alts=[[M1*V2/M2,'<b>Rearrange carefully.</b> V₁ = M₂V₂ ÷ M₁. You need a small volume of the concentrated stock.']];why=`V₁ = M₂V₂ ÷ M₁ = (${M2} M × ${V2} mL) ÷ ${M1.toFixed(1)} M = <b>${g3(V1)} mL</b>`;}
+  else if(what==='M2'){const v1=q3(V1);ask=`${v1} mL of ${base} is diluted with water to a total volume of ${V2} mL. What is the new molarity?`;ans=M1*v1/V2;lab='New molarity (M)';alts=[[M1*V2/v1,'<b>Dilution lowers the concentration.</b> M₂ = M₁V₁ ÷ V₂.'],[M1*v1/(V2+v1),'<b>Read carefully.</b> The total volume is already given; you don\'t add the volumes.']];why=`M₂ = M₁V₁ ÷ V₂ = (${M1.toFixed(1)} M × ${v1} mL) ÷ ${V2} mL = <b>${g3(ans)} M</b>`;}
+  else if(what==='water'){ask=`You need ${V2} mL of ${M2} M solution, made from ${base}. How many mL of water should be added to the stock?`;ans=V2-V1;lab='Water added (mL)';alts=[[V1,'<b>That is the volume of stock.</b> The water makes up the rest: V₂ − V₁.'],[V2,'<b>Subtract the stock.</b> The total volume includes the stock solution.']];why=`V₁ = (${M2} × ${V2}) ÷ ${M1.toFixed(1)} = ${g3(V1)} mL of stock. Water = ${V2} − ${g3(V1)} = <b>${g3(ans)} mL</b>`;}
+  else{const v1=q3(V1);ask=`${v1} mL of ${base} is diluted until its concentration is ${M2} M. What is the final total volume in mL?`;ans=M1*v1/M2;lab='Final volume (mL)';alts=[[M2*v1/M1,'<b>The volume must increase</b> when you dilute. V₂ = M₁V₁ ÷ M₂.']];why=`V₂ = M₁V₁ ÷ M₂ = (${M1.toFixed(1)} M × ${v1} mL) ÷ ${M2} M = <b>${g3(ans)} mL</b>`;}
+  return {type:'Dilution',ask,prompt:`<span class="big eqn">M<sub>1</sub>V<sub>1</sub> = M<sub>2</sub>V<sub>2</sub></span>`,fields:nfield(lab,lab.includes('M)')?'M':'mL'),check:v=>({...numQ(v,ans,alts),why:`<p>Moles of solute don't change when you add water, so M₁V₁ = M₂V₂.</p><p>${why}</p>`})};},
+ moles(){const [f,n]=rnd(SOLUTES),M=rAmt(0.05,3),V=rnd([15,25,40,50,75,125,250,350]),ans=M*V/1000;
+  return {type:'Moles in solution',ask:`How many moles of ${n} are in ${V} mL of a ${M} M solution?`,prompt:`<span class="big eqn">${fx(f)}</span>`,fields:nfield('Moles','mol'),check:v=>({...numQ(v,ans,[[M*V,D_ML],[M/(V/1000),'<b>Multiply.</b> Moles = molarity × liters.']]),why:`<p>Moles = M × V = ${M} mol/L × ${g3(V/1000)} L = <b>${g3(ans)} mol</b></p>`})};},
+ concept(){return bankQ(rnd(MOL_BANK));},
+ explain(){return dilExplain();}
+};
+GEN.molarity=()=>MOL_GEN[wpick([[16,'mFromG'],[16,'gForM'],[8,'vFromG'],[16,'ions'],[24,'dilute'],[8,'moles'],[8,'concept'],[4,'explain']])]();
+
+/* ---------- solution stoichiometry & titrations ---------- */
+const TI_BANK=[
+ {q:'At the endpoint of an acid–base titration…',a:'moles of H⁺ added equal moles of OH⁻ present',d:['the volumes of acid and base are equal','the molarities of acid and base are equal','all the water has evaporated'],why:'The indicator changes color when the acid and base have exactly neutralized each other. Volumes and molarities are usually different.'},
+ {q:'Why is the hydroxide ion concentration of a Ba(OH)₂ solution twice its molarity?',a:'Each formula unit releases two OH⁻ ions',d:['Barium is a group 2 metal, so everything doubles','The solution is twice as dense','Hydroxide is diatomic'],why:'Ba(OH)₂ → Ba²⁺ + 2 OH⁻. A 0.10 M Ba(OH)₂ solution has [OH⁻] = 0.20 M.'},
+ {q:'In a titration, the solution of known concentration added from the buret is called the…',a:'titrant',d:['analyte','indicator','precipitate'],why:'The titrant is the known solution you add. The analyte is the unknown solution in the flask.'},
+ {q:'A student adds acid past the endpoint (overshoots). How does this affect the calculated concentration of the base?',a:'It will be too high',d:['It will be too low','It will not change','It becomes zero'],why:'Recording too large a volume of acid means calculating too many moles of acid, and so too many moles of base.'},
+ {q:'Two solutions are mixed and form a precipitate. To find the mass of precipitate, the first thing to calculate is…',a:'the moles of each reactant (M × V), to find the limiting reactant',d:['the total volume of the mixture','the molar mass of water','the percent yield'],why:'Solution problems are limiting-reactant problems in disguise. Moles = M × V for each solution.'},
+ {q:'Bromothymol blue is added to a base in a flask, and acid is added from a buret. What color change marks the endpoint?',a:'Blue to green',d:['Yellow to blue','Colorless to pink','Green to blue'],why:'Bromothymol blue is blue in base, green when neutral, and yellow in acid. If it turns yellow, you have added too much acid.'}
+];
+const TI_EXPL=[
+ {q:'You have a hydroxide solution of unknown concentration, bromothymol blue, and a bottle of hydrochloric acid of known molarity. Describe, step by step, how you would find the hydroxide ion concentration.',model:'Measure an exact volume of the hydroxide solution into a flask and add a few drops of bromothymol blue; it turns blue. Fill a buret with the HCl and record the starting volume. Add the acid slowly while swirling until the solution just turns green, then record the final volume. Moles of H⁺ = molarity × liters of HCl used, and at the endpoint that equals the moles of OH⁻. Divide the moles of OH⁻ by the liters of hydroxide solution you started with. Repeat for a second trial.',keys:['Measured volume of unknown + indicator (blue in base)','Add HCl from a buret until it just turns green; record the volume used','Moles H⁺ = M × V = moles OH⁻, then divide by the liters of unknown']},
+ {q:'Explain why the hydroxide ion concentration of a solution is not necessarily the same as the molarity of the dissolved base.',model:'Molarity counts formula units of the base, but each formula unit can release more than one hydroxide ion. A base like NaOH releases one OH⁻, so the two are equal. A base like Ba(OH)₂ releases two OH⁻ per formula unit, so the hydroxide concentration is twice the molarity of the base.',keys:['Molarity counts formula units of the base','A base can release more than one OH⁻ per formula unit','Example: [OH⁻] is twice the molarity for X(OH)₂']},
+ {q:'A student titrates the same acid sample twice and gets very different volumes of base. Give two possible sources of error.',model:'The student may have overshot the endpoint in one trial by adding base too quickly, or misread the buret (not reading at the bottom of the meniscus, or forgetting to record the starting volume). Other possibilities are measuring different volumes of the acid sample, or leaving an air bubble in the buret tip.',keys:['Overshooting the endpoint','Misreading the buret volume','Inconsistent sample volume or an air bubble in the tip']}
+];
+const SOLID_RX=[['Zn + 2 HCl -> ZnCl2 + H2','zinc'],['Mg + 2 HNO3 -> Mg(NO3)2 + H2','magnesium'],['2 Al + 6 HCl -> 2 AlCl3 + 3 H2','aluminum'],['CaCO3 + 2 HCl -> CaCl2 + CO2 + H2O','calcium carbonate'],['Fe + CuSO4 -> FeSO4 + Cu','iron'],['Mg + 2 AgNO3 -> Mg(NO3)2 + 2 Ag','magnesium'],['Cu + 2 AgNO3 -> Cu(NO3)2 + 2 Ag','copper'],['MgCO3 + 2 HNO3 -> Mg(NO3)2 + CO2 + H2O','magnesium carbonate'],['2 Al + 3 CuSO4 -> Al2(SO4)3 + 3 Cu','aluminum']].map(([s,n])=>({e:RX(s,'',0),n}));
+const TI_GEN={
+ conc(){const d=makeAB({bases:BASES.filter(b=>b.sol),solSalt:0}),acidKnown=Math.random()<.6,[cA,cB]=d.e.c,Mk=rAmt(0.05,1.2),Vu=q3(rnd([10,15,20,25,50])),Mu0=rAmt(0.05,1.5);
+  const K=acidKnown?d.A:d.B,U=acidKnown?d.B:d.A,cK=acidKnown?cA:cB,cU=acidKnown?cB:cA,Vk=q3(Mu0*Vu*cK/cU/Mk);if(Vk<3||Vk>60)return TI_GEN.conc();const nK=Mk*Vk/1000,nU=nK*cU/cK,ans=nU/(Vu/1000);
+  return {type:'Titration',ask:`It takes ${Vk} mL of ${Mk} M ${K.n} to neutralize ${Vu} mL of ${U.n}. What is the molarity of the ${U.n}?`,prompt:eqBig(d.e),fields:nfield(`Molarity of ${fx(U.f)} (M)`,'M'),
+   check:v=>({...numQ(v,ans,[[Mk*Vk/Vu,D_RATIO],[nK*cK/cU/(Vu/1000),D_FLIP],[nU,'<b>That is the moles.</b> Divide by the liters of the unknown solution to get molarity.']]),
+    why:`<ol><li>Moles of ${fx(K.f)} = ${Mk} M × ${g3(Vk/1000)} L = ${g3(nK)} mol</li><li>${g3(nK)} mol ${fx(K.f)} × (${cU} ${fx(U.f)} ÷ ${cK} ${fx(K.f)}) = ${g3(nU)} mol ${fx(U.f)}</li><li>${g3(nU)} mol ÷ ${g3(Vu/1000)} L = <b>${g3(ans)} M</b></li></ol>`})};},
+ vol(){const useAB=Math.random()<.5,d=useAB?makeAB({bases:BASES.filter(b=>b.sol),solSalt:0}):makeDR(1),e=d.e,n1=useAB?d.A.n:d.r1.name,n2=useAB?d.B.n:d.r2.name,M1=rAmt(0.05,1),M2=rAmt(0.05,1),V2=q3(rnd([10,15,20,25,40,50,100,150])),nB=M2*V2/1000,nA=nB*e.c[0]/e.c[1],ans=nA/M1*1000;if(ans<2||ans>900)return TI_GEN.vol();
+  return {type:'Solution stoichiometry',ask:`What volume of ${M1} M ${n1} is needed to react completely with ${V2} mL of ${M2} M ${n2}?`,prompt:eqBig(e),fields:nfield('Volume (mL)','mL'),
+   check:v=>({...numQ(v,ans,[[nB/M1*1000,D_RATIO],[nB*e.c[1]/e.c[0]/M1*1000,D_FLIP],[ans/1000,'<b>Check the units.</b> The question asks for milliliters.']]),
+    why:`<ol><li>Moles of ${fx(e.R[1])} = ${M2} M × ${g3(V2/1000)} L = ${g3(nB)} mol</li><li>${g3(nB)} mol × (${e.c[0]} ${fx(e.R[0])} ÷ ${e.c[1]} ${fx(e.R[1])}) = ${g3(nA)} mol ${fx(e.R[0])}</li><li>V = ${g3(nA)} mol ÷ ${M1} M = ${g3(nA/M1)} L = <b>${g3(ans)} mL</b></li></ol>`})};},
+ ppt(){const d=makeDR(1),e=d.e,M1=rAmt(0.05,0.8),M2=rAmt(0.05,0.8),V1=q3(rnd([10,15,20,25,30,50,75,100])),V2=q3(rnd([10,15,20,25,30,50,75,100])),n1=M1*V1/1000,n2=M2*V2/1000,x1=n1/e.c[0],x2=n2/e.c[1];if(Math.abs(x1-x2)/Math.max(x1,x2)<0.12)return TI_GEN.ppt();
+  const lim=x1<x2?0:1,pi=d.ppt===d.p1?2:3,ans=Math.min(x1,x2)*e.c[pi]*MM(d.ppt.f),other=Math.max(x1,x2)*e.c[pi]*MM(d.ppt.f);
+  return {type:'Precipitate mass',ask:`${V1} mL of ${M1} M ${d.r1.name} is mixed with ${V2} mL of ${M2} M ${d.r2.name}. What mass of precipitate forms?`,prompt:eqBig(e),fields:nfield(`Mass of ${fx(d.ppt.f)} (g)`,'g'),
+   check:v=>({...numQ(v,ans,[[other,`<b>You used the excess reactant.</b> ${fx(e.R[lim])} runs out first, so it limits how much precipitate forms.`],[Math.min(x1,x2)*e.c[pi],D_MOL2G]]),
+    why:`<ol><li>${fx(e.R[0])}: ${M1} M × ${g3(V1/1000)} L = ${g3(n1)} mol; ÷ ${e.c[0]} = ${g3(x1)}</li><li>${fx(e.R[1])}: ${M2} M × ${g3(V2/1000)} L = ${g3(n2)} mol; ÷ ${e.c[1]} = ${g3(x2)}</li><li><b>${fx(e.R[lim])} is limiting.</b> The precipitate is ${fx(d.ppt.f)}${stt('s')}.</li><li>${g3(lim?n2:n1)} mol × (${e.c[pi]}/${e.c[lim]}) × ${mm2(d.ppt.f)} g/mol = <b>${g3(ans)} g ${fx(d.ppt.f)}</b></li></ol>`})};},
+ solid(){const r=rnd(SOLID_RX),e=r.e,g=rAmt(0.5,12),M=rAmt(0.1,3),nS=g/MM(e.R[0]),nL=nS*e.c[1]/e.c[0],ans=nL/M*1000;if(ans<5||ans>2000)return TI_GEN.solid();
+  return {type:'Solution stoichiometry',ask:`What volume of ${M} M ${fx(e.R[1])} solution is needed to react completely with ${g} g of ${r.n}?`,prompt:eqBig(e),fields:nfield('Volume (mL)','mL'),
+   check:v=>({...numQ(v,ans,[[nS/M*1000,D_RATIO],[ans/1000,'<b>Check the units.</b> The question asks for milliliters.'],[nL,'<b>That is the moles needed.</b> Divide by the molarity to get the volume.']]),
+    why:`<ol><li>${g} g ÷ ${mm2(e.R[0])} g/mol = ${g3(nS)} mol ${fx(e.R[0])}</li><li>× (${e.c[1]} ${fx(e.R[1])} ÷ ${e.c[0]} ${fx(e.R[0])}) = ${g3(nL)} mol ${fx(e.R[1])}</li><li>V = ${g3(nL)} mol ÷ ${M} M = ${g3(nL/M)} L = <b>${g3(ans)} mL</b></li></ol>`})};},
+ mm(){const MM0=60+Math.random()*130,M=rAmt(0.1,1.6),V=rAmt(12,38),g=qn(MM0*M*V/1000,4),mol=M*V/1000,ans=g/mol;
+  return {type:'Titration',ask:`A ${g} g sample of an unknown acid, HA, is dissolved in water. It takes ${V} mL of ${M} M NaOH to neutralize it. What is the molar mass of the acid?`,prompt:`<span class="big eqn">HA + NaOH → NaA + H<sub>2</sub>O</span>`,fields:nfield('Molar mass (g/mol)','g/mol'),
+   check:v=>({...numQ(v,ans,[[g/(M*V),D_ML],[mol,'<b>That is the moles of acid.</b> Molar mass = grams ÷ moles.']]),why:`<ol><li>Moles of NaOH = ${M} M × ${g3(V/1000)} L = ${g3(mol)} mol</li><li>HA and NaOH react 1 : 1, so there are ${g3(mol)} mol of HA.</li><li>Molar mass = ${g} g ÷ ${g3(mol)} mol = <b>${g3(ans)} g/mol</b></li></ol>`})};},
+ oh(){const B=rnd([['Ba(OH)2','barium hydroxide'],['Sr(OH)2','strontium hydroxide'],['Ca(OH)2','calcium hydroxide']]),Ma=rAmt(0.05,0.5),Va=rAmt(8,35),Vb=q3(rnd([10,20,25,50])),oh=Ma*Va/Vb,mb=oh/2;
+  return {type:'Titration',ask:`It takes ${Va} mL of ${Ma} M HCl to titrate ${Vb} mL of a ${B[1]} solution. Find the hydroxide ion concentration and the molarity of the ${B[1]}.`,prompt:`<span class="big eqn">H<sup>+</sup> + OH<sup>−</sup> → H<sub>2</sub>O</span><span class="sub-line">${fx(B[0])} → ${B[0].slice(0,2)}<sup>2+</sup> + 2 OH<sup>−</sup></span>`,
+   fields:[{key:'a',label:'[OH⁻] (M)',placeholder:'M'},{key:'b',label:`Molarity of ${fx(B[0])} (M)`,placeholder:'M'}],
+   check:v=>{const a=numCheck(parseNum(v.a),oh,[[oh/2,'<b>H⁺ and OH⁻ react 1 : 1.</b> The moles of OH⁻ equal the moles of HCl added.']]),b=numCheck(parseNum(v.b),mb,[[oh,`<b>Each ${B[0]} releases two OH⁻.</b> The molarity of the base is half the hydroxide concentration.`],[oh*2,'<b>Divide, don\'t multiply.</b> It takes fewer formula units to supply that many OH⁻ ions.']]);
+    return {ok:a.ok&&b.ok,fields:{a:a.ok,b:b.ok},diag:a.diag||b.diag,why:`<ol><li>Moles of H⁺ = ${Ma} M × ${g3(Va/1000)} L = ${g3(Ma*Va/1000)} mol = moles of OH⁻</li><li>[OH⁻] = ${g3(Ma*Va/1000)} mol ÷ ${g3(Vb/1000)} L = <b>${g3(oh)} M</b></li><li>Each ${fx(B[0])} gives 2 OH⁻, so its molarity is ${g3(oh)} ÷ 2 = <b>${g3(mb)} M</b></li></ol>`};}};},
+ concept(){return bankQ(rnd(TI_BANK));},
+ explain(){return explainQ(rnd(TI_EXPL));}
+};
+GEN.titration=()=>TI_GEN[wpick([[24,'conc'],[16,'vol'],[18,'ppt'],[10,'solid'],[8,'mm'],[10,'oh'],[9,'concept'],[5,'explain']])]();
+
+/* ---------- Beer's law ---------- */
+const DYES=['blue food dye','red food dye','yellow food dye','green food dye','purple food dye','copper(II) sulfate','a sports drink dye'];
+const BEER_BANK=[
+ {q:"According to Beer's law, absorbance and concentration are…",a:'directly proportional',d:['inversely proportional','unrelated','equal'],why:'A = εbc. If the concentration doubles (same cuvette, same substance), the absorbance doubles.'},
+ {q:'A solution looks darker than another solution of the same dye. What does that tell you?',a:'It is more concentrated and absorbs more light',d:['It is more dilute','It has a lower absorbance','It has a larger molar mass'],why:'More dissolved particles in the light\'s path absorb more light, so the color is deeper and the absorbance is higher.'},
+ {q:"In A = εbc, what does b stand for?",a:'The path length: how far the light travels through the solution',d:['The brightness of the lamp','The concentration','The volume of the cuvette'],why:'b is the width of the cuvette, usually 1 cm. ε is a constant for the substance, and c is the concentration.'},
+ {q:'Why do you make a calibration curve with solutions of known concentration?',a:'Its line lets you turn an unknown solution\'s absorbance into a concentration',d:['To make the unknown more concentrated','To clean the cuvette','To find the color of the solution'],why:'Plotting absorbance against known concentrations gives a straight line. Read the unknown\'s absorbance off that line (or use its equation) to get its concentration.'},
+ {q:"On a Beer's law calibration graph of absorbance vs. concentration, the line should…",a:'be straight and pass through the origin',d:['curve upward','be horizontal','slope downward'],why:'Zero concentration absorbs no light, and absorbance rises in direct proportion to concentration. The slope equals εb.'},
+ {q:'Before measuring samples, a colorimeter is "blanked" with plain water. Why?',a:'So the absorbance of the water and cuvette is set to zero',d:['To dilute the samples','To warm up the samples','To make the dye darker'],why:'The blank removes any absorbance that isn\'t from the dye, so the readings reflect only the dissolved substance.'},
+ {q:'A blue solution looks blue because it…',a:'absorbs other colors (like orange) and lets blue light through',d:['absorbs blue light','reflects all colors','produces blue light'],why:'We see the light that is not absorbed. That is why a colorimeter for a blue solution uses orange-red light, the color it absorbs best.'}
+];
+const BEER_GEN={
+ conc(){const dye=rnd(DYES),c1=rAmt(0.01,0.9),A1=rAmt(0.15,0.75),A2=q3(A1*rnd([0.4,0.6,0.75,1.25,1.4,1.6,1.8])),ans=c1*A2/A1;
+  return {type:'Absorbance & concentration',ask:`A solution of ${dye} has a concentration of ${c1} M and an absorbance of ${A1}. What is the concentration of a solution of the same substance with an absorbance of ${A2}?`,prompt:`<span class="big eqn">A = εbc</span>`,fields:nfield('Concentration (M)','M'),
+   check:v=>({...numQ(v,ans,[[c1*A1/A2,'<b>Flip the ratio.</b> A higher absorbance means a higher concentration.']]),why:`<p>Same substance and same cuvette, so absorbance is directly proportional to concentration: A₁/c₁ = A₂/c₂.</p><p>c₂ = ${c1} M × (${A2} ÷ ${A1}) = <b>${g3(ans)} M</b></p>`})};},
+ abs(){const dye=rnd(DYES),c1=rAmt(0.01,0.9),A1=rAmt(0.15,0.75),c2=q3(c1*rnd([0.3,0.5,0.75,1.25,1.5])),ans=A1*c2/c1;
+  return {type:'Absorbance & concentration',ask:`A ${c1} M solution of ${dye} has an absorbance of ${A1}. What absorbance would a ${c2} M solution of the same substance have?`,prompt:`<span class="big eqn">A = εbc</span>`,fields:nfield('Absorbance','A'),
+   check:v=>({...numQ(v,ans,[[A1*c1/c2,'<b>Flip the ratio.</b> A higher concentration gives a higher absorbance.']]),why:`<p>A₂ = A₁ × (c₂ ÷ c₁) = ${A1} × (${c2} ÷ ${c1}) = <b>${g3(ans)}</b></p>`})};},
+ dilute(){const dye=rnd(DYES),A1=rAmt(0.3,0.9),V=rnd([5,10,20,25]),W=V*rnd([1,2,3,4]),ans=A1*V/(V+W);
+  return {type:'Dilution & absorbance',ask:`${V} mL of a ${dye} solution has an absorbance of ${A1}. You add ${W} mL of water. What is the absorbance now?`,prompt:`<span class="big eqn">A = εbc</span>`,fields:nfield('Absorbance','A'),
+   check:v=>({...numQ(v,ans,[[A1,'<b>Adding water lowers the concentration,</b> so the absorbance drops too.'],[A1*V/W,'<b>Use the total volume.</b> The new volume is the solution plus the water.'],[A1*(V+W)/V,'<b>Dilution lowers absorbance.</b> Multiply by the old volume over the new total volume.']]),why:`<p>The total volume goes from ${V} mL to ${V+W} mL, so the concentration becomes ${V}/${V+W} of what it was. Absorbance is proportional to concentration:</p><p>A = ${A1} × (${V} ÷ ${V+W}) = <b>${g3(ans)}</b></p>`})};},
+ path(){const A1=rAmt(0.15,0.6),b1=rnd([0.5,1,2]),b2=rnd([0.5,1,2,3,4].filter(x=>x!==b1)),ans=A1*b2/b1;
+  return {type:'Path length',ask:`A solution has an absorbance of ${A1} in a cuvette with a path length of ${b1} cm. What would its absorbance be in a ${b2} cm cuvette?`,prompt:`<span class="big eqn">A = εbc</span>`,fields:nfield('Absorbance','A'),
+   check:v=>({...numQ(v,ans,[[A1*b1/b2,'<b>Flip the ratio.</b> A longer path means the light passes through more solution, so more is absorbed.'],[A1,'<b>Path length matters.</b> Absorbance is directly proportional to b.']]),why:`<p>Absorbance is directly proportional to path length. A = ${A1} × (${b2} ÷ ${b1}) = <b>${g3(ans)}</b></p>`})};},
+ eps(){const eps=rnd([45,80,120,150,210,260,340,480]),b=1,c=rAmt(0.001,0.006),A=q3(eps*b*c),what=rnd(['A','c','e']);
+  const ask=what==='A'?`A dye has ε = ${eps} M⁻¹cm⁻¹. What is the absorbance of a ${c} M solution in a 1.00 cm cuvette?`:what==='c'?`A dye has ε = ${eps} M⁻¹cm⁻¹. A solution in a 1.00 cm cuvette has an absorbance of ${A}. What is its concentration?`:`A ${c} M solution of a dye has an absorbance of ${A} in a 1.00 cm cuvette. What is ε for this dye?`;
+  const ans=what==='A'?eps*c:what==='c'?A/eps:A/c;
+  return {type:"Beer's law",ask,prompt:`<span class="big eqn">A = εbc</span>`,fields:nfield(what==='A'?'Absorbance':what==='c'?'Concentration (M)':'ε (M⁻¹cm⁻¹)',what==='c'?'M':''),
+   check:v=>({...numQ(v,ans,[[what==='c'?A*eps:what==='e'?A*c:eps/c,'<b>Rearrange A = εbc.</b> Divide the absorbance by the other two quantities to isolate what you need.']]),why:`<p>${what==='A'?`A = εbc = ${eps} × 1.00 × ${c} = <b>${g3(ans)}</b>`:what==='c'?`c = A ÷ (εb) = ${A} ÷ (${eps} × 1.00) = <b>${g3(ans)} M</b>`:`ε = A ÷ (bc) = ${A} ÷ (1.00 × ${c}) = <b>${g3(ans)} M⁻¹cm⁻¹</b>`}</p>`})};},
+ calib(){const m=rAmt(0.8,9),A=rAmt(0.12,0.85),ans=A/m;
+  return {type:'Calibration curve',ask:`A calibration curve for a dye has the equation A = ${m} × c, with c in M. An unknown sample of the dye has an absorbance of ${A}. What is its concentration?`,prompt:`<span class="big eqn">A = ${m}c</span>`,fields:nfield('Concentration (M)','M'),
+   check:v=>({...numQ(v,ans,[[A*m,'<b>Solve for c.</b> Divide the absorbance by the slope.']]),why:`<p>The slope of the line is εb. Solve for c: c = A ÷ ${m} = ${A} ÷ ${m} = <b>${g3(ans)} M</b></p>`})};},
+ concept(){return bankQ(rnd(BEER_BANK));},
+ explain(){return explainQ({q:'You have a colored solution of unknown concentration, a colorimeter, and a stock solution of the same dye with a known concentration. Describe how you would find the unknown concentration.',model:"Dilute the stock to make several standard solutions of known concentration. Blank the colorimeter with water, then measure the absorbance of each standard. Plot absorbance against concentration and draw the best-fit line through the origin: this is the calibration curve. Measure the absorbance of the unknown and use the line's equation (or read across the graph) to find its concentration.",keys:['Make standards of known concentration and measure their absorbance','Plot absorbance vs. concentration to get a straight calibration line','Measure the unknown and use the line to find its concentration']});}
+};
+GEN.beer=()=>BEER_GEN[wpick([[22,'conc'],[12,'abs'],[14,'dilute'],[10,'path'],[12,'eps'],[12,'calib'],[14,'concept'],[4,'explain']])]();
+
+/* ===================== UNITS 3 & 4: LEARN TOOLS ===================== */
+const SOLT_C=['sodium','potassium','ammonium','magnesium','calcium','strontium','barium','aluminum','zinc','iron(II)','iron(III)','copper(II)','silver','lead(II)'].map(catBy);
+function solTableHTML(){return `<div class="lab"><div class="lab-head"><span class="eyebrow">Try it</span><h3>Solubility table</h3><p>Tap any square to see the compound and the rule behind it.</p></div><div class="tscroll"><table class="solt"><tr><th></th>${AN3.map(a=>`<th>${ionH(a)}</th>`).join('')}</tr>${SOLT_C.map((c,ci)=>`<tr><th>${ionH(c)}</th>${AN3.map((a,ai)=>{const x=cmpd(c,a);return `<td><button type="button" class="${x.iffy?'q':x.sol?'s':'i'}" onclick="solPick(${ci},${ai})" aria-label="${x.name}">${x.iffy?'·':x.sol?'aq':'s'}</button></td>`;}).join('')}</tr>`).join('')}</table></div><div class="legend"><span><i class="k-s"></i>soluble (aq)</span><span><i class="k-i"></i>insoluble (s)</span><span><i class="k-q"></i>borderline or doesn't form: not asked</span></div><div id="solt-out" class="te-out"><div class="muted">Tap a square.</div></div></div>`;}
+function solPick(ci,ai){const x=cmpd(SOLT_C[ci],AN3[ai]);document.querySelectorAll('.solt button.sel').forEach(b=>b.classList.remove('sel'));const b=document.querySelectorAll('.solt tr')[ci+1].querySelectorAll('button')[ai];if(b)b.classList.add('sel');
+  document.getElementById('solt-out').innerHTML=x.iffy?`<div class="feedback bad"><div class="verdict">${fx(x.f)} · ${x.name}</div><div class="why"><p>This one is slightly soluble, unstable, or doesn't really form, so tables disagree about it. It isn't used in practice questions.</p></div></div>`:`<div class="feedback ${x.sol?'ok':'bad'}"><div class="verdict">${fx(x.f)} is ${x.sol?'soluble':'insoluble'}</div><div class="why"><p>${cap(x.name)}. ${SOL_RULES[x.rule]}</p></div></div>`;}
+const ACTX={m:'Zn',s:'Cu'};
+function actHTML(){return `<div class="lab" id="actx"><div class="lab-head"><span class="eyebrow">Try it</span><h3>Will it react?</h3><p>Pick a solid metal and what it's dropped into. The more active metal ends up as the ion.</p></div><div class="lab-row wide"><span>Metal</span><div class="seg small te-seg" id="actx-m"></div></div><div class="lab-row wide"><span>Solution</span><div class="seg small te-seg" id="actx-s"></div></div><div id="actx-out" class="te-out"></div></div>`;}
+function actSet(k,v){ACTX[k]=v;actRender();}
+function actRender(){if(!document.getElementById('actx'))return;const M=METALS.find(m=>m.s===ACTX.m);
+  document.getElementById('actx-m').innerHTML=METALS.map(m=>`<button class="${m.s===ACTX.m?'active':''}" onclick="actSet('m','${m.s}')">${m.s}</button>`).join('');
+  const sol=[...SOLN_CATS.filter(m=>!['Na','K'].includes(m.s)),{s:'H',n:'acid'}];
+  document.getElementById('actx-s').innerHTML=sol.map(m=>`<button class="${m.s===ACTX.s?'active':''}" onclick="actSet('s','${m.s}')">${m.s==='H'?'HCl (acid)':fxc(m.s,m.c)}</button>`).join('');
+  const out=document.getElementById('actx-out');if(ACTX.m===ACTX.s){out.innerHTML='<div class="muted">A metal can\'t replace its own ion. Pick a different solution.</div>';return;}
+  const reacts=actIdx(ACTX.m)<actIdx(ACTX.s);let eq='';
+  if(ACTX.s==='H'){if(reacts){const prod=cmpd0(mIon(M),anBy('chloride')),R=[M.s,'HCl'],P=[prod.f,'H2'];eq=eqHTML({R,P,c:balanceEq(R,P),s:['s','aq','aq','g']});}
+   out.innerHTML=`<div class="feedback ${reacts?'ok':'bad'}"><div class="verdict">${reacts?'Reaction':'No reaction'}</div><div class="why"><p>${cap(M.n)} is ${reacts?'above':'below'} hydrogen on the activity series, so it ${reacts?'replaces the hydrogen in the acid and releases H₂ gas':"can't replace the hydrogen in an acid"}.</p>${eq?`<p class="eqn">${eq}</p>`:''}</div></div>`;return;}
+  const N=SOLN_CATS.find(m=>m.s===ACTX.s);if(reacts){const salt=cmpd0(mIon(N),NO3()),prod=cmpd0(mIon(M),NO3()),R=[M.s,salt.f],P=[prod.f,N.s];eq=eqHTML({R,P,c:balanceEq(R,P),s:['s','aq','aq','s']});}
+  out.innerHTML=`<div class="feedback ${reacts?'ok':'bad'}"><div class="verdict">${reacts?'Reaction':'No reaction'}</div><div class="why"><p>${cap(M.n)} is ${reacts?'above':'below'} ${N.n} on the activity series, so it ${reacts?`gives up electrons to the ${N.n} ions and replaces them`:`can't replace ${N.n} ions`}.</p>${eq?`<p class="eqn">${eq}</p>`:''}</div></div>`;}
+const BEERX={c:0.4,b:1};
+function beerHTML(){return `<div class="lab" id="beerx"><div class="lab-head"><span class="eyebrow">Try it</span><h3>Beer's law explorer</h3><p>Slide the concentration and the path length. Watch the color deepen and the absorbance climb in a straight line.</p></div><div class="lab-body"><div id="beerx-svg"></div><div class="lab-ctrl"><label class="slide"><span>Concentration <b id="beerx-cv"></b></span><input type="range" min="0" max="1" step="0.05" value="0.4" oninput="BEERX.c=+this.value;beerRender()"></label><label class="slide"><span>Path length <b id="beerx-bv"></b></span><input type="range" min="0.5" max="2" step="0.5" value="1" oninput="BEERX.b=+this.value;beerRender()"></label><div class="lab-out" id="beerx-out"></div></div></div></div>`;}
+function beerRender(){const box=document.getElementById('beerx');if(!box)return;const {c,b}=BEERX,eps=1.2,A=eps*b*c,W=300,H=200,px=x=>40+x*(W-56),py=a=>H-28-(a/2.4)*(H-44);
+  document.getElementById('beerx-cv').textContent=c.toFixed(2)+' M';document.getElementById('beerx-bv').textContent=b.toFixed(1)+' cm';
+  document.getElementById('beerx-svg').innerHTML=`<svg viewBox="0 0 ${W} ${H}" class="elab-svg" role="img" aria-label="Absorbance versus concentration"><line x1="40" y1="${H-28}" x2="${W-12}" y2="${H-28}" class="lv on"/><line x1="40" y1="14" x2="40" y2="${H-28}" class="lv on"/><text x="${W/2}" y="${H-6}" class="lvt" text-anchor="middle">concentration (M)</text><text x="12" y="${H/2}" class="lvt" text-anchor="middle" transform="rotate(-90 12 ${H/2})">absorbance</text><line x1="${px(0)}" y1="${py(0)}" x2="${px(1)}" y2="${py(eps*b)}" stroke="var(--accent)" stroke-width="2.5"/><line x1="${px(c)}" y1="${py(A)}" x2="${px(c)}" y2="${H-28}" stroke="var(--line-strong)" stroke-dasharray="3 3"/><line x1="40" y1="${py(A)}" x2="${px(c)}" y2="${py(A)}" stroke="var(--line-strong)" stroke-dasharray="3 3"/><circle cx="${px(c)}" cy="${py(A)}" r="6" fill="var(--copper)"/></svg>`;
+  document.getElementById('beerx-out').innerHTML=`<div class="kv"><span>Sample</span><b><span class="cuv" style="width:${18*b+14}px;background:color-mix(in srgb,var(--accent) ${Math.round(Math.min(1,c)*85)}%,var(--surface))"></span></b></div><div class="kv"><span>Absorbance A = εbc</span><b>${A.toFixed(2)}</b></div><div class="kv"><span>Slope of the line (εb)</span><b>${(eps*b).toFixed(2)}</b></div>`;}
+const roadHTML=(steps)=>`<div class="road">${steps.map((s,i)=>i%2?`<span class="arr"><i>${s}</i>→</span>`:`<span class="box">${s}</span>`).join('')}</div>`;
+
+/* ===================== UNIT 3: LEARN ===================== */
+LEARN.balance=()=>`
+<section>
+  <h2>Reading a chemical equation</h2>
+  <p class="eqn big-eq">2 H<sub>2</sub>(g) + O<sub>2</sub>(g) → 2 H<sub>2</sub>O(l)</p>
+  <ul><li><b>Reactants</b> are on the left, <b>products</b> on the right.</li><li><b>Coefficients</b> (the big numbers in front) say how many molecules or moles of each substance.</li><li><b>Subscripts</b> (the small numbers) are part of the formula. They say how many atoms are in one unit.</li><li><b>State symbols:</b> (s) solid, (l) liquid, (g) gas, (aq) dissolved in water.</li></ul>
+  <div class="callout tip"><p><b>Conservation of mass.</b> A reaction only rearranges atoms. Every atom on the left has to show up on the right, so the number of each kind of atom, and the total mass, never change. The number of molecules can.</p></div>
+</section>
+<section>
+  <h2>How to balance</h2>
+  <ol><li>Write the correct formulas first. Remember the seven diatomic elements: <b>H₂, N₂, O₂, F₂, Cl₂, Br₂, I₂</b>.</li><li>Count each kind of atom on both sides.</li><li>Change <b>coefficients only</b>. Never touch a subscript: that would change the substance.</li><li>Start with elements that appear in just one formula per side. Save elements that stand alone (like O₂) for last.</li><li>If a polyatomic ion appears unchanged on both sides, balance it as one unit.</li><li>Finish with the lowest whole numbers, then recount.</li></ol>
+  <div class="example"><div class="eyebrow">Worked example</div><p class="eqn">Al + O<sub>2</sub> → Al<sub>2</sub>O<sub>3</sub></p><ol><li>Oxygen: 2 on the left, 3 on the right. The smallest number both go into is 6, so use 3 O₂ and 2 Al₂O₃.</li><li>Aluminum: 2 Al₂O₃ contains 4 Al, so put a 4 in front of Al.</li><li><span class="eqn">4 Al + 3 O<sub>2</sub> → 2 Al<sub>2</sub>O<sub>3</sub></span>. Check: 4 Al and 6 O on each side.</li></ol></div>
+  <div class="example"><div class="eyebrow">Worked example · combustion</div><p class="eqn">C<sub>2</sub>H<sub>6</sub> + O<sub>2</sub> → CO<sub>2</sub> + H<sub>2</sub>O</p><ol><li>Carbon first: 2 CO₂. Then hydrogen: 3 H₂O.</li><li>Oxygen on the right is now 4 + 3 = 7, which would need 3½ O₂.</li><li>No fractions allowed, so double everything: <span class="eqn">2 C<sub>2</sub>H<sub>6</sub> + 7 O<sub>2</sub> → 4 CO<sub>2</sub> + 6 H<sub>2</sub>O</span></li></ol></div>
+</section>
+<section>
+  <h2>The eight reaction types</h2>
+  <div class="trend-cards">${[['syn','A + B → AB','2 Mg + O₂ → 2 MgO'],['dec','AB → A + B','2 H₂O₂ → 2 H₂O + O₂'],['comb','fuel + O₂ → CO₂ + H₂O','CH₄ + 2 O₂ → CO₂ + 2 H₂O'],['metal','metal + compound → new compound + metal (or H₂)','Zn + 2 HCl → ZnCl₂ + H₂'],['halogen','halogen + halide → new halide + halogen','Cl₂ + 2 KBr → 2 KCl + Br₂'],['ppt','AX(aq) + BY(aq) → AY(s) + BX(aq)','AgNO₃ + NaCl → AgCl(s) + NaNO₃'],['ab','acid + base → salt + water','HCl + NaOH → NaCl + H₂O'],['ac','acid + carbonate → salt + CO₂ + H₂O','2 HCl + CaCO₃ → CaCl₂ + CO₂ + H₂O']].map(([k,p,ex])=>`<div class="tcard"><h3>${TYPE_NAME[k]}</h3><p class="dir">${p}</p><p class="def">${TYPE_HOW[k]}</p><p class="eqn sm">${ex}</p></div>`).join('')}</div>
+  <div class="callout"><p><b>Spotting the type.</b> One product: synthesis. One reactant: decomposition. O₂ in, CO₂ and H₂O out: combustion. A lone element swapping into a compound: replacement. Two compounds swapping partners: precipitation, acid–base, or acid–carbonate, depending on what forms.</p></div>
+</section>`;
+
+LEARN.solub=()=>`
+<section>
+  <h2>Soluble or insoluble</h2>
+  <p>When a <b>soluble</b> ionic compound dissolves, it separates into its ions, written (aq). An <b>insoluble</b> compound stays together as a solid, written (s). You decide which with the solubility rules.</p>
+  <div class="tscroll"><table><tr><th>Ions</th><th>Rule</th><th>Exceptions</th></tr>
+  <tr><td>Group 1 metals, NH₄⁺</td><td><b>Always soluble</b></td><td>none</td></tr>
+  <tr><td>Nitrates NO₃⁻, acetates CH₃COO⁻</td><td><b>Always soluble</b></td><td>none</td></tr>
+  <tr><td>Chlorides, bromides, iodides</td><td>Soluble</td><td>Ag⁺, Pb²⁺, Hg₂²⁺</td></tr>
+  <tr><td>Sulfates SO₄²⁻</td><td>Soluble</td><td>Ca²⁺, Sr²⁺, Ba²⁺, Pb²⁺, Ag⁺</td></tr>
+  <tr><td>Hydroxides OH⁻, sulfides S²⁻</td><td>Insoluble</td><td>group 1, NH₄⁺, and Ca²⁺, Sr²⁺, Ba²⁺</td></tr>
+  <tr><td>Carbonates CO₃²⁻, phosphates PO₄³⁻</td><td>Insoluble</td><td>group 1, NH₄⁺</td></tr></table></div>
+  <p class="muted" style="font-size:.88rem;margin-top:10px">These rules agree with the answer keys in your practice packets. If your class solubility sheet words a rule differently, follow the sheet.</p>
+</section>
+<section>
+  <h2>Predicting a precipitation reaction</h2>
+  <ol><li>Split each reactant into its ions.</li><li>Swap partners: each cation pairs with the other anion.</li><li>Write the new formulas by balancing charges. Don't carry over the old subscripts.</li><li>Check each product with the rules. An insoluble product is the <b>precipitate</b>.</li><li>If both products are soluble, all the ions stay dissolved: <b>no reaction</b>.</li></ol>
+  <div class="example"><div class="eyebrow">Worked example</div><p>Copper(II) sulfate solution is mixed with sodium hydroxide solution.</p><ol><li>Ions: Cu²⁺ and SO₄²⁻, Na⁺ and OH⁻.</li><li>New pairs: Cu²⁺ with OH⁻, and Na⁺ with SO₄²⁻.</li><li>Formulas: Cu(OH)₂ and Na₂SO₄.</li><li>Na₂SO₄ is soluble (group 1). Cu(OH)₂ is insoluble (hydroxide rule), so it's the precipitate.</li><li><span class="eqn">CuSO<sub>4</sub>(aq) + 2 NaOH(aq) → Cu(OH)<sub>2</sub>(s) + Na<sub>2</sub>SO<sub>4</sub>(aq)</span></li></ol></div>
+  <div class="example"><div class="eyebrow">Worked example · no reaction</div><p>Potassium chloride + sodium nitrate. The swapped products would be KNO₃ and NaCl. Both are soluble, so nothing leaves the solution. <b>No reaction.</b></p></div>
+</section>
+<section>${solTableHTML()}</section>
+<section>
+  <h2>Identifying an unknown ion</h2>
+  <p>Precipitation tests work like a process of elimination. Add different anions to the unknown and see which ones make a solid, then compare the pattern with the rules.</p>
+  <div class="example"><div class="eyebrow">Example</div><p>An unknown cation gives no precipitate with chloride but does with sulfate and carbonate. No chloride precipitate rules out Ag⁺ and Pb²⁺. An insoluble sulfate points to Ca²⁺, Sr²⁺, or Ba²⁺.</p></div>
+  <div class="callout tip"><p><b>Flame tests narrow it down.</b> Lithium: crimson. Sodium: yellow-orange. Potassium: lilac. Calcium: orange-red. Strontium: red. Barium: green. Copper: blue-green.</p></div>
+</section>`;
+
+LEARN.netionic=()=>`
+<section>
+  <h2>Three ways to write one reaction</h2>
+  <div class="rules3">
+    <div class="rule"><h3>Molecular</h3><p>Every substance written as a complete formula, with states.</p></div>
+    <div class="rule"><h3>Total ionic</h3><p>Everything dissolved is split into its ions. Shows what is really in the beaker.</p></div>
+    <div class="rule"><h3>Net ionic</h3><p>Only the particles that actually change. Spectator ions are removed.</p></div>
+  </div>
+</section>
+<section>
+  <h2>What gets split, and what stays together</h2>
+  <div class="two">
+    <div class="rule"><h3>Split into ions</h3><ul><li>Soluble ionic compounds (aq)</li><li>Strong acids in water: HCl, HNO₃, H₂SO₄</li></ul></div>
+    <div class="rule"><h3>Keep as one unit</h3><ul><li>Insoluble solids (s)</li><li>Pure liquids like H₂O(l)</li><li>Gases like CO₂(g) and H₂(g)</li><li>Elements like Cu(s)</li></ul></div>
+  </div>
+  <div class="callout"><p><b>Subscripts become coefficients. Polyatomic ions stay whole.</b><br><span class="eqn">Al<sub>2</sub>(SO<sub>4</sub>)<sub>3</sub>(aq) → 2 Al<sup>3+</sup>(aq) + 3 SO<sub>4</sub><sup>2−</sup>(aq)</span></p></div>
+</section>
+<section>
+  <h2>Step by step</h2>
+  <div class="example"><div class="eyebrow">Worked example · precipitation</div><ol>
+  <li><b>Molecular:</b> <span class="eqn">Na<sub>2</sub>CO<sub>3</sub>(aq) + CaCl<sub>2</sub>(aq) → CaCO<sub>3</sub>(s) + 2 NaCl(aq)</span></li>
+  <li><b>Total ionic:</b> <span class="eqn">2 Na<sup>+</sup> + CO<sub>3</sub><sup>2−</sup> + Ca<sup>2+</sup> + 2 Cl<sup>−</sup> → CaCO<sub>3</sub>(s) + 2 Na<sup>+</sup> + 2 Cl<sup>−</sup></span></li>
+  <li><b>Cancel the spectators:</b> Na⁺ and Cl⁻ are identical on both sides.</li>
+  <li><b>Net ionic:</b> <span class="eqn">Ca<sup>2+</sup>(aq) + CO<sub>3</sub><sup>2−</sup>(aq) → CaCO<sub>3</sub>(s)</span></li></ol></div>
+  <p>Check two things at the end: the <b>atoms</b> balance and the <b>total charge</b> is the same on both sides.</p>
+</section>
+<section>
+  <h2>Net ionic equations for other reaction types</h2>
+  <div class="tscroll"><table><tr><th>Type</th><th>Net ionic equation</th><th>Spectators</th></tr>
+  <tr><td>Strong acid + soluble base</td><td class="eqn sm">H<sup>+</sup>(aq) + OH<sup>−</sup>(aq) → H<sub>2</sub>O(l)</td><td>the metal cation and the acid's anion</td></tr>
+  <tr><td>Strong acid + insoluble base</td><td class="eqn sm">2 H<sup>+</sup>(aq) + Mg(OH)<sub>2</sub>(s) → Mg<sup>2+</sup>(aq) + 2 H<sub>2</sub>O(l)</td><td>the acid's anion</td></tr>
+  <tr><td>Metal replacement</td><td class="eqn sm">Zn(s) + Cu<sup>2+</sup>(aq) → Zn<sup>2+</sup>(aq) + Cu(s)</td><td>the anion</td></tr>
+  <tr><td>Acid + solid carbonate</td><td class="eqn sm">2 H<sup>+</sup>(aq) + CaCO<sub>3</sub>(s) → Ca<sup>2+</sup>(aq) + CO<sub>2</sub>(g) + H<sub>2</sub>O(l)</td><td>the acid's anion</td></tr></table></div>
+  <div class="callout tip"><p><b>If everything cancels,</b> there is no net ionic equation, because there was no reaction. All four ions were spectators.</p></div>
+</section>`;
+
+LEARN.redox=()=>`
+<section>
+  <h2>The activity series</h2>
+  <p>The activity series ranks metals by how easily they lose electrons. A more active metal can push a less active one out of a compound.</p>
+  <div class="actlist">${ACT.map(s=>`<span class="${s==='H'?'h':''}">${s}</span>`).join('<i>›</i>')}</div>
+  <p class="muted" style="font-size:.86rem">Most active on the left, least active on the right.</p>
+  <ul><li>A metal <b>replaces any metal ion to its right</b> (below it on a vertical list). It can't replace one to its left.</li><li>Metals <b>to the left of H</b> react with acids to make hydrogen gas. Cu, Ag, Pt, and Au don't.</li><li>Halogens have their own series, matching their order in group 17: <b>F₂ › Cl₂ › Br₂ › I₂</b>.</li></ul>
+  <div class="example"><div class="eyebrow">Examples</div><ol><li>Zn + CuSO₄: zinc is more active than copper, so <span class="eqn">Zn + CuSO<sub>4</sub> → ZnSO<sub>4</sub> + Cu</span></li><li>Cu + ZnSO₄: copper is less active. <b>No reaction.</b></li><li>Cl₂ + 2 NaBr: chlorine is more active than bromine, so <span class="eqn">Cl<sub>2</sub> + 2 NaBr → 2 NaCl + Br<sub>2</sub></span></li></ol></div>
+</section>
+<section>${actHTML()}</section>
+<section>
+  <h2>Oxidation numbers</h2>
+  <p>An oxidation number is a bookkeeping charge that tracks where electrons are. Apply the rules in this order:</p>
+  <ol><li>An element by itself is <b>0</b>: Na, Cl₂, O₂, S₈.</li><li>A single-atom ion equals its <b>charge</b>: Mg²⁺ is +2.</li><li>Fluorine is always <b>−1</b>. Group 1 metals are <b>+1</b>, group 2 metals are <b>+2</b>.</li><li>Hydrogen is <b>+1</b> with nonmetals.</li><li>Oxygen is <b>−2</b> (except in peroxides like H₂O₂, where it is −1).</li><li>Everything must <b>add up to the overall charge</b>: zero for a compound, the charge for an ion.</li></ol>
+  <div class="example"><div class="eyebrow">Worked example · sulfur in SO₄²⁻</div><ol><li>Oxygen is −2, and there are four: 4 × (−2) = −8.</li><li>The total must equal −2: x + (−8) = −2.</li><li>x = <b>+6</b></li></ol></div>
+  <div class="example"><div class="eyebrow">Worked example · chromium in K₂Cr₂O₇</div><ol><li>K is +1 (two of them: +2). O is −2 (seven of them: −14).</li><li>+2 + 2x − 14 = 0, so 2x = 12.</li><li>x = <b>+6</b> for each chromium. Divide by the number of atoms.</li></ol></div>
+</section>
+<section>
+  <h2>Redox: who loses, who gains</h2>
+  <div class="two">
+    <div class="rule"><h3>Oxidation</h3><p><b>Loss</b> of electrons. The oxidation number goes <b>up</b>.</p></div>
+    <div class="rule"><h3>Reduction</h3><p><b>Gain</b> of electrons. The oxidation number goes <b>down</b>.</p></div>
+  </div>
+  <p class="chain" style="margin-top:14px">OIL RIG: Oxidation Is Loss, Reduction Is Gain</p>
+  <ul><li>The two always happen together: the electrons one atom loses, another gains.</li><li>The <b>reducing agent</b> is the reactant that gets oxidized (it gives electrons away).</li><li>The <b>oxidizing agent</b> is the reactant that gets reduced (it takes electrons).</li></ul>
+  <div class="example"><div class="eyebrow">Worked example</div><p class="eqn">Zn + 2 HCl → ZnCl<sub>2</sub> + H<sub>2</sub></p><ol><li>Zn: 0 → +2. It went up, so zinc is <b>oxidized</b>. Zn is the reducing agent.</li><li>H: +1 → 0. It went down, so hydrogen is <b>reduced</b>. HCl is the oxidizing agent.</li><li>Cl stays −1. It's a spectator.</li></ol></div>
+  <div class="callout"><p><b>Which reaction types are redox?</b> Synthesis from elements, decomposition into elements, combustion, and both kinds of replacement. A quick tell: a pure element on one side that's inside a compound on the other. <b>Not redox:</b> precipitation, acid–base, and acid–carbonate, where ions only trade partners.</p></div>
+</section>`;
+
+LEARN.acidbase=()=>`
+<section>
+  <h2>Acids and bases</h2>
+  <div class="two">
+    <div class="rule"><h3>Acids release H⁺</h3><p>Their formulas start with H: <b>HCl</b>, <b>HNO₃</b>, <b>H₂SO₄</b>, <b>H₃PO₄</b>. Acetic acid, <b>CH₃COOH</b>, has its acidic H at the end.</p></div>
+    <div class="rule"><h3>Bases release OH⁻</h3><p>A metal with hydroxide: <b>NaOH</b>, <b>KOH</b>, <b>Ca(OH)₂</b>, <b>Ba(OH)₂</b>, <b>Mg(OH)₂</b>, <b>Al(OH)₃</b>.</p></div>
+  </div>
+  <p style="margin-top:12px">Count how many H⁺ an acid can give: HCl gives 1 (monoprotic), H₂SO₄ gives 2 (diprotic), H₃PO₄ gives 3 (triprotic).</p>
+</section>
+<section>
+  <h2>Three reactions of acids</h2>
+  <div class="rules3">
+    <div class="rule"><h3>Acid + base</h3><p class="dir">→ salt + water</p><p class="eqn sm">HCl + NaOH → NaCl + H₂O</p><p class="muted" style="font-size:.86rem">Neutralization. No gas.</p></div>
+    <div class="rule"><h3>Acid + carbonate</h3><p class="dir">→ salt + CO₂ + water</p><p class="eqn sm">2 HCl + CaCO₃ → CaCl₂ + CO₂ + H₂O</p><p class="muted" style="font-size:.86rem">Fizzes. CO₂ puts out a flame.</p></div>
+    <div class="rule"><h3>Acid + active metal</h3><p class="dir">→ salt + H₂</p><p class="eqn sm">2 HCl + Zn → ZnCl₂ + H₂</p><p class="muted" style="font-size:.86rem">Bubbles. H₂ pops when lit. This one is redox.</p></div>
+  </div>
+  <p style="margin-top:12px">The <b>salt</b> is always the cation from the base (or carbonate, or metal) joined with the anion from the acid. Balance its charges to get the formula.</p>
+</section>
+<section>
+  <h2>Balancing a neutralization</h2>
+  <p>Every H⁺ needs one OH⁻. Match them up, and the number of waters equals that count.</p>
+  <div class="example"><div class="eyebrow">Worked example</div><p>Sulfuric acid + potassium hydroxide</p><ol><li>H₂SO₄ supplies 2 H⁺. KOH supplies 1 OH⁻, so you need 2 KOH.</li><li>Salt: K⁺ with SO₄²⁻ gives K₂SO₄.</li><li><span class="eqn">H<sub>2</sub>SO<sub>4</sub> + 2 KOH → K<sub>2</sub>SO<sub>4</sub> + 2 H<sub>2</sub>O</span></li></ol></div>
+  <div class="callout tip"><p><b>The ratio isn't always 1 : 1.</b> One mole of H₂SO₄ neutralizes two moles of NaOH. One mole of H₃PO₄ neutralizes three. This is the mole ratio you'll use in titration problems.</p></div>
+</section>
+<section>
+  <h2>Indicators</h2>
+  <p>An indicator is a dye that changes color depending on whether the solution is acidic or basic.</p>
+  <div class="tscroll"><table class="indt"><tr><th>Indicator</th><th>In acid</th><th>Neutral</th><th>In base</th></tr>
+  <tr><td>Phenolphthalein</td><td><i class="sw" style="background:transparent"></i>colorless</td><td><i class="sw" style="background:transparent"></i>colorless</td><td><i class="sw" style="background:#e84a9a"></i>pink</td></tr>
+  <tr><td>Bromothymol blue</td><td><i class="sw" style="background:#e9c53a"></i>yellow</td><td><i class="sw" style="background:#4caf61"></i>green</td><td><i class="sw" style="background:#3b82d6"></i>blue</td></tr></table></div>
+  <p style="margin-top:12px">In a titration, the color change tells you the moment the acid and base have exactly neutralized each other.</p>
+</section>`;
+
+/* ===================== UNIT 4: LEARN ===================== */
+LEARN.stoich=()=>`
+<section>
+  <h2>The equation is a recipe</h2>
+  <p>The coefficients in a balanced equation are <b>mole ratios</b>. They tell you how many moles of each substance react and form.</p>
+  <p class="eqn big-eq">N<sub>2</sub> + 3 H<sub>2</sub> → 2 NH<sub>3</sub></p>
+  <p>1 mol of N₂ reacts with 3 mol of H₂ to make 2 mol of NH₃. Any pair gives a conversion factor, such as (2 mol NH₃ ÷ 3 mol H₂).</p>
+  <div class="callout warn"><p><b>Moles, not grams.</b> 1 g of N₂ does not react with 3 g of H₂. Grams always have to go through moles first.</p></div>
+</section>
+<section>
+  <h2>The road map</h2>
+  ${roadHTML(['grams of A','÷ molar mass','moles of A','× mole ratio','moles of B','× molar mass','grams of B'])}
+  <p>Start wherever the problem starts, and stop wherever it asks you to stop. The middle step, the mole ratio from the balanced equation, is always there.</p>
+  <div class="example"><div class="eyebrow">Worked example · grams to grams</div><p>How many grams of Al₂O₃ form when 13.5 g of Al reacts with excess oxygen?</p><p class="eqn">4 Al + 3 O<sub>2</sub> → 2 Al<sub>2</sub>O<sub>3</sub></p><ol><li>13.5 g Al ÷ 26.98 g/mol = 0.500 mol Al</li><li>0.500 mol Al × (2 mol Al₂O₃ ÷ 4 mol Al) = 0.250 mol Al₂O₃</li><li>0.250 mol × 101.96 g/mol = <b>25.5 g Al₂O₃</b></li></ol></div>
+  <div class="callout tip"><p><b>Set up the ratio so units cancel.</b> What you want goes on top, what you have goes on the bottom.</p></div>
+</section>
+<section>
+  <h2>Percent yield</h2>
+  <div class="facts"><div class="fact"><div class="k">Theoretical yield</div><div class="v">calculated</div><div class="d">The most product you could make, from stoichiometry.</div></div><div class="fact"><div class="k">Actual yield</div><div class="v">measured</div><div class="d">What you really collected in the lab.</div></div></div>
+  <div class="fact" style="margin-bottom:14px"><div class="k">Percent yield</div><div class="v">actual ÷ theoretical × 100</div></div>
+  <div class="example"><div class="eyebrow">Worked example</div><p>The calculation above predicts 25.5 g of Al₂O₃. If you collect 21.4 g: 21.4 ÷ 25.5 × 100 = <b>83.9%</b>.</p></div>
+</section>
+<section>
+  <h2>Mistakes to avoid</h2>
+  <ul><li>Using an <b>unbalanced equation</b>. The ratio comes from the coefficients, so balance first.</li><li>Using coefficients as <b>gram ratios</b>.</li><li><b>Flipping</b> the mole ratio.</li><li>Putting the coefficient into the <b>molar mass</b>. The molar mass of O₂ is 32.00 g/mol whether the equation says O₂ or 3 O₂.</li></ul>
+</section>`;
+
+LEARN.limiting=()=>`
+<section>
+  <h2>What "limiting" means</h2>
+  <p>A sandwich takes 2 slices of bread and 1 slice of cheese. With 10 slices of bread and 8 slices of cheese, you can make only 5 sandwiches: the bread runs out. Bread is the <b>limiting reactant</b>, and 3 slices of cheese are left over as the <b>excess</b>.</p>
+  <ul><li>The limiting reactant is <b>used up completely</b> and stops the reaction.</li><li>It alone decides the <b>theoretical yield</b>.</li><li>It isn't necessarily the one with fewer grams or fewer moles. There was more bread than cheese.</li></ul>
+</section>
+<section>
+  <h2>Finding the limiting reactant</h2>
+  <ol><li>Convert each reactant to <b>moles</b>.</li><li><b>Divide each by its coefficient</b> in the balanced equation.</li><li>The <b>smaller result</b> is the limiting reactant.</li><li>Use the limiting reactant's moles for every calculation after that.</li></ol>
+  <div class="example"><div class="eyebrow">Worked example</div><p>4.00 g of H₂ and 40.0 g of O₂ are combined. What mass of water forms?</p><p class="eqn">2 H<sub>2</sub> + O<sub>2</sub> → 2 H<sub>2</sub>O</p><ol><li>H₂: 4.00 g ÷ 2.016 g/mol = 1.98 mol; ÷ 2 = 0.992</li><li>O₂: 40.0 g ÷ 32.00 g/mol = 1.25 mol; ÷ 1 = 1.25</li><li>0.992 is smaller, so <b>H₂ is limiting</b>, even though there are more moles of it.</li><li>1.98 mol H₂ × (2 H₂O ÷ 2 H₂) × 18.02 g/mol = <b>35.8 g H₂O</b></li></ol></div>
+</section>
+<section>
+  <h2>How much excess is left</h2>
+  <ol><li>Use the limiting reactant to find how much of the excess reactant <b>reacts</b>.</li><li><b>Subtract</b> that from the amount you started with.</li></ol>
+  <div class="example"><div class="eyebrow">Continuing the example</div><ol><li>O₂ used: 1.98 mol H₂ × (1 O₂ ÷ 2 H₂) × 32.00 g/mol = 31.7 g</li><li>O₂ left: 40.0 g − 31.7 g = <b>8.3 g</b></li></ol></div>
+  <div class="callout tip"><p><b>Percent yield with two reactants.</b> Find the limiting reactant first. The theoretical yield always comes from the limiting reactant.</p></div>
+</section>`;
+
+LEARN.molarity=()=>`
+<section>
+  <h2>Molarity</h2>
+  <div class="fact" style="margin-bottom:14px"><div class="k">Definition</div><div class="v">M = moles of solute ÷ liters of solution</div><div class="d">A 2.0 M solution has 2.0 mol of solute in every liter.</div></div>
+  <div class="facts"><div class="fact"><div class="k">Find moles</div><div class="v">mol = M × L</div></div><div class="fact"><div class="k">Find volume</div><div class="v">L = mol ÷ M</div></div></div>
+  <div class="callout warn"><p><b>Always convert mL to L</b> (divide by 1000) before using molarity. This is the most common mistake in the unit.</p></div>
+  <div class="example"><div class="eyebrow">Worked example</div><p>What mass of NaOH is needed to make 250 mL of a 0.400 M solution?</p><ol><li>250 mL = 0.250 L</li><li>Moles = 0.400 mol/L × 0.250 L = 0.100 mol</li><li>0.100 mol × 40.00 g/mol = <b>4.00 g NaOH</b></li></ol></div>
+</section>
+<section>
+  <h2>Ion concentrations</h2>
+  <p>Ionic compounds separate when they dissolve, so an ion's concentration can be higher than the compound's molarity.</p>
+  <div class="example"><div class="eyebrow">Example · 0.50 M MgCl₂</div><p class="eqn">MgCl<sub>2</sub> → Mg<sup>2+</sup> + 2 Cl<sup>−</sup></p><p>[Mg²⁺] = 0.50 M, but [Cl⁻] = 2 × 0.50 = <b>1.0 M</b>.</p></div>
+  <p>The same idea is why the hydroxide concentration of a Ba(OH)₂ solution is twice its molarity.</p>
+</section>
+<section>
+  <h2>Making a solution from a solid</h2>
+  <ol><li>Calculate the grams of solute and weigh it out.</li><li>Dissolve it in some water in a <b>volumetric flask</b>.</li><li>Add water until the solution reaches the mark, then mix.</li></ol>
+  <div class="callout"><p><b>Fill <i>to</i> the volume.</b> Don't add the full volume of water. Molarity is per liter of <i>solution</i>, and the solute takes up space.</p></div>
+</section>
+<section>
+  <h2>Dilutions</h2>
+  <p>Adding water doesn't change the moles of solute. It spreads the same moles through more volume.</p>
+  <div class="fact" style="margin-bottom:14px"><div class="k">Dilution equation</div><div class="v">M₁V₁ = M₂V₂</div><div class="d">1 is the concentrated stock, 2 is the diluted solution. The volumes can be in mL as long as both match.</div></div>
+  <div class="example"><div class="eyebrow">Worked example</div><p>How would you prepare 200.0 mL of 0.150 M HCl from a 6.00 M stock?</p><ol><li>V₁ = M₂V₂ ÷ M₁ = (0.150 M × 200.0 mL) ÷ 6.00 M = 5.00 mL</li><li>In words: measure <b>5.00 mL of the 6.00 M stock</b> and add water until the <b>total volume is 200.0 mL</b> (about 195 mL of water).</li></ol></div>
+</section>`;
+
+LEARN.titration=()=>`
+<section>
+  <h2>Stoichiometry with solutions</h2>
+  <p>For a solution, moles come from <b>M × V</b> instead of grams ÷ molar mass. Everything else is the same road map.</p>
+  ${roadHTML(['volume of A','× molarity','moles of A','× mole ratio','moles of B','÷ molarity','volume of B'])}
+  <p>You can mix and match the ends: start from grams and end at a volume, or start from two volumes and end at grams of precipitate.</p>
+</section>
+<section>
+  <h2>Titration</h2>
+  <p>A titration finds an unknown concentration by reacting the solution with one whose concentration you know.</p>
+  <ol><li>Measure an exact volume of the unknown into a flask.</li><li>Add a few drops of <b>indicator</b>.</li><li>Fill a <b>buret</b> with the known solution (the titrant) and record the starting volume.</li><li>Add titrant slowly, swirling, until the indicator <b>just</b> changes color. That's the <b>endpoint</b>.</li><li>Record the final volume. The difference is the volume used.</li><li>Calculate: moles of titrant → mole ratio → moles of unknown → divide by its volume in liters.</li></ol>
+  <div class="example"><div class="eyebrow">Worked example</div><p>It takes 18.0 mL of 0.250 M NaOH to neutralize 15.0 mL of H₂SO₄. Find the molarity of the acid.</p><p class="eqn">H<sub>2</sub>SO<sub>4</sub> + 2 NaOH → Na<sub>2</sub>SO<sub>4</sub> + 2 H<sub>2</sub>O</p><ol><li>Moles NaOH = 0.250 M × 0.0180 L = 0.00450 mol</li><li>0.00450 mol NaOH × (1 H₂SO₄ ÷ 2 NaOH) = 0.00225 mol H₂SO₄</li><li>0.00225 mol ÷ 0.0150 L = <b>0.150 M H₂SO₄</b></li></ol></div>
+  <div class="callout warn"><p><b>Don't skip the mole ratio.</b> M₁V₁ = M₂V₂ is for dilutions. It only gives the right titration answer when the acid and base react 1 : 1.</p></div>
+</section>
+<section>
+  <h2>Hydroxide concentration vs. molarity</h2>
+  <p>Titrating a base with HCl tells you the moles of <b>OH⁻</b>, because H⁺ and OH⁻ react 1 : 1. That isn't always the molarity of the base itself.</p>
+  <div class="example"><div class="eyebrow">Example</div><p>A titration shows [OH⁻] = 0.080 M. If the base is NaOH, its molarity is 0.080 M. If the base is Ba(OH)₂, each formula unit supplies two OH⁻, so its molarity is 0.080 ÷ 2 = <b>0.040 M</b>.</p></div>
+</section>
+<section>
+  <h2>Mass of a precipitate</h2>
+  <p>Mixing two solutions is a limiting-reactant problem. Find the moles of each reactant with M × V, pick the limiting one, then convert to grams of the solid.</p>
+  <div class="example"><div class="eyebrow">Worked example</div><p>25.0 mL of 0.200 M Pb(NO₃)₂ is mixed with 40.0 mL of 0.150 M KCl.</p><p class="eqn">Pb(NO<sub>3</sub>)<sub>2</sub>(aq) + 2 KCl(aq) → PbCl<sub>2</sub>(s) + 2 KNO<sub>3</sub>(aq)</p><ol><li>Pb(NO₃)₂: 0.200 × 0.0250 = 0.00500 mol; ÷ 1 = 0.00500</li><li>KCl: 0.150 × 0.0400 = 0.00600 mol; ÷ 2 = 0.00300. <b>KCl is limiting.</b></li><li>0.00600 mol KCl × (1 PbCl₂ ÷ 2 KCl) × 278.10 g/mol = <b>0.834 g PbCl₂</b></li></ol></div>
+</section>
+<section>
+  <h2>Molar mass of an unknown acid</h2>
+  <p>Titrate a weighed sample of the acid. The titration gives its moles, and molar mass = grams ÷ moles.</p>
+  <div class="example"><div class="eyebrow">Example</div><p>1.50 g of a monoprotic acid needs 25.0 mL of 0.500 M NaOH. Moles of acid = 0.500 × 0.0250 = 0.0125 mol, so the molar mass is 1.50 ÷ 0.0125 = <b>120 g/mol</b>.</p></div>
+</section>`;
+
+LEARN.beer=()=>`
+<section>
+  <h2>Color and concentration</h2>
+  <p>A colored solution absorbs some of the light that passes through it. The more dissolved dye in the light's path, the more light is absorbed and the darker the solution looks. A <b>colorimeter</b> (or spectrophotometer) measures this as <b>absorbance</b>.</p>
+</section>
+<section>
+  <h2>Beer's law</h2>
+  <div class="fact" style="margin-bottom:14px"><div class="k">Beer's law</div><div class="v">A = εbc</div></div>
+  <div class="tscroll"><table><tr><th>Symbol</th><th>Meaning</th><th>Notes</th></tr><tr><td>A</td><td>Absorbance</td><td>No units. What the colorimeter reads.</td></tr><tr><td>ε</td><td>Molar absorptivity</td><td>A constant for each substance at a given wavelength.</td></tr><tr><td>b</td><td>Path length</td><td>The width of the cuvette, usually 1 cm.</td></tr><tr><td>c</td><td>Concentration</td><td>In mol/L (M).</td></tr></table></div>
+  <p style="margin-top:12px">Absorbance is <b>directly proportional</b> to both concentration and path length. Double either one and the absorbance doubles.</p>
+</section>
+<section>
+  <h2>The proportion shortcut</h2>
+  <p>For the same substance in the same cuvette, ε and b cancel:</p>
+  <p class="chain">A₁ ÷ c₁ = A₂ ÷ c₂</p>
+  <div class="example"><div class="eyebrow">Worked example</div><p>A 0.040 M dye solution has an absorbance of 0.320. Another solution of the same dye reads 0.480.</p><p>c₂ = 0.040 M × (0.480 ÷ 0.320) = <b>0.060 M</b></p></div>
+  <div class="example"><div class="eyebrow">Diluting changes absorbance</div><p>Add 10 mL of water to 10 mL of a solution with A = 0.600. The volume doubles, so the concentration halves, and the absorbance halves too: <b>0.300</b>.</p></div>
+</section>
+<section>
+  <h2>Calibration curves</h2>
+  <ol><li>Make several <b>standard solutions</b> of known concentration.</li><li>Zero the colorimeter with a <b>blank</b> (plain water).</li><li>Measure each standard's absorbance and plot absorbance (y) against concentration (x).</li><li>The points make a <b>straight line through the origin</b>. Its slope equals εb.</li><li>Measure the unknown's absorbance and use the line's equation to find its concentration.</li></ol>
+  <div class="example"><div class="eyebrow">Example</div><p>The best-fit line is A = 4.20c. An unknown reads A = 0.315, so c = 0.315 ÷ 4.20 = <b>0.0750 M</b>.</p></div>
+  <div class="callout tip"><p><b>Same idea as the spectroscope lab.</b> Measure knowns, get an equation, then use the equation to turn a reading into the value you want.</p></div>
+</section>
+<section>${beerHTML()}</section>`;
+LEARN_INIT.redox=actRender;LEARN_INIT.beer=beerRender;
+
+/* ===================== REFERENCE PANELS ===================== */
+const U34_REF={
+ balance:{title:'Reaction types & diatomics',html:()=>`<div class="cols2">${Object.keys(TYPE_NAME).map(k=>`<div><b>${TYPE_NAME[k]}</b><span>${TYPE_HOW[k]}</span></div>`).join('')}</div><p class="muted" style="font-size:.85rem;margin:10px 0 0">Diatomic elements: H₂, N₂, O₂, F₂, Cl₂, Br₂, I₂. Change coefficients only, never subscripts.</p>`},
+ solub:{title:'Solubility rules',html:()=>`<ul class="rulelist">${Object.values(SOL_RULES).map(r=>`<li>${r}</li>`).join('')}</ul>`},
+ netionic:{title:'Solubility rules & what to split',html:()=>`<ul class="rulelist">${Object.values(SOL_RULES).map(r=>`<li>${r}</li>`).join('')}</ul><p class="muted" style="font-size:.85rem;margin:10px 0 0">Split only dissolved (aq) ionic compounds and strong acids. Keep solids, H₂O(l), gases, and elements together.</p>`},
+ redox:{title:'Activity series & oxidation number rules',html:()=>`<div class="actlist">${ACT.map(s=>`<span class="${s==='H'?'h':''}">${s}</span>`).join('<i>›</i>')}</div><p class="muted" style="font-size:.85rem;margin:8px 0 10px">Most active on the left. Halogens: F₂ › Cl₂ › Br₂ › I₂.</p><ul class="rulelist"><li>Element alone: 0. Single-atom ion: its charge.</li><li>F is −1. Group 1 is +1. Group 2 is +2. H is +1. O is −2.</li><li>The sum equals the overall charge.</li><li>Oxidation: loses electrons, number goes up. Reduction: gains electrons, number goes down.</li></ul>`},
+ acidbase:{title:'Acids, bases & indicators',html:()=>`<ul class="rulelist"><li>Acids: HCl, HNO₃, H₂SO₄ (2 H⁺), H₃PO₄ (3 H⁺), CH₃COOH.</li><li>Acid + base → salt + water. Acid + carbonate → salt + CO₂ + water. Acid + active metal → salt + H₂.</li><li>Phenolphthalein: colorless in acid and neutral, pink in base.</li><li>Bromothymol blue: yellow in acid, green neutral, blue in base.</li></ul>`},
+ stoich:{title:'The road map',html:()=>roadHTML(['grams A','÷ molar mass','moles A','× mole ratio','moles B','× molar mass','grams B'])+'<p class="muted" style="font-size:.85rem;margin:10px 0 0">Percent yield = actual ÷ theoretical × 100. Molar masses are on the periodic table at the top of the page.</p>'},
+ limiting:{title:'The method',html:()=>'<ul class="rulelist"><li>Convert each reactant to moles.</li><li>Divide each by its coefficient. The smaller result is limiting.</li><li>Theoretical yield comes from the limiting reactant.</li><li>Excess left = starting amount − amount that reacted.</li></ul>'},
+ molarity:{title:'Formulas',html:()=>'<div class="facts"><div class="fact"><div class="k">Molarity</div><div class="v">M = mol ÷ L</div><div class="d">Convert mL to L first.</div></div><div class="fact"><div class="k">Dilution</div><div class="v">M₁V₁ = M₂V₂</div><div class="d">Moles of solute stay the same.</div></div></div>'},
+ titration:{title:'Formulas',html:()=>roadHTML(['volume A','× M','moles A','× mole ratio','moles B','÷ M','volume B'])+'<p class="muted" style="font-size:.85rem;margin:10px 0 0">Moles = M × L. For a precipitate, find the limiting reactant first. At the endpoint, moles H⁺ = moles OH⁻.</p>'},
+ beer:{title:'Formulas',html:()=>'<div class="facts"><div class="fact"><div class="k">Beer\'s law</div><div class="v">A = εbc</div><div class="d">b is the path length, c the concentration.</div></div><div class="fact"><div class="k">Same dye, same cuvette</div><div class="v">A₁ ÷ c₁ = A₂ ÷ c₂</div></div></div>'}
+};
+
+Object.assign(GOALS,GOALS_U34);
+</script>
+<script>
 /* ===================== TOPICS & UI ===================== */
 const TOPICS=[
  {id:'elements',title:'Elements & Symbols',blurb:'Fifty elements. Name to symbol and back, until it\'s automatic.',lead:'The 50 elements this course expects you to know by name and symbol.'},
@@ -1730,7 +2665,7 @@ const TOPICS=[
  {id:'naming',title:'Naming Compounds',blurb:'Two systems, one decision rule. Prefixes or Roman numerals, never both.',lead:'Molecular vs. ionic naming, formula to name and name to formula.'},
  {id:'mole',title:'The Mole & Avogadro\'s Number',blurb:'Moles, particles, grams, and percent composition.',lead:'Convert between moles, particles, and grams, and find percent composition.'}
 ];
-TOPICS.forEach(t=>t.unit=1);TOPICS.push(...U2_TOPICS);
+TOPICS.forEach(t=>t.unit=1);TOPICS.push(...U2_TOPICS,...U34_TOPICS);
 const byId=id=>TOPICS.find(t=>t.id===id);
 const view=document.getElementById('view');
 const PT_BTN='<button class="btn sm pt-btn" onclick="openTable()"><i><b></b><b></b><b></b><b></b><b></b><b></b></i>Periodic table</button>';
@@ -1739,14 +2674,16 @@ let ionFilterOpen=false;
 
 /* ---------- units & routing ---------- */
 const UNITS={1:{h1:['Nomenclature','&amp; the Mole.'],lead:'Six topics. Learn the rules, then drill until they stick. Every question checks itself and explains the answer.',foot:'Chemistry · Unit 1 · Nomenclature and the Mole'},
- 2:{h1:['Atomic Theory','&amp; Periodic Trends.'],lead:'Five topics. Learn the ideas, then practice explaining them. Every question checks itself, including your reasoning.',foot:'Chemistry · Unit 2 · Atomic Theory and Periodic Trends'}};
-const DEFAULT_UNIT=2;
+ 2:{h1:['Atomic Theory','&amp; Periodic Trends.'],lead:'Five topics. Learn the ideas, then practice explaining them. Every question checks itself, including your reasoning.',foot:'Chemistry · Unit 2 · Atomic Theory and Periodic Trends'},
+ 3:{h1:['Chemical','Reactions.'],lead:'Five topics. Balance equations, predict products, and write net ionic equations. Every question checks itself and explains the answer.',foot:'Chemistry · Unit 3 · Chemical Reactions'},
+ 4:{h1:['Stoichiometry','&amp; Solutions.'],lead:'Five topics. Work the calculations step by step. Every answer comes with the full setup, and common slips are caught by name.',foot:'Chemistry · Unit 4 · Stoichiometry and Solutions'}};
+const DEFAULT_UNIT=3;
 function setFoot(u){const f=document.getElementById('foot-unit');if(f)f.textContent=UNITS[u].foot;}
 function render(){
   const h=location.hash||'#home';
   const m=h.match(/^#t\/([a-z]+)\/(learn|practice)$/);
   if(m&&byId(m[1]))renderTopic(byId(m[1]),m[2]);
-  else{const u=h.match(/^#u([12])$/);renderHome(u?+u[1]:DEFAULT_UNIT);}
+  else{const u=h.match(/^#u([1-4])$/);renderHome(u?+u[1]:DEFAULT_UNIT);}
   window.scrollTo({top:0,behavior:'instant'});
 }
 window.addEventListener('hashchange',render);
@@ -1757,7 +2694,7 @@ function renderHome(unit){
   const acc=att?Math.round(100*cor/att):0;
   view.innerHTML=`
   <div class="hero">
-    <div class="seg unit-seg" role="tablist" aria-label="Unit">${[1,2].map(u=>`<button role="tab" aria-selected="${u===unit}" class="${u===unit?'active':''}" onclick="location.hash='#u${u}'">Unit ${u}</button>`).join('')}</div>
+    <div class="seg unit-seg" role="tablist" aria-label="Unit">${[1,2,3,4].map(u=>`<button role="tab" aria-selected="${u===unit}" class="${u===unit?'active':''}" onclick="location.hash='#u${u}'">Unit ${u}</button>`).join('')}</div>
     <div class="eyebrow">Chemistry · Unit ${unit}</div>
     <h1><span>${U.h1[0]}</span><span>${U.h1[1]}</span></h1>
     <p class="lead">${U.lead}</p>
@@ -1806,6 +2743,7 @@ Object.assign(REF,{
  families:{title:'Charges by group',html:()=>`<div class="tscroll"><table><tr><th>Group</th><th>1 (I)</th><th>2 (II)</th><th>13 (III)</th><th>15 (V)</th><th>16 (VI)</th><th>17 (VII)</th><th>18 (VIII)</th></tr><tr><td>Valence e⁻</td><td>1</td><td>2</td><td>3</td><td>5</td><td>6</td><td>7</td><td>8</td></tr><tr><td>Ion</td><td>1+</td><td>2+</td><td>3+</td><td>3−</td><td>2−</td><td>1−</td><td>none</td></tr></table></div>`},
  nomen:{title:'Ions & formulas',html:()=>REF.naming.html()}
 });
+Object.assign(REF,U34_REF);
 function renderPractice(t){
   if(!session||session.topic!==t.id)session={topic:t.id,i:0,score:0,q:null,answered:false};
   const s=session;const panel=document.getElementById('panel');
@@ -1819,11 +2757,11 @@ function renderPractice(t){
   const skip=`<button class="skip" onclick="skipQuestion()">Skip this one</button>`;
   const checkBtn=(l='Check answer')=>`<button class="btn primary wide" id="check-btn" onclick="checkAnswer()">${l} <kbd>Enter ↵</kbd><span class="arr">→</span></button>`;
   let body='',actions=checkBtn()+skip,keys='<kbd>Enter</kbd> to check · <kbd>Enter</kbd> again to continue';
-  if(kind==='mc'){body=mcHTML(q.choices,q.layout,1);actions=skip;keys=`<kbd>1</kbd>–<kbd>${q.choices.length}</kbd> to answer · <kbd>Enter</kbd> to continue`;}
+  if(kind==='mc'){body=mcHTML(q.choices,q.layout,1,q.cls);actions=skip;keys=`<kbd>1</kbd>–<kbd>${q.choices.length}</kbd> to answer · <kbd>Enter</kbd> to continue`;}
   else if(kind==='rank'){body=rankHTML(q);}
   else if(kind==='orbital'){obInit('obq',q.z);body=`<div class="rank-help">Tap an orbital to add an electron, tap again to pair it, once more to clear it.</div><div id="obq-grid">${obGrid(OB.obq.cells,{id:'obq'})}</div>`;}
-  else if(kind==='explain'){body=`<div class="explain"><textarea id="explain-in" aria-label="Your explanation" placeholder="Write your explanation in a few sentences. Bring in nuclear charge, shielding, or distance where they matter."></textarea></div><div id="explain-reveal"></div>`;actions=`<button class="btn primary wide" id="check-btn" onclick="checkAnswer()">Compare with the model answer <span class="arr">→</span></button>`+skip;keys='Write it out, then compare';}
-  else body=`<div class="inputs${q.fields.length>1?' multi':''}">${q.fields.map((f,i)=>`<div class="field" id="fld-${f.key}"><label for="in-${f.key}">${f.label}</label><input id="in-${f.key}" data-key="${f.key}" placeholder="${esc(f.placeholder||'')}" autocomplete="off" autocapitalize="off" spellcheck="false" ${i===0?'autofocus':''}>${f.tools?toolsHTML(f.tools,'in-'+f.key):''}${f.hint?`<div class="hint">${f.hint}</div>`:''}</div>`).join('')}</div>`;
+  else if(kind==='explain'){body=`<div class="explain"><textarea id="explain-in" aria-label="Your explanation" placeholder="${esc(q.placeholder||'Write your explanation in a few sentences. Bring in nuclear charge, shielding, or distance where they matter.')}"></textarea></div><div id="explain-reveal"></div>`;actions=`<button class="btn primary wide" id="check-btn" onclick="checkAnswer()">Compare with the model answer <span class="arr">→</span></button>`+skip;keys='Write it out, then compare';}
+  else body=`<div class="inputs${q.fields.length>1?' multi':''}${q.inputsClass?' '+q.inputsClass:''}">${q.fields.map((f,i)=>`<div class="field" id="fld-${f.key}"><label for="in-${f.key}">${f.label}</label><input id="in-${f.key}" data-key="${f.key}" placeholder="${esc(f.placeholder||'')}" autocomplete="off" autocapitalize="off" spellcheck="false" ${i===0?'autofocus':''}>${f.tools?toolsHTML(f.tools,'in-'+f.key):''}${f.hint?`<div class="hint">${f.hint}</div>`:''}</div>`).join('')}</div>`;
   panel.innerHTML=`<div class="practice">
     ${catRow}
     <div class="round"><span>Question <b>${s.i+1}</b> of ${ROUND} · Score <b>${s.score}</b></span><span class="keys">${keys}</span></div>
@@ -1850,7 +2788,7 @@ function qKeys(e){const s=session;if(!s||!s.q)return;const q=s.q,kind=q.kind||'f
     e.preventDefault();if(kind!=='mc')checkAnswer();return;}
   if(kind==='mc'&&!s.answered&&/^[1-9]$/.test(e.key)&&e.target.tagName!=='TEXTAREA'&&e.target.tagName!=='INPUT'){const i=+e.key-1,n=(s.stage===2?q.step2.choices:q.choices).length;if(i<n){e.preventDefault();pickMC(s.stage,i);}}
 }
-function mcHTML(choices,layout,stage){return `<div class="choices${layout==='pair'?' pair':''}" id="mc-${stage}">${choices.map((c,i)=>`<button type="button" class="choice" onclick="pickMC(${stage},${i})"><span class="k">${i+1}</span><span class="c">${c}</span></button>`).join('')}</div>`;}
+function mcHTML(choices,layout,stage,cls){return `<div class="choices${layout==='pair'?' pair':''}${cls?' '+cls:''}" id="mc-${stage}">${choices.map((c,i)=>`<button type="button" class="choice" onclick="pickMC(${stage},${i})"><span class="k">${i+1}</span><span class="c">${c}</span></button>`).join('')}</div>`;}
 function pickMC(stage,i){const s=session;if(!s||s.answered||stage!==s.stage)return;const q=s.q,corr=stage===1?q.correct:q.step2.correct;
   document.querySelectorAll(`#mc-${stage} .choice`).forEach((b,k)=>{b.disabled=true;b.classList.add(k===corr?'right':k===i?'wrong':'dim');});
   if(stage===1&&i===corr&&q.step2){s.stage=2;const box=document.getElementById('step2');box.innerHTML=`<div class="step2"><div class="ask">${q.step2.ask}</div>${mcHTML(q.step2.choices,null,2)}</div>`;const f=box.querySelector('.choice');if(f)f.focus({preventScroll:true});requestAnimationFrame(()=>box.scrollIntoView({block:'nearest',behavior:'smooth'}));return;}
