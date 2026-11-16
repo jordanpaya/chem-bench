@@ -504,10 +504,6 @@ p.eqn{margin:.3em 0 .6em}
 .lab-row.wide{align-items:flex-start;margin-bottom:10px}
 .lab-row.wide>span{width:64px;padding-top:8px}
 .lab-row.wide .seg{flex:1;margin:0}
-label.slide{display:flex;flex-direction:column;gap:6px;font-size:.88rem;color:var(--muted)}
-label.slide b{color:var(--ink);font-family:var(--mono);margin-left:6px}
-label.slide input{width:100%;accent-color:var(--accent)}
-.cuv{display:inline-block;height:30px;border:1.5px solid var(--line-strong);border-top:0;border-radius:0 0 5px 5px;vertical-align:middle}
 .indt .sw{display:inline-block;width:14px;height:14px;border-radius:50%;border:1px solid var(--line-strong);vertical-align:-2px;margin-right:7px}
 .tcard .eqn.sm{color:var(--muted);margin:6px 0 0}
 .unit-seg{flex-wrap:wrap}
@@ -1789,9 +1785,8 @@ const U34_TOPICS=[
  {id:'limiting',unit:3,part:'u4',title:'Limiting Reactants',blurb:"Find what runs out first, how much product forms, and what's left over.",lead:'Identify the limiting reactant, the theoretical yield, and the leftover excess.'},
  {id:'molarity',unit:3,part:'u4',title:'Molarity & Dilutions',blurb:'Moles per liter, ion concentrations, and M₁V₁ = M₂V₂.',lead:'Calculate concentrations, prepare solutions, and dilute them.'},
  {id:'titration',unit:3,part:'u4',title:'Solution Stoichiometry & Titrations',blurb:'Stoichiometry with volumes: titrations and precipitate masses.',lead:'Combine molarity with mole ratios to solve titration and precipitation problems.'},
- {id:'beer',unit:3,part:'u4',title:"Beer's Law",blurb:'Absorbance, concentration, and why a darker solution absorbs more.',lead:'Relate absorbance to concentration and path length with A = εbc.'}
 ];
-const GOALS_U34={balance:40,solub:40,netionic:30,redox:40,acidbase:30,stoich:30,limiting:25,molarity:30,titration:25,beer:20};
+const GOALS_U34={balance:40,solub:40,netionic:30,redox:40,acidbase:30,stoich:30,limiting:25,molarity:30,titration:25};
 
 const stt=s=>`<span class="st">(${s})</span>`;
 const kf=n=>n>1?n+' ':'';
@@ -2305,43 +2300,6 @@ const TI_GEN={
 };
 GEN.titration=()=>TI_GEN[wpick([[24,'conc'],[16,'vol'],[18,'ppt'],[10,'solid'],[8,'mm'],[10,'oh'],[9,'concept'],[5,'explain']])]();
 
-/* ---------- Beer's law ---------- */
-const DYES=['blue food dye','red food dye','yellow food dye','green food dye','purple food dye','copper(II) sulfate','a sports drink dye'];
-const BEER_BANK=[
- {q:"According to Beer's law, absorbance and concentration are…",a:'directly proportional',d:['inversely proportional','unrelated','equal'],why:'A = εbc. If the concentration doubles (same cuvette, same substance), the absorbance doubles.'},
- {q:'A solution looks darker than another solution of the same dye. What does that tell you?',a:'It is more concentrated and absorbs more light',d:['It is more dilute','It has a lower absorbance','It has a larger molar mass'],why:'More dissolved particles in the light\'s path absorb more light, so the color is deeper and the absorbance is higher.'},
- {q:"In A = εbc, what does b stand for?",a:'The path length: how far the light travels through the solution',d:['The brightness of the lamp','The concentration','The volume of the cuvette'],why:'b is the width of the cuvette, usually 1 cm. ε is a constant for the substance, and c is the concentration.'},
- {q:'Why do you make a calibration curve with solutions of known concentration?',a:'Its line lets you turn an unknown solution\'s absorbance into a concentration',d:['To make the unknown more concentrated','To clean the cuvette','To find the color of the solution'],why:'Plotting absorbance against known concentrations gives a straight line. Read the unknown\'s absorbance off that line (or use its equation) to get its concentration.'},
- {q:"On a Beer's law calibration graph of absorbance vs. concentration, the line should…",a:'be straight and pass through the origin',d:['curve upward','be horizontal','slope downward'],why:'Zero concentration absorbs no light, and absorbance rises in direct proportion to concentration. The slope equals εb.'},
- {q:'Before measuring samples, a colorimeter is "blanked" with plain water. Why?',a:'So the absorbance of the water and cuvette is set to zero',d:['To dilute the samples','To warm up the samples','To make the dye darker'],why:'The blank removes any absorbance that isn\'t from the dye, so the readings reflect only the dissolved substance.'},
- {q:'A blue solution looks blue because it…',a:'absorbs other colors (like orange) and lets blue light through',d:['absorbs blue light','reflects all colors','produces blue light'],why:'We see the light that is not absorbed. That is why a colorimeter for a blue solution uses orange-red light, the color it absorbs best.'}
-];
-const BEER_GEN={
- conc(){const dye=rnd(DYES),c1=rAmt(0.01,0.9),A1=rAmt(0.15,0.75),A2=q3(A1*rnd([0.4,0.6,0.75,1.25,1.4,1.6,1.8])),ans=c1*A2/A1;
-  return {type:'Absorbance & concentration',ask:`A solution of ${dye} has a concentration of ${c1} M and an absorbance of ${A1}. What is the concentration of a solution of the same substance with an absorbance of ${A2}?`,prompt:`<span class="big eqn">A = εbc</span>`,fields:nfield('Concentration (M)','M'),
-   check:v=>({...numQ(v,ans,[[c1*A1/A2,'<b>Flip the ratio.</b> A higher absorbance means a higher concentration.']]),why:`<p>Same substance and same cuvette, so absorbance is directly proportional to concentration: A₁/c₁ = A₂/c₂.</p><p>c₂ = ${c1} M × (${A2} ÷ ${A1}) = <b>${g3(ans)} M</b></p>`})};},
- abs(){const dye=rnd(DYES),c1=rAmt(0.01,0.9),A1=rAmt(0.15,0.75),c2=q3(c1*rnd([0.3,0.5,0.75,1.25,1.5])),ans=A1*c2/c1;
-  return {type:'Absorbance & concentration',ask:`A ${c1} M solution of ${dye} has an absorbance of ${A1}. What absorbance would a ${c2} M solution of the same substance have?`,prompt:`<span class="big eqn">A = εbc</span>`,fields:nfield('Absorbance','A'),
-   check:v=>({...numQ(v,ans,[[A1*c1/c2,'<b>Flip the ratio.</b> A higher concentration gives a higher absorbance.']]),why:`<p>A₂ = A₁ × (c₂ ÷ c₁) = ${A1} × (${c2} ÷ ${c1}) = <b>${g3(ans)}</b></p>`})};},
- dilute(){const dye=rnd(DYES),A1=rAmt(0.3,0.9),V=rnd([5,10,20,25]),W=V*rnd([1,2,3,4]),ans=A1*V/(V+W);
-  return {type:'Dilution & absorbance',ask:`${V} mL of a ${dye} solution has an absorbance of ${A1}. You add ${W} mL of water. What is the absorbance now?`,prompt:`<span class="big eqn">A = εbc</span>`,fields:nfield('Absorbance','A'),
-   check:v=>({...numQ(v,ans,[[A1,'<b>Adding water lowers the concentration,</b> so the absorbance drops too.'],[A1*V/W,'<b>Use the total volume.</b> The new volume is the solution plus the water.'],[A1*(V+W)/V,'<b>Dilution lowers absorbance.</b> Multiply by the old volume over the new total volume.']]),why:`<p>The total volume goes from ${V} mL to ${V+W} mL, so the concentration becomes ${V}/${V+W} of what it was. Absorbance is proportional to concentration:</p><p>A = ${A1} × (${V} ÷ ${V+W}) = <b>${g3(ans)}</b></p>`})};},
- path(){const A1=rAmt(0.15,0.6),b1=rnd([0.5,1,2]),b2=rnd([0.5,1,2,3,4].filter(x=>x!==b1)),ans=A1*b2/b1;
-  return {type:'Path length',ask:`A solution has an absorbance of ${A1} in a cuvette with a path length of ${b1} cm. What would its absorbance be in a ${b2} cm cuvette?`,prompt:`<span class="big eqn">A = εbc</span>`,fields:nfield('Absorbance','A'),
-   check:v=>({...numQ(v,ans,[[A1*b1/b2,'<b>Flip the ratio.</b> A longer path means the light passes through more solution, so more is absorbed.'],[A1,'<b>Path length matters.</b> Absorbance is directly proportional to b.']]),why:`<p>Absorbance is directly proportional to path length. A = ${A1} × (${b2} ÷ ${b1}) = <b>${g3(ans)}</b></p>`})};},
- eps(){const eps=rnd([45,80,120,150,210,260,340,480]),b=1,c=rAmt(0.001,0.006),A=q3(eps*b*c),what=rnd(['A','c','e']);
-  const ask=what==='A'?`A dye has ε = ${eps} M⁻¹cm⁻¹. What is the absorbance of a ${c} M solution in a 1.00 cm cuvette?`:what==='c'?`A dye has ε = ${eps} M⁻¹cm⁻¹. A solution in a 1.00 cm cuvette has an absorbance of ${A}. What is its concentration?`:`A ${c} M solution of a dye has an absorbance of ${A} in a 1.00 cm cuvette. What is ε for this dye?`;
-  const ans=what==='A'?eps*c:what==='c'?A/eps:A/c;
-  return {type:"Beer's law",ask,prompt:`<span class="big eqn">A = εbc</span>`,fields:nfield(what==='A'?'Absorbance':what==='c'?'Concentration (M)':'ε (M⁻¹cm⁻¹)',what==='c'?'M':''),
-   check:v=>({...numQ(v,ans,[[what==='c'?A*eps:what==='e'?A*c:eps/c,'<b>Rearrange A = εbc.</b> Divide the absorbance by the other two quantities to isolate what you need.']]),why:`<p>${what==='A'?`A = εbc = ${eps} × 1.00 × ${c} = <b>${g3(ans)}</b>`:what==='c'?`c = A ÷ (εb) = ${A} ÷ (${eps} × 1.00) = <b>${g3(ans)} M</b>`:`ε = A ÷ (bc) = ${A} ÷ (1.00 × ${c}) = <b>${g3(ans)} M⁻¹cm⁻¹</b>`}</p>`})};},
- calib(){const m=rAmt(0.8,9),A=rAmt(0.12,0.85),ans=A/m;
-  return {type:'Calibration curve',ask:`A calibration curve for a dye has the equation A = ${m} × c, with c in M. An unknown sample of the dye has an absorbance of ${A}. What is its concentration?`,prompt:`<span class="big eqn">A = ${m}c</span>`,fields:nfield('Concentration (M)','M'),
-   check:v=>({...numQ(v,ans,[[A*m,'<b>Solve for c.</b> Divide the absorbance by the slope.']]),why:`<p>The slope of the line is εb. Solve for c: c = A ÷ ${m} = ${A} ÷ ${m} = <b>${g3(ans)} M</b></p>`})};},
- concept(){return bankQ(rnd(BEER_BANK));},
- explain(){return explainQ({q:'You have a colored solution of unknown concentration, a colorimeter, and a stock solution of the same dye with a known concentration. Describe how you would find the unknown concentration.',model:"Dilute the stock to make several standard solutions of known concentration. Blank the colorimeter with water, then measure the absorbance of each standard. Plot absorbance against concentration and draw the best-fit line through the origin: this is the calibration curve. Measure the absorbance of the unknown and use the line's equation (or read across the graph) to find its concentration.",keys:['Make standards of known concentration and measure their absorbance','Plot absorbance vs. concentration to get a straight calibration line','Measure the unknown and use the line to find its concentration']});}
-};
-GEN.beer=()=>BEER_GEN[wpick([[22,'conc'],[12,'abs'],[14,'dilute'],[10,'path'],[12,'eps'],[12,'calib'],[14,'concept'],[4,'explain']])]();
-
 /* ===================== UNITS 3 & 4: LEARN TOOLS ===================== */
 const SOLT_C=['sodium','potassium','ammonium','magnesium','calcium','strontium','barium','aluminum','zinc','iron(II)','iron(III)','copper(II)','silver','lead(II)'].map(catBy);
 function solTableHTML(){return `<div class="lab"><div class="lab-head"><span class="eyebrow">Try it</span><h3>Solubility table</h3><p>Tap any square to see the compound and the rule behind it.</p></div><div class="tscroll"><table class="solt"><tr><th></th>${AN3.map(a=>`<th>${ionH(a)}</th>`).join('')}</tr>${SOLT_C.map((c,ci)=>`<tr><th>${ionH(c)}</th>${AN3.map((a,ai)=>{const x=cmpd(c,a);return `<td><button type="button" class="${x.iffy?'q':x.sol?'s':'i'}" onclick="solPick(${ci},${ai})" aria-label="${x.name}">${x.iffy?'·':x.sol?'aq':'s'}</button></td>`;}).join('')}</tr>`).join('')}</table></div><div class="legend"><span><i class="k-s"></i>soluble (aq)</span><span><i class="k-i"></i>insoluble (s)</span><span><i class="k-q"></i>borderline or doesn't form: not asked</span></div><div id="solt-out" class="te-out"><div class="muted">Tap a square.</div></div></div>`;}
@@ -2360,12 +2318,6 @@ function actRender(){if(!document.getElementById('actx'))return;const M=METALS.f
    out.innerHTML=`<div class="feedback ${reacts?'ok':'bad'}"><div class="verdict">${reacts?'Reaction':'No reaction'}</div><div class="why"><p>${cap(M.n)} is ${reacts?'above':'below'} hydrogen on the activity series, so it ${reacts?'replaces the hydrogen in the acid and releases H₂ gas':"can't replace the hydrogen in an acid"}.</p>${eq?`<p class="eqn">${eq}</p>`:''}</div></div>`;return;}
   const N=SOLN_CATS.find(m=>m.s===ACTX.s);if(reacts){const salt=cmpd0(mIon(N),NO3()),prod=cmpd0(mIon(M),NO3()),R=[M.s,salt.f],P=[prod.f,N.s];eq=eqHTML({R,P,c:balanceEq(R,P),s:['s','aq','aq','s']});}
   out.innerHTML=`<div class="feedback ${reacts?'ok':'bad'}"><div class="verdict">${reacts?'Reaction':'No reaction'}</div><div class="why"><p>${cap(M.n)} is ${reacts?'above':'below'} ${N.n} on the activity series, so it ${reacts?`gives up electrons to the ${N.n} ions and replaces them`:`can't replace ${N.n} ions`}.</p>${eq?`<p class="eqn">${eq}</p>`:''}</div></div>`;}
-const BEERX={c:0.4,b:1};
-function beerHTML(){return `<div class="lab" id="beerx"><div class="lab-head"><span class="eyebrow">Try it</span><h3>Beer's law explorer</h3><p>Slide the concentration and the path length. Watch the color deepen and the absorbance climb in a straight line.</p></div><div class="lab-body"><div id="beerx-svg"></div><div class="lab-ctrl"><label class="slide"><span>Concentration <b id="beerx-cv"></b></span><input type="range" min="0" max="1" step="0.05" value="0.4" oninput="BEERX.c=+this.value;beerRender()"></label><label class="slide"><span>Path length <b id="beerx-bv"></b></span><input type="range" min="0.5" max="2" step="0.5" value="1" oninput="BEERX.b=+this.value;beerRender()"></label><div class="lab-out" id="beerx-out"></div></div></div></div>`;}
-function beerRender(){const box=document.getElementById('beerx');if(!box)return;const {c,b}=BEERX,eps=1.2,A=eps*b*c,W=300,H=200,px=x=>40+x*(W-56),py=a=>H-28-(a/2.4)*(H-44);
-  document.getElementById('beerx-cv').textContent=c.toFixed(2)+' M';document.getElementById('beerx-bv').textContent=b.toFixed(1)+' cm';
-  document.getElementById('beerx-svg').innerHTML=`<svg viewBox="0 0 ${W} ${H}" class="elab-svg" role="img" aria-label="Absorbance versus concentration"><line x1="40" y1="${H-28}" x2="${W-12}" y2="${H-28}" class="lv on"/><line x1="40" y1="14" x2="40" y2="${H-28}" class="lv on"/><text x="${W/2}" y="${H-6}" class="lvt" text-anchor="middle">concentration (M)</text><text x="12" y="${H/2}" class="lvt" text-anchor="middle" transform="rotate(-90 12 ${H/2})">absorbance</text><line x1="${px(0)}" y1="${py(0)}" x2="${px(1)}" y2="${py(eps*b)}" stroke="var(--accent)" stroke-width="2.5"/><line x1="${px(c)}" y1="${py(A)}" x2="${px(c)}" y2="${H-28}" stroke="var(--line-strong)" stroke-dasharray="3 3"/><line x1="40" y1="${py(A)}" x2="${px(c)}" y2="${py(A)}" stroke="var(--line-strong)" stroke-dasharray="3 3"/><circle cx="${px(c)}" cy="${py(A)}" r="6" fill="var(--copper)"/></svg>`;
-  document.getElementById('beerx-out').innerHTML=`<div class="kv"><span>Sample</span><b><span class="cuv" style="width:${18*b+14}px;background:color-mix(in srgb,var(--accent) ${Math.round(Math.min(1,c)*85)}%,var(--surface))"></span></b></div><div class="kv"><span>Absorbance A = εbc</span><b>${A.toFixed(2)}</b></div><div class="kv"><span>Slope of the line (εb)</span><b>${(eps*b).toFixed(2)}</b></div>`;}
 const roadHTML=(steps)=>`<div class="road">${steps.map((s,i)=>i%2?`<span class="arr"><i>${s}</i>→</span>`:`<span class="box">${s}</span>`).join('')}</div>`;
 
 /* ===================== UNIT 3: LEARN ===================== */
@@ -2613,33 +2565,7 @@ LEARN.titration=()=>`
   <p>Titrate a weighed sample of the acid. The titration gives its moles, and molar mass = grams ÷ moles.</p>
   <div class="example"><div class="eyebrow">Example</div><p>1.50 g of a monoprotic acid needs 25.0 mL of 0.500 M NaOH. Moles of acid = 0.500 × 0.0250 = 0.0125 mol, so the molar mass is 1.50 ÷ 0.0125 = <b>120 g/mol</b>.</p></div>
 </section>`;
-
-LEARN.beer=()=>`
-<section>
-  <h2>Color and concentration</h2>
-  <p>A colored solution absorbs some of the light that passes through it. The more dissolved dye in the light's path, the more light is absorbed and the darker the solution looks. A <b>colorimeter</b> (or spectrophotometer) measures this as <b>absorbance</b>.</p>
-</section>
-<section>
-  <h2>Beer's law</h2>
-  <div class="fact" style="margin-bottom:14px"><div class="k">Beer's law</div><div class="v">A = εbc</div></div>
-  <div class="tscroll"><table><tr><th>Symbol</th><th>Meaning</th><th>Notes</th></tr><tr><td>A</td><td>Absorbance</td><td>No units. What the colorimeter reads.</td></tr><tr><td>ε</td><td>Molar absorptivity</td><td>A constant for each substance at a given wavelength.</td></tr><tr><td>b</td><td>Path length</td><td>The width of the cuvette, usually 1 cm.</td></tr><tr><td>c</td><td>Concentration</td><td>In mol/L (M).</td></tr></table></div>
-  <p style="margin-top:12px">Absorbance is <b>directly proportional</b> to both concentration and path length. Double either one and the absorbance doubles.</p>
-</section>
-<section>
-  <h2>The proportion shortcut</h2>
-  <p>For the same substance in the same cuvette, ε and b cancel:</p>
-  <p class="chain">A₁ ÷ c₁ = A₂ ÷ c₂</p>
-  <div class="example"><div class="eyebrow">Worked example</div><p>A 0.040 M dye solution has an absorbance of 0.320. Another solution of the same dye reads 0.480.</p><p>c₂ = 0.040 M × (0.480 ÷ 0.320) = <b>0.060 M</b></p></div>
-  <div class="example"><div class="eyebrow">Diluting changes absorbance</div><p>Add 10 mL of water to 10 mL of a solution with A = 0.600. The volume doubles, so the concentration halves, and the absorbance halves too: <b>0.300</b>.</p></div>
-</section>
-<section>
-  <h2>Calibration curves</h2>
-  <ol><li>Make several <b>standard solutions</b> of known concentration.</li><li>Zero the colorimeter with a <b>blank</b> (plain water).</li><li>Measure each standard's absorbance and plot absorbance (y) against concentration (x).</li><li>The points make a <b>straight line through the origin</b>. Its slope equals εb.</li><li>Measure the unknown's absorbance and use the line's equation to find its concentration.</li></ol>
-  <div class="example"><div class="eyebrow">Example</div><p>The best-fit line is A = 4.20c. An unknown reads A = 0.315, so c = 0.315 ÷ 4.20 = <b>0.0750 M</b>.</p></div>
-  <div class="callout tip"><p><b>Same idea as the spectroscope lab.</b> Measure knowns, get an equation, then use the equation to turn a reading into the value you want.</p></div>
-</section>
-<section>${beerHTML()}</section>`;
-LEARN_INIT.redox=actRender;LEARN_INIT.beer=beerRender;
+LEARN_INIT.redox=actRender;
 
 /* ===================== REFERENCE PANELS ===================== */
 const U34_REF={
@@ -2652,7 +2578,6 @@ const U34_REF={
  limiting:{title:'The method',html:()=>'<ul class="rulelist"><li>Convert each reactant to moles.</li><li>Divide each by its coefficient. The smaller result is limiting.</li><li>Theoretical yield comes from the limiting reactant.</li><li>Excess left = starting amount − amount that reacted.</li></ul>'},
  molarity:{title:'Formulas',html:()=>'<div class="facts"><div class="fact"><div class="k">Molarity</div><div class="v">M = mol ÷ L</div><div class="d">Convert mL to L first.</div></div><div class="fact"><div class="k">Dilution</div><div class="v">M₁V₁ = M₂V₂</div><div class="d">Moles of solute stay the same.</div></div></div>'},
  titration:{title:'Formulas',html:()=>roadHTML(['volume A','× M','moles A','× mole ratio','moles B','÷ M','volume B'])+'<p class="muted" style="font-size:.85rem;margin:10px 0 0">Moles = M × L. For a precipitate, find the limiting reactant first. At the endpoint, moles H⁺ = moles OH⁻.</p>'},
- beer:{title:'Formulas',html:()=>'<div class="facts"><div class="fact"><div class="k">Beer\'s law</div><div class="v">A = εbc</div><div class="d">b is the path length, c the concentration.</div></div><div class="fact"><div class="k">Same dye, same cuvette</div><div class="v">A₁ ÷ c₁ = A₂ ÷ c₂</div></div></div>'}
 };
 
 Object.assign(GOALS,GOALS_U34);
@@ -2677,7 +2602,7 @@ let ionFilterOpen=false;
 /* ---------- units & routing ---------- */
 const UNITS={1:{h1:['Nomenclature','&amp; the Mole.'],lead:'Six topics. Learn the rules, then drill until they stick. Every question checks itself and explains the answer.',foot:'Chemistry · Unit 1 · Nomenclature and the Mole'},
  2:{h1:['Atomic Theory','&amp; Periodic Trends.'],lead:'Five topics. Learn the ideas, then practice explaining them. Every question checks itself, including your reasoning.',foot:'Chemistry · Unit 2 · Atomic Theory and Periodic Trends'},
- 3:{label:'Units 3 &amp; 4',h1:['Reactions &amp;','Stoichiometry.'],lead:'Ten topics for the combined test. Reactions first, then the calculations built on them. Every question checks itself and explains the answer.',foot:'Chemistry · Units 3 and 4 · Reactions and Stoichiometry',groups:[{id:'u3',label:'Unit 3 · Chemical reactions'},{id:'u4',label:'Unit 4 · Stoichiometry and solutions'}]}};
+ 3:{label:'Units 3 &amp; 4',h1:['Reactions &amp;','Stoichiometry.'],lead:'Nine topics for the combined test. Reactions first, then the calculations built on them. Every question checks itself and explains the answer.',foot:'Chemistry · Units 3 and 4 · Reactions and Stoichiometry',groups:[{id:'u3',label:'Unit 3 · Chemical reactions'},{id:'u4',label:'Unit 4 · Stoichiometry and solutions'}]}};
 const DEFAULT_UNIT=3;
 function setFoot(u){const f=document.getElementById('foot-unit');if(f)f.textContent=UNITS[u].foot;}
 function render(){
